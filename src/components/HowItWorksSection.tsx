@@ -88,7 +88,7 @@ const HowItWorksSection = () => {
               {/* Visual element for alternating layout */}
               <div className={`flex-shrink-0 ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
                 <div className="w-64 h-48 bg-gradient-surface border border-border rounded-2xl flex items-center justify-center">
-                  <div className="text-6xl opacity-20">{step.icon({ className: "h-20 w-20" })}</div>
+                  <step.icon className="h-20 w-20 opacity-20" />
                 </div>
               </div>
             </div>
