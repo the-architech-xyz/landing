@@ -61,7 +61,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'electric-blue': 'hsl(var(--electric-blue))',
+				'deep-focus': 'hsl(var(--deep-focus))',
+				'surface-elevated': 'hsl(var(--surface-elevated))',
+				'text-primary': 'hsl(var(--text-primary))',
+				'text-secondary': 'hsl(var(--text-secondary))',
+				'text-accent': 'hsl(var(--text-accent))'
+			},
+			backgroundImage: {
+				'gradient-electric': 'var(--gradient-electric)',
+				'gradient-surface': 'var(--gradient-surface)',
+				'gradient-hero': 'var(--gradient-hero)'
+			},
+			boxShadow: {
+				'electric': 'var(--shadow-electric)',
+				'elevated': 'var(--shadow-elevated)',
+				'glow': 'var(--glow-electric)'
+			},
+			fontFamily: {
+				'inter': ['Inter', 'system-ui', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'Fira Code', 'monospace']
+			},
+			animation: {
+				'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+				'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +109,35 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				fadeInUp: {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				glowPulse: {
+					'0%, 100%': {
+						opacity: '1',
+						filter: 'brightness(1)'
+					},
+					'50%': {
+						opacity: '0.8',
+						filter: 'brightness(1.1)'
+					}
+				},
+				float: {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
