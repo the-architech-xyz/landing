@@ -189,7 +189,7 @@ Professional meets artistic - perfect for creative developers.
   /* Smooth scrolling and performance optimizations */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Account for fixed header */
+    scroll-padding-top: 120px; /* Account for fixed header with extra space */
   }
 
   body {
@@ -510,5 +510,14 @@ Professional meets artistic - perfect for creative developers.
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+  }
+  
+  /* Force header to stay fixed at top */
+  header[class*="fixed"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
   }
 }

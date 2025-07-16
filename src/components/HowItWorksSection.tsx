@@ -1,4 +1,6 @@
 import { MessageSquare, Users, Eye } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const HowItWorksSection = () => {
   const steps = [
@@ -102,15 +104,28 @@ const HowItWorksSection = () => {
 
         {/* Enhanced bottom CTA */}
         <div className="text-center mt-16">
-          <div className="inline-flex flex-col items-center gap-4 glass-card rounded-3xl p-8 shadow-glow">
+          <div className="inline-flex flex-col items-center gap-6 glass-card rounded-3xl p-8 shadow-glow">
             <h3 className="text-2xl font-bold text-foreground">
               Ready to{" "}
               <span className="text-transparent bg-gradient-sunset bg-clip-text">revolutionize</span>
               {" "}your workflow?
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground mb-2">
               Join the architectural revolution. Build like never before.
             </p>
+            <Button 
+              className="bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden"
+              onClick={() => {
+                const element = document.getElementById('cta');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <span className="relative z-10">Join Early Access Waitlist</span>
+              <ArrowRight className="ml-2 h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
           </div>
         </div>
       </div>

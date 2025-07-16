@@ -1,5 +1,7 @@
 import { Clock, Shield, Download } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const BenefitsSection = () => {
   const [hoveredBenefit, setHoveredBenefit] = useState<number | null>(null);
@@ -120,26 +122,25 @@ const BenefitsSection = () => {
         {/* Enhanced CTA with animation */}
         <div className="text-center mt-20">
           <div className="relative inline-block">
-            <div className="glass-card rounded-2xl p-8 max-w-md mx-auto group cursor-pointer hover:shadow-glow transition-all duration-500">
-              <p className="text-lg text-muted-foreground mb-4">
+            <div className="glass-card rounded-2xl p-8 max-w-md mx-auto group cursor-pointer hover:shadow-glow transition-all duration-500" onClick={() => {
+              const element = document.getElementById('cta');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}>
+              <p className="text-lg text-muted-foreground mb-6">
                 Ready to transform your development workflow?
               </p>
-              <div className="inline-flex items-center gap-2 text-architech-electric font-medium group-hover:scale-105 transition-transform duration-300">
-                Join{" "}
-                <span className="text-transparent bg-gradient-rainbow bg-clip-text font-bold animate-gradient-flow">
-                  thousands
-                </span>
-                {" "}of developers who've made the switch
-              </div>
+              <Button 
+                className="bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden w-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="relative z-10">Join Early Access Waitlist</span>
+                <ArrowRight className="ml-2 h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
             </div>
 
-            {/* Floating icons animation */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-sunset flex items-center justify-center animate-float-gentle">
-              ✨
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-ocean flex items-center justify-center animate-float-gentle" style={{animationDelay: '1s'}}>
-              🚀
-            </div>
+
           </div>
         </div>
       </div>

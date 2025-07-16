@@ -64,7 +64,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <header className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-500 ${
       scrolled 
         ? 'bg-background/95 backdrop-blur-xl shadow-glass border-b border-architech-border/50' 
         : 'bg-background/80 backdrop-blur-lg border-b border-transparent'

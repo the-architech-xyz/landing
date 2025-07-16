@@ -51,7 +51,7 @@ const HeroSection = () => {
       </div>
       
       <div className="container mx-auto px-6 py-20 relative z-20">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
           
           {/* Hero Message */}
           <div className="space-y-6">
@@ -67,14 +67,37 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Magic Demo */}
-          <div className="relative max-w-3xl mx-auto">
-            <div className="glass-card rounded-3xl p-8 shadow-glass">
-              {/* Input Section */}
-              <div className="mb-8">
-                <div className="text-left mb-4">
-                  <div className="text-sm text-muted-foreground mb-2">Describe your app:</div>
-                  <div className="bg-background border border-architech-border rounded-xl p-4 font-mono text-left min-h-[60px] flex items-center">
+          {/* Primary CTA - Prominently displayed */}
+          <div className="space-y-4 mb-8">
+            <Button 
+              size="lg" 
+              className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 text-lg group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              Join the Early Access Waitlist
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            
+            <p className="text-sm text-muted-foreground">
+              No credit card required • Join 2,847 developers
+            </p>
+          </div>
+
+          {/* Compact Demo Card - Expands when modules appear */}
+          <div className={`relative mx-auto transition-all duration-700 ${
+            showModules ? 'max-w-4xl' : 'max-w-2xl'
+          }`}>
+            <div className={`glass-card rounded-3xl shadow-glass transition-all duration-700 ease-out mx-auto ${
+              showModules 
+                ? 'p-8 w-full transform scale-[1.01]' 
+                : 'p-6 w-full transform scale-100'
+            }`}>
+              
+              {/* Always visible input section */}
+              <div className="mb-6">
+                <div className="text-left mb-3">
+                  <div className="text-sm text-muted-foreground mb-2">Try it: Describe your app</div>
+                  <div className="bg-background border border-architech-border rounded-xl p-4 font-mono text-left min-h-[50px] flex items-center">
                     <span className="text-foreground">{currentText}</span>
                     {isTyping && (
                       <span className="ml-1 w-0.5 h-5 bg-architech-electric animate-pulse"></span>
@@ -83,24 +106,30 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Transformation Arrow */}
-              <div className="flex justify-center mb-8">
-                <div className={`transition-all duration-500 ${showModules ? 'scale-110 text-architech-electric' : 'text-muted-foreground'}`}>
-                  <ArrowRight className="h-8 w-8" />
+              {/* Transformation Arrow - appears when modules show */}
+              <div className={`flex justify-center mb-6 transition-all duration-500 ${
+                showModules ? 'opacity-100 scale-110' : 'opacity-0 scale-75 h-0 mb-0'
+              }`}>
+                <div className="text-architech-electric">
+                  <ArrowRight className="h-6 w-6" />
                 </div>
               </div>
 
-              {/* Generated Modules */}
-              <div className="relative">
+              {/* Generated Modules - expandable section */}
+              <div className={`transition-all duration-700 ease-out ${
+                showModules 
+                  ? 'opacity-100 max-h-96 transform translate-y-0' 
+                  : 'opacity-0 max-h-0 transform translate-y-4 overflow-hidden'
+              }`}>
                 <div className="text-left mb-4">
                   <div className="text-sm text-muted-foreground">Your production-ready app:</div>
                 </div>
                 
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                   {modules.map((module, index) => (
                     <div
                       key={module.name}
-                      className={`${module.color} rounded-xl p-4 text-white text-center transform transition-all duration-500 ${
+                      className={`${module.color} rounded-xl p-3 text-white text-center transform transition-all duration-500 ${
                         showModules 
                           ? 'translate-y-0 opacity-100 scale-100' 
                           : 'translate-y-8 opacity-0 scale-95'
@@ -127,26 +156,10 @@ const HeroSection = () => {
             </div>
 
             {/* Floating "100% Yours" badge */}
-            <div className="absolute -top-4 -right-4 glass-card rounded-xl p-3 shadow-glow">
-              <div className="text-lg font-bold text-transparent bg-gradient-electric bg-clip-text">100%</div>
+            <div className="absolute -top-3 -right-3 glass-card rounded-xl p-2 shadow-glow">
+              <div className="text-sm font-bold text-transparent bg-gradient-electric bg-clip-text">100%</div>
               <div className="text-xs text-muted-foreground">Yours</div>
             </div>
-          </div>
-
-          {/* Single CTA */}
-          <div className="space-y-4">
-            <Button 
-              size="lg" 
-              className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 text-lg group relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              Join the Early Access Waitlist
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <p className="text-sm text-muted-foreground">
-              No credit card required • Join 2,847 developers
-            </p>
           </div>
         </div>
       </div>
