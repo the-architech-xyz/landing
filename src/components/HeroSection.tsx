@@ -1,193 +1,162 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Code, Zap, Box, Layers, ChevronDown, Timer } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const HeroSection = () => {
-  const [isTransformed, setIsTransformed] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [showModules, setShowModules] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
+
+  const promptText = "A collaborative project management app with JWT auth and a modern design system";
+  
+  const modules = [
+    { name: "Auth Service", color: "bg-gradient-electric", delay: 0 },
+    { name: "Database", color: "bg-gradient-forest", delay: 200 },
+    { name: "API Gateway", color: "bg-gradient-ocean", delay: 400 },
+    { name: "UI Components", color: "bg-gradient-sunset", delay: 600 },
+    { name: "CI/CD Pipeline", color: "bg-gradient-creative", delay: 800 },
+    { name: "Monitoring", color: "bg-gradient-aurora", delay: 1000 }
+  ];
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsTransformed(true), 2000);
-    return () => clearTimeout(timer);
+    if (currentText.length < promptText.length) {
+      const timer = setTimeout(() => {
+        setCurrentText(promptText.slice(0, currentText.length + 1));
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+      setIsTyping(false);
+      const timer = setTimeout(() => {
+        setShowModules(true);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [currentText, promptText]);
+
+  // Reset animation every 8 seconds
+  useEffect(() => {
+    const resetTimer = setInterval(() => {
+      setCurrentText("");
+      setShowModules(false);
+      setIsTyping(true);
+    }, 10000); // Increased from 8000 to 10000 (10 seconds total)
+    return () => clearInterval(resetTimer);
   }, []);
-
-  const codeStormItems = [
-    "npm install...", "webpack.config.js", "babel.config.js", 
-    "eslint.config.js", "tsconfig.json", "package.json",
-    "docker-compose.yml", "nginx.conf", "routes/auth.js",
-    "middleware/cors.js", "models/user.js", "controllers/auth.js"
-  ];
-
-  const modules = [
-    { name: "Authentication", icon: Code, color: "bg-gradient-electric" },
-    { name: "Database", icon: Box, color: "bg-gradient-forest" },
-    { name: "API Gateway", icon: Layers, color: "bg-gradient-ocean" },
-    { name: "Payment", icon: Zap, color: "bg-gradient-sunset" }
-  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-      {/* Enhanced grid pattern */}
-      <div className="absolute inset-0 opacity-5 z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        <div className="absolute inset-0 bg-gradient-electric opacity-5 animate-gradient-shift"></div>
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-3 z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
       
-      <div className="container mx-auto px-6 pt-20 pb-16 relative z-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Enhanced with Problem + Solution */}
-          <div className="space-y-8 relative z-30">
-            {/* Problem indicator */}
-            <div className="flex items-center gap-4 p-4 glass-card rounded-xl shadow-glow backdrop-blur-sm">
-              <Timer className="h-6 w-6 text-architech-danger" />
-              <div>
-                <div className="text-architech-danger font-semibold">The Brutal Reality</div>
-                <div className="text-sm text-muted-foreground">Developers waste 60% of their time on configuration hell</div>
+      <div className="container mx-auto px-6 py-20 relative z-20">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          
+          {/* Hero Message */}
+          <div className="space-y-6">
+            <h1 className="text-5xl lg:text-7xl font-black leading-tight tracking-tight">
+              <span className="text-foreground">Skip the Setup.</span>
+              <br />
+              <span className="text-transparent bg-gradient-rainbow bg-clip-text">
+                Build the Magic.
+              </span>
+            </h1>
+            
+            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+              The Architech uses specialized AI agents to handle the tedious setup and infrastructure, 
+              so you can focus on building what makes your app unique.
+            </p>
+          </div>
+
+          {/* Magic Demo */}
+          <div className="relative max-w-3xl mx-auto">
+            <div className="glass-card rounded-3xl p-8 shadow-glass">
+              {/* Input Section */}
+              <div className="mb-8">
+                <div className="text-left mb-4">
+                  <div className="text-sm text-muted-foreground mb-2">Describe your app:</div>
+                  <div className="bg-background border border-architech-border rounded-xl p-4 font-mono text-left min-h-[60px] flex items-center">
+                    <span className="text-foreground">{currentText}</span>
+                    {isTyping && (
+                      <span className="ml-1 w-0.5 h-5 bg-architech-electric animate-pulse"></span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Transformation Arrow */}
+              <div className="flex justify-center mb-8">
+                <div className={`transition-all duration-500 ${showModules ? 'scale-110 text-architech-electric' : 'text-muted-foreground'}`}>
+                  <ArrowRight className="h-8 w-8" />
+                </div>
+              </div>
+
+              {/* Generated Modules */}
+              <div className="relative">
+                <div className="text-left mb-4">
+                  <div className="text-sm text-muted-foreground">Your production-ready app:</div>
+                </div>
+                
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                  {modules.map((module, index) => (
+                    <div
+                      key={module.name}
+                      className={`${module.color} rounded-xl p-4 text-white text-center transform transition-all duration-500 ${
+                        showModules 
+                          ? 'translate-y-0 opacity-100 scale-100' 
+                          : 'translate-y-8 opacity-0 scale-95'
+                      }`}
+                      style={{ 
+                        transitionDelay: showModules ? `${module.delay}ms` : '0ms'
+                      }}
+                    >
+                      <div className="text-sm font-medium">{module.name}</div>
+                      <div className="text-xs opacity-80 mt-1">Ready to deploy</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Magic completion message */}
+                <div className={`mt-6 text-center transition-all duration-500 delay-1200 ${
+                  showModules ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 glass-button rounded-full text-architech-electric font-medium">
+                    ✨ Complete in 3 minutes
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Solution label */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 glass-button rounded-full text-sm font-medium text-architech-electric backdrop-blur-sm">
-              <Zap className="h-4 w-4" />
-              The Industrial Revolution of Code
-            </div>
-
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.9] tracking-tight relative z-40">
-                <span className="text-foreground">From </span>
-                <span className="text-transparent bg-gradient-danger bg-clip-text border-b-2 border-architech-danger/50 pb-1">
-                  Configuration Hell
-                </span>
-                <br />
-                <span className="text-foreground">to </span>
-                <span className="text-transparent bg-gradient-electric bg-clip-text border-b-2 border-architech-electric pb-1">
-                  Architech Paradise
-                </span>
-              </h1>
-              
-              <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl font-light relative z-40">
-                Stop being a{" "}
-                <span className="line-through text-architech-danger">configuration slave</span>.
-                <br />
-                Become the{" "}
-                <span className="text-transparent bg-gradient-electric bg-clip-text font-semibold">
-                  architect you were meant to be
-                </span>.
-              </p>
-
-              {/* Enhanced problem stats */}
-              <div className="grid grid-cols-2 gap-4 relative z-40">
-                <div className="glass-card p-4 rounded-xl backdrop-blur-sm border border-architech-danger/30">
-                  <div className="text-2xl font-bold text-architech-danger">60%</div>
-                  <div className="text-sm text-muted-foreground">Time wasted on setup</div>
-                </div>
-                <div className="glass-card p-4 rounded-xl backdrop-blur-sm border border-architech-electric/30">
-                  <div className="text-2xl font-bold text-architech-electric">10x</div>
-                  <div className="text-sm text-muted-foreground">Faster with Architech</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 relative z-40">
-              <Button 
-                size="lg" 
-                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 text-lg group relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                Join the Revolution
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="glass-button border-2 border-architech-electric text-architech-electric hover:bg-architech-electric hover:text-white px-8 py-4 text-lg group transition-all duration-300"
-              >
-                <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                See the Magic
-              </Button>
+            {/* Floating "100% Yours" badge */}
+            <div className="absolute -top-4 -right-4 glass-card rounded-xl p-3 shadow-glow">
+              <div className="text-lg font-bold text-transparent bg-gradient-electric bg-clip-text">100%</div>
+              <div className="text-xs text-muted-foreground">Yours</div>
             </div>
           </div>
 
-          {/* Right side - Enhanced Visual Transformation */}
-          <div className="relative z-30">
-            <div className="relative glass-card rounded-3xl p-8 backdrop-blur-xl shadow-glass">
-              <div className="text-center mb-6">
-                <div className="text-lg font-semibold text-foreground mb-2">
-                  {isTransformed ? "✨ With The Architech" : "😩 Traditional Development"}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {isTransformed ? "Modular. Clean. Instant." : "Complex. Messy. Endless."}
-                </div>
-              </div>
-
-              {/* Enhanced Transformation Container */}
-              <div className="relative h-80 overflow-hidden rounded-xl bg-background border border-architech-border">
-                {/* Code Storm (Before) */}
-                <div className={`absolute inset-0 transition-all duration-2000 ${isTransformed ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}>
-                  <div className="h-full bg-gradient-danger flex flex-wrap content-start gap-2 p-4 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    {codeStormItems.map((item, index) => (
-                      <div
-                        key={index}
-                        className="text-xs bg-white/20 text-white px-2 py-1 rounded border border-white/30 relative z-10"
-                        style={{ 
-                          transform: `rotate(${Math.random() * 10 - 5}deg)`
-                        }}
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Modular Architecture (After) */}
-                <div className={`absolute inset-0 transition-all duration-2000 ${isTransformed ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-                  <div className="h-full bg-gradient-aurora flex flex-col justify-center items-center gap-4 p-6 relative">
-                    <div className="absolute inset-0 bg-black/10"></div>
-                    <div className="grid grid-cols-2 gap-4 w-full max-w-sm relative z-10">
-                      {modules.map((module, index) => (
-                        <div
-                          key={module.name}
-                          className={`${module.color} p-4 rounded-xl text-white text-center cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-electric`}
-                        >
-                          <module.icon className="h-6 w-6 mx-auto mb-2" />
-                          <div className="text-sm font-medium">{module.name}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="text-center text-sm text-white font-medium relative z-10">
-                      Complete app in minutes, not months
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Toggle Button */}
-              <div className="flex justify-center mt-6">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsTransformed(!isTransformed)}
-                  className="text-xs glass-button border-architech-electric text-architech-electric hover:bg-architech-electric hover:text-white"
-                >
-                  {isTransformed ? "Show the Pain" : "Show the Solution"}
-                </Button>
-              </div>
-            </div>
-
-            {/* Enhanced floating stats */}
-            <div className="absolute -top-4 -right-4 glass-card rounded-xl p-3 shadow-glow z-20">
-              <div className="text-2xl font-bold text-transparent bg-gradient-rainbow bg-clip-text">100%</div>
-              <div className="text-xs text-muted-foreground">Yours</div>
-            </div>
+          {/* Single CTA */}
+          <div className="space-y-4">
+            <Button 
+              size="lg" 
+              className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 text-lg group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              Join the Early Access Waitlist
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            
+            <p className="text-sm text-muted-foreground">
+              No credit card required • Join 2,847 developers
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Enhanced scroll indicator */}
+      {/* Clean scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30">
         <div className="glass-button rounded-full p-3 group-hover:shadow-glow transition-all duration-300">
-          <ChevronDown className="h-6 w-6 text-architech-electric" />
+          <ChevronDown className="h-5 w-5 text-architech-electric" />
         </div>
       </div>
     </section>

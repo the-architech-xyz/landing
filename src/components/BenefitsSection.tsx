@@ -1,6 +1,9 @@
 import { Clock, Shield, Download } from "lucide-react";
+import { useState } from "react";
 
 const BenefitsSection = () => {
+  const [hoveredBenefit, setHoveredBenefit] = useState<number | null>(null);
+
   const benefits = [
     {
       icon: Clock,
@@ -8,7 +11,8 @@ const BenefitsSection = () => {
       headline: "Launch in days, not months",
       description: "Skip weeks of boilerplate setup. Focus on what makes your app unique.",
       stats: "90% faster time-to-market",
-      color: "bg-gradient-electric"
+      color: "bg-gradient-electric",
+      detailPoints: ["No more config files", "Instant deployments", "Pre-built integrations"]
     },
     {
       icon: Shield,
@@ -16,7 +20,8 @@ const BenefitsSection = () => {
       headline: "Best practices built-in",
       description: "Every module follows enterprise standards for security, performance, and maintainability.",
       stats: "99.9% security compliance",
-      color: "bg-gradient-success"
+      color: "bg-gradient-success",
+      detailPoints: ["Security by default", "Performance optimized", "Industry standards"]
     },
     {
       icon: Download,
@@ -24,14 +29,15 @@ const BenefitsSection = () => {
       headline: "No vendor lock-in, ever",
       description: "Clean, readable code you can take anywhere. No proprietary dependencies.",
       stats: "Complete freedom",
-      color: "bg-gradient-highlight"
+      color: "bg-gradient-highlight",
+      detailPoints: ["Export anytime", "Standard libraries", "Full control"]
     }
   ];
 
   return (
     <section id="benefits" className="py-24 bg-gradient-surface">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Why Developers Choose{" "}
             <span className="text-transparent bg-gradient-electric bg-clip-text">The Architech</span>
@@ -45,45 +51,95 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={benefit.title}
-              className="glass-card rounded-3xl p-8 hover:shadow-glass transition-all duration-500 group"
+              className="relative group cursor-pointer"
+              onMouseEnter={() => setHoveredBenefit(index)}
+              onMouseLeave={() => setHoveredBenefit(null)}
             >
-              <div className={`w-16 h-16 rounded-xl ${benefit.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-electric`}>
-                <benefit.icon className="h-8 w-8 text-white" />
-              </div>
-              
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-lg font-medium text-architech-electric">
-                    {benefit.headline}
-                  </p>
+              {/* Main Card */}
+              <div className="glass-card rounded-3xl p-8 hover:shadow-glass transition-all duration-700 group-hover:scale-105 transform">
+                
+                {/* Icon with animated background */}
+                <div className="relative mb-6">
+                  <div className={`w-20 h-20 rounded-2xl ${benefit.color} flex items-center justify-center shadow-electric group-hover:shadow-glow transition-all duration-500 group-hover:scale-110`}>
+                    <benefit.icon className="h-10 w-10 text-white" />
+                  </div>
+                  
+                  {/* Animated glow ring */}
+                  <div className={`absolute inset-0 w-20 h-20 rounded-2xl ${benefit.color} opacity-20 scale-110 blur-lg transition-all duration-500 ${hoveredBenefit === index ? 'opacity-40 scale-125' : ''}`}></div>
                 </div>
                 
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-                
-                <div className="pt-4 border-t border-architech-border">
-                  <div className="text-sm font-semibold text-architech-electric">
-                    {benefit.stats}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-lg font-medium text-architech-electric">
+                      {benefit.headline}
+                    </p>
+                  </div>
+                  
+                  <p className="text-muted-foreground leading-relaxed">
+                    {benefit.description}
+                  </p>
+
+                  {/* Expandable details */}
+                  <div className={`overflow-hidden transition-all duration-500 ${hoveredBenefit === index ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="pt-4 space-y-2">
+                      {benefit.detailPoints.map((point, pointIndex) => (
+                        <div key={pointIndex} className="flex items-center gap-3">
+                          <div className={`w-2 h-2 rounded-full ${benefit.color}`}></div>
+                          <span className="text-sm text-muted-foreground">{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-architech-border">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm font-semibold text-architech-electric">
+                        {benefit.stats}
+                      </div>
+                      <div className={`transition-all duration-300 ${hoveredBenefit === index ? 'translate-x-2' : ''}`}>
+                        <div className="w-8 h-8 rounded-full bg-architech-electric/10 flex items-center justify-center">
+                          <span className="text-xs font-bold text-architech-electric">→</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Floating number indicator */}
+              <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-electric text-white flex items-center justify-center text-sm font-bold shadow-electric">
+                {index + 1}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Enhanced CTA with rich colors */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-muted-foreground mb-6">
-            Ready to transform your development workflow?
-          </p>
-          <div className="inline-flex items-center gap-2 px-8 py-4 glass-card rounded-full text-architech-electric font-medium shadow-glow">
-            Join{" "}
-            <span className="text-transparent bg-gradient-rainbow bg-clip-text font-bold">thousands</span>
-            {" "}of developers who've made the switch
+        {/* Enhanced CTA with animation */}
+        <div className="text-center mt-20">
+          <div className="relative inline-block">
+            <div className="glass-card rounded-2xl p-8 max-w-md mx-auto group cursor-pointer hover:shadow-glow transition-all duration-500">
+              <p className="text-lg text-muted-foreground mb-4">
+                Ready to transform your development workflow?
+              </p>
+              <div className="inline-flex items-center gap-2 text-architech-electric font-medium group-hover:scale-105 transition-transform duration-300">
+                Join{" "}
+                <span className="text-transparent bg-gradient-rainbow bg-clip-text font-bold animate-gradient-flow">
+                  thousands
+                </span>
+                {" "}of developers who've made the switch
+              </div>
+            </div>
+
+            {/* Floating icons animation */}
+            <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-sunset flex items-center justify-center animate-float-gentle">
+              ✨
+            </div>
+            <div className="absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-ocean flex items-center justify-center animate-float-gentle" style={{animationDelay: '1s'}}>
+              🚀
+            </div>
           </div>
         </div>
       </div>
