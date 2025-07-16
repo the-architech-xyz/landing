@@ -1,5 +1,4 @@
 import { kv } from '@vercel/kv';
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Suprsend, Event } from "@suprsend/node-sdk";
 
 const supr_client = new Suprsend(
@@ -7,10 +6,7 @@ const supr_client = new Suprsend(
   process.env.SUPRSEND_WORKSPACE_SECRET || ""
 );
 
-export default async function handler(
-  request: VercelRequest,
-  response: VercelResponse,
-) {
+export default async function handler(request, response) {
   if (request.method !== 'POST') {
     return response.status(405).json({ error: 'Method Not Allowed' });
   }
