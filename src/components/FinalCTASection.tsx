@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { useForm, ValidationError } from '@formspree/react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle, Crown, Zap, Users, Clock, Shield, Lightbulb, Globe, Loader2 } from "lucide-react";
 
 const FinalCTASection = () => {
   const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [revolutionaryCount, setRevolutionaryCount] = useState(1847);
-  
-  // Replace 'your-form-id' with your actual Formspree form ID
-  const [state, handleSubmit] = useForm("xdkkqkqv"); // You'll get this from Formspree
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,15 +17,46 @@ const FinalCTASection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await handleSubmit(e);
-    if (state.succeeded) {
+    if (!email) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Direct call to SuprSend API
+      const response = await fetch('https://hub.suprsend.com/event', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer zdYUqMIps6TUbNi2lOHp:SS.WSS.H80gNvfFuUrjVhcaN4ex0rBqwIImlzOsHp-D8Olz'
+        },
+        body: JSON.stringify({
+          distinct_id: email,
+          event: 'USER_JOINED_WAITLIST',
+          properties: {
+            $email: email,
+            source: 'landing_page'
+          }
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to join waitlist');
+      }
+
+      setIsSubmitted(true);
       setRevolutionaryCount(prev => prev + 1);
+    } catch (err) {
+      setError('Failed to join the revolution. Please try again.');
+      console.error('SuprSend error:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  if (state.succeeded) {
+  if (isSubmitted) {
     return (
       <section className="py-32 bg-gradient-to-br from-electric-blue via-purple-600 to-green-500 relative overflow-hidden">
         {/* Celebration effects */}
@@ -124,21 +154,15 @@ const FinalCTASection = () => {
                   Join the Revolutionary Alliance
                 </h3>
                 
-                <form onSubmit={onSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="relative">
                     <Input
                       type="email"
-                      name="email"
                       placeholder="your-revolutionary-email@domain.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       className="bg-background/80 border-electric-blue/30 text-foreground placeholder:text-muted-foreground text-xl py-6 px-8 rounded-2xl focus:border-electric-blue focus:ring-electric-blue"
-                    />
-                    <ValidationError 
-                      prefix="Email" 
-                      field="email"
-                      errors={state.errors}
                     />
                     <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
                       <div className="w-8 h-8 bg-gradient-electric rounded-full flex items-center justify-center">
@@ -151,21 +175,19 @@ const FinalCTASection = () => {
                     type="submit"
                     size="lg"
                     className="w-full bg-gradient-electric hover:shadow-electric text-white font-bold py-6 text-xl rounded-2xl group relative overflow-hidden"
-                    disabled={state.submitting}
+                    disabled={isLoading}
                   >
-                    {state.submitting ? (
+                    {isLoading ? (
                       <Loader2 className="mr-3 h-6 w-6 animate-spin" />
                     ) : (
                       <Crown className="mr-3 h-6 w-6 group-hover:animate-pulse" />
                     )}
-                    {state.submitting ? "Joining the Alliance..." : "Claim My Revolutionary Status"}
-                    {!state.submitting && <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />}
+                    {isLoading ? "Joining the Alliance..." : "Claim My Revolutionary Status"}
+                    {!isLoading && <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />}
                   </Button>
                 </form>
 
-                {state.errors && Object.keys(state.errors).length > 0 && (
-                  <p className="text-sm text-red-500 mt-4">There was an error submitting your email. Please try again.</p>
-                )}
+                {error && <p className="text-sm text-red-500 mt-4">{error}</p>}
 
                 <p className="text-sm text-muted-foreground mt-4">
                   Join the revolution. No spam, no corporate BS, just pure revolutionary updates.
