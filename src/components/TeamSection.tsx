@@ -67,33 +67,19 @@ const TeamSection = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="aspect-square rounded-3xl overflow-hidden relative">
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-electric opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+              <div className="aspect-square rounded-3xl overflow-hidden relative shadow-2xl shadow-electric-blue/20">
+                <motion.img
+                  src={"/me.jpg"}
+                  alt="Antoine, Founder of The Architech"
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
                 />
-                <motion.div 
-                  className="w-full h-full bg-gradient-electric/20 flex items-center justify-center"
-                  animate={{ 
-                    background: [
-                      "linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2))",
-                      "linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(59, 130, 246, 0.2))",
-                      "linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2))"
-                    ]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div className="text-center">
-                    <motion.div 
-                      className="w-32 h-32 rounded-full bg-architech-surface mx-auto mb-4 flex items-center justify-center"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <span className="text-4xl font-bold text-architech-electric">A</span>
-                    </motion.div>
-                    <p className="text-sm text-muted-foreground">Antoine's photo</p>
-                    <p className="text-xs text-muted-foreground/70">coming soon...</p>
-                  </div>
-                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                  <h3 className="text-2xl font-bold">Antoine</h3>
+                  <p className="text-lg text-white/80">Founder & Lead Architect</p>
+                </div>
               </div>
               
               {/* Floating social links */}
@@ -135,16 +121,8 @@ const TeamSection = () => {
                   whileHover={{ color: "hsl(var(--architech-electric))" }}
                   transition={{ duration: 0.3 }}
                 >
-                  Antoine
+                  From the Founder
                 </motion.h3>
-                <motion.p 
-                  className="text-xl text-architech-electric font-medium"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  Founder & Lead Architect
-                </motion.p>
                 
                 <motion.div 
                   className="flex items-center gap-2 text-muted-foreground mt-2"
@@ -158,68 +136,26 @@ const TeamSection = () => {
               </div>
 
               <motion.div 
-                className="space-y-4"
+                className="space-y-4 prose prose-lg prose-invert text-muted-foreground max-w-none"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
                 viewport={defaultViewport}
               >
                 <motion.p 
-                  className="text-muted-foreground leading-relaxed"
+                  className="leading-relaxed"
                   variants={fadeInUp}
                 >
-                  15+ years of battle-tested experience building applications for startups and enterprises. 
-                  Antoine has felt every pain point in the development process and is obsessed with eliminating them.
+                  With nearly a decade of software development experience, 3 years as a CTO for multiple startups and tried to launch my own since few years, I've lived the 'Developer's Nightmare' firsthand. I've seen brilliant ideas and talented teams get crushed by the weight of technical complexity and repetitive setup.
                 </motion.p>
                 
                 <motion.p 
-                  className="text-muted-foreground leading-relaxed"
+                  className="leading-relaxed"
                   variants={fadeInUp}
                 >
-                  "I've spent countless nights fighting with configs, debugging deployment issues, and 
-                  setting up the same boilerplate over and over. The Architech is my mission to 
-                  liberate developers from configuration hell."
+                  My passion is building complex systems that feel simple and intuitive. The Architech is the solution I've always wanted as a developer and a leader: a tool that eliminates friction, restores the joy of creation, and gives power back to the builders. I'm not just building a product; I'm building the future I want to work in.
                 </motion.p>
               </motion.div>
-
-              {/* Stats */}
-              {/* <motion.div 
-                className="grid grid-cols-3 gap-6 pt-6 border-t border-architech-border"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={defaultViewport}
-              >
-                {[
-                  { number: "15+", label: "Years Experience", icon: Code },
-                  { number: "50+", label: "Projects Built", icon: Zap },
-                  { number: "1", label: "Mission", icon: Code }
-                ].map((stat, index) => (
-                  <motion.div 
-                    key={index}
-                    className="text-center group cursor-pointer"
-                    variants={scaleIn}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <motion.div 
-                      className="w-12 h-12 rounded-xl bg-gradient-electric/10 flex items-center justify-center mx-auto mb-2 group-hover:bg-gradient-electric group-hover:shadow-electric transition-all duration-300"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <stat.icon className="h-5 w-5 text-architech-electric group-hover:text-white transition-colors" />
-                    </motion.div>
-                    <motion.div 
-                      className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      {stat.number}
-                    </motion.div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div> */}
             </motion.div>
           </motion.div>
         </div>
