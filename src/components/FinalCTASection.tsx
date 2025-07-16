@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, CheckCircle, Crown, Zap, Users, Clock, Shield, Lightbulb, Globe } from "lucide-react";
+import { ArrowRight, CheckCircle, Crown, Zap, Users, Clock, Shield, Lightbulb, Globe, Loader2 } from "lucide-react";
 
 const FinalCTASection = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [revolutionaryCount, setRevolutionaryCount] = useState(1847);
 
   useEffect(() => {
@@ -15,12 +17,33 @@ const FinalCTASection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/join-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Something went wrong');
+      }
+
       setIsSubmitted(true);
       setRevolutionaryCount(prev => prev + 1);
-      console.log("Revolutionary email submitted:", email);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -143,13 +166,19 @@ const FinalCTASection = () => {
                     type="submit"
                     size="lg"
                     className="w-full bg-gradient-electric hover:shadow-electric text-white font-bold py-6 text-xl rounded-2xl group relative overflow-hidden"
+                    disabled={isLoading}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <Crown className="mr-3 h-6 w-6 group-hover:animate-pulse" />
-                    Claim My Revolutionary Status
-                    <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                    {isLoading ? (
+                      <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                    ) : (
+                      <Crown className="mr-3 h-6 w-6 group-hover:animate-pulse" />
+                    )}
+                    {isLoading ? "Joining the Alliance..." : "Claim My Revolutionary Status"}
+                    {!isLoading && <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />}
                   </Button>
                 </form>
+
+                {error && <p className="text-sm text-red-500 mt-4">{error}</p>}
 
                 <p className="text-sm text-muted-foreground mt-4">
                   Join the revolution. No spam, no corporate BS, just pure revolutionary updates.
