@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { WAITLIST_CONFIG } from "@/config/waitlist";
 
 const SimpleCTASection = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [waitlistPosition, setWaitlistPosition] = useState<number | null>(null);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,28 +33,37 @@ const SimpleCTASection = () => {
     setIsLoading(true);
 
     try {
-      // Using FormSubmit.co for reliable form handling
-      const response = await fetch('https://formsubmit.co/ajax/antoine@thearchitech.xyz', {
+      // Using Waitlist.email API
+      const response = await fetch(`${WAITLIST_CONFIG.API_URL}/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email: email,
-          subject: 'New Waitlist Signup - The Architech',
-          message: `New signup from: ${email}`
-        })
+          waitlist: WAITLIST_CONFIG.WAITLIST_ID,
+          email: email.trim().toLowerCase(),
+          metadata: {
+            source: 'landing_page_simple_cta',
+            timestamp: new Date().toISOString()
+          }
+        }),
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        throw new Error('Failed to submit');
+      const body = await response.json();
+
+      if (!response.ok) {
+        throw new Error(body.message || 'Failed to join waitlist');
       }
-    } catch (err) {
-      setError('Failed to join the waitlist. Please try again.');
-      console.error('Form submission error:', err);
+
+      // Set position if returned by API
+      if (body.position) {
+        setWaitlistPosition(body.position);
+      }
+
+      setIsSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || 'Failed to join the waitlist. Please try again.');
+      console.error('Waitlist submission error:', err);
     } finally {
       setIsLoading(false);
     }
@@ -79,7 +90,7 @@ const SimpleCTASection = () => {
             <div className="glass-card rounded-2xl p-6 max-w-md mx-auto">
               <div className="text-sm text-muted-foreground mb-2">Your position</div>
               <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">
-                #2,848
+                #{waitlistPosition || '🎯'}
               </div>
               <div className="text-sm text-muted-foreground mt-2">
                 Alpha access coming September 2025

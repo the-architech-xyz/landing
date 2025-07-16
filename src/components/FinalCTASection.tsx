@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle, Crown, Zap, Users, Clock, Shield, Lightbulb, Globe, Loader2 } from "lucide-react";
+import { WAITLIST_CONFIG } from "@/config/waitlist";
 
 const FinalCTASection = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const FinalCTASection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [revolutionaryCount, setRevolutionaryCount] = useState(1847);
+  const [waitlistPosition, setWaitlistPosition] = useState<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,29 +27,38 @@ const FinalCTASection = () => {
     setError(null);
 
     try {
-      // Using FormSubmit.co for reliable form handling
-      const response = await fetch('https://formsubmit.co/ajax/antoine@thearchitech.xyz', {
+      // Using Waitlist.email API
+      const response = await fetch(`${WAITLIST_CONFIG.API_URL}/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email: email,
-          subject: 'New Waitlist Signup - The Architech',
-          message: `New signup from: ${email}`
-        })
+          waitlist: WAITLIST_CONFIG.WAITLIST_ID,
+          email: email.trim().toLowerCase(),
+          metadata: {
+            source: 'landing_page_final_cta',
+            timestamp: new Date().toISOString()
+          }
+        }),
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setRevolutionaryCount(prev => prev + 1);
-      } else {
-        throw new Error('Failed to submit');
+      const body = await response.json();
+
+      if (!response.ok) {
+        throw new Error(body.message || 'Failed to join waitlist');
       }
-    } catch (err) {
-      setError('Failed to join the revolution. Please try again.');
-      console.error('Form submission error:', err);
+
+      // Set position if returned by API
+      if (body.position) {
+        setWaitlistPosition(body.position);
+      }
+
+      setIsSubmitted(true);
+      setRevolutionaryCount(prev => prev + 1);
+    } catch (err: any) {
+      setError(err.message || 'Failed to join the revolution. Please try again.');
+      console.error('Waitlist submission error:', err);
     } finally {
       setIsLoading(false);
     }
@@ -78,8 +89,11 @@ const FinalCTASection = () => {
             </h2>
             
             <p className="text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Revolutionary #{revolutionaryCount.toLocaleString()} has joined the fight against configuration tyranny. 
-              Your invitation to the alpha is coming soon.
+              {waitlistPosition ? (
+                <>Revolutionary #{waitlistPosition} has joined the fight against configuration tyranny. Your invitation to the alpha is coming soon.</>
+              ) : (
+                <>Revolutionary #{revolutionaryCount.toLocaleString()} has joined the fight against configuration tyranny. Your invitation to the alpha is coming soon.</>
+              )}
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
