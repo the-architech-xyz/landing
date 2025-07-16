@@ -51,8 +51,12 @@ const Header = () => {
           {/* Enhanced Logo */}
           <div className="flex items-center space-x-3 group cursor-pointer" onClick={() => smoothScrollTo('hero')}>
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-electric rounded-xl flex items-center justify-center shadow-electric group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
-                <span className="text-white font-black text-lg">A</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                <img 
+                  src="/logo.png" 
+                  alt="The Architech Logo" 
+                  className="w-10 h-10 object-contain"
+                />
               </div>
               {/* Pulsing dot for "live" feel */}
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-success rounded-full animate-pulse"></div>

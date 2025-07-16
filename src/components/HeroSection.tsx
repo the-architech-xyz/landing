@@ -39,9 +39,16 @@ const HeroSection = () => {
       setCurrentText("");
       setShowModules(false);
       setIsTyping(true);
-    }, 10000); // Increased from 8000 to 10000 (10 seconds total)
+    }, 12000); // Increased to 12 seconds for better viewing time
     return () => clearInterval(resetTimer);
   }, []);
+
+  const scrollToNext = () => {
+    const element = document.getElementById('benefits');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
@@ -165,8 +172,8 @@ const HeroSection = () => {
       </div>
 
       {/* Clean scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30">
-        <div className="glass-button rounded-full p-3 group-hover:shadow-glow transition-all duration-300">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30" onClick={scrollToNext}>
+        <div className="glass-button rounded-full p-3 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
           <ChevronDown className="h-5 w-5 text-architech-electric" />
         </div>
       </div>
