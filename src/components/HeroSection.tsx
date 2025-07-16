@@ -44,7 +44,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-3 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
@@ -58,9 +58,7 @@ const HeroSection = () => {
             <h1 className="text-5xl lg:text-7xl font-black leading-tight tracking-tight">
               <span className="text-foreground">Skip the Setup.</span>
               <br />
-              <span className="text-transparent bg-gradient-rainbow bg-clip-text">
-                Build the Magic.
-              </span>
+              <span className="text-transparent bg-gradient-rainbow bg-clip-text">Build the Magic.</span>
             </h1>
             
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">

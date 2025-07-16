@@ -70,7 +70,7 @@ const BenefitsSection = () => {
                 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
+                    <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-architech-electric transition-all duration-300">
                       {benefit.title}
                     </h3>
                     <p className="text-lg font-medium text-architech-electric">

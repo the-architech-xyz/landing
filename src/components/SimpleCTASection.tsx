@@ -49,7 +49,7 @@ const SimpleCTASection = () => {
   }
 
   return (
-    <section className="py-24 bg-gradient-surface">
+    <section id="cta" className="py-24 bg-gradient-surface">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">

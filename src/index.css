@@ -168,18 +168,87 @@ Professional meets artistic - perfect for creative developers.
     --sidebar-ring: 210 100% 65%;
   }
 
-  /* Base styles */
+  /* Base styles with performance optimizations */
   * {
     @apply border-border;
+    /* Ensure smooth transitions by default */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Default smooth transitions for interactive elements */
+  button, a, [role="button"], .cursor-pointer {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Smooth transforms and opacity changes */
+  .group:hover *, .hover\\:scale-105:hover, .hover\\:scale-110:hover,
+  .group-hover\\:scale-105, .group-hover\\:scale-110, .group-hover\\:scale-125 {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+
+  /* Smooth scrolling and performance optimizations */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Account for fixed header */
   }
 
   body {
     @apply bg-background text-foreground font-inter;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Hardware acceleration for smoother animations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   /* Typography */
   .font-inter {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Optimize animations for better performance */
+  * {
+    will-change: auto;
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Reduce motion for accessibility - More targeted approach */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    /* Only disable specific problematic animations, not all transitions */
+    .animate-fade-in-up,
+    .animate-glow-pulse,
+    .animate-float-gentle,
+    .animate-gradient-shift,
+    .animate-gradient-flow {
+      animation: none !important;
+    }
+    
+    /* Keep smooth transitions but reduce duration for accessibility */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.2s !important;
+      transition-duration: 0.2s !important;
+    }
+    
+    /* Completely disable only infinite animations */
+    [class*="animate-"]:not([class*="transition"]) {
+      animation: none !important;
+    }
   }
 }
 
@@ -310,6 +379,10 @@ Professional meets artistic - perfect for creative developers.
     background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% 200%;
+  }
+  
+  /* Optional gradient animation class - only for specific elements */
+  .animate-gradient-flow {
     animation: gradient-flow 3s ease-in-out infinite;
   }
 
@@ -352,29 +425,41 @@ Professional meets artistic - perfect for creative developers.
     background: hsl(var(--architech-glass) / 0.7);
     backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--architech-glass-border) / 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-button {
     background: hsl(var(--architech-electric) / 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid hsl(var(--architech-electric) / 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Smooth shadow transitions */
+  .hover\\:shadow-glow:hover, .hover\\:shadow-glass:hover,
+  .hover\\:shadow-electric:hover {
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Enhanced Animations */
+  /* Enhanced Animations with Performance Optimizations */
   .animate-fade-in-up {
     animation: fade-in-up 0.8s ease-out forwards;
+    will-change: transform, opacity;
   }
 
   .animate-glow-pulse {
     animation: glow-pulse 2.5s ease-in-out infinite alternate;
+    will-change: box-shadow;
   }
 
   .animate-float-gentle {
     animation: float-gentle 4s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-gradient-shift {
     animation: gradient-shift 8s ease-in-out infinite;
+    will-change: background-position;
   }
 
   @keyframes fade-in-up {
@@ -418,5 +503,12 @@ Professional meets artistic - perfect for creative developers.
   /* Remove problematic animations */
   .animate-float {
     animation: none;
+  }
+
+  /* Performance utilities */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 }

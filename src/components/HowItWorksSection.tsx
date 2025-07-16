@@ -29,7 +29,7 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-surface">
+    <section id="how-it-works" className="py-24 bg-gradient-surface">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -42,7 +42,7 @@ const HowItWorksSection = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl w-4/5 mx-auto">
           {steps.map((step, index) => (
             <div 
               key={index}
@@ -69,7 +69,7 @@ const HowItWorksSection = () => {
                   </div>
 
                   {/* Title and description */}
-                  <h3 className="text-3xl font-bold text-foreground mb-4 group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-3xl font-bold text-foreground mb-4 group-hover:text-architech-electric transition-all duration-300">
                     {step.title}
                   </h3>
                   <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -89,13 +89,13 @@ const HowItWorksSection = () => {
               </div>
 
               {/* Enhanced visual element */}
-              <div className={`flex-shrink-0 ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
+              {/* <div className={`flex-shrink-0 ${index % 2 === 1 ? 'lg:order-last' : ''}`}>
                 <div className={`w-64 h-48 ${step.gradient} rounded-2xl flex items-center justify-center relative overflow-hidden group`}>
                   <div className="absolute inset-0 bg-black/20"></div>
                   <step.icon className="h-20 w-20 text-white/80 relative z-10 group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </div>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

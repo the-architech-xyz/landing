@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter, Code, Zap } from "lucide-react";
 
 const TeamSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="team" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           
