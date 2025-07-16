@@ -25,32 +25,29 @@ const FinalCTASection = () => {
     setError(null);
 
     try {
-      // Direct call to SuprSend API
-      const response = await fetch('https://hub.suprsend.com/event', {
+      // Using FormSubmit.co for reliable form handling
+      const response = await fetch('https://formsubmit.co/ajax/antoine@thearchitech.xyz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer zdYUqMIps6TUbNi2lOHp:SS.WSS.H80gNvfFuUrjVhcaN4ex0rBqwIImlzOsHp-D8Olz'
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          distinct_id: email,
-          event: 'USER_JOINED_WAITLIST',
-          properties: {
-            $email: email,
-            source: 'landing_page'
-          }
+          email: email,
+          subject: 'New Waitlist Signup - The Architech',
+          message: `New signup from: ${email}`
         })
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to join waitlist');
+      if (response.ok) {
+        setIsSubmitted(true);
+        setRevolutionaryCount(prev => prev + 1);
+      } else {
+        throw new Error('Failed to submit');
       }
-
-      setIsSubmitted(true);
-      setRevolutionaryCount(prev => prev + 1);
     } catch (err) {
       setError('Failed to join the revolution. Please try again.');
-      console.error('SuprSend error:', err);
+      console.error('Form submission error:', err);
     } finally {
       setIsLoading(false);
     }

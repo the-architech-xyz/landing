@@ -31,31 +31,28 @@ const SimpleCTASection = () => {
     setIsLoading(true);
 
     try {
-      // Direct call to SuprSend API
-      const response = await fetch('https://hub.suprsend.com/event', {
+      // Using FormSubmit.co for reliable form handling
+      const response = await fetch('https://formsubmit.co/ajax/antoine@thearchitech.xyz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer zdYUqMIps6TUbNi2lOHp:SS.WSS.H80gNvfFuUrjVhcaN4ex0rBqwIImlzOsHp-D8Olz'
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          distinct_id: email,
-          event: 'USER_JOINED_WAITLIST',
-          properties: {
-            $email: email,
-            source: 'landing_page'
-          }
+          email: email,
+          subject: 'New Waitlist Signup - The Architech',
+          message: `New signup from: ${email}`
         })
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to join waitlist');
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error('Failed to submit');
       }
-      
-      setIsSubmitted(true);
     } catch (err) {
-      setError('Failed to join the revolution. Please try again.');
-      console.error('SuprSend error:', err);
+      setError('Failed to join the waitlist. Please try again.');
+      console.error('Form submission error:', err);
     } finally {
       setIsLoading(false);
     }
@@ -119,6 +116,7 @@ const SimpleCTASection = () => {
               <div className="flex gap-4">
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
