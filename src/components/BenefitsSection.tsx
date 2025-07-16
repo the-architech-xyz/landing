@@ -8,7 +8,7 @@ const BenefitsSection = () => {
       headline: "Launch in days, not months",
       description: "Skip weeks of boilerplate setup. Focus on what makes your app unique.",
       stats: "90% faster time-to-market",
-      color: "from-blue-500 to-cyan-500"
+      color: "bg-gradient-electric"
     },
     {
       icon: Shield,
@@ -16,7 +16,7 @@ const BenefitsSection = () => {
       headline: "Best practices built-in",
       description: "Every module follows enterprise standards for security, performance, and maintainability.",
       stats: "99.9% security compliance",
-      color: "from-green-500 to-emerald-500"
+      color: "bg-gradient-success"
     },
     {
       icon: Download,
@@ -24,12 +24,12 @@ const BenefitsSection = () => {
       headline: "No vendor lock-in, ever",
       description: "Clean, readable code you can take anywhere. No proprietary dependencies.",
       stats: "Complete freedom",
-      color: "from-purple-500 to-pink-500"
+      color: "bg-gradient-highlight"
     }
   ];
 
   return (
-    <section id="benefits" className="py-24 bg-background">
+    <section id="benefits" className="py-24 bg-gradient-surface">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -45,9 +45,9 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={benefit.title}
-              className="bg-card border border-border rounded-2xl p-8 hover:shadow-elevated transition-all duration-300 group"
+              className="glass-card rounded-3xl p-8 hover:shadow-glass transition-all duration-500 group"
             >
-              <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-16 h-16 rounded-xl ${benefit.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-electric`}>
                 <benefit.icon className="h-8 w-8 text-white" />
               </div>
               
@@ -56,7 +56,7 @@ const BenefitsSection = () => {
                   <h3 className="text-2xl font-bold text-foreground mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-lg font-medium text-electric-blue">
+                  <p className="text-lg font-medium text-architech-electric">
                     {benefit.headline}
                   </p>
                 </div>
@@ -65,8 +65,8 @@ const BenefitsSection = () => {
                   {benefit.description}
                 </p>
                 
-                <div className="pt-4 border-t border-border">
-                  <div className="text-sm font-semibold text-electric-blue">
+                <div className="pt-4 border-t border-architech-border">
+                  <div className="text-sm font-semibold text-architech-electric">
                     {benefit.stats}
                   </div>
                 </div>
@@ -75,13 +75,15 @@ const BenefitsSection = () => {
           ))}
         </div>
 
-        {/* Simple CTA */}
+        {/* Enhanced CTA with rich colors */}
         <div className="text-center mt-16">
           <p className="text-lg text-muted-foreground mb-6">
             Ready to transform your development workflow?
           </p>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-electric-blue/10 border border-electric-blue/20 rounded-full text-electric-blue font-medium">
-            Join thousands of developers who've made the switch
+          <div className="inline-flex items-center gap-2 px-8 py-4 glass-card rounded-full text-architech-electric font-medium shadow-glow">
+            Join{" "}
+            <span className="text-transparent bg-gradient-rainbow bg-clip-text font-bold">thousands</span>
+            {" "}of developers who've made the switch
           </div>
         </div>
       </div>

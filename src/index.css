@@ -2,109 +2,170 @@
 @tailwind components;
 @tailwind utilities;
 
-/* The Architech Design System - Intentional Futurism
-All colors MUST be HSL. Dark theme by default with electric blue accents.
+/* The Architech Design System - Fluid Architecture
+Rich, flowing color palette with depth and personality.
+Professional meets artistic - perfect for creative developers.
 */
 
 @layer base {
   :root {
-    /* Light theme colors */
-    --background: 210 20% 98%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light theme colors - Fluid Workspace */
+    --background: 220 20% 98%;
+    --foreground: 220 30% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 15% 99%;
+    --card-foreground: 220 30% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 15% 99%;
+    --popover-foreground: 220 30% 12%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 100% 65%;
+    --primary-foreground: 220 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 30% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 20% 45%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 100% 65%;
+    --accent-foreground: 220 20% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 5 75% 55%;
+    --destructive-foreground: 220 20% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 217 91% 60%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 210 100% 65%;
 
     --radius: 0.75rem;
 
-    /* The Architech specific design tokens */
-    --electric-blue: 217 91% 60%;
-    --electric-blue-glow: 217 91% 60%;
-    --deep-focus: 210 20% 98%;
-    --surface-elevated: 0 0% 100%;
-    --text-primary: 222.2 84% 4.9%;
-    --text-secondary: 215.4 16.3% 46.9%;
-    --text-accent: 217 91% 60%;
+    /* The Architech Fluid Color System - Rich & Professional */
+    --architech-primary: 220 30% 12%;        /* Deep Charcoal - authority */
+    --architech-secondary: 220 25% 20%;      /* Rich Charcoal */
+    --architech-tertiary: 220 20% 35%;       /* Medium Charcoal */
+    
+    /* Electric Blues - The signature color */
+    --architech-electric: 210 100% 65%;      /* Main Electric Blue */
+    --architech-electric-light: 210 100% 75%; /* Lighter electric */
+    --architech-electric-dark: 210 100% 55%;  /* Deeper electric */
+    --architech-electric-glow: 210 100% 85%;  /* Glow effect */
+    
+    /* Accent Colors - Rich & Vibrant */
+    --architech-purple: 270 95% 70%;         /* Creative Purple */
+    --architech-cyan: 180 100% 70%;          /* Fresh Cyan */
+    --architech-emerald: 160 85% 60%;        /* Success Emerald */
+    --architech-gold: 45 95% 70%;            /* Premium Gold */
+    --architech-coral: 15 90% 70%;           /* Energetic Coral */
+    --architech-violet: 260 85% 75%;         /* Elegant Violet */
+    
+    /* Rich Semantic Colors */
+    --architech-success: 160 85% 55%;        /* Rich Green */
+    --architech-success-light: 160 85% 65%;
+    --architech-warning: 35 90% 60%;         /* Vibrant Amber */
+    --architech-warning-light: 35 90% 70%;
+    --architech-danger: 5 85% 60%;           /* Bold Red */
+    --architech-danger-light: 5 85% 70%;
+    
+    /* Surface Layers - Depth & Richness */
+    --architech-surface: 220 15% 99%;
+    --architech-surface-elevated: 220 12% 96%;
+    --architech-surface-hover: 220 18% 94%;
+    --architech-surface-active: 220 20% 92%;
+    --architech-border: 220 15% 85%;
+    --architech-border-hover: 220 20% 80%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Glass Effects */
+    --architech-glass: 220 30% 98%;
+    --architech-glass-border: 220 20% 90%;
+
+    --sidebar-background: 220 15% 99%;
+    --sidebar-foreground: 220 30% 12%;
+    --sidebar-primary: 220 30% 12%;
+    --sidebar-primary-foreground: 220 15% 99%;
+    --sidebar-accent: 220 15% 92%;
+    --sidebar-accent-foreground: 220 30% 12%;
+    --sidebar-border: 220 15% 85%;
+    --sidebar-ring: 210 100% 65%;
   }
 
   .dark {
-    /* Dark theme - Deep focus background */
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
+    /* Dark theme - Rich Blueprint Mode */
+    --background: 220 30% 8%;
+    --foreground: 220 15% 95%;
 
-    --card: 222 47% 9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 25% 10%;
+    --card-foreground: 220 15% 95%;
 
-    --popover: 222 47% 9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 15% 95%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 7%;
+    --primary: 210 100% 65%;
+    --primary-foreground: 220 30% 8%;
 
-    --secondary: 222 47% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 220 15% 80%;
 
-    --muted: 222 47% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 65%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 222 47% 7%;
+    --accent: 210 100% 65%;
+    --accent-foreground: 220 30% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 5 85% 65%;
+    --destructive-foreground: 220 15% 95%;
 
-    --border: 222 47% 12%;
-    --input: 222 47% 12%;
-    --ring: 217 91% 60%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 210 100% 65%;
 
-    /* Dark theme specific tokens */
-    --electric-blue: 217 91% 60%;
-    --electric-blue-glow: 217 91% 60%;
-    --deep-focus: 222 47% 7%;
-    --surface-elevated: 222 47% 9%;
-    --text-primary: 210 40% 98%;
-    --text-secondary: 215 20.2% 65.1%;
-    --text-accent: 217 91% 60%;
+    /* Dark theme rich colors */
+    --architech-primary: 220 15% 95%;        /* Light text */
+    --architech-secondary: 220 15% 80%;      /* Medium text */
+    --architech-tertiary: 220 15% 65%;       /* Subtle text */
+    
+    /* Electric Blues - Enhanced for dark */
+    --architech-electric: 210 100% 70%;      /* Brighter electric */
+    --architech-electric-light: 210 100% 80%;
+    --architech-electric-dark: 210 100% 60%;
+    --architech-electric-glow: 210 100% 85%;
+    
+    /* Dark accent colors */
+    --architech-purple: 270 95% 75%;
+    --architech-cyan: 180 100% 75%;
+    --architech-emerald: 160 85% 65%;
+    --architech-gold: 45 95% 75%;
+    --architech-coral: 15 90% 75%;
+    --architech-violet: 260 85% 80%;
+    
+    /* Dark semantic colors */
+    --architech-success: 160 85% 60%;
+    --architech-success-light: 160 85% 70%;
+    --architech-warning: 35 90% 65%;
+    --architech-warning-light: 35 90% 75%;
+    --architech-danger: 5 85% 65%;
+    --architech-danger-light: 5 85% 75%;
+    
+    /* Dark surface layers */
+    --architech-surface: 220 25% 10%;
+    --architech-surface-elevated: 220 20% 15%;
+    --architech-surface-hover: 220 22% 18%;
+    --architech-surface-active: 220 25% 22%;
+    --architech-border: 220 20% 20%;
+    --architech-border-hover: 220 25% 25%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 94.1%;
-    --sidebar-primary-foreground: 220.9 39.3% 11%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark glass effects */
+    --architech-glass: 220 25% 12%;
+    --architech-glass-border: 220 20% 20%;
+
+    --sidebar-background: 220 30% 8%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 220 15% 95%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 220 15% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 210 100% 65%;
   }
 
   /* Base styles */
@@ -113,7 +174,7 @@ All colors MUST be HSL. Dark theme by default with electric blue accents.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
   }
 
   /* Typography */
@@ -123,54 +184,203 @@ All colors MUST be HSL. Dark theme by default with electric blue accents.
 }
 
 @layer utilities {
-  /* Electric Blue Utilities */
-  .text-electric-blue {
-    color: hsl(var(--electric-blue));
+  /* Architech Rich Color Utilities */
+  .text-architech-primary {
+    color: hsl(var(--architech-primary));
   }
 
-  .bg-electric-blue {
-    background-color: hsl(var(--electric-blue));
+  .text-architech-electric {
+    color: hsl(var(--architech-electric));
   }
 
-  .border-electric-blue {
-    border-color: hsl(var(--electric-blue));
+  .text-architech-purple {
+    color: hsl(var(--architech-purple));
   }
 
-  /* Note: bg-gradient-electric is now defined in tailwind.config.ts */
+  .text-architech-gold {
+    color: hsl(var(--architech-gold));
+  }
+
+  .bg-architech-electric {
+    background-color: hsl(var(--architech-electric));
+  }
+
+  .bg-architech-surface {
+    background-color: hsl(var(--architech-surface));
+  }
+
+  .border-architech-electric {
+    border-color: hsl(var(--architech-electric));
+  }
+
+  /* Rich Gradient System - Fluid & Beautiful */
+  .bg-gradient-electric {
+    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-electric-dark)));
+  }
+
+  .bg-gradient-architech {
+    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-purple)));
+  }
 
   .bg-gradient-hero {
     background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
   }
 
-  /* Ensure gradient text renders properly without artifacts */
-  .text-transparent.bg-gradient-electric {
+  .bg-gradient-surface {
+    background: linear-gradient(135deg, hsl(var(--architech-surface)), hsl(var(--architech-surface-elevated)));
+  }
+
+  .bg-gradient-highlight {
+    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-gold)));
+  }
+
+  .bg-gradient-professional {
+    background: linear-gradient(135deg, hsl(var(--architech-primary)), hsl(var(--architech-secondary)));
+  }
+
+  .bg-gradient-creative {
+    background: linear-gradient(135deg, hsl(var(--architech-purple)), hsl(var(--architech-violet)));
+  }
+
+  .bg-gradient-ocean {
+    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-cyan)));
+  }
+
+  .bg-gradient-energy {
+    background: linear-gradient(135deg, hsl(var(--architech-coral)), hsl(var(--architech-gold)));
+  }
+
+  .bg-gradient-forest {
+    background: linear-gradient(135deg, hsl(var(--architech-emerald)), hsl(160 85% 45%));
+  }
+
+  /* Status Gradients - Rich & Expressive */
+  .bg-gradient-success {
+    background: linear-gradient(135deg, hsl(var(--architech-success)), hsl(var(--architech-emerald)));
+  }
+
+  .bg-gradient-warning {
+    background: linear-gradient(135deg, hsl(var(--architech-warning)), hsl(var(--architech-gold)));
+  }
+
+  .bg-gradient-danger {
+    background: linear-gradient(135deg, hsl(var(--architech-danger)), hsl(var(--architech-coral)));
+  }
+
+  /* Multi-stop Rich Gradients */
+  .bg-gradient-rainbow {
+    background: linear-gradient(135deg, 
+      hsl(var(--architech-electric)), 
+      hsl(var(--architech-purple)), 
+      hsl(var(--architech-cyan))
+    );
+  }
+
+  .bg-gradient-sunset {
+    background: linear-gradient(135deg, 
+      hsl(var(--architech-coral)), 
+      hsl(var(--architech-gold)), 
+      hsl(var(--architech-warning))
+    );
+  }
+
+  .bg-gradient-aurora {
+    background: linear-gradient(135deg, 
+      hsl(var(--architech-electric)), 
+      hsl(var(--architech-violet)), 
+      hsl(var(--architech-emerald))
+    );
+  }
+
+  /* Fixed Gradient Text Rendering - No More Blue Boxes! */
+  .text-transparent.bg-gradient-electric,
+  .text-transparent.bg-gradient-architech,
+  .text-transparent.bg-gradient-rainbow,
+  .text-transparent.bg-gradient-sunset,
+  .text-transparent.bg-gradient-aurora,
+  .text-transparent.bg-gradient-creative,
+  .text-transparent.bg-gradient-ocean,
+  .text-transparent.bg-gradient-energy,
+  .text-transparent.bg-gradient-forest,
+  .text-transparent.bg-gradient-highlight,
+  .text-transparent.bg-gradient-success,
+  .text-transparent.bg-gradient-warning,
+  .text-transparent.bg-gradient-danger {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-flow 3s ease-in-out infinite;
   }
 
-  /* Shadows */
+  @keyframes gradient-flow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Rich Shadows & Effects */
   .shadow-electric {
-    box-shadow: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
+    box-shadow: 0 10px 30px -10px hsl(var(--architech-electric) / 0.4);
+  }
+
+  .shadow-architech {
+    box-shadow: 0 15px 35px -5px hsl(var(--architech-electric) / 0.3);
   }
 
   .shadow-elevated {
-    box-shadow: 0 4px 12px -2px hsl(var(--foreground) / 0.1);
+    box-shadow: 0 8px 24px -4px hsl(var(--foreground) / 0.1);
   }
 
-  /* Simplified animations - removing complex ones that cause issues */
+  .shadow-glass {
+    box-shadow: 
+      0 8px 32px hsl(var(--foreground) / 0.08),
+      inset 0 1px 0 hsl(var(--background) / 0.5);
+  }
+
+  .shadow-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--architech-electric) / 0.3),
+      0 0 40px hsl(var(--architech-electric) / 0.1);
+  }
+
+  /* Glass Morphism Effects */
+  .glass-card {
+    background: hsl(var(--architech-glass) / 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--architech-glass-border) / 0.3);
+  }
+
+  .glass-button {
+    background: hsl(var(--architech-electric) / 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--architech-electric) / 0.2);
+  }
+
+  /* Enhanced Animations */
   .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out forwards;
+    animation: fade-in-up 0.8s ease-out forwards;
   }
 
   .animate-glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite alternate;
+    animation: glow-pulse 2.5s ease-in-out infinite alternate;
+  }
+
+  .animate-float-gentle {
+    animation: float-gentle 4s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 8s ease-in-out infinite;
   }
 
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -180,14 +390,32 @@ All colors MUST be HSL. Dark theme by default with electric blue accents.
 
   @keyframes glow-pulse {
     from {
-      box-shadow: 0 0 5px hsl(217 91% 60% / 0.2);
+      box-shadow: 0 0 5px hsl(var(--architech-electric) / 0.2);
     }
     to {
-      box-shadow: 0 0 15px hsl(217 91% 60% / 0.4);
+      box-shadow: 0 0 25px hsl(var(--architech-electric) / 0.6);
     }
   }
 
-  /* Remove problematic float animation */
+  @keyframes float-gentle {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Remove problematic animations */
   .animate-float {
     animation: none;
   }

@@ -18,17 +18,18 @@ const HeroSection = () => {
   ];
 
   const modules = [
-    { name: "Authentication", icon: Code, color: "from-blue-500 to-cyan-500" },
-    { name: "Database", icon: Box, color: "from-purple-500 to-pink-500" },
-    { name: "API Gateway", icon: Layers, color: "from-green-500 to-emerald-500" },
-    { name: "Payment", icon: Zap, color: "from-orange-500 to-red-500" }
+    { name: "Authentication", icon: Code, color: "bg-gradient-electric" },
+    { name: "Database", icon: Box, color: "bg-gradient-forest" },
+    { name: "API Gateway", icon: Layers, color: "bg-gradient-ocean" },
+    { name: "Payment", icon: Zap, color: "bg-gradient-sunset" }
   ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-      {/* Simplified grid pattern */}
+      {/* Enhanced grid pattern */}
       <div className="absolute inset-0 opacity-5 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div className="absolute inset-0 bg-gradient-electric opacity-5 animate-gradient-shift"></div>
       </div>
       
       <div className="container mx-auto px-6 pt-20 pb-16 relative z-20">
@@ -36,16 +37,16 @@ const HeroSection = () => {
           {/* Left side - Enhanced with Problem + Solution */}
           <div className="space-y-8 relative z-30">
             {/* Problem indicator */}
-            <div className="flex items-center gap-4 p-4 bg-red-950/20 border border-red-500/20 rounded-xl backdrop-blur-sm">
-              <Timer className="h-6 w-6 text-red-400" />
+            <div className="flex items-center gap-4 p-4 glass-card rounded-xl shadow-glow backdrop-blur-sm">
+              <Timer className="h-6 w-6 text-architech-danger" />
               <div>
-                <div className="text-red-400 font-semibold">The Brutal Reality</div>
+                <div className="text-architech-danger font-semibold">The Brutal Reality</div>
                 <div className="text-sm text-muted-foreground">Developers waste 60% of their time on configuration hell</div>
               </div>
             </div>
 
             {/* Solution label */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-electric-blue/10 border border-electric-blue/20 rounded-full text-sm font-medium text-electric-blue backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 glass-button rounded-full text-sm font-medium text-architech-electric backdrop-blur-sm">
               <Zap className="h-4 w-4" />
               The Industrial Revolution of Code
             </div>
@@ -53,19 +54,19 @@ const HeroSection = () => {
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.9] tracking-tight relative z-40">
                 <span className="text-foreground">From </span>
-                <span className="text-transparent bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text border-b-2 border-red-500/50 pb-1">
+                <span className="text-transparent bg-gradient-danger bg-clip-text border-b-2 border-architech-danger/50 pb-1">
                   Configuration Hell
                 </span>
                 <br />
                 <span className="text-foreground">to </span>
-                <span className="text-transparent bg-gradient-electric bg-clip-text border-b-2 border-electric-blue pb-1">
+                <span className="text-transparent bg-gradient-electric bg-clip-text border-b-2 border-architech-electric pb-1">
                   Architech Paradise
                 </span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl font-light relative z-40">
                 Stop being a{" "}
-                <span className="line-through text-red-400">configuration slave</span>.
+                <span className="line-through text-architech-danger">configuration slave</span>.
                 <br />
                 Become the{" "}
                 <span className="text-transparent bg-gradient-electric bg-clip-text font-semibold">
@@ -75,12 +76,12 @@ const HeroSection = () => {
 
               {/* Enhanced problem stats */}
               <div className="grid grid-cols-2 gap-4 relative z-40">
-                <div className="bg-red-950/20 border border-red-500/20 p-4 rounded-xl backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-red-400">60%</div>
+                <div className="glass-card p-4 rounded-xl backdrop-blur-sm border border-architech-danger/30">
+                  <div className="text-2xl font-bold text-architech-danger">60%</div>
                   <div className="text-sm text-muted-foreground">Time wasted on setup</div>
                 </div>
-                <div className="bg-electric-blue/10 border border-electric-blue/20 p-4 rounded-xl backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-electric-blue">10x</div>
+                <div className="glass-card p-4 rounded-xl backdrop-blur-sm border border-architech-electric/30">
+                  <div className="text-2xl font-bold text-architech-electric">10x</div>
                   <div className="text-sm text-muted-foreground">Faster with Architech</div>
                 </div>
               </div>
@@ -99,7 +100,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-white px-8 py-4 text-lg group transition-all duration-300"
+                className="glass-button border-2 border-architech-electric text-architech-electric hover:bg-architech-electric hover:text-white px-8 py-4 text-lg group transition-all duration-300"
               >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 See the Magic
@@ -107,9 +108,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right side - Simplified Visual Transformation */}
+          {/* Right side - Enhanced Visual Transformation */}
           <div className="relative z-30">
-            <div className="relative bg-background/80 border border-border rounded-3xl p-8 backdrop-blur-xl">
+            <div className="relative glass-card rounded-3xl p-8 backdrop-blur-xl shadow-glass">
               <div className="text-center mb-6">
                 <div className="text-lg font-semibold text-foreground mb-2">
                   {isTransformed ? "✨ With The Architech" : "😩 Traditional Development"}
@@ -119,15 +120,16 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Simplified Transformation Container */}
-              <div className="relative h-80 overflow-hidden rounded-xl bg-background border border-border">
+              {/* Enhanced Transformation Container */}
+              <div className="relative h-80 overflow-hidden rounded-xl bg-background border border-architech-border">
                 {/* Code Storm (Before) */}
                 <div className={`absolute inset-0 transition-all duration-2000 ${isTransformed ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}>
-                  <div className="h-full bg-gradient-to-br from-red-950/20 to-orange-950/20 flex flex-wrap content-start gap-2 p-4 overflow-hidden">
+                  <div className="h-full bg-gradient-danger flex flex-wrap content-start gap-2 p-4 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-black/20"></div>
                     {codeStormItems.map((item, index) => (
                       <div
                         key={index}
-                        className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded border border-red-500/30"
+                        className="text-xs bg-white/20 text-white px-2 py-1 rounded border border-white/30 relative z-10"
                         style={{ 
                           transform: `rotate(${Math.random() * 10 - 5}deg)`
                         }}
@@ -140,19 +142,20 @@ const HeroSection = () => {
 
                 {/* Modular Architecture (After) */}
                 <div className={`absolute inset-0 transition-all duration-2000 ${isTransformed ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-                  <div className="h-full bg-gradient-to-br from-blue-950/20 to-cyan-950/20 flex flex-col justify-center items-center gap-4 p-6">
-                    <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+                  <div className="h-full bg-gradient-aurora flex flex-col justify-center items-center gap-4 p-6 relative">
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    <div className="grid grid-cols-2 gap-4 w-full max-w-sm relative z-10">
                       {modules.map((module, index) => (
                         <div
                           key={module.name}
-                          className={`bg-gradient-to-br ${module.color} p-4 rounded-xl text-white text-center cursor-pointer transform hover:scale-105 transition-all duration-300`}
+                          className={`${module.color} p-4 rounded-xl text-white text-center cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-electric`}
                         >
                           <module.icon className="h-6 w-6 mx-auto mb-2" />
                           <div className="text-sm font-medium">{module.name}</div>
                         </div>
                       ))}
                     </div>
-                    <div className="text-center text-sm text-electric-blue font-medium">
+                    <div className="text-center text-sm text-white font-medium relative z-10">
                       Complete app in minutes, not months
                     </div>
                   </div>
@@ -165,26 +168,26 @@ const HeroSection = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => setIsTransformed(!isTransformed)}
-                  className="text-xs"
+                  className="text-xs glass-button border-architech-electric text-architech-electric hover:bg-architech-electric hover:text-white"
                 >
                   {isTransformed ? "Show the Pain" : "Show the Solution"}
                 </Button>
               </div>
             </div>
 
-            {/* Simplified floating stats - positioned carefully to avoid text overlap */}
-            <div className="absolute -top-4 -right-4 bg-background border border-border rounded-xl p-3 shadow-elevated z-20">
-              <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">100%</div>
+            {/* Enhanced floating stats */}
+            <div className="absolute -top-4 -right-4 glass-card rounded-xl p-3 shadow-glow z-20">
+              <div className="text-2xl font-bold text-transparent bg-gradient-rainbow bg-clip-text">100%</div>
               <div className="text-xs text-muted-foreground">Yours</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Enhanced scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30">
-        <div className="bg-electric-blue/20 border border-electric-blue/50 rounded-full p-3 group-hover:bg-electric-blue/30 transition-colors">
-          <ChevronDown className="h-6 w-6 text-electric-blue" />
+        <div className="glass-button rounded-full p-3 group-hover:shadow-glow transition-all duration-300">
+          <ChevronDown className="h-6 w-6 text-architech-electric" />
         </div>
       </div>
     </section>
