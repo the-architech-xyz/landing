@@ -15,7 +15,7 @@ const FAQSection = () => {
     {
       category: "Difference",
       question: "How is this different from GitHub Copilot and other AI assistants?",
-      answer: "Copilot makes you faster at the same broken process. The Architech changes the entire process. Instead of generating code snippets, we use specialized AI agents to build complete, modular applications. You're orchestrating expert systems, not debugging AI code.",
+      answer: "Copilot generates code from scratch, often creating inconsistent or low-quality results. The Architech doesn't generate code - it intelligently assembles pre-built, battle-tested modules like LEGO blocks. You get production-ready architecture instead of AI-generated experiments that need debugging.",
     },
     {
       category: "Technology",

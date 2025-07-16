@@ -127,20 +127,21 @@ const BenefitsSection = () => {
             className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
             variants={fadeInUp}
           >
-            Build Better,{" "}
+            Why{" "}
             <span className="text-transparent bg-gradient-electric bg-clip-text">
-              Build Faster
+              Modules Beat
             </span>
+            <br />
+            Code Generation
           </motion.h2>
 
           <motion.p
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={fadeInUp}
           >
-            Stop wrestling with configuration hell. The Architech delivers
-            production-ready applications with enterprise-grade architecture, so
-            you can focus on what matters: building features that delight your
-            users.
+            Forget AI-generated spaghetti code. The Architech uses battle-tested, 
+            production-ready modules that snap together like LEGO blocks. Each module 
+            is crafted by experts, tested in production, and ready for your unique needs.
           </motion.p>
         </motion.div>
 

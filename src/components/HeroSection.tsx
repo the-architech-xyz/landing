@@ -83,8 +83,9 @@ const HeroSection = () => {
               className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light"
               variants={fadeInUp}
             >
-              The Architech uses specialized AI agents to handle the tedious setup and infrastructure, 
-              so you can focus on building what makes your app unique.
+              The Architech is your master AI orchestrator that assembles battle-tested modules 
+              like LEGO blocks - no code generation, just intelligent composition of proven components 
+              tailored to your exact needs.
             </motion.p>
           </motion.div>
 
@@ -125,7 +126,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                    <div className="text-sm text-muted-foreground">Generated modules:</div>
+                    <div className="text-sm text-muted-foreground">Selected modules:</div>
                     <motion.div 
                       className="grid grid-cols-2 gap-3"
                       variants={staggerContainer}
@@ -151,7 +152,7 @@ const HeroSection = () => {
                       transition={{ delay: 1.5 }}
                     >
                       <div className="text-sm text-muted-foreground">
-                        <span className="text-architech-electric font-semibold">6 modules</span> generated in 
+                        <span className="text-architech-electric font-semibold">6 modules</span> assembled in 
                         <span className="text-architech-electric font-semibold"> 2.3 seconds</span>
                       </div>
                     </motion.div>

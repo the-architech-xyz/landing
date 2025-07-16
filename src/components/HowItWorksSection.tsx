@@ -9,25 +9,25 @@ const HowItWorksSection = () => {
     {
       number: "01",
       icon: MessageSquare,
-      title: "Define Your Intent",
-      description: "Describe your application and select the modules you need.",
-      details: ["Choose your tech stack", "Define core features", "Set requirements"],
+      title: "Tell The Architech Your Vision",
+      description: "Describe your app idea. The Architech analyzes your needs and identifies the perfect module combination.",
+      details: ["Natural language requirements", "Automatic module matching", "Context-aware analysis"],
       gradient: "bg-gradient-electric"
     },
     {
       number: "02", 
       icon: Users,
-      title: "Orchestrate the Agents",
-      description: "The Architech commands the right AI agents to generate each module.",
-      details: ["AuthAgent handles security", "DesignAgent creates UI", "TestAgent writes tests"],
+      title: "Modules Assemble Like LEGO",
+      description: "Pre-built, battle-tested modules snap together. No code generation - just intelligent composition.",
+      details: ["Production-ready modules", "Smart configuration", "Seamless integration"],
       gradient: "bg-gradient-ocean"
     },
     {
       number: "03",
       icon: Eye,
-      title: "Supervise & Create",
-      description: "Review the high-quality code, add your unique logic, and deploy.",
-      details: ["Clean, readable code", "Full ownership", "Ready to deploy"],
+      title: "AI Experts Fine-Tune",
+      description: "Specialized AI agents customize modules to your exact requirements. You own clean, maintainable code.",
+      details: ["Expert customization", "Clean architecture", "Full code ownership"],
       gradient: "bg-gradient-aurora"
     }
   ];
@@ -80,9 +80,9 @@ const HowItWorksSection = () => {
             className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
             variants={fadeInUp}
           >
-            Three Steps to{" "}
+            Assemble Like{" "}
             <span className="text-transparent bg-gradient-electric bg-clip-text">
-              Production
+              LEGO Blocks
             </span>
           </motion.h2>
           
@@ -90,8 +90,9 @@ const HowItWorksSection = () => {
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={fadeInUp}
           >
-            The Architech orchestrates specialized AI agents to build your application. 
-            Each agent is an expert in their domain, working together to create something extraordinary.
+            The Architech doesn't generate code - it intelligently assembles pre-built, 
+            battle-tested modules. Think LEGO for enterprise applications, with AI experts 
+            fine-tuning each piece to perfection.
           </motion.p>
         </motion.div>
 
