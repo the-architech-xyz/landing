@@ -9,28 +9,28 @@ const PlatformVisionSection = () => {
       title: "Design-to-Code",
       description: "Design your interfaces in a visual tool (integrating Penpot's open source technology) and instantly transform them into a library of reusable components.",
       gradient: "bg-gradient-creative",
-      coming: "Q3 2025"
+      coming: "Q1 2026"
     },
     {
       icon: Globe,
       title: "Integrated CMS & i18n",
       description: "Manage your application content and translations directly from the platform, with one click.",
       gradient: "bg-gradient-ocean",
-      coming: "Q4 2025"
+      coming: "Q2 2026"
     },
     {
       icon: Rocket,
       title: "Automated DevOps & Analytics",
       description: "From one-click deployment on European clouds to performance and user behavior monitoring, everything is integrated.",
       gradient: "bg-gradient-sunset",
-      coming: "Q1 2026"
+      coming: "Q3 2026"
     },
     {
       icon: Zap,
       title: "AI-Powered Project Management",
       description: "Connect your feature requests directly to AI agents for ultra-fast development cycles.",
       gradient: "bg-gradient-aurora",
-      coming: "Q2 2026"
+      coming: "Q4 2026"
     }
   ];
 

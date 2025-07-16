@@ -25,7 +25,7 @@ const FAQSection = () => {
     {
       category: "Access",
       question: "When can I get access?",
-      answer: "We're currently in closed alpha with select developers. Join our waitlist to get early access and help shape the future of development. Beta access begins Q2 2025.",
+      answer: "We're currently in closed alpha with select developers. Join our waitlist to get early access and help shape the future of development. Beta access begins September 2025.",
     },
     {
       category: "Business",
