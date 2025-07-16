@@ -17,36 +17,29 @@ const SimpleCTASection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
+
     if (!email) {
       setError("Email is required");
       return;
     }
-    
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
-      return;
-    }
 
     setIsLoading(true);
-    
+
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch('/api/waitlist', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email })
-      // });
-      
-      // Simulate API call for now
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      console.log("Email submitted:", email);
-      // TODO: Send to your CRM (ConvertKit, Mailchimp, Airtable, etc.)
+      const response = await fetch('/api/join-waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Something went wrong');
+      }
       
       setIsSubmitted(true);
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
     } finally {
       setIsLoading(false);
     }
@@ -76,15 +69,15 @@ const SimpleCTASection = () => {
                 #2,848
               </div>
               <div className="text-sm text-muted-foreground mt-2">
-                Alpha access coming Q2 2025
+                Alpha access coming Q3 2025
               </div>
             </div>
             
             {/* Share section */}
-            <div className="mt-8 glass-card rounded-xl p-4 max-w-sm mx-auto">
+            {/* <div className="mt-8 glass-card rounded-xl p-4 max-w-sm mx-auto">
               <div className="text-sm text-muted-foreground mb-2">Share and move up in line</div>
               <div className="text-xs text-architech-electric">Each referral = +10 positions</div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
