@@ -102,11 +102,8 @@ const FinalCTASection = () => {
               </span>
               <br />
               Starts{" "}
-              <span className="relative">
-                <span className="text-transparent bg-gradient-to-r from-green-500 via-electric-blue to-purple-500 bg-clip-text">
-                  With You
-                </span>
-                <div className="absolute -bottom-3 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-electric-blue to-purple-500 animate-pulse"></div>
+              <span className="text-transparent bg-gradient-to-r from-green-500 via-electric-blue to-purple-500 bg-clip-text border-b-2 border-green-500 pb-1">
+                With You
               </span>
             </h2>
 

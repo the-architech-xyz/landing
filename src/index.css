@@ -47,35 +47,14 @@ All colors MUST be HSL. Dark theme by default with electric blue accents.
     --text-primary: 222.2 84% 4.9%;
     --text-secondary: 215.4 16.3% 46.9%;
     --text-accent: 217 91% 60%;
-    
-    /* Gradients */
-    --gradient-electric: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 55%));
-    --gradient-surface: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 20% 98%));
-    --gradient-hero: linear-gradient(135deg, hsl(210 20% 98%), hsl(220 14% 96%));
-    
-    /* Shadows and effects */
-    --shadow-electric: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
-    --shadow-elevated: 0 4px 12px -2px hsl(222.2 84% 4.9% / 0.1);
-    --glow-electric: 0 0 20px hsl(217 91% 60% / 0.4);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -102,14 +81,14 @@ All colors MUST be HSL. Dark theme by default with electric blue accents.
     --accent: 217 91% 60%;
     --accent-foreground: 222 47% 7%;
 
-    --destructive: 0 62.8% 50.6%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 47% 15%;
-    --input: 222 47% 15%;
+    --border: 222 47% 12%;
+    --input: 222 47% 12%;
     --ring: 217 91% 60%;
 
-    /* The Architech dark theme specific tokens */
+    /* Dark theme specific tokens */
     --electric-blue: 217 91% 60%;
     --electric-blue-glow: 217 91% 60%;
     --deep-focus: 222 47% 7%;
@@ -117,110 +96,99 @@ All colors MUST be HSL. Dark theme by default with electric blue accents.
     --text-primary: 210 40% 98%;
     --text-secondary: 215 20.2% 65.1%;
     --text-accent: 217 91% 60%;
-    
-    /* Dark gradients */
-    --gradient-electric: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 55%));
-    --gradient-surface: linear-gradient(135deg, hsl(222 47% 9%), hsl(222 47% 11%));
-    --gradient-hero: linear-gradient(135deg, hsl(222 47% 7%), hsl(222 47% 9%));
-    
-    /* Dark shadows and effects */
-    --shadow-electric: 0 10px 30px -10px hsl(217 91% 60% / 0.4);
-    --shadow-elevated: 0 4px 12px -2px hsl(0 0% 0% / 0.3);
-    --glow-electric: 0 0 20px hsl(217 91% 60% / 0.5);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 224.3 76.3% 94.1%;
+    --sidebar-primary-foreground: 220.9 39.3% 11%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
+  /* Base styles */
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Typography */
+  .font-inter {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
-/* Revolutionary Animations */
 @layer utilities {
-  .animate-glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite alternate;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-  
-  .bg-gradient-electric {
-    background: var(--gradient-electric);
-  }
-  
-  .bg-gradient-surface {
-    background: var(--gradient-surface);
-  }
-  
-  .bg-gradient-hero {
-    background: var(--gradient-hero);
-  }
-  
-  .shadow-electric {
-    box-shadow: var(--shadow-electric);
-  }
-  
-  .shadow-elevated {
-    box-shadow: var(--shadow-elevated);
-  }
-  
+  /* Electric Blue Utilities */
   .text-electric-blue {
     color: hsl(var(--electric-blue));
   }
-  
-  .border-electric-blue {
-    border-color: hsl(var(--electric-blue));
-  }
-  
+
   .bg-electric-blue {
     background-color: hsl(var(--electric-blue));
   }
-}
 
-@keyframes glow-pulse {
-  0% {
-    box-shadow: 0 0 20px hsl(var(--electric-blue) / 0.4);
+  .border-electric-blue {
+    border-color: hsl(var(--electric-blue));
   }
-  100% {
-    box-shadow: 0 0 40px hsl(var(--electric-blue) / 0.8);
-  }
-}
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+  /* Note: bg-gradient-electric is now defined in tailwind.config.ts */
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* Ensure gradient text renders properly without artifacts */
+  .text-transparent.bg-gradient-electric {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Shadows */
+  .shadow-electric {
+    box-shadow: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 4px 12px -2px hsl(var(--foreground) / 0.1);
+  }
+
+  /* Simplified animations - removing complex ones that cause issues */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow-pulse {
+    from {
+      box-shadow: 0 0 5px hsl(217 91% 60% / 0.2);
+    }
+    to {
+      box-shadow: 0 0 15px hsl(217 91% 60% / 0.4);
+    }
+  }
+
+  /* Remove problematic float animation */
+  .animate-float {
+    animation: none;
   }
 }

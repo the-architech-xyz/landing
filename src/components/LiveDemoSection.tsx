@@ -39,14 +39,6 @@ const LiveDemoSection = () => {
       icon: Code,
       color: "from-orange-600 to-orange-400",
       code: "// Type-safe API routes\nexport async function GET(request: Request) {\n  const users = await prisma.user.findMany({\n    include: { profile: true }\n  });\n  return Response.json(users);\n}"
-    },
-    {
-      id: "tests",
-      title: "TestAgent",
-      description: "Generating comprehensive test suites",
-      icon: TestTube,
-      color: "from-red-600 to-red-400",
-      code: "// Full test coverage\ndescribe('Authentication', () => {\n  it('should authenticate valid users', async () => {\n    const response = await login(validUser);\n    expect(response.status).toBe(200);\n  });\n});"
     }
   ];
 
@@ -64,9 +56,9 @@ const LiveDemoSection = () => {
             });
             return 0;
           }
-          return prev + 2;
+          return prev + 3;
         });
-      }, 50);
+      }, 60);
       return () => clearInterval(interval);
     }
   }, [isPlaying, currentStep]);
@@ -82,153 +74,123 @@ const LiveDemoSection = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-background via-electric-blue/5 to-background relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-electric-blue/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 animate-fade-in-up">
+    <section className="py-24 bg-gradient-to-br from-background via-electric-blue/3 to-background">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-electric-blue/10 border border-electric-blue/20 rounded-full text-sm font-medium text-electric-blue mb-8">
             <Zap className="h-4 w-4" />
-            Live Demo - Build an App in 60 Seconds
+            Live Demo - See The Magic
           </div>
           
-          <h2 className="text-5xl lg:text-7xl font-black text-foreground mb-6 leading-tight">
-            Watch The{" "}
+          <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+            Watch Your App{" "}
             <span className="text-transparent bg-gradient-electric bg-clip-text">
-              Revolution
+              Come to Life
             </span>
-            <br />
-            In Action
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            See how The Architech transforms months of work into minutes. 
-            This is not a mockup - this is real code generation.
+            From idea to production-ready app in minutes. Watch as specialized AI agents 
+            collaborate to build your entire application.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Control Panel */}
-            <div className="space-y-6">
-              <div className="bg-card border border-border rounded-3xl p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Build Progress</h3>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left side - Demo controls and progress */}
+            <div className="space-y-8">
+              <div className="bg-card border border-border rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-foreground mb-6">Building: E-commerce Platform</h3>
                 
-                {/* Controls */}
-                <div className="flex items-center gap-4 mb-8">
+                {/* Demo controls */}
+                <div className="flex gap-4 mb-8">
                   <Button 
                     onClick={handlePlay}
-                    size="lg"
                     className={`${isPlaying ? 'bg-red-500 hover:bg-red-600' : 'bg-gradient-electric'} text-white`}
                   >
-                    {isPlaying ? <Pause className="h-5 w-5 mr-2" /> : <Play className="h-5 w-5 mr-2" />}
-                    {isPlaying ? 'Pause Build' : 'Start Building'}
+                    {isPlaying ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
+                    {isPlaying ? 'Pause' : 'Start Demo'}
                   </Button>
                   
-                  <Button onClick={handleReset} variant="outline" size="lg">
-                    <RotateCcw className="h-5 w-5 mr-2" />
+                  <Button variant="outline" onClick={handleReset}>
+                    <RotateCcw className="h-4 w-4 mr-2" />
                     Reset
                   </Button>
                 </div>
 
-                {/* Progress Steps */}
+                {/* Build steps */}
                 <div className="space-y-4">
-                  {buildSteps.map((step, index) => {
-                    const StepIcon = step.icon;
-                    const isActive = index === currentStep;
-                    const isCompleted = index < currentStep;
-                    
-                    return (
-                      <div 
-                        key={step.id}
-                        className={`flex items-center gap-4 p-4 rounded-xl border transition-all duration-300 ${
-                          isActive 
-                            ? 'border-electric-blue bg-electric-blue/10' 
-                            : isCompleted 
-                              ? 'border-green-500/50 bg-green-500/10'
-                              : 'border-border bg-surface-elevated/50'
-                        }`}
-                      >
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                          isCompleted 
-                            ? 'bg-green-500' 
-                            : isActive 
-                              ? `bg-gradient-to-br ${step.color}` 
-                              : 'bg-muted'
-                        }`}>
-                          {isCompleted ? (
-                            <CheckCircle className="h-6 w-6 text-white" />
-                          ) : (
-                            <StepIcon className="h-6 w-6 text-white" />
-                          )}
-                        </div>
+                  {buildSteps.map((step, index) => (
+                    <div 
+                      key={step.id}
+                      className={`flex items-center gap-4 p-4 rounded-xl border transition-all duration-300 ${
+                        index === currentStep 
+                          ? 'border-electric-blue bg-electric-blue/5' 
+                          : index < currentStep 
+                            ? 'border-green-500/50 bg-green-500/5' 
+                            : 'border-border bg-card'
+                      }`}
+                    >
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center flex-shrink-0`}>
+                        {index < currentStep ? (
+                          <CheckCircle className="h-6 w-6 text-white" />
+                        ) : (
+                          <step.icon className="h-6 w-6 text-white" />
+                        )}
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-foreground">{step.title}</div>
+                        <div className="text-sm text-muted-foreground">{step.description}</div>
                         
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-foreground">{step.title}</h4>
-                          <p className="text-sm text-muted-foreground">{step.description}</p>
-                        </div>
-                        
-                        {isActive && (
-                          <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-electric transition-all duration-100"
-                              style={{ width: `${progress}%` }}
-                            />
+                        {index === currentStep && isPlaying && (
+                          <div className="mt-2">
+                            <div className="w-full bg-muted rounded-full h-2">
+                              <div 
+                                className="bg-gradient-electric h-2 rounded-full transition-all duration-100"
+                                style={{ width: `${progress}%` }}
+                              ></div>
+                            </div>
                           </div>
                         )}
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Code Preview */}
-            <div className="space-y-6">
-              <div className="bg-background border border-border rounded-3xl p-8 relative overflow-hidden">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold text-foreground">Generated Code</h3>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            {/* Right side - Code output */}
+            <div className="lg:sticky lg:top-8">
+              <div className="bg-background border border-border rounded-2xl overflow-hidden">
+                <div className="bg-muted px-6 py-4 border-b border-border">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div className="text-sm font-medium text-foreground">
+                      {buildSteps[currentStep]?.title || 'Ready to build...'}
+                    </div>
                   </div>
                 </div>
                 
-                <div className="bg-background/50 border border-border rounded-xl p-6 font-mono text-sm">
-                  <pre className="text-muted-foreground whitespace-pre-wrap">
-                    {currentStep < buildSteps.length ? buildSteps[currentStep].code : "// Build complete! 🎉\n// Your app is ready to deploy."}
+                <div className="p-6">
+                  <pre className="text-sm text-muted-foreground font-mono leading-relaxed whitespace-pre-wrap">
+                    {currentStep < buildSteps.length ? buildSteps[currentStep].code : "// Click 'Start Demo' to begin building..."}
                   </pre>
                 </div>
-
-                {/* Floating particles effect when active */}
-                {isPlaying && (
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-20 left-10 w-2 h-2 bg-electric-blue rounded-full animate-ping"></div>
-                    <div className="absolute top-32 right-20 w-1 h-1 bg-purple-400 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
-                    <div className="absolute bottom-20 left-20 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-                  </div>
-                )}
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-card border border-border rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">60s</div>
-                  <div className="text-xs text-muted-foreground">Build Time</div>
-                </div>
-                <div className="bg-card border border-border rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">100%</div>
-                  <div className="text-xs text-muted-foreground">Test Coverage</div>
-                </div>
-                <div className="bg-card border border-border rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">0</div>
-                  <div className="text-xs text-muted-foreground">Config Files</div>
-                </div>
+              {/* Results summary */}
+              <div className="mt-6 p-6 bg-gradient-electric rounded-2xl text-white">
+                <h4 className="font-bold text-lg mb-2">Demo Complete!</h4>
+                <p className="text-sm opacity-90">
+                  ✅ Production-ready e-commerce platform<br />
+                  ✅ Authentication, database, UI, and API<br />
+                  ✅ Built in under 60 seconds
+                </p>
               </div>
             </div>
           </div>

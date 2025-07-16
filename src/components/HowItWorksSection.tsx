@@ -30,8 +30,8 @@ const HowItWorksSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            From Idea to Deployed App in 
-            <span className="text-transparent bg-gradient-electric bg-clip-text"> 3 Steps</span>
+            Build in{" "}
+            <span className="text-transparent bg-gradient-electric bg-clip-text">3 Steps</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             The Architech transforms complex development workflows into a simple, 
