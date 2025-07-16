@@ -23,23 +23,39 @@ const SimpleCTASection = () => {
       return;
     }
 
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/join-waitlist', {
+      // Direct call to SuprSend API
+      const response = await fetch('https://hub.suprsend.com/event', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer zdYUqMIps6TUbNi2lOHp:SS.WSS.H80gNvfFuUrjVhcaN4ex0rBqwIImlzOsHp-D8Olz'
+        },
+        body: JSON.stringify({
+          distinct_id: email,
+          event: 'USER_JOINED_WAITLIST',
+          properties: {
+            $email: email,
+            source: 'landing_page'
+          }
+        })
       });
 
       if (!response.ok) {
-        const { error } = await response.json();
-        throw new Error(error || 'Something went wrong');
+        throw new Error('Failed to join waitlist');
       }
       
       setIsSubmitted(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+      setError('Failed to join the revolution. Please try again.');
+      console.error('SuprSend error:', err);
     } finally {
       setIsLoading(false);
     }
@@ -69,7 +85,7 @@ const SimpleCTASection = () => {
                 #2,848
               </div>
               <div className="text-sm text-muted-foreground mt-2">
-                Alpha access coming Q3 2025
+                Alpha access coming September 2025
               </div>
             </div>
             
