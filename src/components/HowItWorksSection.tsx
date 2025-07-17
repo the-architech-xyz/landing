@@ -1,4 +1,4 @@
-import { MessageSquare, Users, Eye, Brain, Wand2, Cpu, ArrowRight, CheckCircle, Clock } from "lucide-react";
+import { MessageSquare, Users, Eye, Brain, Wand2, Cpu, ArrowRight, CheckCircle, Clock, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, defaultViewport, numberCounter } from "@/lib/animations";
@@ -85,11 +85,11 @@ const HowItWorksSection = () => {
       gradient: "bg-gradient-success",
       demo: {
         outputs: [
-          { file: "✓ Authentication system", status: "configured" },
-          { file: "✓ Database schema", status: "migrated" },
-          { file: "✓ API endpoints", status: "documented" },
-          { file: "✓ Frontend components", status: "styled" },
-          { file: "✓ Deployment pipeline", status: "active" }
+          { file: "Authentication system", status: "configured" },
+          { file: "Database schema", status: "migrated" },
+          { file: "API endpoints", status: "documented" },
+          { file: "Frontend components", status: "styled" },
+          { file: "Deployment pipeline", status: "active" }
         ]
       }
     },
@@ -125,7 +125,7 @@ const HowItWorksSection = () => {
     }, 6000); // Slightly longer for better readability
     
     return () => clearInterval(interval);
-  }, [isPaused, steps.length]);
+  }, [isPaused, steps.length, activeStep]); // Add activeStep as dependency to reset timer on manual clicks
 
   const smoothScrollTo = (elementId: string) => {
     const element = document.getElementById(elementId);
@@ -157,8 +157,6 @@ const HowItWorksSection = () => {
   const EnhancedProgressIndicator = () => {
     const handleStepClick = (index: number) => {
       setActiveStep(index);
-      setIsPaused(true);
-      setTimeout(() => setIsPaused(false), 4000);
     };
 
     const handleMouseEnter = () => {
@@ -374,12 +372,12 @@ const HowItWorksSection = () => {
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}
                 />
-                Auto-advancing every 6 seconds
+                Auto-advancing every 6 seconds • Click any step to reset timer
               </>
             ) : (
               <>
                 <div className="w-2 h-2 rounded-full bg-orange-500" />
-                Paused - hover away to resume
+                Paused • Hover away to resume
               </>
             )}
           </div>
@@ -607,7 +605,10 @@ const HowItWorksSection = () => {
                             className="flex items-center justify-between p-2 bg-background/30 rounded"
                             whileHover={{ x: 4 }}
                           >
-                            <span className="text-sm text-foreground">{output.file}</span>
+                            <div className="flex items-center gap-2">
+                              <Check className="h-4 w-4 text-green-500" />
+                              <span className="text-sm text-foreground">{output.file.replace('✓ ', '')}</span>
+                            </div>
                             <motion.span 
                               className="text-xs text-green-500 bg-green-500/10 px-2 py-1 rounded"
                               initial={{ opacity: 0, scale: 0.8 }}
