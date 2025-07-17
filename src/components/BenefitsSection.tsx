@@ -399,9 +399,9 @@ const BenefitsSection = () => {
               for modern development."
             </blockquote>
             
-            <p className="text-lg text-muted-foreground mb-8">
+            {/* <p className="text-lg text-muted-foreground mb-8">
               Join thousands of teams who've escaped the setup trap and are shipping faster than ever.
-            </p>
+            </p> */}
 
             <motion.div
               className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-electric text-white rounded-full font-semibold text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
