@@ -67,7 +67,7 @@ const TeamSection = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="aspect-square rounded-3xl overflow-hidden relative shadow-2xl shadow-electric-blue/20">
+              <div className="aspect-square rounded-3xl overflow-hidden relative shadow-2xl shadow-electric-blue/20 max-w-xs sm:max-w-sm md:max-w-md mx-auto">
                 <motion.img
                   src={"/me.jpg"}
                   alt="Antoine, Founder of The Architech"
@@ -76,37 +76,33 @@ const TeamSection = () => {
                   transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-2xl font-bold">Antoine</h3>
-                  <p className="text-lg text-white/80">Founder & Lead Architect</p>
+                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-white">
+                  <h3 className="text-xl md:text-2xl font-bold">Antoine</h3>
+                  <p className="text-base md:text-lg text-white/80">Founder & Lead Architect</p>
+                  <div className="mt-2 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="text-sm text-white/70">Building the future</span>
+                  </div>
                 </div>
               </div>
               
-              {/* Floating social links */}
+              {/* Real LinkedIn link only */}
               <motion.div 
-                className="absolute -top-4 -right-4 flex flex-col gap-2"
+                className="absolute -top-4 -right-4"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
               >
-                {[
-                  { icon: Github, href: "#", color: "hover:text-architech-electric" },
-                  { icon: Linkedin, href: "#", color: "hover:text-blue-600" },
-                  { icon: Twitter, href: "#", color: "hover:text-blue-400" }
-                ].map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    className={`w-10 h-10 rounded-full glass-card flex items-center justify-center text-muted-foreground ${social.color} transition-all duration-300 hover:shadow-glow`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 + index * 0.1 }}
-                  >
-                    <social.icon className="h-4 w-4" />
-                  </motion.a>
-                ))}
+                <motion.a
+                  href="https://www.linkedin.com/in/antoinesrvt/" // Updated with real LinkedIn
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-blue-600 transition-all duration-300 hover:shadow-glow group"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </motion.a>
               </motion.div>
             </motion.div>
 
@@ -146,14 +142,28 @@ const TeamSection = () => {
                   className="leading-relaxed"
                   variants={fadeInUp}
                 >
-                  With nearly a decade of software development experience, 3 years as a CTO for multiple startups and tried to launch my own since few years, I've lived the 'Developer's Nightmare' firsthand. I've seen brilliant ideas and talented teams get crushed by the weight of technical complexity and repetitive setup.
+                  After nearly a decade building software and 3 years as CTO across multiple startups, I've watched brilliant ideas die not from lack of vision, but from <span className="text-architech-electric font-medium">configuration hell</span>.
                 </motion.p>
                 
                 <motion.p 
                   className="leading-relaxed"
                   variants={fadeInUp}
                 >
-                  My passion is building complex systems that feel simple and intuitive. The Architech is the solution I've always wanted as a developer and a leader: a tool that eliminates friction, restores the joy of creation, and gives power back to the builders. I'm not just building a product; I'm building the future I want to work in.
+                  I've seen teams spend 70% of their time on setup, authentication, deployment pipelines, and database schemas instead of building what makes their product unique. The same solutions, built over and over, with the same bugs, the same security vulnerabilities.
+                </motion.p>
+
+                <motion.p 
+                  className="leading-relaxed"
+                  variants={fadeInUp}
+                >
+                  <span className="text-foreground font-medium">The Architech was born from frustration.</span> Why should every developer rebuild authentication? Why should every startup waste months on DevOps? Why isn't there a better way?
+                </motion.p>
+                
+                <motion.p 
+                  className="leading-relaxed"
+                  variants={fadeInUp}
+                >
+                  This isn't just another tool - it's a <span className="text-transparent bg-gradient-electric bg-clip-text font-medium">revolution against complexity</span>. I'm building the platform I wish I had when I was drowning in configuration files at 2 AM, dreaming of focusing on the magic instead of the plumbing.
                 </motion.p>
               </motion.div>
             </motion.div>

@@ -3,11 +3,13 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInDown, staggerContainer, scaleIn, floating, defaultViewport } from "@/lib/animations";
+import ContactModal from "@/components/ContactModal";
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState("");
   const [showModules, setShowModules] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const promptText = "A collaborative project management app with JWT auth and a modern design system";
   
@@ -52,6 +54,13 @@ const HeroSection = () => {
     }
   };
 
+   const smoothScrollTo = (elementId: string) => {
+     const element = document.getElementById(elementId);
+     if (element) {
+       element.scrollIntoView({ behavior: "smooth" });
+     }
+   };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
       {/* Subtle background pattern */}
@@ -92,14 +101,19 @@ const HeroSection = () => {
           {/* Primary CTA - Prominently displayed */}
           <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center" variants={fadeInUp}>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 group">
+              <Button size="lg" className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 group" onClick={() => smoothScrollTo("cta")}>
                 Get Early Access
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.02 }}>
-              <Button variant="outline" size="lg" className="glass-button border-architech-border px-8 py-4">
-                Watch Demo
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="glass-button border-architech-border px-8 py-4"
+                onClick={() => setIsContactModalOpen(true)}
+              >
+                Book Demo
               </Button>
             </motion.div>
           </motion.div>
@@ -175,6 +189,8 @@ const HeroSection = () => {
           <ChevronDown className="h-5 w-5 text-architech-electric" />
         </div>
       </motion.div>
+
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </section>
   );
 };

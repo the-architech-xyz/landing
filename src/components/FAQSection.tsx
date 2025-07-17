@@ -2,9 +2,11 @@ import { useState } from "react";
 import { ChevronDown, Plus, Minus, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer, scaleIn, defaultViewport } from "@/lib/animations";
+import ContactModal from "@/components/ContactModal";
 
 const FAQSection = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -61,13 +63,13 @@ const FAQSection = () => {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          <motion.div 
+          {/* <motion.div 
             className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-8"
             variants={scaleIn}
           >
             <HelpCircle className="h-4 w-4" />
             Frequently Asked Questions
-          </motion.div>
+          </motion.div> */}
 
           <motion.h2 
             className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
@@ -204,12 +206,7 @@ const FAQSection = () => {
             className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full border border-architech-electric/20 text-architech-electric font-medium hover:shadow-glow transition-all duration-300 cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const element = document.getElementById('cta');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }}
+            onClick={() => setIsContactModalOpen(true)}
           >
             <HelpCircle className="h-4 w-4" />
             <span>Still have questions? Let's chat!</span>
@@ -217,6 +214,8 @@ const FAQSection = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </section>
   );
 };

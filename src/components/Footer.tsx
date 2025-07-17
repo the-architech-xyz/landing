@@ -48,28 +48,22 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-4">
               <a
-                href="https://github.com/yourhandle"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
-              >
-                <Github className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
-              </a>
-              <a
-                href="https://twitter.com/yourhandle"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
-              >
-                <Twitter className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
-              </a>
-              <a
-                href="https://linkedin.com/in/yourhandle"
+                href="https://www.linkedin.com/in/antoinesrvt/" // Updated with real LinkedIn
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
               >
                 <Linkedin className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              
+              {/* Contact Email */}
+              <a
+                href="mailto:antoine.srvt@gmail.com"
+                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+              >
+                <div className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-xs font-bold">
+                  @
+                </div>
               </a>
             </div>
           </div>
