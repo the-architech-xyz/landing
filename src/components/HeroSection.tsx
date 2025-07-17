@@ -10,6 +10,7 @@ const HeroSection = () => {
   const [showModules, setShowModules] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const promptText = "A collaborative project management app with JWT auth and a modern design system";
   
@@ -22,11 +23,21 @@ const HeroSection = () => {
     { name: "Monitoring", color: "bg-gradient-aurora", delay: 1000 }
   ];
 
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     if (currentText.length < promptText.length) {
       const timer = setTimeout(() => {
         setCurrentText(promptText.slice(0, currentText.length + 1));
-      }, 50);
+      }, isMobile ? 80 : 50); // Slower typing on mobile for better readability
       return () => clearTimeout(timer);
     } else {
       setIsTyping(false);
@@ -35,15 +46,15 @@ const HeroSection = () => {
       }, 800);
       return () => clearTimeout(timer);
     }
-  }, [currentText, promptText]);
+  }, [currentText, promptText, isMobile]);
 
-  // Reset animation every 8 seconds
+  // Reset animation every 12 seconds
   useEffect(() => {
     const resetTimer = setInterval(() => {
       setCurrentText("");
       setShowModules(false);
       setIsTyping(true);
-    }, 12000); // Increased to 12 seconds for better viewing time
+    }, 12000);
     return () => clearInterval(resetTimer);
   }, []);
 
@@ -68,9 +79,9 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
       
-      <div className="container mx-auto px-6 py-20 relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 relative z-20">
         <motion.div 
-          className="max-w-4xl mx-auto text-center space-y-8"
+          className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -78,9 +89,9 @@ const HeroSection = () => {
         >
           
           {/* Hero Message */}
-          <motion.div className="space-y-6" variants={fadeInUp}>
+          <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp}>
             <motion.h1 
-              className="text-5xl lg:text-7xl font-black leading-tight tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight tracking-tight px-2"
               variants={fadeInDown}
             >
               <motion.span className="text-foreground">Skip the Setup.</motion.span>
@@ -89,7 +100,7 @@ const HeroSection = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light"
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light px-4"
               variants={fadeInUp}
             >
               Stop rebuilding authentication, databases, and deployment pipelines. 
@@ -97,19 +108,23 @@ const HeroSection = () => {
             </motion.p>
           </motion.div>
 
-          {/* Primary CTA - Prominently displayed */}
-          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center" variants={fadeInUp}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 group" onClick={() => smoothScrollTo("cta")}>
+          {/* Primary CTA - Enhanced for mobile */}
+          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4" variants={fadeInUp}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+              <Button 
+                size="lg" 
+                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 group w-full sm:w-auto h-14 sm:h-auto text-base sm:text-sm" 
+                onClick={() => smoothScrollTo("cta")}
+              >
                 Get Early Access
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.02 }}>
+            <motion.div whileHover={{ scale: 1.02 }} className="w-full sm:w-auto">
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="glass-button border-architech-border px-8 py-4"
+                className="glass-button border-architech-border px-8 py-4 w-full sm:w-auto h-14 sm:h-auto text-base sm:text-sm"
                 onClick={() => setIsContactModalOpen(true)}
               >
                 Book Demo
@@ -117,16 +132,16 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Live Demo Card */}
+          {/* Live Demo Card - Mobile optimized */}
           <motion.div 
-            className="max-w-2xl mx-auto mt-16"
+            className="max-w-2xl mx-auto mt-12 sm:mt-16 px-4"
             variants={scaleIn}
           >
-            <div className="glass-card rounded-2xl p-8 border border-architech-border">
-              <div className="space-y-6">
+            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-architech-border">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="text-left">
                   <div className="text-sm text-muted-foreground mb-2">Describe your app:</div>
-                  <div className="bg-muted/30 rounded-lg p-4 min-h-[60px] font-mono text-sm border">
+                  <div className="bg-muted/30 rounded-lg p-3 sm:p-4 min-h-[60px] font-mono text-sm border">
                     <span className="text-architech-electric">{currentText}</span>
                     {isTyping && <span className="animate-pulse">|</span>}
                   </div>
@@ -141,7 +156,7 @@ const HeroSection = () => {
                   >
                     <div className="text-sm text-muted-foreground">Selected modules:</div>
                     <motion.div 
-                      className="grid grid-cols-2 gap-3"
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                       variants={staggerContainer}
                       initial="hidden"
                       animate="visible"
@@ -149,7 +164,7 @@ const HeroSection = () => {
                       {modules.map((module, index) => (
                         <motion.div
                           key={module.name}
-                          className={`${module.color} text-white px-4 py-2 rounded-lg text-sm font-medium text-center shadow-lg`}
+                          className={`${module.color} text-white px-4 py-3 sm:py-2 rounded-lg text-sm font-medium text-center shadow-lg`}
                           variants={scaleIn}
                           whileHover={{ scale: 1.05 }}
                         >
@@ -177,15 +192,15 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Clean scroll indicator */}
+      {/* Enhanced scroll indicator - More touch-friendly */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30" 
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30" 
         onClick={scrollToNext}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <div className="glass-button rounded-full p-3 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
-          <ChevronDown className="h-5 w-5 text-architech-electric" />
+        <div className="glass-button rounded-full p-4 sm:p-3 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
+          <ChevronDown className="h-6 w-6 sm:h-5 sm:w-5 text-architech-electric" />
         </div>
       </motion.div>
 

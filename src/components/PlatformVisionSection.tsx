@@ -1,4 +1,4 @@
-import { Palette, Code, Rocket, BarChart3, RotateCcw, Sparkles, Globe, Settings, Zap } from "lucide-react";
+import { Palette, Code, Rocket, BarChart3, RotateCcw, Sparkles, Globe, Settings, Zap, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, defaultViewport, floating } from "@/lib/animations";
 
@@ -42,18 +42,25 @@ const PlatformVisionSection = () => {
     { icon: RotateCcw, label: "Iterate", color: "text-architech-electric" }
   ];
 
+  const smoothScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="platform-vision" className="py-24 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="platform-vision" className="py-16 sm:py-24 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={staggerContainer}
         >
           <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-6 sm:mb-8"
             variants={scaleIn}
           >
             <Sparkles className="h-4 w-4" />
@@ -61,7 +68,7 @@ const PlatformVisionSection = () => {
           </motion.div>
 
           <motion.h2 
-            className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
             The Journey{" "}
@@ -71,7 +78,7 @@ const PlatformVisionSection = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-muted-foreground max-w-4xl mx-auto"
+            className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto px-4"
             variants={fadeInUp}
           >
             From code assembly to complete development ecosystem. Here's how The Architech 
@@ -79,68 +86,7 @@ const PlatformVisionSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Central Cycle Diagram */}
-        {/* <motion.div 
-          className="flex justify-center mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={fadeInUp}
-        >
-          <div className="relative">
-            <motion.div 
-              className="w-32 h-32 rounded-full bg-gradient-electric flex items-center justify-center shadow-electric relative z-10"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <div className="text-center">
-                <motion.div 
-                  className="text-white font-bold text-sm"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  The
-                  <br />
-                  Architech
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {cycleSteps.map((step, index) => {
-              const angle = (index * 72) - 90; // 360/5 = 72 degrees between each
-              const radius = 120;
-              const x = Math.cos(angle * Math.PI / 180) * radius;
-              const y = Math.sin(angle * Math.PI / 180) * radius;
-              
-              return (
-                <motion.div
-                  key={step.label}
-                  className="absolute"
-                  style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                  }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.2, type: "spring", stiffness: 200 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="glass-card rounded-xl p-4 text-center min-w-[80px]">
-                    <step.icon className={`h-6 w-6 mx-auto mb-2 text-architech-electric`} />
-                    <div className="text-xs font-medium text-foreground">{step.label}</div>
-                  </div>
-                </motion.div>
-              );
-            })}
-
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-60 h-60 rounded-full border border-architech-border/30"></div>
-            </div>
-          </div>
-        </motion.div> */}
-
-        {/* Feature Grid */}
+        {/* Feature Grid - Mobile optimized */}
         <motion.div 
           className="relative max-w-5xl mx-auto"
           initial="hidden"
@@ -148,16 +94,16 @@ const PlatformVisionSection = () => {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          {/* Timeline Line */}
+          {/* Timeline Line - Vertical on mobile, horizontal on desktop */}
           <motion.div 
-            className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-architech-electric via-architech-purple to-architech-electric/30 transform -translate-x-0.5 z-10"
+            className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-architech-electric via-architech-purple to-architech-electric/30 transform -translate-x-0.5 z-10 hidden lg:block"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             style={{ transformOrigin: "top" }}
           />
 
-          <div className="space-y-16">
+          <div className="space-y-8 sm:space-y-16">
             {platformFeatures.map((feature, index) => {
               const Icon = feature.icon;
               const isLeft = index % 2 === 0;
@@ -171,190 +117,176 @@ const PlatformVisionSection = () => {
                   transition={{ delay, duration: 0.6 }}
                   className="relative"
                 >
-                  {/* Left Card */}
-                  {isLeft && (
-                    <>
-                      <motion.div
-                        className="w-1/2 pr-12 group"
-                        whileHover={{ y: -8 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      >
-                        <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
-                          {/* Gradient overlay */}
-                          <motion.div 
-                            className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
-                            style={{ background: `linear-gradient(135deg, var(--architech-electric), var(--architech-purple))` }}
-                          />
-                          
-                          {/* Connecting Line to Timeline - From right edge of card */}
-                          <motion.div 
-                            className="absolute -right-12 top-6 w-12 h-0.5 bg-gradient-to-r from-architech-electric/80 to-architech-electric/50 z-20"
-                            initial={{ scaleX: 0 }}
-                            whileInView={{ scaleX: 1 }}
-                            transition={{ delay: delay + 0.5, duration: 0.6 }}
-                          />
-                          
-                          <div className="relative z-10">
-                            {/* Header with Icon and Timeline Badge */}
-                            <div className="flex items-start justify-between mb-4">
-                              <motion.div 
-                                className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
-                                whileHover={{ rotate: 360 }}
-                                transition={{ duration: 0.6 }}
-                              >
-                                <Icon className="h-6 w-6 text-white" />
-                              </motion.div>
-                              
-                              <motion.div 
-                                className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs text-architech-electric font-medium"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                {feature.coming}
-                              </motion.div>
-                            </div>
-                            
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-architech-electric transition-colors duration-300">
-                              {feature.title}
-                            </h3>
-                            
-                            <p className="text-muted-foreground leading-relaxed">
-                              {feature.description}
-                            </p>
-
-                            {/* Progress Indicator */}
+                  {/* Mobile: Single column layout */}
+                  <div className="lg:hidden">
+                    <motion.div
+                      className="w-full group"
+                      whileHover={{ y: -4 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
+                        {/* Gradient overlay */}
+                        <motion.div 
+                          className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                          style={{ background: `linear-gradient(135deg, var(--architech-electric), var(--architech-purple))` }}
+                        />
+                        
+                        <div className="relative z-10">
+                          {/* Header with Icon and Timeline Badge */}
+                          <div className="flex items-start justify-between mb-4">
                             <motion.div 
-                              className="mt-4 flex items-center gap-2"
-                              initial={{ opacity: 0 }}
-                              whileInView={{ opacity: 1 }}
-                              transition={{ delay: delay + 0.7 }}
+                              className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
+                              whileHover={{ scale: 1.1, rotate: 5 }}
+                              transition={{ type: "spring", stiffness: 300 }}
                             >
-                              <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
-                                <motion.div 
-                                  className="h-full bg-gradient-electric rounded-full"
-                                  initial={{ width: "0%" }}
-                                  whileInView={{ width: `${25 * (index + 1)}%` }}
-                                  transition={{ delay: delay + 0.8, duration: 0.8 }}
-                                />
-                              </div>
-                              <span className="text-xs text-muted-foreground font-medium">
-                                {25 * (index + 1)}%
-                              </span>
+                              <Icon className="h-6 w-6 text-white" />
+                            </motion.div>
+                            
+                            <motion.div 
+                              className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs font-medium text-architech-electric"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: delay + 0.3, type: "spring" }}
+                            >
+                              {feature.coming}
                             </motion.div>
                           </div>
+                          
+                          <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
                         </div>
-                      </motion.div>
-                    </>
-                  )}
+                      </div>
+                    </motion.div>
+                  </div>
 
-                  {/* Right Card */}
-                  {!isLeft && (
-                    <>
-                      <motion.div
-                        className="w-1/2 pl-12 ml-auto group"
-                        whileHover={{ y: -8 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      >
-                        <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
-                          {/* Gradient overlay */}
-                          <motion.div 
-                            className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
-                            style={{ background: `linear-gradient(135deg, var(--architech-electric), var(--architech-purple))` }}
-                          />
-                          
-                          {/* Connecting Line to Timeline - From left edge of card */}
-                          <motion.div 
-                            className="absolute -left-12 top-6 w-12 h-0.5 bg-gradient-to-l from-architech-electric/80 to-architech-electric/50 z-20"
-                            initial={{ scaleX: 0 }}
-                            whileInView={{ scaleX: 1 }}
-                            transition={{ delay: delay + 0.5, duration: 0.6 }}
-                          />
-                          
-                          <div className="relative z-10">
-                            {/* Header with Icon and Timeline Badge */}
-                            <div className="flex items-start justify-between mb-4">
-                              <motion.div 
-                                className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
-                                whileHover={{ rotate: 360 }}
-                                transition={{ duration: 0.6 }}
-                              >
-                                <Icon className="h-6 w-6 text-white" />
-                              </motion.div>
-                              
-                              <motion.div 
-                                className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs text-architech-electric font-medium"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                {feature.coming}
-                              </motion.div>
-                            </div>
-                            
-                            <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-architech-electric transition-colors duration-300">
-                              {feature.title}
-                            </h3>
-                            
-                            <p className="text-muted-foreground leading-relaxed">
-                              {feature.description}
-                            </p>
-
-                            {/* Progress Indicator */}
+                  {/* Desktop: Left/Right alternating layout */}
+                  <div className="hidden lg:block">
+                    {/* Left Card */}
+                    {isLeft && (
+                      <>
+                        <motion.div
+                          className="w-1/2 pr-12 group"
+                          whileHover={{ y: -8 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                          <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
+                            {/* Gradient overlay */}
                             <motion.div 
-                              className="mt-4 flex items-center gap-2"
-                              initial={{ opacity: 0 }}
-                              whileInView={{ opacity: 1 }}
-                              transition={{ delay: delay + 0.7 }}
-                            >
-                              <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
+                              className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                              style={{ background: `linear-gradient(135deg, var(--architech-electric), var(--architech-purple))` }}
+                            />
+                            
+                            {/* Connecting Line to Timeline - From right edge of card */}
+                            <motion.div 
+                              className="absolute -right-12 top-6 w-12 h-0.5 bg-gradient-to-r from-architech-electric/80 to-architech-electric/50 z-20"
+                              initial={{ scaleX: 0 }}
+                              whileInView={{ scaleX: 1 }}
+                              transition={{ delay: delay + 0.5, duration: 0.6 }}
+                            />
+                            
+                            <div className="relative z-10">
+                              {/* Header with Icon and Timeline Badge */}
+                              <div className="flex items-start justify-between mb-4">
                                 <motion.div 
-                                  className="h-full bg-gradient-electric rounded-full"
-                                  initial={{ width: "0%" }}
-                                  whileInView={{ width: `${25 * (index + 1)}%` }}
-                                  transition={{ delay: delay + 0.8, duration: 0.8 }}
-                                />
+                                  className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
+                                  whileHover={{ scale: 1.1, rotate: 5 }}
+                                  transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                  <Icon className="h-6 w-6 text-white" />
+                                </motion.div>
+                                
+                                <motion.div 
+                                  className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs font-medium text-architech-electric"
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  whileInView={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: delay + 0.3, type: "spring" }}
+                                >
+                                  {feature.coming}
+                                </motion.div>
                               </div>
-                              <span className="text-xs text-muted-foreground font-medium">
-                                {25 * (index + 1)}%
-                              </span>
-                            </motion.div>
+                              
+                              <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                            </div>
                           </div>
-                        </div>
-                      </motion.div>
-                    </>
-                  )}
+                        </motion.div>
+                      </>
+                    )}
+
+                    {/* Right Card */}
+                    {!isLeft && (
+                      <>
+                        <motion.div
+                          className="w-1/2 pl-12 group ml-auto"
+                          whileHover={{ y: -8 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                          <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
+                            {/* Gradient overlay */}
+                            <motion.div 
+                              className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                              style={{ background: `linear-gradient(135deg, var(--architech-electric), var(--architech-purple))` }}
+                            />
+                            
+                            {/* Connecting Line to Timeline - From left edge of card */}
+                            <motion.div 
+                              className="absolute -left-12 top-6 w-12 h-0.5 bg-gradient-to-l from-architech-electric/80 to-architech-electric/50 z-20"
+                              initial={{ scaleX: 0 }}
+                              whileInView={{ scaleX: 1 }}
+                              transition={{ delay: delay + 0.5, duration: 0.6 }}
+                            />
+                            
+                            <div className="relative z-10">
+                              {/* Header with Icon and Timeline Badge */}
+                              <div className="flex items-start justify-between mb-4">
+                                <motion.div 
+                                  className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
+                                  whileHover={{ scale: 1.1, rotate: 5 }}
+                                  transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                  <Icon className="h-6 w-6 text-white" />
+                                </motion.div>
+                                
+                                <motion.div 
+                                  className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs font-medium text-architech-electric"
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  whileInView={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: delay + 0.3, type: "spring" }}
+                                >
+                                  {feature.coming}
+                                </motion.div>
+                              </div>
+                              
+                              <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                  </div>
                 </motion.div>
               );
             })}
           </div>
         </motion.div>
 
-        {/* Bottom CTA */}
-        <motion.div 
-          className="text-center mt-20"
+        {/* Enhanced CTA - Mobile optimized */}
+        <motion.div
+          className="text-center mt-12 sm:mt-20 px-4"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={fadeInUp}
         >
-          <motion.div 
-            className="max-w-2xl mx-auto glass-card rounded-3xl p-8 border border-architech-border hover:border-architech-electric/50 transition-all duration-500"
-            whileHover={{ scale: 1.02 }}
+          <motion.div
+            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => smoothScrollTo("cta")}
           >
-            <motion.h3 
-              className="text-2xl font-bold text-foreground mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              Be Part of the Revolution
-            </motion.h3>
-            <motion.p 
-              className="text-lg text-muted-foreground leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              Join the early access program and help shape the future of development. 
-              Your feedback will directly influence how we build the ultimate development platform.
-            </motion.p>
+            <span>Be part of the journey</span>
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
           </motion.div>
         </motion.div>
       </div>

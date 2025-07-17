@@ -23,6 +23,19 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (mobileMenuOpen && !target.closest('.mobile-menu-container')) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [mobileMenuOpen]);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle('dark');
@@ -46,22 +59,21 @@ const Header = () => {
       <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-electric transition-all duration-300" 
            style={{ width: `${scrollProgress}%` }}></div>
       
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Enhanced Logo */}
           <div className="flex items-center space-x-3 group cursor-pointer" onClick={() => smoothScrollTo('hero')}>
             <div className="relative">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                 <img 
                   src="/logo.png" 
                   alt="The Architech Logo" 
-                  className="w-10 h-10 object-contain"
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 />
               </div>
-              {/* Pulsing dot for "live" feel */}
             </div>
             <div>
-              <span className="text-xl font-bold text-foreground group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
+              <span className="text-lg sm:text-xl font-bold text-foreground group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
                 The Architech
               </span>
               <div className="text-xs text-muted-foreground">Alpha Preview</div>
@@ -69,35 +81,35 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => smoothScrollTo('benefits')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium"
+              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
             >
               Benefits
             </button>
             <button 
               onClick={() => smoothScrollTo('how-it-works')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium"
+              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
             >
               How It Works
             </button>
             <button 
               onClick={() => smoothScrollTo('faq')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium"
+              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
             >
               FAQ
             </button>
             <button 
               onClick={() => smoothScrollTo('team')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium"
+              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
             >
               Team
             </button>
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Early Access Badge */}
             <div className="hidden lg:flex items-center gap-2 px-3 py-1 glass-button rounded-full text-xs font-medium text-architech-electric">
               <Zap className="h-3 w-3" />
@@ -108,13 +120,13 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/10 transition-all duration-300 hover:scale-110"
+              className="text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/10 transition-all duration-300 hover:scale-110 w-10 h-10 sm:w-11 sm:h-11"
             >
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
             
             <Button 
-              className="hidden md:inline-flex bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden"
+              className="hidden md:inline-flex bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden text-sm lg:text-base px-4 sm:px-6 py-2 sm:py-2"
               onClick={() => smoothScrollTo('cta')}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -125,7 +137,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:bg-architech-electric/10 transition-all duration-300"
+              className="md:hidden hover:bg-architech-electric/10 transition-all duration-300 w-10 h-10"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -134,37 +146,46 @@ const Header = () => {
         </div>
 
         {/* Enhanced Mobile Navigation */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+        <div className={`md:hidden mobile-menu-container overflow-hidden transition-all duration-300 ${
           mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <nav className="mt-4 pb-4 border-t border-architech-border pt-4">
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-2">
               <button 
                 onClick={() => smoothScrollTo('benefits')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium"
+                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
               >
                 Benefits
               </button>
               <button 
                 onClick={() => smoothScrollTo('how-it-works')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium"
+                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
               >
                 How It Works
               </button>
               <button 
                 onClick={() => smoothScrollTo('faq')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium"
+                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
               >
                 FAQ
               </button>
               <button 
                 onClick={() => smoothScrollTo('team')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium"
+                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
               >
                 Team
               </button>
+              
+              {/* Mobile Early Access Badge */}
+              <div className="flex items-center gap-2 px-4 py-2 mt-2">
+                <div className="flex items-center gap-2 px-3 py-1 glass-button rounded-full text-xs font-medium text-architech-electric">
+                  <Zap className="h-3 w-3" />
+                  Early Access
+                </div>
+              </div>
+              
               <Button 
-                className="mt-4 bg-gradient-electric hover:shadow-electric text-white font-semibold"
+                className="mt-4 mx-4 bg-gradient-electric hover:shadow-electric text-white font-semibold py-3 text-base"
                 onClick={() => smoothScrollTo('cta')}
               >
                 Join Waitlist

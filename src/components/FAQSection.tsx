@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Plus, Minus, HelpCircle } from "lucide-react";
+import { ChevronDown, Plus, Minus, HelpCircle, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer, scaleIn, defaultViewport } from "@/lib/animations";
 import ContactModal from "@/components/ContactModal";
@@ -48,31 +48,23 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-24 bg-gradient-surface relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-24 bg-gradient-surface relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-32 h-32 bg-architech-electric rounded-full blur-xl"></div>
         <div className="absolute bottom-20 left-20 w-24 h-24 bg-architech-purple rounded-full blur-xl"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          {/* <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-8"
-            variants={scaleIn}
-          >
-            <HelpCircle className="h-4 w-4" />
-            Frequently Asked Questions
-          </motion.div> */}
-
           <motion.h2 
-            className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
             Got{" "}
@@ -82,7 +74,7 @@ const FAQSection = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
             Everything you need to know about The Architech and how it will 
@@ -97,7 +89,7 @@ const FAQSection = () => {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                   key={index}
@@ -105,32 +97,32 @@ const FAQSection = () => {
                 className="glass-card rounded-2xl border border-architech-border hover:border-architech-electric/50 transition-all duration-300 overflow-hidden"
               >
                 <motion.button
-                  className="w-full p-6 text-left focus:outline-none group"
+                  className="w-full p-4 sm:p-6 text-left focus:outline-none group"
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   whileHover={{ backgroundColor: "rgba(59, 130, 246, 0.05)" }}
                   transition={{ duration: 0.2 }}
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4 flex-1">
-                  {/* Category badge */}
+                    <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                  {/* Category badge - Larger for mobile */}
                       <motion.div 
-                        className={`${getCategoryColor(faq.category)} rounded-xl p-2 text-white text-xs font-semibold min-w-fit`}
+                        className={`${getCategoryColor(faq.category)} rounded-xl p-2 sm:p-2 text-white text-xs font-semibold min-w-fit`}
                         whileHover={{ scale: 1.05 }}
                       >
                         {faq.category}
                       </motion.div>
                       
                       {/* Question */}
-                      <h3 className="text-lg font-semibold text-foreground group-hover:text-architech-electric transition-colors duration-300 flex-1">
+                      <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-architech-electric transition-colors duration-300 flex-1">
                         {faq.question}
                       </h3>
                     </div>
 
-                    {/* Toggle icon */}
+                    {/* Toggle icon - Larger for mobile */}
                     <motion.div
                       animate={{ rotate: openFAQ === index ? 180 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="flex-shrink-0 ml-4"
+                      className="flex-shrink-0 ml-3 sm:ml-4 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center"
                     >
                       {openFAQ === index ? (
                         <Minus className="h-5 w-5 text-architech-electric" />
@@ -155,14 +147,14 @@ const FAQSection = () => {
                       className="overflow-hidden"
                     >
                       <motion.div 
-                        className="px-6 pb-6"
+                        className="px-4 sm:px-6 pb-4 sm:pb-6"
                         initial={{ y: -20 }}
                         animate={{ y: 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
                         <div className="border-t border-architech-border/50 pt-4 ml-0">
                           <motion.p 
-                            className="text-muted-foreground leading-relaxed"
+                            className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.1, duration: 0.3 }}
@@ -194,23 +186,22 @@ const FAQSection = () => {
           </div>
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA - Mobile optimized */}
         <motion.div 
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16 px-4"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={fadeInUp}
         >
-          <motion.div 
-            className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full border border-architech-electric/20 text-architech-electric font-medium hover:shadow-glow transition-all duration-300 cursor-pointer group"
+          <motion.div
+            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsContactModalOpen(true)}
           >
-            <HelpCircle className="h-4 w-4" />
-            <span>Still have questions? Let's chat!</span>
-            <ChevronDown className="h-4 w-4 group-hover:translate-y-1 transition-transform" />
+            <span>Still have questions?</span>
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
           </motion.div>
         </motion.div>
       </div>
