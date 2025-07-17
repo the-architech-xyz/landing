@@ -10,6 +10,7 @@ const HowItWorksSection = () => {
   const [isAiThinking, setIsAiThinking] = useState(false);
   const [analysisProgress, setAnalysisProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   const steps = [
     {
@@ -116,16 +117,39 @@ const HowItWorksSection = () => {
     }
   }, [activeStep]);
 
-  // Auto-advance with pause functionality
+  // Intersection Observer to detect when section is in view
   useEffect(() => {
-    if (isPaused) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of section is visible
+    );
+
+    const section = document.getElementById('how-it-works');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, []);
+
+  // Auto-advance with pause functionality - only when in view
+  useEffect(() => {
+    if (isPaused || !isInView) return;
     
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
     }, 6000); // Slightly longer for better readability
     
     return () => clearInterval(interval);
-  }, [isPaused, steps.length, activeStep]); // Add activeStep as dependency to reset timer on manual clicks
+  }, [isPaused, steps.length, activeStep, isInView]); // Add isInView as dependency
 
   const smoothScrollTo = (elementId: string) => {
     const element = document.getElementById(elementId);
