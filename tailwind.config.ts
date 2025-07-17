@@ -103,22 +103,26 @@ export default {
 				'mono': ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace']
 			},
 			backgroundImage: {
+				// Core brand gradients only
 				'gradient-electric': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-electric-dark)))',
-				'gradient-architech': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-purple)))',
+				'gradient-creative': 'linear-gradient(135deg, hsl(var(--architech-purple)), hsl(var(--architech-violet)))',
+				
+				// Icon gradient variations - Using electric blue and purple combinations
+				'gradient-icon-1': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-purple)))',
+				'gradient-icon-2': 'linear-gradient(135deg, hsl(var(--architech-purple)), hsl(var(--architech-electric)))',
+				'gradient-icon-3': 'linear-gradient(135deg, hsl(var(--architech-electric-dark)), hsl(var(--architech-violet)))',
+				'gradient-icon-4': 'linear-gradient(135deg, hsl(var(--architech-violet)), hsl(var(--architech-electric-light)))',
+				'gradient-icon-5': 'linear-gradient(135deg, hsl(var(--architech-electric-light)), hsl(var(--architech-purple)))',
+				'gradient-icon-6': 'linear-gradient(135deg, hsl(var(--architech-purple)), hsl(var(--architech-electric-dark)))',
+				
+				// Neutral gradients for backgrounds
 				'gradient-hero': 'linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)))',
 				'gradient-surface': 'linear-gradient(135deg, hsl(var(--architech-surface)), hsl(var(--architech-surface-elevated)))',
-				'gradient-highlight': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-gold)))',
-				'gradient-professional': 'linear-gradient(135deg, hsl(var(--architech-primary)), hsl(var(--architech-secondary)))',
-				'gradient-creative': 'linear-gradient(135deg, hsl(var(--architech-purple)), hsl(var(--architech-violet)))',
-				'gradient-ocean': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-cyan)))',
-				'gradient-energy': 'linear-gradient(135deg, hsl(var(--architech-coral)), hsl(var(--architech-gold)))',
-				'gradient-forest': 'linear-gradient(135deg, hsl(var(--architech-emerald)), hsl(160 85% 45%))',
+				
+				// Functional gradients only
 				'gradient-success': 'linear-gradient(135deg, hsl(var(--architech-success)), hsl(var(--architech-emerald)))',
 				'gradient-warning': 'linear-gradient(135deg, hsl(var(--architech-warning)), hsl(var(--architech-gold)))',
-				'gradient-danger': 'linear-gradient(135deg, hsl(var(--architech-danger)), hsl(var(--architech-coral)))',
-				'gradient-rainbow': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-purple)), hsl(var(--architech-cyan)))',
-				'gradient-sunset': 'linear-gradient(135deg, hsl(var(--architech-coral)), hsl(var(--architech-gold)), hsl(var(--architech-warning)))',
-				'gradient-aurora': 'linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-violet)), hsl(var(--architech-emerald)))'
+				'gradient-danger': 'linear-gradient(135deg, hsl(var(--architech-danger)), hsl(var(--architech-coral)))'
 			},
 			boxShadow: {
 				'electric': '0 10px 30px -10px hsl(var(--architech-electric) / 0.4)',

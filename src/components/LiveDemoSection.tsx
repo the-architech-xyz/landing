@@ -21,7 +21,7 @@ const LiveDemoSection = () => {
       title: "DatabaseAgent", 
       description: "Configuring optimized database schema",
       icon: Database,
-      color: "from-green-600 to-green-400",
+      color: "from-muted to-muted-foreground",
       code: "// Auto-generated Prisma schema\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  profile   Profile?\n  createdAt DateTime @default(now())\n}"
     },
     {
@@ -37,7 +37,7 @@ const LiveDemoSection = () => {
       title: "APIAgent",
       description: "Building REST + GraphQL endpoints",
       icon: Code,
-      color: "from-orange-600 to-orange-400",
+      color: "from-muted to-muted-foreground",
       code: "// Type-safe API routes\nexport async function GET(request: Request) {\n  const users = await prisma.user.findMany({\n    include: { profile: true }\n  });\n  return Response.json(users);\n}"
     }
   ];

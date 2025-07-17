@@ -108,27 +108,15 @@ const Footer = () => {
             </h3>
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-gradient-success rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span className="text-sm text-muted-foreground">
                   Alpha Development
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div
-                  className="w-2 h-2 bg-gradient-aurora rounded-full animate-pulse"
-                  style={{ animationDelay: "0.5s" }}
-                ></div>
+                <div className="w-2 h-2 bg-architech-electric rounded-full"></div>
                 <span className="text-sm text-muted-foreground">
-                  2,847 on Waitlist
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div
-                  className="w-2 h-2 bg-gradient-sunset rounded-full animate-pulse"
-                  style={{ animationDelay: "1s" }}
-                ></div>
-                <span className="text-sm text-muted-foreground">
-                  Q2 2025 Beta
+                  Open Waitlist
                 </span>
               </div>
             </div>

@@ -9,51 +9,55 @@ const BenefitsSection = () => {
   const benefits = [
     {
       icon: Zap,
-      title: "Lightning Fast Setup",
+      title: "Skip the Setup",
       description: "From idea to deployment in minutes, not weeks",
       details: [
-        "AI agents handle all configuration",
+        "Scripts & agents handle all configuration",
         "Pre-configured best practices",
-        "Zero manual setup required"
+        "Zero manual configuration",
       ],
       gradient: "bg-gradient-electric",
-      iconColor: "text-white"
+      iconColor: "text-white",
+      primary: true,
     },
     {
       icon: Shield,
-      title: "Enterprise Security",
-      description: "Built-in security that scales with your needs",
+      title: "Built-in Security",
+      description: "Enterprise-grade security from day one",
       details: [
         "JWT + OAuth2 authentication",
-        "Role-based access control", 
-        "SOC 2 compliant infrastructure"
+        "Role-based access control",
+        "SOC 2 compliant infrastructure",
       ],
-      gradient: "bg-gradient-success",
-      iconColor: "text-white"
+      gradient: "bg-gradient-icon-2",
+      iconColor: "text-white",
+      primary: false,
     },
     {
       icon: Code,
-      title: "Clean, Readable Code",
-      description: "Production-ready code you actually want to maintain",
+      title: "Clean Code",
+      description: "Production-ready code you can maintain",
       details: [
         "TypeScript throughout",
         "Comprehensive testing",
-        "Documented architecture"
+        "Clear architecture",
       ],
-      gradient: "bg-gradient-creative",
-      iconColor: "text-white"
+      gradient: "bg-gradient-icon-3",
+      iconColor: "text-white",
+      primary: false,
     },
     {
       icon: Database,
       title: "Optimized Performance",
-      description: "Built for scale from day one",
+      description: "Built for scale from the start",
       details: [
         "Database optimization",
         "Caching strategies",
-        "CDN integration"
+        "CDN integration",
       ],
-      gradient: "bg-gradient-ocean",
-      iconColor: "text-white"
+      gradient: "bg-gradient-icon-4",
+      iconColor: "text-white",
+      primary: false,
     },
     {
       icon: Palette,
@@ -62,10 +66,11 @@ const BenefitsSection = () => {
       details: [
         "Figma design system",
         "Dark/light mode support",
-        "Mobile-first responsive"
+        "Mobile-first responsive",
       ],
-      gradient: "bg-gradient-sunset",
-      iconColor: "text-white"
+      gradient: "bg-gradient-icon-5",
+      iconColor: "text-white",
+      primary: false,
     },
     {
       icon: TestTube,
@@ -74,11 +79,12 @@ const BenefitsSection = () => {
       details: [
         "Unit & integration tests",
         "E2E testing setup",
-        "CI/CD pipeline included"
+        "CI/CD pipeline included",
       ],
-      gradient: "bg-gradient-aurora",
-      iconColor: "text-white"
-    }
+      gradient: "bg-gradient-icon-6",
+      iconColor: "text-white",
+      primary: false,
+    },
   ];
 
    const smoothScrollTo = (elementId: string) => {
@@ -93,20 +99,6 @@ const BenefitsSection = () => {
       id="benefits"
       className="py-24 bg-gradient-surface relative overflow-hidden"
     >
-      {/* Floating background elements */}
-      <motion.div
-        className="absolute top-20 left-10 w-32 h-32 bg-gradient-electric rounded-full opacity-5 blur-xl"
-        animate={floating}
-        transition={{ delay: 0 }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-48 h-48 bg-gradient-creative rounded-full opacity-5 blur-xl"
-        animate={{
-          ...floating,
-          transition: { ...floating.transition, delay: 1 },
-        }}
-      />
-
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-16"
@@ -120,28 +112,27 @@ const BenefitsSection = () => {
             variants={scaleIn}
           >
             <Sparkles className="h-4 w-4" />
-            Why Choose The Architech
+            Benefits
           </motion.div>
 
           <motion.h2
             className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
             variants={fadeInUp}
           >
-            Why{" "}
+            Stop{" "}
             <span className="text-transparent bg-gradient-electric bg-clip-text">
-              Modules Beat
+              Rebuilding
             </span>
             <br />
-            Code Generation
+            The Same Things
           </motion.h2>
 
           <motion.p
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={fadeInUp}
           >
-            Forget AI-generated spaghetti code. The Architech uses battle-tested, 
-            production-ready modules that snap together like LEGO blocks. Each module 
-            is crafted by experts, tested in production, and ready for your unique needs.
+            Every project needs authentication, databases, and deployment. 
+            We provide proven modules so you can focus on building what makes your product unique.
           </motion.p>
         </motion.div>
 

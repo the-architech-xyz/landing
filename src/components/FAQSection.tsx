@@ -11,28 +11,28 @@ const FAQSection = () => {
   const faqs = [
     {
       category: "Ownership",
-      question: "Do I really own my code, or is this another vendor lock-in?",
-      answer: "Absolutely 100% ownership. The Architech generates clean, standard code that you can export, modify, and deploy anywhere. No vendor lock-in, no dependencies on our platform. It's your code, your rules, your freedom.",
+      question: "Do I own the code?",
+      answer: "Yes, completely. The Architech assembles standard code that you can export, modify, and deploy anywhere. No vendor lock-in or platform dependencies.",
     },
     {
       category: "Difference",
-      question: "How is this different from GitHub Copilot and other AI assistants?",
-      answer: "Copilot generates code from scratch, often creating inconsistent or low-quality results. The Architech doesn't generate code - it intelligently assembles pre-built, battle-tested modules like LEGO blocks. You get production-ready architecture instead of AI-generated experiments that need debugging.",
+      question: "How is this different from AI code generators?",
+      answer: "Instead of generating code from scratch, we assemble proven modules that have been tested in production. You get reliable architecture, not experimental AI code that needs debugging.",
     },
     {
       category: "Technology",
       question: "What technologies are supported?",
-      answer: "The Architech is tech-agnostic by design. We start with popular stacks (React, Next.js, Node.js, Python, etc.) and our modular architecture means you can add agents for any technology. You're never locked into our tech choices.",
+      answer: "We start with popular stacks (React, Next.js, Node.js, Python) and expand based on demand. The modular design means new technologies can be added without breaking existing projects.",
     },
     {
       category: "Access",
       question: "When can I get access?",
-      answer: "We're currently in closed alpha with select developers. Join our waitlist to get early access and help shape the future of development. Beta access begins September 2025.",
+      answer: "We're currently in closed alpha. Join the waitlist for early access—beta begins September 2025.",
     },
     {
       category: "Business",
-      question: "What's the business model?",
-      answer: "The Architech Core will remain open source. Premium features like advanced AI agents, enterprise integrations, and priority support will be available via transparent subscription pricing. We believe in sustainable open source.",
+      question: "What does this cost?",
+      answer: "The core platform will remain open source. We'll offer premium features like advanced modules and priority support via subscription. Pricing will be transparent and fair.",
     }
   ];
 

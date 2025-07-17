@@ -85,16 +85,15 @@ const HeroSection = () => {
             >
               <motion.span className="text-foreground">Skip the Setup.</motion.span>
               <br />
-              <motion.span className="text-transparent bg-gradient-rainbow bg-clip-text">Build the Magic.</motion.span>
+              <motion.span className="text-transparent bg-gradient-electric bg-clip-text">Build the Magic.</motion.span>
             </motion.h1>
             
             <motion.p 
               className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light"
               variants={fadeInUp}
             >
-              The Architech is your master AI orchestrator that assembles battle-tested modules 
-              like LEGO blocks - no code generation, just intelligent composition of proven components 
-              tailored to your exact needs.
+              Stop rebuilding authentication, databases, and deployment pipelines. 
+              The Architech assembles proven modules so you can focus on what makes your product unique.
             </motion.p>
           </motion.div>
 

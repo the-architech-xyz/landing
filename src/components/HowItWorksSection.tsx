@@ -9,27 +9,38 @@ const HowItWorksSection = () => {
     {
       number: "01",
       icon: MessageSquare,
-      title: "Tell The Architech Your Vision",
-      description: "Describe your app idea. The Architech analyzes your needs and identifies the perfect module combination.",
-      details: ["Natural language requirements", "Automatic module matching", "Context-aware analysis"],
-      gradient: "bg-gradient-electric"
+      title: "Describe Your App",
+      description:
+        "Tell us what you're building. The Architech identifies the modules you need.",
+      details: [
+        "Natural language input",
+        "Automatic module selection",
+        "Smart configuration",
+      ],
+      gradient: "bg-gradient-electric",
     },
     {
-      number: "02", 
+      number: "02",
       icon: Users,
-      title: "Modules Assemble Like LEGO",
-      description: "Pre-built, battle-tested modules snap together. No code generation - just intelligent composition.",
-      details: ["Production-ready modules", "Smart configuration", "Seamless integration"],
-      gradient: "bg-gradient-ocean"
+      title: "Modules Assemble",
+      description:
+        "Proven modules snap together. No code generation—just intelligent composition.",
+      details: [
+        "Production-ready modules",
+        "Smart integration",
+        "Clean architecture",
+      ],
+      gradient: "bg-gradient-icon-1",
     },
     {
       number: "03",
       icon: Eye,
-      title: "AI Experts Fine-Tune",
-      description: "Specialized AI agents customize modules to your exact requirements. You own clean, maintainable code.",
-      details: ["Expert customization", "Clean architecture", "Full code ownership"],
-      gradient: "bg-gradient-aurora"
-    }
+      title: "Customize & Deploy",
+      description:
+        "Fine-tune to your exact needs. You own the clean, maintainable code.",
+      details: ["Custom configuration", "Clean codebase", "Full ownership"],
+      gradient: "bg-gradient-creative",
+    },
   ];
 
   const AnimatedNumber = ({ number, index }: { number: string; index: number }) => {
@@ -52,23 +63,24 @@ const HowItWorksSection = () => {
   };
 
   return (
-    <section id="how-it-works" className="py-24 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-architech-electric rounded-full animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-architech-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-architech-cyan rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section
+      id="how-it-works"
+      className="py-24 bg-background relative overflow-hidden"
+    >
+      {/* Background decorative pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           className="text-center mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          <motion.div 
+          <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-8"
             variants={scaleIn}
           >
@@ -76,7 +88,7 @@ const HowItWorksSection = () => {
             How It Works
           </motion.div>
 
-          <motion.h2 
+          <motion.h2
             className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
             variants={fadeInUp}
           >
@@ -85,18 +97,18 @@ const HowItWorksSection = () => {
               LEGO Blocks
             </span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={fadeInUp}
           >
-            The Architech doesn't generate code - it intelligently assembles pre-built, 
-            battle-tested modules. Think LEGO for enterprise applications, with AI experts 
-            fine-tuning each piece to perfection.
+            The Architech doesn't generate code - it intelligently assembles
+            pre-built, battle-tested modules. Think LEGO for enterprise
+            applications, with AI experts fine-tuning each piece to perfection.
           </motion.p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
@@ -106,8 +118,12 @@ const HowItWorksSection = () => {
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isMiddle = index === 1;
-            const animationVariant = isMiddle ? fadeInUp : (index === 0 ? fadeInLeft : fadeInRight);
-            
+            const animationVariant = isMiddle
+              ? fadeInUp
+              : index === 0
+              ? fadeInLeft
+              : fadeInRight;
+
             return (
               <motion.div
                 key={step.number}
@@ -118,7 +134,7 @@ const HowItWorksSection = () => {
               >
                 {/* Connection line to next step */}
                 {index < steps.length - 1 && (
-                  <motion.div 
+                  <motion.div
                     className="hidden lg:block absolute top-1/2 -right-6 w-12 h-0.5 bg-gradient-to-r from-architech-electric to-transparent"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
@@ -130,17 +146,17 @@ const HowItWorksSection = () => {
                 <div className="glass-card rounded-3xl p-8 relative border border-architech-border group-hover:border-architech-electric/50 transition-all duration-500 group-hover:shadow-glow">
                   {/* Animated number badge */}
                   <AnimatedNumber number={step.number} index={index} />
-                  
+
                   {/* Icon with gradient background */}
-                  <motion.div 
+                  <motion.div
                     className={`w-16 h-16 rounded-2xl ${step.gradient} flex items-center justify-center mb-6 shadow-lg relative`}
                     whileHover={{ rotate: 5, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <Icon className="h-8 w-8 text-white" />
-                    
+
                     {/* Glow effect */}
-                    <motion.div 
+                    <motion.div
                       className={`absolute inset-0 rounded-2xl ${step.gradient} opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-500`}
                     />
                   </motion.div>
@@ -149,13 +165,13 @@ const HowItWorksSection = () => {
                     <h3 className="text-2xl font-bold text-foreground group-hover:text-architech-electric transition-colors duration-300">
                       {step.title}
                     </h3>
-                    
+
                     <p className="text-muted-foreground leading-relaxed text-lg">
                       {step.description}
                     </p>
 
                     {/* Detail points with staggered animation */}
-                    <motion.div 
+                    <motion.div
                       className="space-y-3 pt-4"
                       initial="hidden"
                       whileInView="visible"
@@ -172,17 +188,19 @@ const HowItWorksSection = () => {
                               x: 0,
                               transition: {
                                 delay: index * 0.2 + detailIndex * 0.1,
-                                duration: 0.5
-                              }
-                            }
+                                duration: 0.5,
+                              },
+                            },
                           }}
                           className="flex items-center gap-3"
                         >
-                          <motion.div 
+                          <motion.div
                             className={`w-2 h-2 rounded-full ${step.gradient}`}
                             whileHover={{ scale: 1.5 }}
                           />
-                          <span className="text-sm text-muted-foreground">{detail}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {detail}
+                          </span>
                         </motion.div>
                       ))}
                     </motion.div>
@@ -194,37 +212,43 @@ const HowItWorksSection = () => {
         </motion.div>
 
         {/* Enhanced CTA */}
-        <motion.div 
+        <motion.div
           className="text-center mt-20"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
           variants={fadeInUp}
         >
-          <motion.div 
+          <motion.div
             className="max-w-md mx-auto"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <div className="glass-card rounded-2xl p-8 border border-architech-border hover:border-architech-electric/50 transition-all duration-300">
-              <motion.p 
+              <motion.p
                 className="text-lg text-muted-foreground mb-6"
                 variants={fadeInUp}
               >
                 Ready to see it in action?
               </motion.p>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
                   className="bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden w-full"
                   onClick={() => {
-                    const element = document.getElementById('cta');
+                    const element = document.getElementById("cta");
                     if (element) {
-                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      element.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
                     }
                   }}
                 >
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full"
                     whileHover={{ x: "200%" }}
                     transition={{ duration: 0.6 }}

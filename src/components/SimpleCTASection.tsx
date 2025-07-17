@@ -173,7 +173,7 @@ const SimpleCTASection = () => {
           </p>
 
           {/* Enhanced social proof */}
-          <div className="mt-8 glass-card rounded-xl p-4 max-w-sm mx-auto group hover:shadow-glow transition-all duration-300">
+          {/* <div className="mt-8 glass-card rounded-xl p-4 max-w-sm mx-auto group hover:shadow-glow transition-all duration-300">
             <div className="text-2xl font-bold text-transparent bg-gradient-rainbow bg-clip-text">
               2,847
             </div>
@@ -183,7 +183,7 @@ const SimpleCTASection = () => {
             <div className="text-xs text-architech-electric mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               +23 joined today
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

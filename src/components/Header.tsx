@@ -99,7 +99,7 @@ const Header = () => {
           {/* Actions */}
           <div className="flex items-center space-x-4">
             {/* Early Access Badge */}
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1 glass-button rounded-full text-xs font-medium text-architech-electric animate-pulse">
+            <div className="hidden lg:flex items-center gap-2 px-3 py-1 glass-button rounded-full text-xs font-medium text-architech-electric">
               <Zap className="h-3 w-3" />
               Early Access
             </div>
