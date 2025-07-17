@@ -225,7 +225,7 @@ Professional meets artistic - perfect for creative developers.
   .bg-gradient-hero {
     background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
   }
-
+  
   .bg-gradient-surface {
     background: linear-gradient(135deg, hsl(var(--architech-surface)), hsl(var(--architech-surface-elevated)));
   }
@@ -330,7 +330,7 @@ Professional meets artistic - perfect for creative developers.
   .shadow-architech {
     box-shadow: 0 15px 35px -5px hsl(var(--architech-electric) / 0.3);
   }
-
+  
   .shadow-elevated {
     box-shadow: 0 8px 24px -4px hsl(var(--foreground) / 0.1);
   }
@@ -385,23 +385,23 @@ Professional meets artistic - perfect for creative developers.
     to {
       opacity: 1;
       transform: translateY(0);
-    }
   }
+}
 
-  @keyframes glow-pulse {
+@keyframes glow-pulse {
     from {
       box-shadow: 0 0 5px hsl(var(--architech-electric) / 0.2);
-    }
+  }
     to {
       box-shadow: 0 0 25px hsl(var(--architech-electric) / 0.6);
-    }
   }
+}
 
   @keyframes float-gentle {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
       transform: translateY(-12px);
     }
   }

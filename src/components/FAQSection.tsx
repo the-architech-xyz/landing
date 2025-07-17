@@ -76,9 +76,9 @@ const FAQSection = () => {
             variants={fadeInUp}
           >
             Got{" "}
-            <span className="text-transparent bg-gradient-electric bg-clip-text">
+              <span className="text-transparent bg-gradient-electric bg-clip-text">
               Questions?
-            </span>
+              </span>
           </motion.h2>
           
           <motion.p 
@@ -100,7 +100,7 @@ const FAQSection = () => {
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
-                key={index}
+                  key={index}
                 variants={fadeInUp}
                 className="glass-card rounded-2xl border border-architech-border hover:border-architech-electric/50 transition-all duration-300 overflow-hidden"
               >
@@ -112,7 +112,7 @@ const FAQSection = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 flex-1">
-                      {/* Category badge */}
+                  {/* Category badge */}
                       <motion.div 
                         className={`${getCategoryColor(faq.category)} rounded-xl p-2 text-white text-xs font-semibold min-w-fit`}
                         whileHover={{ scale: 1.05 }}
@@ -125,7 +125,7 @@ const FAQSection = () => {
                         {faq.question}
                       </h3>
                     </div>
-                    
+
                     {/* Toggle icon */}
                     <motion.div
                       animate={{ rotate: openFAQ === index ? 180 : 0 }}
