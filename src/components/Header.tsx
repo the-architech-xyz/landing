@@ -110,11 +110,7 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-3 sm:space-x-4">
-            {/* Early Access Badge */}
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1 glass-button rounded-full text-xs font-medium text-architech-electric">
-              <Zap className="h-3 w-3" />
-              Early Access
-            </div>
+           
 
             <Button
               variant="ghost"
@@ -176,13 +172,7 @@ const Header = () => {
                 Team
               </button>
               
-              {/* Mobile Early Access Badge */}
-              <div className="flex items-center gap-2 px-4 py-2 mt-2">
-                <div className="flex items-center gap-2 px-3 py-1 glass-button rounded-full text-xs font-medium text-architech-electric">
-                  <Zap className="h-3 w-3" />
-                  Early Access
-                </div>
-              </div>
+           
               
               <Button 
                 className="mt-4 mx-4 bg-gradient-electric hover:shadow-electric text-white font-semibold py-3 text-base"

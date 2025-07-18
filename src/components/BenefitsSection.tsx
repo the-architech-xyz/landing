@@ -536,9 +536,9 @@ const BenefitsSection = () => {
               . It's not just faster—it's better."
             </blockquote>
             
-            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
+            {/* <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
               Join hundreds of teams who've rediscovered the joy of building.
-            </p>
+            </p> */}
 
             <motion.div
               className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
