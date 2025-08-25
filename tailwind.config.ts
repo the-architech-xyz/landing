@@ -100,7 +100,8 @@ export default {
 			},
 			fontFamily: {
 				'inter': ['Inter', 'sans-serif'],
-				'mono': ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace']
+				'satoshi': ['Satoshi', 'sans-serif'],
+				'mono': ['Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', 'monospace']
 			},
 			backgroundImage: {
 				// Core brand gradients only

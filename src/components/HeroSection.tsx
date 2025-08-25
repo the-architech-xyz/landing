@@ -91,20 +91,22 @@ const HeroSection = () => {
           {/* Hero Message */}
           <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp}>
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight tracking-tight px-2"
+              className="text-4xl sm:text-5xl lg:text-7xl font-satoshi font-black leading-tight tracking-tight px-2"
               variants={fadeInDown}
             >
-              <motion.span className="text-foreground">Skip the Setup.</motion.span>
+              <motion.span className="text-foreground">The first no-code</motion.span>
               <br />
-              <motion.span className="text-transparent bg-gradient-electric bg-clip-text">Build the Magic.</motion.span>
+              <motion.span className="text-foreground">
+                <span className="text-transparent bg-gradient-electric bg-clip-text"> tool</span>
+                <span className="text-foreground"> built for developers.</span>
+              </motion.span>
             </motion.h1>
             
             <motion.p 
-              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light px-4"
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-inter font-medium px-4"
               variants={fadeInUp}
             >
-              Stop rebuilding authentication, databases, and deployment pipelines. 
-              The Architech assembles proven modules so you can focus on what makes your product unique.
+              Stop writing boilerplate. Start architecting. Assemble battle-tested modules and go from idea to scalable app in minutes—with full control over your code.
             </motion.p>
           </motion.div>
 
