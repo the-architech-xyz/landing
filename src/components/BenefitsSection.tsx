@@ -93,42 +93,42 @@ const BenefitsSection = () => {
         </motion.div>
 
         {/* Persona Tabs */}
-        <motion.div
+            <motion.div
           className="flex justify-center mb-8 sm:mb-12 px-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={fadeInUp}
-        >
-          <div className="flex bg-background/50 rounded-2xl p-2 backdrop-blur-sm border border-architech-border">
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInUp}
+          >
+            <div className="flex bg-background/50 rounded-2xl p-2 backdrop-blur-sm border border-architech-border">
             {[
               { id: "developers", label: "Developers" },
               { id: "founders", label: "Founders" },
               { id: "product", label: "Product Teams" }
             ].map((tab) => (
-              <button
+                <button
                 key={tab.id}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-base ${
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-base ${
                   activeTab === tab.id
-                    ? 'bg-gradient-electric text-white shadow-lg'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+                      ? 'bg-gradient-electric text-white shadow-lg'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
                 onClick={() => setActiveTab(tab.id)}
-              >
+                >
                 {tab.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
 
         {/* Code Diff Container */}
-        <motion.div
+          <motion.div
           key={activeTab}
           className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-        >
+          >
           <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-electric/20 bg-gradient-to-br from-architech-primary/5 to-architech-electric/5 relative overflow-hidden">
             
             {/* Background pattern */}
@@ -138,7 +138,7 @@ const BenefitsSection = () => {
 
             <div className="relative z-10">
               {/* File Header */}
-              <motion.div 
+                  <motion.div
                 className="text-center mb-8"
                 key={`${activeTab}-header`}
                 initial={{ opacity: 0, y: -10 }}
@@ -207,7 +207,7 @@ const BenefitsSection = () => {
                     >
                       BEFORE
                     </motion.h3>
-                    <div className="space-y-3">
+                      <div className="space-y-3">
                       {diffContent[activeTab as keyof typeof diffContent].content.map((item, index) => (
                         <motion.div
                           key={index}
@@ -220,11 +220,11 @@ const BenefitsSection = () => {
                           <div className="text-[#E06C75] flex-1">
                             <span className="text-[#E06C75]">{item.before.split(': ')[0]}:</span>
                             <span className="text-[#E06C75] ml-2">{item.before.split(': ')[1]}</span>
-                          </div>
+                              </div>
                         </motion.div>
                       ))}
-                    </div>
-                  </div>
+                              </div>
+                            </div>
 
                   {/* After Column */}
                   <div className="space-y-4">
@@ -249,8 +249,8 @@ const BenefitsSection = () => {
                           <div className="text-[#64FFDA] flex-1">
                             <span className="text-[#64FFDA]">{item.after.split(': ')[0]}:</span>
                             <span className="text-[#64FFDA] ml-2">{item.after.split(': ')[1]}</span>
-                          </div>
-                        </motion.div>
+                      </div>
+                    </motion.div>
                       ))}
                     </div>
                   </div>
@@ -268,10 +268,10 @@ const BenefitsSection = () => {
                   <Zap className="h-5 w-5" />
                   <span>Launch 10x Faster</span>
                 </motion.div>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
         {/* Call to Action */}
         <motion.div
@@ -292,16 +292,16 @@ const BenefitsSection = () => {
               . It's not just faster—it's better."
             </blockquote>
 
-                          <motion.div
-                className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => smoothScrollTo("how-it-works")}
-              >
-                <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
+            <motion.div
+              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => smoothScrollTo("how-it-works")}
+            >
+              <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span>Launch 10x Faster</span>
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
-              </motion.div>
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.div>
           </div>
         </motion.div>
       </div>
