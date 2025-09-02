@@ -82,6 +82,8 @@ const ArchitectsCanvas = () => {
   const [hoveredTech, setHoveredTech] = useState<number | null>(null);
   const [animationProgress, setAnimationProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [showProjectStructure, setShowProjectStructure] = useState(false);
+  const [showWorkingPreview, setShowWorkingPreview] = useState(false);
 
   const techStack = [
     { 
@@ -137,11 +139,96 @@ const ArchitectsCanvas = () => {
 
   const blueprintContent = [
     "# AI is drafting the blueprint...",
-    "stack:",
-    "  framework: \"React (Next.js)\"",
+    "project:",
+    "  name: \"Project Management Platform\"",
+    "  type: \"nextjs-fullstack\"",
+    "  version: \"1.0.0\"",
+    "",
+    "architecture:",
+    "  frontend: \"Next.js 14 (App Router)\"",
+    "  backend: \"Next.js API Routes\"",
     "  database: \"PostgreSQL (Supabase)\"",
-    "  auth: \"JWT (Auth.js)\"",
-    "  styling: \"TailwindCSS\""
+    "  auth: \"NextAuth.js (JWT)\"",
+    "  styling: \"TailwindCSS + shadcn/ui\"",
+    "  deployment: \"Vercel + Supabase\"",
+    "",
+    "features:",
+    "  - \"Real-time collaboration\"",
+    "  - \"Advanced analytics dashboard\"",
+    "  - \"Enterprise-grade security\"",
+    "  - \"Mobile-responsive design\"",
+    "  - \"Role-based access control\"",
+    "",
+    "database_schema:",
+    "  users: \"id, email, name, role, created_at\"",
+    "  projects: \"id, name, description, owner_id, status\"",
+    "  tasks: \"id, title, description, project_id, assignee_id\"",
+    "  analytics: \"id, project_id, metrics, timestamp\""
+  ];
+
+  const projectStructure = [
+    { name: "src/", type: "folder", children: [
+      { name: "app/", type: "folder", children: [
+        { name: "(auth)/", type: "folder", children: [
+          { name: "login/", type: "folder", children: [
+            { name: "page.tsx", type: "file", icon: "📄" }
+          ]},
+          { name: "register/", type: "folder", children: [
+            { name: "page.tsx", type: "file", icon: "📄" }
+          ]}
+        ]},
+        { name: "dashboard/", type: "folder", children: [
+          { name: "page.tsx", type: "file", icon: "📄" },
+          { name: "projects/", type: "folder", children: [
+            { name: "page.tsx", type: "file", icon: "📄" }
+          ]},
+          { name: "analytics/", type: "folder", children: [
+            { name: "page.tsx", type: "file", icon: "📄" }
+          ]}
+        ]},
+        { name: "api/", type: "folder", children: [
+          { name: "auth/", type: "folder", children: [
+            { name: "route.ts", type: "file", icon: "⚡" }
+          ]},
+          { name: "projects/", type: "folder", children: [
+            { name: "route.ts", type: "file", icon: "⚡" }
+          ]}
+        ]},
+        { name: "layout.tsx", type: "file", icon: "🏗️" },
+        { name: "globals.css", type: "file", icon: "🎨" }
+      ]},
+      { name: "components/", type: "folder", children: [
+        { name: "ui/", type: "folder", children: [
+          { name: "button.tsx", type: "file", icon: "🔘" },
+          { name: "card.tsx", type: "file", icon: "🃏" },
+          { name: "input.tsx", type: "file", icon: "📝" }
+        ]},
+        { name: "dashboard/", type: "folder", children: [
+          { name: "ProjectCard.tsx", type: "file", icon: "📊" },
+          { name: "AnalyticsChart.tsx", type: "file", icon: "📈" },
+          { name: "TaskList.tsx", type: "file", icon: "✅" }
+        ]}
+      ]},
+      { name: "lib/", type: "folder", children: [
+        { name: "db/", type: "folder", children: [
+          { name: "index.ts", type: "file", icon: "🗄️" },
+          { name: "schema.ts", type: "file", icon: "📋" }
+        ]},
+        { name: "auth/", type: "folder", children: [
+          { name: "index.ts", type: "file", icon: "🔐" },
+          { name: "config.ts", type: "file", icon: "⚙️" }
+        ]},
+        { name: "utils/", type: "folder", children: [
+          { name: "helpers.ts", type: "file", icon: "🛠️" }
+        ]}
+      ]},
+      { name: "types/", type: "folder", children: [
+        { name: "index.ts", type: "file", icon: "📝" }
+      ]}
+    ]},
+    { name: "package.json", type: "file", icon: "📦" },
+    { name: "tailwind.config.js", type: "file", icon: "🎨" },
+    { name: "next.config.js", type: "file", icon: "⚡" }
   ];
 
   const generatedCode = `// Generated dashboard component
@@ -229,6 +316,35 @@ export default withAuth(DashboardPage);`;
     requestAnimationFrame(animateParticles);
   };
 
+  // Project Structure Tree Component
+  const renderProjectStructure = (items: any[], level: number = 0) => {
+    return items.map((item, index) => (
+      <motion.div
+        key={`${item.name}-${index}`}
+        className="select-none"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.1, duration: 0.3 }}
+      >
+        <div className={`flex items-center gap-2 py-1 ${level > 0 ? 'ml-4' : ''}`}>
+          <span className="text-lg">{item.icon}</span>
+          <span className={`font-mono text-sm ${
+            item.type === 'folder' 
+              ? 'text-[#00A9FF] font-semibold' 
+              : 'text-[#F8F9FA]/80'
+          }`}>
+            {item.name}
+          </span>
+        </div>
+        {item.children && (
+          <div className="ml-2">
+            {renderProjectStructure(item.children, level + 1)}
+          </div>
+        )}
+      </motion.div>
+    ));
+  };
+
   // Mobile detection and optimization
   useEffect(() => {
     const checkMobile = () => {
@@ -254,16 +370,17 @@ export default withAuth(DashboardPage);`;
       onUpdate: () => {
         const progress = tl.progress();
         setAnimationProgress(progress);
-        if (progress < 0.2) {
-          setCurrentPhase(0);
-        } else if (progress < 0.4) {
-          setCurrentPhase(1);
-        } else if (progress < 0.7) {
-          setCurrentPhase(2);
-        } else if (progress < 0.9) {
-          setCurrentPhase(3);
+        // Simplified phase detection based on progress
+        if (progress < 0.25) {
+          setCurrentPhase(0);      // Phase 1: Dialogue
+        } else if (progress < 0.6) {
+          setCurrentPhase(1);      // Phase 2: Blueprint
+        } else if (progress < 0.85) {
+          setCurrentPhase(2);      // Phase 3: Construction
+        } else if (progress < 0.95) {
+          setCurrentPhase(3);      // Phase 4: Final Delivery
         } else {
-          setCurrentPhase(4);
+          setCurrentPhase(4);      // Final state
         }
       }
     });
@@ -273,9 +390,9 @@ export default withAuth(DashboardPage);`;
       .to({}, { 
         duration: 0.1, 
         onUpdate: () => {
-          typeText("A collaborative project management app with a modern design system.", undefined, 30);
+          typeText("A comprehensive project management platform with real-time collaboration, advanced analytics, and enterprise-grade security.", undefined, 30);
         }
-      }, 0.5)
+      })
       .to({}, { duration: 1.5 }) // Pause for reading
 
     // Phase 2: The Architect's Reflection (4-8 seconds) - Still Vertical Chat
@@ -286,38 +403,107 @@ export default withAuth(DashboardPage);`;
         setShowBlueprint(true);
         if (soundEnabled) playSound('transition', 0.1);
       }
-    }, 4.5)
+    })
+    // Animate blueprint line by line (all 20+ lines)
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 1)) 
-    }, 4.6)
+    })
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 2)) 
-    }, 4.8)
+    })
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 3)) 
-    }, 5.0)
+    })
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 4)) 
-    }, 5.2)
+    })
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 5)) 
-    }, 5.4)
+    })
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 6)) 
-    }, 5.6)
+    })
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 7)) 
-    }, 5.8)
-    .to({}, { duration: 1.2 }) // Pause for reading
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 8)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 9)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 10)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 11)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 12)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 13)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 14)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 15)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 16)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 17)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 18)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 19)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 20)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 21)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 22)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 23)) 
+    })
+    .to({}, { 
+      duration: 0.1, 
+      onUpdate: () => setBlueprintLines(blueprintContent.slice(0, 24)) 
+    })
+    .to({}, { duration: 2.0 }) // Extended pause for reading complete blueprint
 
-    // Phase 3: Visual Construction (8-14 seconds) - TRANSITION TO HORIZONTAL
+    // Phase 3: Visual Construction - TRANSITION TO HORIZONTAL
     .to({}, { duration: 0.5 }) // Setup
     .to({}, { 
       duration: 0.1, 
@@ -327,32 +513,38 @@ export default withAuth(DashboardPage);`;
         createLuminousExtraction(); // Trigger luminous extraction
         if (soundEnabled) playSound('transition', 0.15);
       }
-    }, 8.5)
-    .to({}, { 
-      duration: 3, 
+    })
+    .to({}, 4, { 
       onUpdate: (progress) => {
         setModuleAssembly(progress);
-        if (soundEnabled && progress > 0.3 && progress < 0.4) {
-          playSound('snap', 0.1);
+        // Enhanced sound effects for module assembly
+        if (soundEnabled) {
+          if (progress > 0.2 && progress < 0.25) playSound('snap', 0.08);
+          if (progress > 0.4 && progress < 0.45) playSound('snap', 0.1);
+          if (progress > 0.6 && progress < 0.65) playSound('snap', 0.12);
+          if (progress > 0.8 && progress < 0.85) playSound('snap', 0.15);
         }
       }, 
-      ease: "power2.out" 
-    }, 8.5)
+      ease: "power2.out" // Using GSAP's built-in easing
+    })
     .to({}, { duration: 1.5 }) // Pause for viewing
 
-    // Phase 4: Final Delivery (14-20 seconds) - HORIZONTAL TRIPTYCH
+    // Phase 4: Final Delivery - HORIZONTAL TRIPTYCH
     .to({}, { 
       duration: 0.1, 
       onUpdate: () => {
-        setShowCode(true);
-        if (soundEnabled) playSound('transition', 0.1);
+        setShowProjectStructure(true);
+        if (soundEnabled) playSound('transition', 0.15);
       }
-    }, 14.0)
+    })
     .to({}, { 
       duration: 0.1, 
-      onUpdate: () => setShowCheckmarks(true) 
-    }, 14.2)
-    .to({}, { duration: 2.8 }) // Final pause
+      onUpdate: () => {
+        setShowWorkingPreview(true);
+        if (soundEnabled) playSound('transition', 0.1);
+      }
+    })
+    .to({}, { duration: 4.0 }) // Extended final pause to appreciate the result
 
     // Store timeline reference
     window.architectureTimeline = tl;
@@ -372,8 +564,8 @@ export default withAuth(DashboardPage);`;
       setBlueprintLines([]);
       setShowModules(false);
       setModuleAssembly(0);
-      setShowCode(false);
-      setShowCheckmarks(false);
+      setShowProjectStructure(false);
+      setShowWorkingPreview(false);
       setCurrentPhase(0);
       setIsTyping(false);
       setTypingText("");
@@ -457,12 +649,12 @@ export default withAuth(DashboardPage);`;
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Watch the AI Architect{" "}
+            Witness Architectural{" "}
             <span className="text-transparent bg-gradient-to-r from-[#00A9FF] to-[#39FF14] bg-clip-text">
-              Build Your Vision
+              Mastery in Action
             </span>
             <br />
-            In Real-Time
+            Live Session
           </motion.h2>
 
           <motion.p
@@ -472,8 +664,8 @@ export default withAuth(DashboardPage);`;
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Experience a live collaboration session with The Architect AI. Watch as your intent transforms 
-            into production-ready architecture through intelligent design and seamless automation.
+            Experience the precision of AI-driven architecture. Watch as complex requirements transform 
+            into elegant, scalable solutions through expert engineering and intelligent automation.
           </motion.p>
         </motion.div>
       </div>
@@ -494,21 +686,22 @@ export default withAuth(DashboardPage);`;
           >
             <motion.button
               onClick={startAnimation}
-              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#00A9FF] to-[#39FF14] text-white rounded-full font-semibold text-lg hover:shadow-lg transition-all duration-300 group"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0, 169, 255, 0.3)" }}
+              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#00A9FF]/90 to-[#39FF14]/90 backdrop-blur-md text-white rounded-2xl font-semibold text-lg border border-white/20 shadow-2xl hover:shadow-[#00A9FF]/25 transition-all duration-300 group relative overflow-hidden"
+              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 20px 40px rgba(0, 169, 255, 0.4)" }}
               whileTap={{ scale: 0.95 }}
             >
-              <img src="/logo-removebg.png" alt="The Architect" className="h-6 w-6 object-contain" />
-              <span>{currentPhase === 4 ? "Restart Session" : "Start Session"}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <img src="/logo-removebg.png" alt="The Architect" className="h-6 w-6 object-contain relative z-10" />
+              <span className="relative z-10">{currentPhase === 4 ? "Restart Session" : "Start Session"}</span>
             </motion.button>
             
-            {/* Sound Toggle */}
-            {/* <motion.button
+            {/* Sound Toggle - Temporarily disabled for cleaner UI */}
+            <motion.button
               onClick={() => setSoundEnabled(!soundEnabled)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm border ${
                 soundEnabled 
-                  ? 'bg-[#39FF14]/20 text-[#39FF14] border border-[#39FF14]/30' 
-                  : 'bg-[#F8F9FA]/10 text-[#F8F9FA]/60 border border-[#F8F9FA]/20'
+                  ? 'bg-[#39FF14]/20 text-[#39FF14] border-[#39FF14]/30 shadow-lg shadow-[#39FF14]/20' 
+                  : 'bg-[#F8F9FA]/10 text-[#F8F9FA]/60 border-[#F8F9FA]/20 shadow-lg shadow-[#F8F9FA]/10'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -521,7 +714,7 @@ export default withAuth(DashboardPage);`;
                 )}
               </svg>
               <span>{soundEnabled ? 'Sound On' : 'Sound Off'}</span>
-            </motion.button> */}
+            </motion.button>
           </motion.div>
         )}
 
@@ -556,9 +749,9 @@ export default withAuth(DashboardPage);`;
                     <div className="w-12 h-12 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#00A9FF]/30 overflow-hidden">
                       <img src="/logo-removebg.png" alt="The Architect" className="w-8 h-8 object-contain" />
                     </div>
-                    <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                      <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                      <div className="text-[#F8F9FA] text-lg">What are we building today?</div>
+                    <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg shadow-[#00A9FF]/10">
+                      <div className="text-[#00A9FF] font-bold mb-3 text-lg tracking-wide">The Architect</div>
+                      <div className="text-[#F8F9FA] text-lg font-medium leading-relaxed">What architectural challenge shall we solve today?</div>
                     </div>
                   </div>
                 </motion.div>
@@ -571,8 +764,8 @@ export default withAuth(DashboardPage);`;
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                 >
                                      <div className="bg-[#39FF14]/10 border border-[#39FF14]/20 rounded-2xl p-6 backdrop-blur-sm max-w-md shadow-lg">
-                     <div className="text-[#39FF14] font-semibold mb-3 text-lg">You</div>
-                     <div className="text-[#F8F9FA] font-mono text-lg">
+                     <div className="text-[#39FF14] font-bold mb-3 text-lg tracking-wide">You</div>
+                     <div className="text-[#F8F9FA] font-mono text-lg font-medium leading-relaxed">
                        {typingText || typedText}
                        {isTyping && <span className="animate-pulse ml-1 text-[#39FF14]">|</span>}
                      </div>
@@ -608,7 +801,7 @@ export default withAuth(DashboardPage);`;
                       </div>
                       <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-[#F8F9FA] text-lg">Understood. I suggest this architecture. It's built for scale and flexibility.</div>
+                        <div className="text-[#F8F9FA] text-lg font-medium">Excellent requirements. I've designed a robust architecture optimized for enterprise-scale performance, security, and maintainability.</div>
                       </div>
                     </div>
                   </motion.div>
@@ -621,29 +814,41 @@ export default withAuth(DashboardPage);`;
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <div className="glass-card rounded-2xl p-6 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl">
-                      <div className="bg-[#0D1B2A] rounded-xl p-6 border border-[#00A9FF]/30 font-mono text-sm">
-                        {blueprintLines.map((line, index) => (
-                          <motion.div
-                            key={index}
-                            className="text-[#F8F9FA] min-h-[1.5rem]"
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1, duration: 0.3 }}
-                          >
-                            {line.startsWith('#') ? (
-                              <span className="text-[#00A9FF]">{line}</span>
-                            ) : line.startsWith('stack:') ? (
-                              <span className="text-[#00A9FF]">{line}</span>
-                            ) : line.includes(':') ? (
-                              <>
-                                <span className="text-[#00A9FF]">{line.split(':')[0]}:</span>
-                                <span className="text-[#39FF14] ml-2">"{line.split(':')[1].trim()}"</span>
-                              </>
-                            ) : (
-                              <span className="text-[#F8F9FA]">{line}</span>
-                            )}
-                          </motion.div>
-                        ))}
+                      <div className="bg-[#0D1B2A] rounded-xl p-6 border border-[#00A9FF]/30 font-mono text-sm shadow-2xl shadow-[#00A9FF]/10 relative overflow-hidden">
+                        {/* Line numbers */}
+                        <div className="absolute left-0 top-0 bottom-0 w-8 bg-[#00A9FF]/5 border-r border-[#00A9FF]/20 flex flex-col">
+                          {blueprintLines.map((_, index) => (
+                            <div key={index} className="text-[#00A9FF]/40 text-xs leading-6 pl-2">
+                              {index + 1}
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Code content */}
+                        <div className="ml-10">
+                          {blueprintLines.map((line, index) => (
+                            <motion.div
+                              key={index}
+                              className="text-[#F8F9FA] min-h-[1.5rem] leading-6"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1, duration: 0.3 }}
+                            >
+                              {line.startsWith('#') ? (
+                                <span className="text-[#00A9FF]/70 font-medium">{line}</span>
+                              ) : line.startsWith('stack:') ? (
+                                <span className="text-[#00A9FF] font-semibold">{line}</span>
+                              ) : line.includes(':') ? (
+                                <>
+                                  <span className="text-[#00A9FF] font-medium">{line.split(':')[0]}:</span>
+                                  <span className="text-[#39FF14] ml-2 font-medium">"{line.split(':')[1].trim()}"</span>
+                                </>
+                              ) : (
+                                <span className="text-[#F8F9FA]">{line}</span>
+                              )}
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -675,7 +880,7 @@ export default withAuth(DashboardPage);`;
                       </div>
                       <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-[#F8F9FA] text-lg">Perfect. I'm now assembling the best-in-class open-source modules based on this blueprint.</div>
+                        <div className="text-[#F8F9FA] text-lg font-medium">Architecture validated. Now orchestrating enterprise-grade components with precision engineering and seamless integration.</div>
                       </div>
                     </div>
                   </motion.div>
@@ -712,25 +917,27 @@ export default withAuth(DashboardPage);`;
                              className="relative group"
                              initial={{ 
                                opacity: 0, 
-                               scale: 0, 
-                               y: 100,
-                               rotateX: -90,
-                               z: -50
+                               scale: 0.3, 
+                               y: 150,
+                               rotateX: -120,
+                               rotateY: 45,
+                               z: -100
                              }}
                              animate={{ 
                                opacity: showModules ? 1 : 0, 
-                               scale: showModules ? 1 : 0,
-                               y: showModules ? 0 : 100,
-                               rotateX: showModules ? 0 : -90,
-                               z: showModules ? 0 : -50
+                               scale: showModules ? 1 : 0.3,
+                               y: showModules ? 0 : 150,
+                               rotateX: showModules ? 0 : -120,
+                               rotateY: showModules ? 0 : 45,
+                               z: showModules ? 0 : -100
                              }}
                              transition={{ 
-                               delay: index * 0.4, 
-                               duration: 0.8, 
+                               delay: index * 0.3, 
+                               duration: 1.2, 
                                ease: [0.68, -0.55, 0.265, 1.55],
                                type: "spring",
-                               stiffness: 100,
-                               damping: 15
+                               stiffness: 120,
+                               damping: 12
                              }}
                              style={{
                                transform: `scale(${1 + moduleAssembly * 0.05}) rotateY(${moduleAssembly * 2}deg)`,
@@ -837,61 +1044,79 @@ export default withAuth(DashboardPage);`;
                       </div>
                       <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-[#F8F9FA] text-lg">Architecture complete. Here is your clean, production-ready codebase. You have full ownership.</div>
+                        <div className="text-[#F8F9FA] text-lg font-medium">Mission accomplished. Your enterprise-grade architecture is complete with full source code ownership, comprehensive documentation, and deployment-ready infrastructure.</div>
                       </div>
                     </div>
                   </motion.div>
 
-                  {/* Final Triptych */}
+                  {/* Final Triptych - Project Structure & Working Preview */}
                   <div className="lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Validated Blueprint */}
+                    {/* Project Structure Tree */}
                     <motion.div
                       className="glass-card rounded-2xl p-4 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                      <div className="bg-[#0D1B2A] rounded-xl p-4 border border-[#00A9FF]/30 font-mono text-xs">
-                        {blueprintContent.map((line, index) => (
-                          <motion.div
-                            key={index}
-                            className="text-[#F8F9FA] min-h-[1.5rem] flex items-center gap-2"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: index * 0.1, duration: 0.3 }}
-                          >
-                            {line.startsWith('#') ? (
-                              <span className="text-[#00A9FF]">{line}</span>
-                            ) : line.startsWith('stack:') ? (
-                              <>
-                                <span className="text-[#00A9FF]">{line}</span>
-                                {showCheckmarks && <span className="text-[#39FF14]">✅</span>}
-                              </>
-                            ) : line.includes(':') ? (
-                              <>
-                                <span className="text-[#00A9FF]">{line.split(':')[0]}:</span>
-                                <span className="text-[#39FF14] ml-2">"{line.split(':')[1].trim()}"</span>
-                                {showCheckmarks && <span className="text-[#39FF14] ml-2">✅</span>}
-                              </>
-                            ) : (
-                              <span className="text-[#F8F9FA]">{line}</span>
-                            )}
-                          </motion.div>
-                        ))}
+                      <h3 className="text-[#00A9FF] font-semibold mb-3 text-sm">Project Structure</h3>
+                      <div className="bg-[#0D1B2A] rounded-xl p-4 border border-[#00A9FF]/30 font-mono text-xs max-h-64 overflow-y-auto">
+                        {showProjectStructure && renderProjectStructure(projectStructure)}
                       </div>
                     </motion.div>
 
-                    {/* Generated Code */}
+                    {/* Working Preview */}
                     <motion.div
-                      className="glass-card rounded-2xl p-4 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl"
+                      className="glass-card rounded-2xl p-4 border border-[#39FF14]/20 bg-gradient-to-br from-[#39FF14]/5 to-[#00A9FF]/5 shadow-xl"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                      <div className="bg-[#0D1B2A] rounded-xl p-4 border border-[#00A9FF]/30 font-mono text-xs">
-                        <pre className="text-[#F8F9FA] whitespace-pre-wrap">
-                          <code>{generatedCode}</code>
-                        </pre>
+                      <h3 className="text-[#39FF14] font-semibold mb-3 text-sm">Live Preview</h3>
+                      <div className="bg-[#0D1B2A] rounded-xl p-4 border border-[#39FF14]/30 overflow-hidden">
+                        {showWorkingPreview && (
+                          <motion.div
+                            className="bg-white rounded-lg p-3 shadow-lg"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                          >
+                            {/* Dashboard Preview */}
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between border-b pb-2">
+                                <h4 className="font-semibold text-gray-800 text-sm">Project Dashboard</h4>
+                                <div className="flex gap-1">
+                                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                </div>
+                              </div>
+                              
+                              <div className="grid grid-cols-2 gap-2">
+                                <div className="bg-blue-50 p-2 rounded">
+                                  <div className="text-xs text-blue-600 font-medium">Active</div>
+                                  <div className="text-lg font-bold text-blue-800">12</div>
+                                </div>
+                                <div className="bg-green-50 p-2 rounded">
+                                  <div className="text-xs text-green-600 font-medium">Done</div>
+                                  <div className="text-lg font-bold text-green-800">8</div>
+                                </div>
+                              </div>
+                              
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-2 p-1 bg-gray-50 rounded text-xs">
+                                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                  <span className="text-gray-700">Project Alpha</span>
+                                  <span className="text-gray-500 ml-auto">85%</span>
+                                </div>
+                                <div className="flex items-center gap-2 p-1 bg-gray-50 rounded text-xs">
+                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                  <span className="text-gray-700">Project Beta</span>
+                                  <span className="text-gray-500 ml-auto">100%</span>
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
                       </div>
                     </motion.div>
                   </div>
