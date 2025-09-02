@@ -81,14 +81,14 @@ const BenefitsSection = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            From 3 Days to 3 Minutes.
+            From Days to Minutes.
           </motion.h2>
 
           <motion.p
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 font-inter font-normal"
             variants={fadeInUp}
           >
-            The Architech eliminates 90% of a developer's repetitive work, so you can focus on building features, not fighting with Docker configs.
+            The Architech eliminates 90% of a developer's repetitive work, so you can focus on building features, not fighting with configs.
           </motion.p>
         </motion.div>
 
