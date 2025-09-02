@@ -52,7 +52,7 @@ const BenefitsSection = () => {
   return (
     <section
       id="benefits"
-      className="py-16 sm:py-24 bg-gradient-surface relative overflow-hidden"
+      className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
@@ -69,13 +69,7 @@ const BenefitsSection = () => {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-6 sm:mb-8"
-            variants={scaleIn}
-          >
-            <Sparkles className="h-4 w-4" />
-            Real stories, real results
-          </motion.div>
+
 
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
@@ -257,18 +251,7 @@ const BenefitsSection = () => {
                 </div>
               </div>
 
-              {/* Impact Summary */}
-              <div className="text-center mt-8">
-                <motion.div 
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-electric text-white rounded-full font-semibold text-lg"
-                  initial={{ scale: 1 }}
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Zap className="h-5 w-5" />
-                  <span>Launch 10x Faster</span>
-                </motion.div>
-                </div>
+
               </div>
             </div>
           </motion.div>
@@ -286,7 +269,7 @@ const BenefitsSection = () => {
             
             <blockquote className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
               "The Architech will change how we think about{" "}
-              <span className="text-transparent bg-gradient-electric bg-clip-text">
+              <span className="text-transparent bg-gradient-brand bg-clip-text">
                 building software
               </span>
               . It's not just faster—it's better."

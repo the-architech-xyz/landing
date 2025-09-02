@@ -585,7 +585,7 @@ export default withAuth(DashboardPage);`;
     <section
       ref={containerRef}
       id="architects-canvas"
-      className="min-h-screen bg-[#0D1B2A] relative overflow-hidden"
+      className="min-h-screen bg-architech-section-light relative overflow-hidden"
     >
       {/* Enhanced background with subtle architectural patterns */}
       <div className="absolute inset-0 opacity-5">
@@ -621,7 +621,7 @@ export default withAuth(DashboardPage);`;
       </div>
 
       {/* Header */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 ">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 mt-24">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 60 }}
@@ -629,18 +629,7 @@ export default withAuth(DashboardPage);`;
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-full text-sm font-medium text-[#00A9FF] mb-6 sm:mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            The Architecture Session
-          </motion.div>
+
 
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
@@ -814,7 +803,7 @@ export default withAuth(DashboardPage);`;
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <div className="glass-card rounded-2xl p-6 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl">
-                      <div className="bg-[#0D1B2A] rounded-xl p-6 border border-[#00A9FF]/30 font-mono text-sm shadow-2xl shadow-[#00A9FF]/10 relative overflow-hidden">
+                      <div className="bg-architech-section-light rounded-xl p-6 border border-[#00A9FF]/30 font-mono text-sm shadow-2xl shadow-[#00A9FF]/10 relative overflow-hidden">
                         {/* Line numbers */}
                         <div className="absolute left-0 top-0 bottom-0 w-8 bg-[#00A9FF]/5 border-r border-[#00A9FF]/20 flex flex-col">
                           {blueprintLines.map((_, index) => (
@@ -999,7 +988,7 @@ export default withAuth(DashboardPage);`;
                                {/* Interactive Tooltip (Mobile Optimized) */}
                                {hoveredTech === index && (
                                  <motion.div
-                                   className={`absolute ${isMobile ? '-top-24' : '-top-20'} left-1/2 transform -translate-x-1/2 bg-[#0D1B2A] border border-[#00A9FF]/30 rounded-lg ${isMobile ? 'p-2' : 'p-3'} shadow-xl z-50 ${isMobile ? 'min-w-[150px]' : 'min-w-[200px]'}`}
+                                   className={`absolute ${isMobile ? '-top-24' : '-top-20'} left-1/2 transform -translate-x-1/2 bg-architech-section-light border border-[#00A9FF]/30 rounded-lg ${isMobile ? 'p-2' : 'p-3'} shadow-xl z-50 ${isMobile ? 'min-w-[150px]' : 'min-w-[200px]'}`}
                                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
                                    animate={{ opacity: 1, y: 0, scale: 1 }}
                                    exit={{ opacity: 0, y: 10, scale: 0.9 }}
@@ -1007,7 +996,7 @@ export default withAuth(DashboardPage);`;
                                  >
                                    <div className="text-[#00A9FF] font-semibold text-sm mb-1">{tech.name}</div>
                                    <div className="text-[#F8F9FA]/80 text-xs">{tech.description}</div>
-                                   <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#0D1B2A] border-r border-b border-[#00A9FF]/30 rotate-45"></div>
+                                   <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-architech-section-light border-r border-b border-[#00A9FF]/30 rotate-45"></div>
                                  </motion.div>
                                )}
                              </motion.div>
@@ -1059,7 +1048,7 @@ export default withAuth(DashboardPage);`;
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
                       <h3 className="text-[#00A9FF] font-semibold mb-3 text-sm">Project Structure</h3>
-                      <div className="bg-[#0D1B2A] rounded-xl p-4 border border-[#00A9FF]/30 font-mono text-xs max-h-64 overflow-y-auto">
+                      <div className="bg-architech-section-light rounded-xl p-4 border border-[#00A9FF]/30 font-mono text-xs max-h-64 overflow-y-auto">
                         {showProjectStructure && renderProjectStructure(projectStructure)}
                       </div>
                     </motion.div>
@@ -1072,7 +1061,7 @@ export default withAuth(DashboardPage);`;
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
                       <h3 className="text-[#39FF14] font-semibold mb-3 text-sm">Live Preview</h3>
-                      <div className="bg-[#0D1B2A] rounded-xl p-4 border border-[#39FF14]/30 overflow-hidden">
+                      <div className="bg-architech-section-light rounded-xl p-4 border border-[#39FF14]/30 overflow-hidden">
                         {showWorkingPreview && (
                           <motion.div
                             className="bg-white rounded-lg p-3 shadow-lg"

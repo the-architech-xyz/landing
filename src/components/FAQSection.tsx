@@ -48,7 +48,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-gradient-surface relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-32 h-32 bg-architech-electric rounded-full blur-xl"></div>
@@ -68,7 +68,7 @@ const FAQSection = () => {
             variants={fadeInUp}
           >
             Got{" "}
-              <span className="text-transparent bg-gradient-electric bg-clip-text">
+              <span className="text-transparent bg-gradient-brand bg-clip-text">
               Questions?
               </span>
           </motion.h2>

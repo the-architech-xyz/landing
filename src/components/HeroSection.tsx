@@ -97,7 +97,7 @@ const HeroSection = () => {
               <motion.span className="text-foreground">The first no-code</motion.span>
               <br />
               <motion.span className="text-foreground">
-                <span className="text-transparent bg-gradient-electric bg-clip-text"> tool</span>
+                <span className="text-transparent bg-gradient-brand bg-clip-text"> tool</span>
                 <span className="text-foreground"> built for developers.</span>
               </motion.span>
             </motion.h1>

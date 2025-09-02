@@ -71,7 +71,7 @@ const SimpleCTASection = () => {
 
   if (isSubmitted) {
     return (
-      <section className="py-24 bg-gradient-surface">
+      <section className="py-24 bg-architech-section-light">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-success mb-6 animate-fade-in-up">
@@ -80,7 +80,7 @@ const SimpleCTASection = () => {
             
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Welcome to the{" "}
-              <span className="text-transparent bg-gradient-electric bg-clip-text">Revolution!</span>
+              <span className="text-transparent bg-gradient-brand bg-clip-text">Revolution!</span>
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8">
@@ -109,12 +109,12 @@ const SimpleCTASection = () => {
   }
 
   return (
-    <section id="cta" className="py-24 bg-gradient-surface">
+    <section id="cta" className="py-24 bg-architech-section-light">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Ready to{" "}
-            <span className="text-transparent bg-gradient-electric bg-clip-text">Skip the Setup?</span>
+            <span className="text-transparent bg-gradient-brand bg-clip-text">Skip the Setup?</span>
           </h2>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto">

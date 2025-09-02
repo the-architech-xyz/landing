@@ -75,6 +75,10 @@ Professional meets artistic - perfect for creative developers.
     --architech-border: 220 15% 85%;
     --architech-border-hover: 220 20% 80%;
 
+    /* Alternating Section Backgrounds */
+    --architech-section-light: 220 15% 99%;     /* Light cream background */
+    --architech-section-dark: 220 30% 8%;       /* Dark background */
+
     /* Glass Effects */
     --architech-glass: 220 30% 98%;
     --architech-glass-border: 220 20% 90%;
@@ -154,6 +158,10 @@ Professional meets artistic - perfect for creative developers.
     --architech-border: 220 20% 20%;
     --architech-border-hover: 220 25% 25%;
 
+    /* Alternating Section Backgrounds - Dark Mode */
+    --architech-section-light: 220 25% 12%;     /* Darker cream for dark mode */
+    --architech-section-dark: 220 30% 6%;       /* Even darker background */
+
     /* Dark glass effects */
     --architech-glass: 220 25% 12%;
     --architech-glass-border: 220 20% 20%;
@@ -209,6 +217,14 @@ Professional meets artistic - perfect for creative developers.
     background-color: hsl(var(--architech-surface));
   }
 
+  .bg-architech-section-light {
+    background-color: hsl(var(--architech-section-light));
+  }
+
+  .bg-architech-section-dark {
+    background-color: hsl(var(--architech-section-dark));
+  }
+
   .border-architech-electric {
     border-color: hsl(var(--architech-electric));
   }
@@ -216,6 +232,10 @@ Professional meets artistic - perfect for creative developers.
   /* Rich Gradient System - Fluid & Beautiful */
   .bg-gradient-electric {
     background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-electric-dark)));
+  }
+
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #00A9FF, #39FF14);
   }
 
   .bg-gradient-architech {
@@ -294,6 +314,7 @@ Professional meets artistic - perfect for creative developers.
 
   /* Fixed Gradient Text Rendering - No More Blue Boxes! */
   .text-transparent.bg-gradient-electric,
+  .text-transparent.bg-gradient-brand,
   .text-transparent.bg-gradient-architech,
   .text-transparent.bg-gradient-rainbow,
   .text-transparent.bg-gradient-sunset,

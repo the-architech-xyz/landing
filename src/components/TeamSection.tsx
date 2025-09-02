@@ -4,7 +4,7 @@ import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, defaultVi
 
 const TeamSection = () => {
   return (
-    <section id="team" className="py-24 bg-background relative overflow-hidden">
+    <section id="team" className="py-24 bg-architech-section-light relative overflow-hidden">
       {/* Background elements */}
       <motion.div 
         className="absolute top-10 right-10 w-20 h-20 bg-gradient-electric rounded-full opacity-10 blur-xl"
@@ -36,7 +36,7 @@ const TeamSection = () => {
             variants={fadeInUp}
           >
             Built by{" "}
-            <span className="text-transparent bg-gradient-electric bg-clip-text">
+            <span className="text-transparent bg-gradient-brand bg-clip-text">
               Developers
             </span>
             <br />
@@ -163,7 +163,7 @@ const TeamSection = () => {
                   className="leading-relaxed"
                   variants={fadeInUp}
                 >
-                  This isn't just another tool - it's a <span className="text-transparent bg-gradient-electric bg-clip-text font-medium">revolution against complexity</span>. I'm building the platform I wish I had when I was drowning in configuration files at 2 AM, dreaming of focusing on the magic instead of the plumbing.
+                  This isn't just another tool - it's a <span className="text-transparent bg-gradient-brand bg-clip-text font-medium">revolution against complexity</span>. I'm building the platform I wish I had when I was drowning in configuration files at 2 AM, dreaming of focusing on the magic instead of the plumbing.
                 </motion.p>
               </motion.div>
             </motion.div>

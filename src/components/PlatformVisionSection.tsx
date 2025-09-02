@@ -50,7 +50,7 @@ const PlatformVisionSection = () => {
   };
 
   return (
-    <section id="platform-vision" className="py-16 sm:py-24 bg-background relative overflow-hidden">
+    <section id="platform-vision" className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
           className="text-center mb-12 sm:mb-20"
@@ -72,7 +72,7 @@ const PlatformVisionSection = () => {
             variants={fadeInUp}
           >
             The Journey{" "}
-            <span className="text-transparent bg-gradient-electric bg-clip-text">
+            <span className="text-transparent bg-gradient-brand bg-clip-text">
               Ahead
             </span>
           </motion.h2>
