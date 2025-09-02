@@ -11,51 +11,67 @@ import {
 const WhereWeFitSection = () => {
   const comparisonData = [
     {
+      capability: "Target Audience",
+      noCode: "Non-Developers",
+      aiBuilders: "Designers / PMs",
+      aiAssistants: "Developers",
+      architech: "Developers & Architects",
+      architechHighlight: true
+    },
+    {
+      capability: "Primary Goal",
+      noCode: "Build UIs & Simple Apps",
+      aiBuilders: "Generate UI Components",
+      aiAssistants: "Write Code Faster",
+      architech: "Design & Build Systems",
+      architechHighlight: true
+    },
+    {
       capability: "Speed to V1",
       noCode: "⚡️⚡️⚡️",
+      aiBuilders: "⚡️⚡️⚡️",
       aiAssistants: "⚡️⚡️",
-      classicDev: "⚡️",
       architech: "⚡️⚡️⚡️",
       architechHighlight: true
     },
     {
       capability: "Code Ownership & Control",
-      noCode: "❌",
-      aiAssistants: "✅",
-      classicDev: "✅✅✅",
-      architech: "✅✅✅",
+      noCode: "❌ (Platform Lock-in)",
+      aiBuilders: "❌ (Code is a final output)",
+      aiAssistants: "✅ (Your codebase)",
+      architech: "✅ (100% Yours)",
       architechHighlight: true
     },
     {
-      capability: "Architectural Design",
-      noCode: "Pre-built",
+      capability: "Architecture",
+      noCode: "Pre-built (Black Box)",
+      aiBuilders: "AI-Generated (Opaque)",
       aiAssistants: "Manual",
-      classicDev: "Manual",
-      architech: "AI-Architected",
+      architech: "AI-Architected (Transparent)",
       architechHighlight: true
     },
     {
-      capability: "Tech Stack Flexibility",
-      noCode: "❌ (Locked)",
-      aiAssistants: "✅ (Yours)",
-      classicDev: "✅ (Yours)",
-      architech: "✅ (Agnostic)",
+      capability: "Scalability",
+      noCode: "🔒 (Limited by Platform)",
+      aiBuilders: "❓ (Uncertain)",
+      aiAssistants: "✅ (Depends on you)",
+      architech: "✅ (Built-in Best Practices)",
       architechHighlight: true
     },
     {
-      capability: "Primary Focus",
-      noCode: "Building UIs",
-      aiAssistants: "Completing Lines",
-      classicDev: "Writing Code",
-      architech: "Designing Systems",
+      capability: "Security",
+      noCode: "🔒 (Platform's Responsibility)",
+      aiBuilders: "❓ (Depends on generation)",
+      aiAssistants: "✅ (Your responsibility)",
+      architech: "✅ (Via Secure Modules)",
       architechHighlight: true
     },
     {
-      capability: "Final Output",
-      noCode: "A Web App",
-      aiAssistants: "Code Snippets",
-      classicDev: "Your Application",
-      architech: "A Full, Production-Ready Codebase",
+      capability: "Flexibility / Customization",
+      noCode: "Low",
+      aiBuilders: "Low",
+      aiAssistants: "High",
+      architech: "High",
       architechHighlight: true
     }
   ];
@@ -123,10 +139,10 @@ const WhereWeFitSection = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            Speed AND Control.
+            A New Class of Tool.
             <br />
             <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              No Compromises.
+              Built for Production.
             </span>
           </motion.h2>
           
@@ -134,7 +150,7 @@ const WhereWeFitSection = () => {
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
-            How The Architech compares to the tools you already know.
+            How The Architech combines the best of every world, without the compromises.
           </motion.p>
         </motion.div>
 
@@ -157,15 +173,15 @@ const WhereWeFitSection = () => {
               <div className="p-4 sm:p-6 font-bold text-foreground text-base sm:text-lg">Capability</div>
               <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
                 No-Code Platforms<br />
-                <span className="text-xs text-muted-foreground/60">(e.g., Bubble)</span>
+                <span className="text-xs text-muted-foreground/60">(e.g., Bubble, Webflow)</span>
+              </div>
+              <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
+                No-Code AI Builders<br />
+                <span className="text-xs text-muted-foreground/60">(e.g., Vercel v0, Lovable)</span>
               </div>
               <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
                 AI Code Assistants<br />
-                <span className="text-xs text-muted-foreground/60">(e.g., Copilot)</span>
-              </div>
-              <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
-                Classic Development<br />
-                <span className="text-xs text-muted-foreground/60">(Manual Setup)</span>
+                <span className="text-xs text-muted-foreground/60">(e.g., Copilot, Cursor)</span>
               </div>
               <div className="p-4 sm:p-6 text-center font-bold text-architech-brand-blue text-xs sm:text-sm border-l-2 border-architech-brand-blue bg-architech-brand-blue/5">
                 The Architech<br />
@@ -193,10 +209,10 @@ const WhereWeFitSection = () => {
                   {row.noCode}
                 </div>
                 <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
-                  {row.aiAssistants}
+                  {row.aiBuilders}
                 </div>
                 <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
-                  {row.classicDev}
+                  {row.aiAssistants}
                 </div>
                 <div className={`p-4 sm:p-6 text-center font-semibold border-l-2 text-sm sm:text-base relative overflow-hidden ${
                   row.architechHighlight 
@@ -236,10 +252,12 @@ const WhereWeFitSection = () => {
                 className="text-lg sm:text-xl text-muted-foreground mb-6 leading-relaxed"
                 variants={fadeInUp}
               >
-                The Architech is the only tool that delivers{" "}
-                <span className="text-architech-brand-blue font-semibold">no-code speed</span>{" "}
+                The Architech is the only tool that combines{" "}
+                <span className="text-architech-brand-blue font-semibold">AI-architected systems</span>{" "}
                 with{" "}
-                <span className="text-architech-brand-green font-semibold">full-stack control</span>.
+                <span className="text-architech-brand-green font-semibold">100% code ownership</span>{" "}
+                and{" "}
+                <span className="text-architech-brand-blue font-semibold">production-ready scalability</span>.
               </motion.p>
               
               <motion.div
@@ -248,15 +266,15 @@ const WhereWeFitSection = () => {
               >
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
                   <span className="w-2 h-2 bg-architech-brand-blue rounded-full"></span>
-                  <span>Enterprise-Grade</span>
+                  <span>Transparent Architecture</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-full text-architech-brand-green">
                   <span className="w-2 h-2 bg-architech-brand-green rounded-full"></span>
-                  <span>Full Ownership</span>
+                  <span>Secure Modules</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
                   <span className="w-2 h-2 bg-architech-brand-blue rounded-full"></span>
-                  <span>Production-Ready</span>
+                  <span>Built-in Best Practices</span>
                 </div>
               </motion.div>
             </div>

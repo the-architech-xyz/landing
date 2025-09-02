@@ -367,7 +367,7 @@ export default withAuth(DashboardPage);`;
       paused: true, // Don't auto-start!
       onComplete: () => {
         setIsPlaying(false);
-        setCurrentPhase(4); // Final state
+        setCurrentPhase(3); // Keep showing the final step
       },
       onUpdate: () => {
         const progress = tl.progress();
@@ -379,10 +379,8 @@ export default withAuth(DashboardPage);`;
           setCurrentPhase(1);      // Phase 2: Blueprint
         } else if (progress < 0.85) {
           setCurrentPhase(2);      // Phase 3: Construction
-        } else if (progress < 0.95) {
-          setCurrentPhase(3);      // Phase 4: Final Delivery
         } else {
-          setCurrentPhase(4);      // Final state
+          setCurrentPhase(3);      // Keep showing the final step
         }
       }
     });
@@ -683,7 +681,7 @@ export default withAuth(DashboardPage);`;
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                              <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="h-6 w-6 object-contain relative z-10" />
-              <span className="relative z-10">{currentPhase === 4 ? "Restart Session" : "Start Session"}</span>
+              <span className="relative z-10">{currentPhase === 3 ? "Replay Session" : "Start Session"}</span>
             </motion.button>
             
             {/* Sound Toggle - Temporarily disabled for cleaner UI */}
@@ -1115,32 +1113,7 @@ export default withAuth(DashboardPage);`;
               </motion.div>
             )}
 
-            {/* Final State */}
-            {currentPhase === 4 && (
-              <motion.div
-                key="phase-final"
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <motion.div
-                  className="w-28 h-28 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl overflow-hidden"
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 360]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    ease: "easeInOut" 
-                  }}
-                >
-                                           <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-16 h-16 object-contain" />
-                </motion.div>
-                <h3 className="text-3xl font-bold text-foreground mb-3">Session Complete!</h3>
-                <p className="text-muted-foreground text-lg">Your architecture has been designed and implemented.</p>
-              </motion.div>
-            )}
+
           </AnimatePresence>
         </motion.div>
         
