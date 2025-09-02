@@ -148,7 +148,7 @@ const BenefitsSection = () => {
               </motion.div>
 
               {/* Diff Content */}
-              <div className="bg-[#0d1117] rounded-2xl p-6 sm:p-8 border border-architech-border/30 font-mono text-sm sm:text-base overflow-x-auto">
+              <div className="bg-card rounded-2xl p-6 sm:p-8 border border-architech-border/30 font-mono text-sm sm:text-base overflow-x-auto">
                 {/* Mobile Layout (Up/Down) - Hidden on lg+ */}
                 <div className="lg:hidden space-y-2">
                   {diffContent[activeTab as keyof typeof diffContent].content.map((item, index) => (

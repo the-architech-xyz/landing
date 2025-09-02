@@ -71,6 +71,8 @@ export default {
 					'electric-light': 'hsl(var(--architech-electric-light))',
 					'electric-dark': 'hsl(var(--architech-electric-dark))',
 					'electric-glow': 'hsl(var(--architech-electric-glow))',
+					'brand-blue': 'rgb(var(--architech-brand-blue))',
+					'brand-green': 'rgb(var(--architech-brand-green))',
 					'purple': 'hsl(var(--architech-purple))',
 					'cyan': 'hsl(var(--architech-cyan))',
 					'emerald': 'hsl(var(--architech-emerald))',

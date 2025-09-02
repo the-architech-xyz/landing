@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { ArrowUp, Github, Twitter, Linkedin } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
-
+  const { darkMode } = useTheme();
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 500);
@@ -26,7 +27,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                 <img
-                  src="/logo.png"
+                  src={darkMode ? "/logo-removebg.png" : "/logo.png"}
                   alt="The Architech Logo"
                   className="w-10 h-10 object-contain"
                 />

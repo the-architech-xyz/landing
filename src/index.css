@@ -51,6 +51,10 @@ Professional meets artistic - perfect for creative developers.
     --architech-electric-dark: 210 100% 55%;  /* Deeper electric */
     --architech-electric-glow: 210 100% 85%;  /* Glow effect */
     
+    /* Brand Colors - Direct hex equivalents */
+    --architech-brand-blue: 0 169 255;        /* #00A9FF */
+    --architech-brand-green: 57 255 20;       /* #39FF14 */
+    
     /* Accent Colors - Rich & Vibrant */
     --architech-purple: 270 95% 70%;         /* Creative Purple */
     --architech-cyan: 180 100% 70%;          /* Fresh Cyan */
@@ -75,9 +79,9 @@ Professional meets artistic - perfect for creative developers.
     --architech-border: 220 15% 85%;
     --architech-border-hover: 220 20% 80%;
 
-    /* Alternating Section Backgrounds */
+    /* Alternating Section Backgrounds - Light Mode */
     --architech-section-light: 220 15% 99%;     /* Light cream background */
-    --architech-section-dark: 220 30% 8%;       /* Dark background */
+    --architech-section-dark: 220 12% 97%;      /* Slightly darker cream for contrast */
 
     /* Glass Effects */
     --architech-glass: 220 30% 98%;
@@ -133,6 +137,10 @@ Professional meets artistic - perfect for creative developers.
     --architech-electric-light: 210 100% 80%;
     --architech-electric-dark: 210 100% 60%;
     --architech-electric-glow: 210 100% 85%;
+    
+    /* Brand Colors - Same for dark mode */
+    --architech-brand-blue: 0 169 255;        /* #00A9FF */
+    --architech-brand-green: 57 255 20;       /* #39FF14 */
     
     /* Dark accent colors */
     --architech-purple: 270 95% 75%;
@@ -201,6 +209,14 @@ Professional meets artistic - perfect for creative developers.
     color: hsl(var(--architech-electric));
   }
 
+  .text-architech-brand-blue {
+    color: rgb(var(--architech-brand-blue));
+  }
+
+  .text-architech-brand-green {
+    color: rgb(var(--architech-brand-green));
+  }
+
   .text-architech-purple {
     color: hsl(var(--architech-purple));
   }
@@ -211,6 +227,14 @@ Professional meets artistic - perfect for creative developers.
 
   .bg-architech-electric {
     background-color: hsl(var(--architech-electric));
+  }
+
+  .bg-architech-brand-blue {
+    background-color: rgb(var(--architech-brand-blue));
+  }
+
+  .bg-architech-brand-green {
+    background-color: rgb(var(--architech-brand-green));
   }
 
   .bg-architech-surface {

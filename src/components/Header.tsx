@@ -39,6 +39,8 @@ const Header = () => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle('dark');
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('themeChanged'));
   };
 
   const smoothScrollTo = (elementId: string) => {
@@ -66,7 +68,7 @@ const Header = () => {
             <div className="relative">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                 <img 
-                  src="/logo.png" 
+                  src={darkMode ? "/logo-removebg.png" : "/logo.png"}
                   alt="The Architech Logo" 
                   className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 />

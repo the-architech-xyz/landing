@@ -72,7 +72,7 @@ const WhereWeFitSection = () => {
       
       {/* Floating architectural elements */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#00A9FF] rounded-full opacity-20"
+        className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue rounded-full opacity-20"
         animate={{
           y: [0, -30, 0],
           x: [0, 15, 0],
@@ -85,7 +85,7 @@ const WhereWeFitSection = () => {
         }}
       />
       <motion.div
-        className="absolute top-3/4 right-1/4 w-2 h-2 bg-[#39FF14] rounded-full opacity-30"
+        className="absolute top-3/4 right-1/4 w-2 h-2 bg-architech-brand-green rounded-full opacity-30"
         animate={{
           y: [0, -20, 0],
           x: [0, -12, 0],
@@ -110,7 +110,7 @@ const WhereWeFitSection = () => {
         >
           {/* Section Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-full text-sm font-medium text-[#00A9FF] mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-sm font-medium text-architech-brand-blue mb-6 sm:mb-8"
             variants={scaleIn}
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,18 +120,18 @@ const WhereWeFitSection = () => {
           </motion.div>
 
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
+            className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
             Speed AND Control.
             <br />
-            <span className="text-transparent bg-gradient-to-r from-[#00A9FF] to-[#39FF14] bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
               No Compromises.
             </span>
           </motion.h2>
           
           <motion.p
-            className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-3xl mx-auto px-4"
+            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
             How The Architech compares to the tools you already know.
@@ -140,7 +140,7 @@ const WhereWeFitSection = () => {
 
         {/* Comparison Table */}
         <motion.div
-          className="glass-card rounded-3xl overflow-hidden border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative"
+          className="glass-card rounded-3xl overflow-hidden border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -153,23 +153,23 @@ const WhereWeFitSection = () => {
 
           <div className="relative z-10">
             {/* Table Header */}
-            <div className="grid grid-cols-5 bg-gradient-to-r from-[#00A9FF]/10 to-[#39FF14]/10 border-b border-[#00A9FF]/30">
-              <div className="p-4 sm:p-6 font-bold text-[#F8F9FA] text-base sm:text-lg">Capability</div>
-              <div className="p-4 sm:p-6 text-center font-semibold text-[#F8F9FA]/80 text-xs sm:text-sm">
+            <div className="grid grid-cols-5 bg-gradient-to-r from-architech-brand-blue/10 to-architech-brand-green/10 border-b border-architech-brand-blue/30">
+              <div className="p-4 sm:p-6 font-bold text-foreground text-base sm:text-lg">Capability</div>
+              <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
                 No-Code Platforms<br />
-                <span className="text-xs text-[#F8F9FA]/60">(e.g., Bubble)</span>
+                <span className="text-xs text-muted-foreground/60">(e.g., Bubble)</span>
               </div>
-              <div className="p-4 sm:p-6 text-center font-semibold text-[#F8F9FA]/80 text-xs sm:text-sm">
+              <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
                 AI Code Assistants<br />
-                <span className="text-xs text-[#F8F9FA]/60">(e.g., Copilot)</span>
+                <span className="text-xs text-muted-foreground/60">(e.g., Copilot)</span>
               </div>
-              <div className="p-4 sm:p-6 text-center font-semibold text-[#F8F9FA]/80 text-xs sm:text-sm">
+              <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
                 Classic Development<br />
-                <span className="text-xs text-[#F8F9FA]/60">(Manual Setup)</span>
+                <span className="text-xs text-muted-foreground/60">(Manual Setup)</span>
               </div>
-              <div className="p-4 sm:p-6 text-center font-bold text-[#00A9FF] text-xs sm:text-sm border-l-2 border-[#00A9FF] bg-[#00A9FF]/5">
+              <div className="p-4 sm:p-6 text-center font-bold text-architech-brand-blue text-xs sm:text-sm border-l-2 border-architech-brand-blue bg-architech-brand-blue/5">
                 The Architech<br />
-                <span className="text-xs text-[#39FF14] font-semibold">✨ The Winner</span>
+                <span className="text-xs text-architech-brand-green font-semibold">✨ The Winner</span>
               </div>
             </div>
 
@@ -177,7 +177,7 @@ const WhereWeFitSection = () => {
             {comparisonData.map((row, index) => (
               <motion.div
                 key={row.capability}
-                className={`grid grid-cols-5 border-b border-[#00A9FF]/10 hover:bg-[#00A9FF]/5 transition-all duration-300 group ${
+                className={`grid grid-cols-5 border-b border-architech-brand-blue/10 hover:bg-architech-brand-blue/5 transition-all duration-300 group ${
                   index % 2 === 0 ? 'bg-architech-section-light/20' : 'bg-architech-section-light/40'
                 }`}
                 initial={{ opacity: 0, x: -20 }}
@@ -186,26 +186,26 @@ const WhereWeFitSection = () => {
                 viewport={defaultViewport}
                 whileHover={{ scale: 1.01 }}
               >
-                <div className="p-4 sm:p-6 font-semibold text-[#F8F9FA] border-r border-[#00A9FF]/20 text-sm sm:text-base">
+                <div className="p-4 sm:p-6 font-semibold text-foreground border-r border-architech-brand-blue/20 text-sm sm:text-base">
                   {row.capability}
                 </div>
-                <div className="p-4 sm:p-6 text-center text-[#F8F9FA]/70 border-r border-[#00A9FF]/10 text-sm sm:text-base">
+                <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
                   {row.noCode}
                 </div>
-                <div className="p-4 sm:p-6 text-center text-[#F8F9FA]/70 border-r border-[#00A9FF]/10 text-sm sm:text-base">
+                <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
                   {row.aiAssistants}
                 </div>
-                <div className="p-4 sm:p-6 text-center text-[#F8F9FA]/70 border-r border-[#00A9FF]/10 text-sm sm:text-base">
+                <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
                   {row.classicDev}
                 </div>
                 <div className={`p-4 sm:p-6 text-center font-semibold border-l-2 text-sm sm:text-base relative overflow-hidden ${
                   row.architechHighlight 
-                    ? 'text-[#39FF14] bg-[#39FF14]/10 border-[#39FF14]' 
-                    : 'text-[#00A9FF] border-[#00A9FF]'
+                    ? 'text-architech-brand-green bg-architech-brand-green/10 border-architech-brand-green' 
+                    : 'text-architech-brand-blue border-architech-brand-blue'
                 }`}>
                   {/* Subtle glow effect for highlighted cells */}
                   {row.architechHighlight && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#39FF14]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-architech-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   )}
                   <span className="relative z-10">{row.architech}</span>
                 </div>
@@ -223,7 +223,7 @@ const WhereWeFitSection = () => {
           variants={staggerContainer}
         >
           <motion.div
-            className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative overflow-hidden max-w-4xl mx-auto"
+            className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden max-w-4xl mx-auto"
             variants={fadeInUp}
           >
             {/* Background pattern */}
@@ -233,29 +233,29 @@ const WhereWeFitSection = () => {
 
             <div className="relative z-10">
               <motion.p
-                className="text-lg sm:text-xl text-[#F8F9FA]/90 mb-6 leading-relaxed"
+                className="text-lg sm:text-xl text-muted-foreground mb-6 leading-relaxed"
                 variants={fadeInUp}
               >
                 The Architech is the only tool that delivers{" "}
-                <span className="text-[#00A9FF] font-semibold">no-code speed</span>{" "}
+                <span className="text-architech-brand-blue font-semibold">no-code speed</span>{" "}
                 with{" "}
-                <span className="text-[#39FF14] font-semibold">full-stack control</span>.
+                <span className="text-architech-brand-green font-semibold">full-stack control</span>.
               </motion.p>
               
               <motion.div
                 className="flex flex-wrap justify-center gap-4 text-sm sm:text-base"
                 variants={fadeInUp}
               >
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-full text-[#00A9FF]">
-                  <span className="w-2 h-2 bg-[#00A9FF] rounded-full"></span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
+                  <span className="w-2 h-2 bg-architech-brand-blue rounded-full"></span>
                   <span>Enterprise-Grade</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#39FF14]/10 border border-[#39FF14]/20 rounded-full text-[#39FF14]">
-                  <span className="w-2 h-2 bg-[#39FF14] rounded-full"></span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-full text-architech-brand-green">
+                  <span className="w-2 h-2 bg-architech-brand-green rounded-full"></span>
                   <span>Full Ownership</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-full text-[#00A9FF]">
-                  <span className="w-2 h-2 bg-[#00A9FF] rounded-full"></span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
+                  <span className="w-2 h-2 bg-architech-brand-blue rounded-full"></span>
                   <span>Production-Ready</span>
                 </div>
               </motion.div>

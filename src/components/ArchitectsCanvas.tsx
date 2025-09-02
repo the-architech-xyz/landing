@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+import { useTheme } from "@/hooks/useTheme";
 
 // Sound effects (optional, muted by default)
 const playSound = (soundType: 'typing' | 'snap' | 'transition', volume: number = 0.1) => {
@@ -62,6 +63,7 @@ declare global {
 }
 
 const ArchitectsCanvas = () => {
+  const { darkMode } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -330,8 +332,8 @@ export default withAuth(DashboardPage);`;
           <span className="text-lg">{item.icon}</span>
           <span className={`font-mono text-sm ${
             item.type === 'folder' 
-              ? 'text-[#00A9FF] font-semibold' 
-              : 'text-[#F8F9FA]/80'
+              ? 'text-architech-brand-blue font-semibold' 
+              : 'text-muted-foreground'
           }`}>
             {item.name}
           </span>
@@ -592,7 +594,7 @@ export default withAuth(DashboardPage);`;
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.1)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
         {/* Floating architectural elements */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#00A9FF] rounded-full opacity-20"
+                      className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue rounded-full opacity-20"
           animate={{
             y: [0, -30, 0],
             x: [0, 15, 0],
@@ -605,7 +607,7 @@ export default withAuth(DashboardPage);`;
           }}
         />
         <motion.div
-          className="absolute top-3/4 right-1/4 w-2 h-2 bg-[#39FF14] rounded-full opacity-30"
+                      className="absolute top-3/4 right-1/4 w-2 h-2 bg-architech-brand-green rounded-full opacity-30"
           animate={{
             y: [0, -20, 0],
             x: [0, -12, 0],
@@ -632,14 +634,14 @@ export default withAuth(DashboardPage);`;
 
 
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
+            className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             Witness Architectural{" "}
-            <span className="text-transparent bg-gradient-to-r from-[#00A9FF] to-[#39FF14] bg-clip-text">
+                          <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
               Mastery in Action
             </span>
             <br />
@@ -647,7 +649,7 @@ export default withAuth(DashboardPage);`;
           </motion.h2>
 
           <motion.p
-            className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-3xl mx-auto px-4 font-inter"
+            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 font-inter"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -675,12 +677,12 @@ export default withAuth(DashboardPage);`;
           >
             <motion.button
               onClick={startAnimation}
-              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#00A9FF]/90 to-[#39FF14]/90 backdrop-blur-md text-white rounded-2xl font-semibold text-lg border border-white/20 shadow-2xl hover:shadow-[#00A9FF]/25 transition-all duration-300 group relative overflow-hidden"
+                              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-architech-brand-blue/90 to-architech-brand-green/90 backdrop-blur-md text-white rounded-2xl font-semibold text-lg border border-white/20 shadow-2xl hover:shadow-architech-brand-blue/25 transition-all duration-300 group relative overflow-hidden"
               whileHover={{ scale: 1.05, y: -2, boxShadow: "0 20px 40px rgba(0, 169, 255, 0.4)" }}
               whileTap={{ scale: 0.95 }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <img src="/logo-removebg.png" alt="The Architect" className="h-6 w-6 object-contain relative z-10" />
+                             <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="h-6 w-6 object-contain relative z-10" />
               <span className="relative z-10">{currentPhase === 4 ? "Restart Session" : "Start Session"}</span>
             </motion.button>
             
@@ -689,8 +691,8 @@ export default withAuth(DashboardPage);`;
               onClick={() => setSoundEnabled(!soundEnabled)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm border ${
                 soundEnabled 
-                  ? 'bg-[#39FF14]/20 text-[#39FF14] border-[#39FF14]/30 shadow-lg shadow-[#39FF14]/20' 
-                  : 'bg-[#F8F9FA]/10 text-[#F8F9FA]/60 border-[#F8F9FA]/20 shadow-lg shadow-[#F8F9FA]/10'
+                                      ? 'bg-architech-brand-green/20 text-architech-brand-green border-architech-brand-green/30 shadow-lg shadow-architech-brand-green/20' 
+                  : 'bg-background/10 text-muted-foreground border-border/20 shadow-lg shadow-background/10'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -735,12 +737,12 @@ export default withAuth(DashboardPage);`;
                   transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#00A9FF]/30 overflow-hidden">
-                      <img src="/logo-removebg.png" alt="The Architect" className="w-8 h-8 object-contain" />
+                    <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
+                      <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
                     </div>
-                    <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg shadow-[#00A9FF]/10">
-                      <div className="text-[#00A9FF] font-bold mb-3 text-lg tracking-wide">The Architect</div>
-                      <div className="text-[#F8F9FA] text-lg font-medium leading-relaxed">What architectural challenge shall we solve today?</div>
+                    <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg shadow-architech-brand-blue/10">
+                      <div className="text-architech-brand-blue font-bold mb-3 text-lg tracking-wide">The Architect</div>
+                      <div className="text-foreground text-lg font-medium leading-relaxed">What architectural challenge shall we solve today?</div>
                     </div>
                   </div>
                 </motion.div>
@@ -752,15 +754,15 @@ export default withAuth(DashboardPage);`;
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                 >
-                                     <div className="bg-[#39FF14]/10 border border-[#39FF14]/20 rounded-2xl p-6 backdrop-blur-sm max-w-md shadow-lg">
-                     <div className="text-[#39FF14] font-bold mb-3 text-lg tracking-wide">You</div>
-                     <div className="text-[#F8F9FA] font-mono text-lg font-medium leading-relaxed">
+                                     <div className="bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-2xl p-6 backdrop-blur-sm max-w-md shadow-lg">
+                     <div className="text-architech-brand-green font-bold mb-3 text-lg tracking-wide">You</div>
+                     <div className="text-foreground font-mono text-lg font-medium leading-relaxed">
                        {typingText || typedText}
-                       {isTyping && <span className="animate-pulse ml-1 text-[#39FF14]">|</span>}
+                       {isTyping && <span className="animate-pulse ml-1 text-architech-brand-green">|</span>}
                      </div>
                    </div>
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#39FF14] to-[#00A9FF] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#39FF14]/30 overflow-hidden">
-                    <img src="/logo-removebg.png" alt="The Architect" className="w-8 h-8 object-contain" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-green to-architech-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-green/30 overflow-hidden">
+                    <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
                   </div>
                 </motion.div>
               </motion.div>
@@ -785,12 +787,12 @@ export default withAuth(DashboardPage);`;
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#00A9FF]/30 overflow-hidden">
-                        <img src="/logo-removebg.png" alt="The Architect" className="w-8 h-8 object-contain" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
+                        <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
                       </div>
-                      <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                        <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-[#F8F9FA] text-lg font-medium">Excellent requirements. I've designed a robust architecture optimized for enterprise-scale performance, security, and maintainability.</div>
+                      <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
+                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">The Architect</div>
+                        <div className="text-foreground text-lg font-medium">Excellent requirements. I've designed a robust architecture optimized for enterprise-scale performance, security, and maintainability.</div>
                       </div>
                     </div>
                   </motion.div>
@@ -802,12 +804,12 @@ export default withAuth(DashboardPage);`;
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    <div className="glass-card rounded-2xl p-6 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl">
-                      <div className="bg-architech-section-light rounded-xl p-6 border border-[#00A9FF]/30 font-mono text-sm shadow-2xl shadow-[#00A9FF]/10 relative overflow-hidden">
+                    <div className="glass-card rounded-2xl p-6 border border-architech-brand-blue/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl">
+                      <div className="bg-architech-section-light rounded-xl p-6 border border-architech-brand-blue/30 font-mono text-sm shadow-2xl shadow-architech-brand-blue/10 relative overflow-hidden">
                         {/* Line numbers */}
-                        <div className="absolute left-0 top-0 bottom-0 w-8 bg-[#00A9FF]/5 border-r border-[#00A9FF]/20 flex flex-col">
+                        <div className="absolute left-0 top-0 bottom-0 w-8 bg-architech-brand-blue/5 border-r border-architech-brand-blue/20 flex flex-col">
                           {blueprintLines.map((_, index) => (
-                            <div key={index} className="text-[#00A9FF]/40 text-xs leading-6 pl-2">
+                            <div key={index} className="text-architech-brand-blue/40 text-xs leading-6 pl-2">
                               {index + 1}
                             </div>
                           ))}
@@ -818,22 +820,22 @@ export default withAuth(DashboardPage);`;
                           {blueprintLines.map((line, index) => (
                             <motion.div
                               key={index}
-                              className="text-[#F8F9FA] min-h-[1.5rem] leading-6"
+                              className="text-foreground min-h-[1.5rem] leading-6"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1, duration: 0.3 }}
                             >
                               {line.startsWith('#') ? (
-                                <span className="text-[#00A9FF]/70 font-medium">{line}</span>
+                                <span className="text-architech-brand-blue/70 font-medium">{line}</span>
                               ) : line.startsWith('stack:') ? (
-                                <span className="text-[#00A9FF] font-semibold">{line}</span>
+                                <span className="text-architech-brand-blue font-semibold">{line}</span>
                               ) : line.includes(':') ? (
                                 <>
-                                  <span className="text-[#00A9FF] font-medium">{line.split(':')[0]}:</span>
-                                  <span className="text-[#39FF14] ml-2 font-medium">"{line.split(':')[1].trim()}"</span>
+                                  <span className="text-architech-brand-blue font-medium">{line.split(':')[0]}:</span>
+                                  <span className="text-architech-brand-green ml-2 font-medium">"{line.split(':')[1].trim()}"</span>
                                 </>
                               ) : (
-                                <span className="text-[#F8F9FA]">{line}</span>
+                                <span className="text-foreground">{line}</span>
                               )}
                             </motion.div>
                           ))}
@@ -864,12 +866,12 @@ export default withAuth(DashboardPage);`;
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#00A9FF]/30 overflow-hidden">
-                        <img src="/logo-removebg.png" alt="The Architect" className="w-8 h-8 object-contain" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
+                        <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
                       </div>
-                      <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                        <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-[#F8F9FA] text-lg font-medium">Architecture validated. Now orchestrating enterprise-grade components with precision engineering and seamless integration.</div>
+                      <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
+                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">The Architect</div>
+                        <div className="text-foreground text-lg font-medium">Architecture validated. Now orchestrating enterprise-grade components with precision engineering and seamless integration.</div>
                       </div>
                     </div>
                   </motion.div>
@@ -884,7 +886,7 @@ export default withAuth(DashboardPage);`;
                     <div className="relative">
                       {/* Central Blueprint Node */}
                       <motion.div
-                        className="w-28 h-28 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center shadow-2xl shadow-[#00A9FF]/30 mb-8 overflow-hidden"
+                        className="w-28 h-28 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center shadow-2xl shadow-architech-brand-blue/30 mb-8 overflow-hidden"
                         animate={{ 
                           scale: [1, 1.1, 1],
                           rotate: [0, 5, 0]
@@ -895,7 +897,7 @@ export default withAuth(DashboardPage);`;
                           ease: "easeInOut" 
                         }}
                       >
-                        <img src="/logo-removebg.png" alt="The Architect" className="w-16 h-16 object-contain" />
+                                                 <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-16 h-16 object-contain" />
                       </motion.div>
 
                                              {/* Tech Modules Grid - 2.5D Assembly (Mobile Optimized) */}
@@ -935,7 +937,7 @@ export default withAuth(DashboardPage);`;
                            >
                              {/* Connection Line with Glow */}
                              <motion.div
-                               className="absolute top-1/2 left-1/2 w-24 h-0.5 bg-gradient-to-r from-[#00A9FF] to-[#39FF14] opacity-60 origin-left shadow-lg shadow-[#00A9FF]/50"
+                               className="absolute top-1/2 left-1/2 w-24 h-0.5 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green opacity-60 origin-left shadow-lg shadow-architech-brand-blue/50"
                                initial={{ scaleX: 0, opacity: 0 }}
                                animate={{ 
                                  scaleX: showModules ? 1 : 0,
@@ -988,15 +990,15 @@ export default withAuth(DashboardPage);`;
                                {/* Interactive Tooltip (Mobile Optimized) */}
                                {hoveredTech === index && (
                                  <motion.div
-                                   className={`absolute ${isMobile ? '-top-24' : '-top-20'} left-1/2 transform -translate-x-1/2 bg-architech-section-light border border-[#00A9FF]/30 rounded-lg ${isMobile ? 'p-2' : 'p-3'} shadow-xl z-50 ${isMobile ? 'min-w-[150px]' : 'min-w-[200px]'}`}
+                                   className={`absolute ${isMobile ? '-top-24' : '-top-20'} left-1/2 transform -translate-x-1/2 bg-architech-section-light border border-architech-brand-blue/30 rounded-lg ${isMobile ? 'p-2' : 'p-3'} shadow-xl z-50 ${isMobile ? 'min-w-[150px]' : 'min-w-[200px]'}`}
                                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
                                    animate={{ opacity: 1, y: 0, scale: 1 }}
                                    exit={{ opacity: 0, y: 10, scale: 0.9 }}
                                    transition={{ duration: 0.2 }}
                                  >
-                                   <div className="text-[#00A9FF] font-semibold text-sm mb-1">{tech.name}</div>
-                                   <div className="text-[#F8F9FA]/80 text-xs">{tech.description}</div>
-                                   <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-architech-section-light border-r border-b border-[#00A9FF]/30 rotate-45"></div>
+                                   <div className="text-architech-brand-blue font-semibold text-sm mb-1">{tech.name}</div>
+                                   <div className="text-muted-foreground text-xs">{tech.description}</div>
+                                   <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-architech-section-light border-r border-b border-architech-brand-blue/30 rotate-45"></div>
                                  </motion.div>
                                )}
                              </motion.div>
@@ -1028,12 +1030,12 @@ export default withAuth(DashboardPage);`;
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#00A9FF]/30 overflow-hidden">
-                        <img src="/logo-removebg.png" alt="The Architect" className="w-8 h-8 object-contain" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
+                        <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
                       </div>
-                      <div className="bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                        <div className="text-[#00A9FF] font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-[#F8F9FA] text-lg font-medium">Mission accomplished. Your enterprise-grade architecture is complete with full source code ownership, comprehensive documentation, and deployment-ready infrastructure.</div>
+                      <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
+                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">The Architect</div>
+                        <div className="text-foreground text-lg font-medium">Mission accomplished. Your enterprise-grade architecture is complete with full source code ownership, comprehensive documentation, and deployment-ready infrastructure.</div>
                       </div>
                     </div>
                   </motion.div>
@@ -1042,26 +1044,26 @@ export default withAuth(DashboardPage);`;
                   <div className="lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* Project Structure Tree */}
                     <motion.div
-                      className="glass-card rounded-2xl p-4 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl"
+                      className="glass-card rounded-2xl p-4 border border-architech-brand-blue/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 shadow-xl"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                      <h3 className="text-[#00A9FF] font-semibold mb-3 text-sm">Project Structure</h3>
-                      <div className="bg-architech-section-light rounded-xl p-4 border border-[#00A9FF]/30 font-mono text-xs max-h-64 overflow-y-auto">
+                      <h3 className="text-architech-brand-blue font-semibold mb-3 text-sm">Project Structure</h3>
+                      <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-blue/30 font-mono text-xs max-h-64 overflow-y-auto">
                         {showProjectStructure && renderProjectStructure(projectStructure)}
                       </div>
                     </motion.div>
 
                     {/* Working Preview */}
                     <motion.div
-                      className="glass-card rounded-2xl p-4 border border-[#39FF14]/20 bg-gradient-to-br from-[#39FF14]/5 to-[#00A9FF]/5 shadow-xl"
+                      className="glass-card rounded-2xl p-4 border border-architech-brand-green/20 bg-gradient-to-br from-[#39FF14]/5 to-[#00A9FF]/5 shadow-xl"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                      <h3 className="text-[#39FF14] font-semibold mb-3 text-sm">Live Preview</h3>
-                      <div className="bg-architech-section-light rounded-xl p-4 border border-[#39FF14]/30 overflow-hidden">
+                      <h3 className="text-architech-brand-green font-semibold mb-3 text-sm">Live Preview</h3>
+                      <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-green/30 overflow-hidden">
                         {showWorkingPreview && (
                           <motion.div
                             className="bg-white rounded-lg p-3 shadow-lg"
@@ -1123,7 +1125,7 @@ export default withAuth(DashboardPage);`;
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <motion.div
-                  className="w-28 h-28 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl overflow-hidden"
+                  className="w-28 h-28 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl overflow-hidden"
                   animate={{ 
                     scale: [1, 1.1, 1],
                     rotate: [0, 360]
@@ -1133,10 +1135,10 @@ export default withAuth(DashboardPage);`;
                     ease: "easeInOut" 
                   }}
                 >
-                  <img src="/logo-removebg.png" alt="The Architect" className="w-16 h-16 object-contain" />
+                                           <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-16 h-16 object-contain" />
                 </motion.div>
-                <h3 className="text-3xl font-bold text-[#F8F9FA] mb-3">Session Complete!</h3>
-                <p className="text-[#F8F9FA]/80 text-lg">Your architecture has been designed and implemented.</p>
+                <h3 className="text-3xl font-bold text-foreground mb-3">Session Complete!</h3>
+                <p className="text-muted-foreground text-lg">Your architecture has been designed and implemented.</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -1151,7 +1153,7 @@ export default withAuth(DashboardPage);`;
           {particles.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute w-2 h-2 bg-gradient-to-r from-[#00A9FF] to-[#39FF14] rounded-full shadow-lg shadow-[#00A9FF]/50"
+              className="absolute w-2 h-2 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green rounded-full shadow-lg shadow-architech-brand-blue/50"
               style={{
                 left: particle.x,
                 top: particle.y,
@@ -1179,7 +1181,7 @@ export default withAuth(DashboardPage);`;
         viewport={{ once: true }}
       >
         <motion.div
-          className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#00A9FF] to-[#39FF14] text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transition-all duration-300 cursor-pointer group"
+          className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transition-all duration-300 cursor-pointer group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => {

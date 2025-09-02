@@ -100,7 +100,7 @@ const HowItWorksSection = () => {
           variants={staggerContainer}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A9FF]/10 border border-[#00A9FF]/20 rounded-full text-sm font-medium text-[#00A9FF] mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-sm font-medium text-architech-brand-blue mb-6 sm:mb-8"
             variants={scaleIn}
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@ const HowItWorksSection = () => {
             variants={fadeInUp}
           >
             From Vision to{" "}
-            <span className="text-transparent bg-gradient-to-r from-[#00A9FF] to-[#39FF14] bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
               Production
             </span>
             <br />
@@ -159,34 +159,34 @@ const HowItWorksSection = () => {
               </p>
             </motion.div>
 
-            <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative overflow-hidden">
-              <div className="bg-[#0D1B2A] rounded-2xl p-6 sm:p-8 border border-[#00A9FF]/30 font-mono text-sm sm:text-base overflow-x-auto">
+            <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden">
+              <div className="bg-[#0D1B2A] rounded-2xl p-6 sm:p-8 border border-architech-brand-blue/30 font-mono text-sm sm:text-base overflow-x-auto">
                 <div className="space-y-3">
-                  <div className="text-[#00A9FF]"># Describe your app:</div>
+                  <div className="text-architech-brand-blue"># Describe your app:</div>
                   <div className="text-[#F8F9FA]">
-                    <span className="text-[#00A9FF]">description:</span> 
-                    <span className="text-[#39FF14] ml-2">"A collaborative project management app with a modern design system."</span>
+                    <span className="text-architech-brand-blue">description:</span> 
+                    <span className="text-architech-brand-green ml-2">"A collaborative project management app with a modern design system."</span>
                   </div>
-                  <div className="text-[#00A9FF]"># AI suggests a stack (you can edit this):</div>
+                  <div className="text-architech-brand-blue"># AI suggests a stack (you can edit this):</div>
                   <div className="text-[#F8F9FA]">
-                    <span className="text-[#00A9FF]">stack:</span>
+                    <span className="text-architech-brand-blue">stack:</span>
                   </div>
                   <div className="ml-4 space-y-2">
                     <div className="text-[#F8F9FA]">
-                      <span className="text-[#00A9FF]">framework:</span> 
-                      <span className="text-[#39FF14] ml-2">"React (Next.js)"</span>
+                      <span className="text-architech-brand-blue">framework:</span> 
+                      <span className="text-architech-brand-green ml-2">"React (Next.js)"</span>
                     </div>
                     <div className="text-[#F8F9FA]">
-                      <span className="text-[#00A9FF]">styling:</span> 
-                      <span className="text-[#39FF14] ml-2">"TailwindCSS"</span>
+                      <span className="text-architech-brand-blue">styling:</span> 
+                      <span className="text-architech-brand-green ml-2">"TailwindCSS"</span>
                     </div>
                     <div className="text-[#F8F9FA]">
-                      <span className="text-[#00A9FF]">database:</span> 
-                      <span className="text-[#39FF14] ml-2">"PostgreSQL (Supabase)"</span>
+                      <span className="text-architech-brand-blue">database:</span> 
+                      <span className="text-architech-brand-green ml-2">"PostgreSQL (Supabase)"</span>
                     </div>
                     <div className="text-[#F8F9FA]">
-                      <span className="text-[#00A9FF]">auth:</span> 
-                      <span className="text-[#39FF14] ml-2">"JWT (Auth.js)"</span>
+                      <span className="text-architech-brand-blue">auth:</span> 
+                      <span className="text-architech-brand-green ml-2">"JWT (Auth.js)"</span>
                     </div>
                   </div>
                 </div>
@@ -214,12 +214,12 @@ const HowItWorksSection = () => {
               </p>
             </motion.div>
 
-            <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative overflow-hidden">
+            <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden">
               <div className="relative">
                 {/* Central Blueprint Node */}
                 <div className="flex justify-center mb-8">
                   <div className="relative">
-                    <div className="w-24 h-24 bg-gradient-to-br from-[#00A9FF] to-[#39FF14] rounded-full flex items-center justify-center shadow-lg shadow-[#00A9FF]/30">
+                    <div className="w-24 h-24 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center shadow-lg shadow-architech-brand-blue/30">
                       <svg className="h-12 w-12 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -227,7 +227,7 @@ const HowItWorksSection = () => {
                       </svg>
                     </div>
                     <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-                      <div className="text-sm font-semibold text-[#00A9FF]">Blueprint</div>
+                      <div className="text-sm font-semibold text-architech-brand-blue">Blueprint</div>
                     </div>
                   </div>
                 </div>
@@ -235,10 +235,10 @@ const HowItWorksSection = () => {
                 {/* Tech Blocks Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
                   {[
-                    { name: "Auth.js", color: "from-[#00A9FF] to-[#39FF14]" },
-                    { name: "Supabase", color: "from-[#39FF14] to-[#00A9FF]" },
-                    { name: "TailwindCSS", color: "from-[#00A9FF] to-[#39FF14]" },
-                    { name: "Next.js", color: "from-[#39FF14] to-[#00A9FF]" }
+                    { name: "Auth.js", color: "from-architech-brand-blue to-architech-brand-green" },
+                    { name: "Supabase", color: "from-architech-brand-green to-architech-brand-blue" },
+                    { name: "TailwindCSS", color: "from-architech-brand-blue to-architech-brand-green" },
+                    { name: "Next.js", color: "from-architech-brand-green to-architech-brand-blue" }
                   ].map((tech, index) => (
                     <motion.div
                       key={tech.name}
@@ -248,7 +248,7 @@ const HowItWorksSection = () => {
                       transition={{ delay: index * 0.1 }}
                     >
                       {/* Connection Line */}
-                      <div className="absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-[#00A9FF] to-[#39FF14] transform -translate-x-1/2 -translate-y-1/2 opacity-60"></div>
+                      <div className="absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green transform -translate-x-1/2 -translate-y-1/2 opacity-60"></div>
                       
                       {/* Tech Block */}
                       <div className={`bg-gradient-to-br ${tech.color} rounded-xl p-4 text-center shadow-lg group-hover:scale-105 transition-transform duration-300`}>
@@ -281,8 +281,8 @@ const HowItWorksSection = () => {
               </p>
             </motion.div>
 
-            <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-[#00A9FF]/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative overflow-hidden">
-              <div className="bg-[#0D1B2A] rounded-2xl p-6 sm:p-8 border border-[#00A9FF]/30 font-mono text-sm sm:text-base overflow-x-auto">
+            <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden">
+              <div className="bg-[#0D1B2A] rounded-2xl p-6 sm:p-8 border border-architech-brand-blue/30 font-mono text-sm sm:text-base overflow-x-auto">
                 <pre className="text-[#F8F9FA] whitespace-pre-wrap">
                   <code>
 {`// You get clean, standard code.
@@ -326,7 +326,7 @@ export default withAuth(DashboardPage);`}
                   key={step}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     currentStep === step 
-                      ? 'bg-[#00A9FF] scale-125' 
+                      ? 'bg-architech-brand-blue scale-125' 
                       : 'bg-[#F8F9FA]/30'
                   }`}
                 />
@@ -345,9 +345,9 @@ export default withAuth(DashboardPage);`}
           variants={fadeInUp}
         >
           <div className="flex items-center justify-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#00A9FF] animate-pulse"></div>
+            <div className="w-2 h-2 rounded-full bg-architech-brand-blue animate-pulse"></div>
             <span>Scroll to explore each step</span>
-            <div className="w-2 h-2 rounded-full bg-[#00A9FF] animate-pulse"></div>
+            <div className="w-2 h-2 rounded-full bg-architech-brand-blue animate-pulse"></div>
           </div>
         </motion.div>
 
@@ -360,7 +360,7 @@ export default withAuth(DashboardPage);`}
           variants={fadeInUp}
         >
           <motion.div
-            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#00A9FF] to-[#39FF14] text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transition-all duration-300 cursor-pointer group"
+            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transition-all duration-300 cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => smoothScrollTo("cta")}
