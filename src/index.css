@@ -464,4 +464,51 @@ Professional meets artistic - perfect for creative developers.
   .animate-float {
     animation: none;
   }
+
+  /* Sticky Scroll Behavior */
+  .tabs-content-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .tabs-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2rem 0;
+    
+    /* Initial state - below viewport */
+    transform: translateY(100%);
+    opacity: 0;
+    z-index: 1;
+    
+    /* No CSS transitions - let JavaScript handle everything */
+  }
+
+  .tabs-visual {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Chart stays static - no animation */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tabs-visual.is-active {
+    opacity: 1;
+  }
+
+  .sticky-wrapper {
+    height: 100vh;
+    position: sticky;
+    top: 5vh;
+  }
 }

@@ -1,8 +1,10 @@
-import { Zap, ArrowRight, Sparkles, Quote, CheckCircle, Clock } from "lucide-react";
-import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer, scaleIn, defaultViewport } from "@/lib/animations";
+import { Zap, TrendingUp, Target, Clock, AlertTriangle, BarChart3, ArrowRight } from "lucide-react";
+import ModernPieChart from "./ModernPieChart";
+import { useScrollTriggerGSAP } from "@/hooks/useScrollTriggerGSAP";
 
 const BenefitsSection = () => {
+  const { containerRef, stickyRef, setContentRef, activeIndex } = useScrollTriggerGSAP();
+
   const smoothScrollTo = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (element) {
@@ -10,198 +12,230 @@ const BenefitsSection = () => {
     }
   };
 
+  const problemCards = [
+    {
+      icon: AlertTriangle,
+      number: "42%",
+      title: "The Debt of Day One",
+      description: "Of a developer's time is lost dealing with technical debt, often caused by poor initial architecture and rushed setup decisions.",
+      source: "Stripe / Chalmers University",
+      color: "red"
+    },
+    {
+      icon: BarChart3,
+      number: "67%",
+      title: "The Illusion of AI Assistance",
+      description: "More time is spent debugging and refactoring when using AI code generators without a proper framework and architectural foundation.",
+      source: "Harness",
+      color: "orange"
+    },
+    {
+      icon: Clock,
+      number: "3-5 Days",
+      title: "The Chaos of Configuration",
+      description: "This is the average time spent on project setup, configuration, and boilerplate before writing a single unique feature.",
+      source: "Industry Average",
+      color: "purple"
+    }
+  ];
+
+  console.log('BenefitsSection rendering', { 
+    problemCards: problemCards.length, 
+    activeIndex,
+    containerRef: !!containerRef.current,
+    stickyRef: !!stickyRef.current
+  });
+
+  const solutionStats = [
+    {
+      icon: TrendingUp,
+      metric: "2-3x",
+      title: "Deploy More Frequently",
+      description: "Our modular architecture aligns with best practices that have proven to double or triple deployment velocity.",
+      color: "green"
+    },
+    {
+      icon: Target,
+      metric: "41%",
+      title: "Productivity Increase",
+      description: "By providing a standardized, high-quality foundation, we eliminate the root causes of technical debt and context switching.",
+      color: "blue"
+    },
+    {
+      icon: Zap,
+      metric: "100%",
+      title: "Production-Ready",
+      description: "Start with a project that's engineered for growth, reducing the risk of costly refactoring later.",
+      color: "purple"
+    }
+  ];
+
+  const pieChartData = [
+    {
+      label: "Innovation Tax",
+      percentage: 70,
+      color: "#ef4444",
+      description: "Meetings, configuration, debugging, technical debt, and non-feature work that drains productivity."
+    },
+    {
+      label: "Actual Coding",
+      percentage: 30,
+      color: "#22c55e",
+      description: "Pure feature development and creative problem-solving - the work that truly matters."
+    }
+  ];
+
 
   return (
-    <section
-      id="benefits"
-      className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden"
-    >
-      {/* Background decoration */}
+    <>
+      {/* Header Section */}
+      <section className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        
-        {/* Header */}
-        <motion.div
-          className="text-center mb-12 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={staggerContainer}
-        >
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
+              You're Paying a Tax on Innovation.
+              <br />
+              <span className="text-transparent bg-gradient-brand bg-clip-text">You Just Don't See It.</span>
+          </h2>
 
-
-          <motion.h2
-            className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
-            variants={fadeInUp}
-          >
-            The End of Boilerplate.
-            <br />
-            <span className="text-transparent bg-gradient-brand bg-clip-text">The Beginning of Creation.</span>
-          </motion.h2>
-
-          <motion.p
-            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 font-inter font-normal"
-            variants={fadeInUp}
-          >
-            The Architech handles the 90% of code that's repetitive, so you can focus on the 10% that's unique to your genius.
-          </motion.p>
-        </motion.div>
-
-        {/* Before/After Visual Section */}
-        <motion.div
-          className="max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={defaultViewport}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* BEFORE - The Chaos */}
-            <motion.div
-              className="relative group"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={defaultViewport}
-            >
-              <div className="glass-card rounded-3xl p-8 border border-red-500/20 bg-gradient-to-br from-red-500/5 to-red-600/5 relative overflow-hidden">
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-                </div>
-
-                <div className="relative z-10">
-                  {/* BEFORE Header */}
-                  <div className="text-center mb-8">
-                    <div className="text-2xl font-bold text-red-500 mb-2">BEFORE</div>
-                    <div className="text-sm text-red-400/70 uppercase tracking-wider">The Chaos</div>
-                  </div>
-
-                  {/* Simple Visual */}
-                  <div className="bg-red-900/20 rounded-2xl p-8 mb-6 border border-red-500/30 min-h-[200px] flex items-center justify-center">
-                    <div className="text-center">
-                      <Clock className="w-16 h-16 text-red-400 mx-auto mb-4" />
-                      <div className="text-2xl font-bold text-red-300 mb-2">Weeks</div>
-                      <div className="text-red-400/70 text-sm">of setup time</div>
-                    </div>
-                  </div>
-
-                  {/* Pain Points */}
-                  <div className="space-y-4">
-                    {[
-                      "Weeks of tedious setup",
-                      "Risky, non-scalable code", 
-                      "Focus lost on infrastructure"
-                    ].map((pain, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex items-center gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + index * 0.1 }}
-                        viewport={defaultViewport}
-                      >
-                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                        <span className="text-red-300 font-medium">{pain}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* AFTER - The Clarity */}
-            <motion.div
-              className="relative group"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={defaultViewport}
-            >
-              <div className="glass-card rounded-3xl p-8 border border-green-500/20 bg-gradient-to-br from-green-500/5 to-green-600/5 relative overflow-hidden">
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-                </div>
-
-                <div className="relative z-10">
-                  {/* AFTER Header */}
-                  <div className="text-center mb-8">
-                    <div className="text-2xl font-bold text-green-500 mb-2">AFTER</div>
-                    <div className="text-sm text-green-400/70 uppercase tracking-wider">The Clarity</div>
-                  </div>
-
-                  {/* Simple Visual */}
-                  <div className="bg-green-900/20 rounded-2xl p-8 mb-6 border border-green-500/30 min-h-[200px] flex items-center justify-center">
-                    <div className="text-center">
-                      <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                      <div className="text-2xl font-bold text-green-300 mb-2">Minutes</div>
-                      <div className="text-green-400/70 text-sm">to production</div>
-                    </div>
-                  </div>
-
-                  {/* Benefits */}
-                  <div className="space-y-4">
-                    {[
-                      "Production-ready in minutes",
-                      "Enterprise-grade architecture",
-                      "Focus regained on creation"
-                    ].map((benefit, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex items-center gap-3"
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 + index * 0.1 }}
-                        viewport={defaultViewport}
-                      >
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span className="text-green-300 font-medium">{benefit}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        {/* <motion.div
-          className="text-center max-w-4xl mx-auto mt-12 sm:mt-20 px-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={fadeInUp}
-        >
-          <div className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-electric/20 bg-gradient-to-br from-architech-electric/5 to-purple-500/5">
-            <Quote className="h-8 w-8 sm:h-12 sm:w-12 text-architech-electric/30 mx-auto mb-4 sm:mb-6" />
-            
-            <blockquote className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
-              "The Architech will change how we think about{" "}
-              <span className="text-transparent bg-gradient-brand bg-clip-text">
-                building software
-              </span>
-              . It's not just faster—it's better."
-            </blockquote>
-
-            <motion.div
-              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => smoothScrollTo("cta")}
-            >
-              <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span>Join Waitlist</span>
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
-            </motion.div>
-          </div>
-        </motion.div> */}
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-inter font-normal">
+              Research shows developers waste over <span className="text-architech-brand-red font-semibold">70% of their time</span> on non-feature work. This is the hidden cost of modern software development.
+          </p>
+        </div>
       </div>
-    </section>
+      </section>
+
+      {/* Sticky Scroll Section */}
+      <section 
+        ref={containerRef}
+        className="bg-architech-section-dark relative overflow-hidden"
+        style={{ height: '220vh', minHeight: '220vh' }}
+      >
+        <div className="sticky-wrapper" style={{ height: '100vh', position: 'sticky', top: '5vh' }}>
+          {/* Debug indicator */}
+          <div className="fixed top-4 right-4 z-50 bg-black/80 text-white p-2 rounded text-sm">
+            Active Index: {activeIndex} / {problemCards.length - 1}
+            </div>
+
+          <div className="container mx-auto px-4 sm:px-6">
+            <div 
+              ref={stickyRef}
+              className="grid lg:grid-cols-2 gap-16 items-center h-[90vh]"
+            >
+              
+              {/* Left Side - Content Cards */}
+              <div className="relative h-full">
+                <div className="tabs-content-container h-full">
+                  {problemCards.map((card, index) => (
+                    <div
+                      key={index}
+                      ref={setContentRef(index)}
+                      className="tabs-content"
+                    >
+                      <div className="space-y-6">
+                        {/* Icon and Title */}
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className={`w-16 h-16 rounded-2xl bg-${card.color}-500/20 flex items-center justify-center`}>
+                            <card.icon className={`w-8 h-8 text-${card.color}-500`} />
+                          </div>
+                          <div>
+                            <div className="text-sm font-medium text-muted-foreground mb-1">
+                              Problem {index + 1}
+                            </div>
+                            <h3 className="text-3xl sm:text-4xl font-bold text-foreground">
+                              {card.title}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <div className="space-y-4">
+                          <div className="w-full h-px bg-gradient-to-r from-transparent via-muted-foreground/30 to-transparent"></div>
+                          <p className="text-lg text-muted-foreground leading-relaxed">
+                            {card.description}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="text-center space-y-6">
+                        {/* Large Number */}
+                        <div className="relative">
+                          <div className={`text-9xl font-black text-${card.color}-500 mb-2`}>
+                            {card.number}
+                          </div>
+                          <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                        </div>
+                        
+                        {/* Source */}
+                        <div className="glass-card rounded-xl p-4 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2">
+                          <div className="text-sm text-muted-foreground/70">
+                            <span className="font-medium">Source:</span> {card.source}
+                          </div>
+                        </div>
+
+                        {/* Progress Dots */}
+                        <div className="flex justify-center gap-2">
+                          {problemCards.map((_, i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                i === index 
+                                  ? `bg-${card.color}-500 w-8` 
+                                  : i < index 
+                                    ? 'bg-green-500' 
+                                    : 'bg-gray-600'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-8">
+                  <button
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-architech-brand-blue to-architech-brand-purple text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-architech-brand-blue/25 transition-all duration-300 group"
+                    onClick={() => smoothScrollTo("cta")}
+                  >
+                    <Zap className="w-5 h-5" />
+                    <span>Eliminate the Tax. Start Architecting.</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+                            </div>
+
+              {/* Right Side - Visual (Pie Chart) - Static */}
+              <div className="relative h-full flex items-center justify-center">
+                <ModernPieChart 
+                  data={pieChartData}
+                  className="mx-auto"
+                />
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </section>
+
+      {/* Solution Section */}
+      <section className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center">
+            <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              The Architech eliminates the Innovation Tax
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+              By providing a standardized, high-quality foundation that scales with your vision.
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

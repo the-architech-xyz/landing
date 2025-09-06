@@ -684,7 +684,7 @@ export default withAuth(DashboardPage);`;
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <img
-                src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                src={"/logo-removebg.png"}
                 alt="The Architect"
                 className="h-6 w-6 object-contain relative z-10"
               />
@@ -746,7 +746,7 @@ export default withAuth(DashboardPage);`;
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                       <img
-                        src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                        src={"/logo-removebg.png"}
                         alt="The Architect"
                         className="w-8 h-8 object-contain"
                       />
@@ -784,7 +784,7 @@ export default withAuth(DashboardPage);`;
                   </div>
                   <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-green to-architech-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-green/30 overflow-hidden">
                     <img
-                      src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                      src={"/logo-removebg.png"}
                       alt="The Architect"
                       className="w-8 h-8 object-contain"
                     />
@@ -814,7 +814,7 @@ export default withAuth(DashboardPage);`;
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
-                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          src={"/logo-removebg.png"}
                           alt="The Architect"
                           className="w-8 h-8 object-contain"
                         />
@@ -914,7 +914,7 @@ export default withAuth(DashboardPage);`;
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
-                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          src={"/logo-removebg.png"}
                           alt="The Architect"
                           className="w-8 h-8 object-contain"
                         />
@@ -954,7 +954,7 @@ export default withAuth(DashboardPage);`;
                         }}
                       >
                         <img
-                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          src={"/logo-removebg.png"}
                           alt="The Architect"
                           className="w-16 h-16 object-contain"
                         />
@@ -1116,7 +1116,7 @@ export default withAuth(DashboardPage);`;
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
-                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          src={"/logo-removebg.png"}
                           alt="The Architect"
                           className="w-8 h-8 object-contain"
                         />

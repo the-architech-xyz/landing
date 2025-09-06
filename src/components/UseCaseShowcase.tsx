@@ -196,7 +196,7 @@ const UseCaseShowcase = () => {
           variants={staggerContainer}
         >
           {/* Section Badge */}
-          <motion.div
+          {/* <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-sm font-medium text-architech-brand-blue mb-6 sm:mb-8"
             variants={scaleIn}
           >
@@ -229,7 +229,7 @@ const UseCaseShowcase = () => {
               />
             </svg>
             Use Cases
-          </motion.div>
+          </motion.div> */}
 
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
