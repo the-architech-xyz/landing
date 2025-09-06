@@ -685,7 +685,7 @@ export default withAuth(DashboardPage);`;
             </motion.button>
             
             {/* Sound Toggle - Temporarily disabled for cleaner UI */}
-            <motion.button
+            {/* <motion.button
               onClick={() => setSoundEnabled(!soundEnabled)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 backdrop-blur-sm border ${
                 soundEnabled 
@@ -703,7 +703,7 @@ export default withAuth(DashboardPage);`;
                 )}
               </svg>
               <span>{soundEnabled ? 'Sound On' : 'Sound Off'}</span>
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         )}
 

@@ -127,7 +127,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-architech-border mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm text-muted-foreground">
-            © 2024 The Architech. All rights reserved. Building the future of
+            © 2025 The Architech. All rights reserved. Building the future of
             development.
           </div>
           <div className="flex items-center gap-6 text-sm">
