@@ -94,11 +94,10 @@ const HeroSection = () => {
               className="text-4xl sm:text-5xl lg:text-7xl font-satoshi font-black leading-tight tracking-tight px-2"
               variants={fadeInDown}
             >
-              <motion.span className="text-foreground">The first no-code</motion.span>
+              <motion.span className="text-foreground">Stop Writing Boilerplate.</motion.span>
               <br />
               <motion.span className="text-foreground">
-                <span className="text-transparent bg-gradient-brand bg-clip-text"> tool</span>
-                <span className="text-foreground"> built for developers.</span>
+                <span className="text-transparent bg-gradient-brand bg-clip-text"> Start Architecting.</span>
               </motion.span>
             </motion.h1>
             
@@ -106,7 +105,7 @@ const HeroSection = () => {
               className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-inter font-medium px-4"
               variants={fadeInUp}
             >
-              Stop writing boilerplate. Start architecting. Assemble battle-tested modules and go from idea to scalable app in minutes—with full control over your code.
+              The Architech is an AI-powered architect that configures your entire stack, from database to deployment, so you can focus on building unique features from day one.
             </motion.p>
           </motion.div>
 
@@ -118,7 +117,7 @@ const HeroSection = () => {
                 className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 group w-full sm:w-auto h-14 sm:h-auto text-base sm:text-sm" 
                 onClick={() => smoothScrollTo("cta")}
               >
-                Get Early Access
+                Join Waitlist
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>

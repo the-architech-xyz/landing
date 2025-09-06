@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Mail, Linkedin, MessageCircle, Github } from "lucide-react";
+import { X, Calendar, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ContactModalProps {
@@ -15,7 +15,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     {
       id: 1,
       title: "Schedule a call",
-      description: "15-minute focused discussion",
+      description: "15-minute focused discussion about your project",
       action: () => window.open('https://calendly.com/antoine-srvt/rdv-antoine', '_blank'),
       icon: Calendar,
       primary: true
@@ -26,22 +26,6 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       description: "For detailed questions or proposals",
       action: () => window.open('mailto:antoine.srvt@gmail.com?subject=Regarding The Architech', '_blank'),
       icon: Mail,
-      primary: false
-    },
-    {
-      id: 3,
-      title: "LinkedIn",
-      description: "Professional connection",
-      action: () => window.open('https://www.linkedin.com/in/antoinesrvt/', '_blank'),
-      icon: Linkedin,
-      primary: false
-    },
-    {
-      id: 4,
-      title: "GitHub",
-      description: "View my work and projects",
-      action: () => window.open('https://github.com/Antoinesrvt', '_blank'),
-      icon: Github,
       primary: false
     }
   ];

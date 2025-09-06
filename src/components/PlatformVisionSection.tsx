@@ -285,7 +285,7 @@ const PlatformVisionSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => smoothScrollTo("cta")}
           >
-            <span>Be part of the journey</span>
+            <span>Join Waitlist</span>
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
           </motion.div>
         </motion.div>

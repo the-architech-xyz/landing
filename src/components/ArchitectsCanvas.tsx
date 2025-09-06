@@ -592,30 +592,30 @@ export default withAuth(DashboardPage);`;
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.1)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
         {/* Floating architectural elements */}
         <motion.div
-                      className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue rounded-full opacity-20"
+          className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue rounded-full opacity-20"
           animate={{
             y: [0, -30, 0],
             x: [0, 15, 0],
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: 6,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         <motion.div
-                      className="absolute top-3/4 right-1/4 w-2 h-2 bg-architech-brand-green rounded-full opacity-30"
+          className="absolute top-3/4 right-1/4 w-2 h-2 bg-architech-brand-green rounded-full opacity-30"
           animate={{
             y: [0, -20, 0],
             x: [0, -12, 0],
-            opacity: [0.3, 0.5, 0.3]
+            opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
             duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 2,
           }}
         />
       </div>
@@ -629,8 +629,6 @@ export default withAuth(DashboardPage);`;
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-
-
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             initial={{ opacity: 0, y: 60 }}
@@ -639,7 +637,7 @@ export default withAuth(DashboardPage);`;
             viewport={{ once: true }}
           >
             Witness Architectural{" "}
-                          <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
               Mastery in Action
             </span>
             <br />
@@ -653,21 +651,22 @@ export default withAuth(DashboardPage);`;
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Experience the precision of AI-driven architecture. Watch as complex requirements transform 
-            into elegant, scalable solutions through expert engineering and intelligent automation.
+            Experience the precision of AI-driven architecture. Watch as complex
+            requirements transform into elegant, scalable solutions through
+            expert engineering and intelligent automation.
           </motion.p>
         </motion.div>
       </div>
 
       {/* Cinematic Timeline Container - Added more padding and proper centering */}
-      <div 
+      <div
         ref={timelineRef}
-        className="relative w-full max-w-7xl mx-auto px-4" 
-        style={{ minHeight: '80vh' }}
+        className="relative w-full max-w-7xl mx-auto px-4"
+        style={{ minHeight: "80vh" }}
       >
         {/* Control Panel - Positioned within timeline container */}
         {!isPlaying && (
-          <motion.div 
+          <motion.div
             className="absolute inset-0 flex flex-col items-center justify-center z-50 gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -675,15 +674,25 @@ export default withAuth(DashboardPage);`;
           >
             <motion.button
               onClick={startAnimation}
-                              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-architech-brand-blue/90 to-architech-brand-green/90 backdrop-blur-md text-white rounded-2xl font-semibold text-lg border border-white/20 shadow-2xl hover:shadow-architech-brand-blue/25 transition-all duration-300 group relative overflow-hidden"
-              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 20px 40px rgba(0, 169, 255, 0.4)" }}
+              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-architech-brand-blue/90 to-architech-brand-green/90 backdrop-blur-md text-white rounded-2xl font-semibold text-lg border border-white/20 shadow-2xl hover:shadow-architech-brand-blue/25 transition-all duration-300 group relative overflow-hidden"
+              whileHover={{
+                scale: 1.05,
+                y: -2,
+                boxShadow: "0 20px 40px rgba(0, 169, 255, 0.4)",
+              }}
               whileTap={{ scale: 0.95 }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                             <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="h-6 w-6 object-contain relative z-10" />
-              <span className="relative z-10">{currentPhase === 3 ? "Replay Session" : "Start Session"}</span>
+              <img
+                src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                alt="The Architect"
+                className="h-6 w-6 object-contain relative z-10"
+              />
+              <span className="relative z-10">
+                {currentPhase === 3 ? "Replay Session" : "Start Session"}
+              </span>
             </motion.button>
-            
+
             {/* Sound Toggle - Temporarily disabled for cleaner UI */}
             {/* <motion.button
               onClick={() => setSoundEnabled(!soundEnabled)}
@@ -707,12 +716,12 @@ export default withAuth(DashboardPage);`;
           </motion.div>
         )}
 
-        <motion.div 
-          className="relative flex items-center justify-center" 
-          style={{ minHeight: '80vh' }}
+        <motion.div
+          className="relative flex items-center justify-center"
+          style={{ minHeight: "80vh" }}
           animate={{
-            flexDirection: layoutMode === 'vertical' ? 'column' : 'row',
-            gap: layoutMode === 'vertical' ? '2rem' : '4rem'
+            flexDirection: layoutMode === "vertical" ? "column" : "row",
+            gap: layoutMode === "vertical" ? "2rem" : "4rem",
           }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
@@ -736,11 +745,19 @@ export default withAuth(DashboardPage);`;
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
-                      <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
+                      <img
+                        src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                        alt="The Architect"
+                        className="w-8 h-8 object-contain"
+                      />
                     </div>
                     <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg shadow-architech-brand-blue/10">
-                      <div className="text-architech-brand-blue font-bold mb-3 text-lg tracking-wide">The Architect</div>
-                      <div className="text-foreground text-lg font-medium leading-relaxed">What architectural challenge shall we solve today?</div>
+                      <div className="text-architech-brand-blue font-bold mb-3 text-lg tracking-wide">
+                        The Architect
+                      </div>
+                      <div className="text-foreground text-lg font-medium leading-relaxed">
+                        What architectural challenge shall we solve today?
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -752,15 +769,25 @@ export default withAuth(DashboardPage);`;
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                 >
-                                     <div className="bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-2xl p-6 backdrop-blur-sm max-w-md shadow-lg">
-                     <div className="text-architech-brand-green font-bold mb-3 text-lg tracking-wide">You</div>
-                     <div className="text-foreground font-mono text-lg font-medium leading-relaxed">
-                       {typingText || typedText}
-                       {isTyping && <span className="animate-pulse ml-1 text-architech-brand-green">|</span>}
-                     </div>
-                   </div>
+                  <div className="bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-2xl p-6 backdrop-blur-sm max-w-md shadow-lg">
+                    <div className="text-architech-brand-green font-bold mb-3 text-lg tracking-wide">
+                      You
+                    </div>
+                    <div className="text-foreground font-mono text-lg font-medium leading-relaxed">
+                      {typingText || typedText}
+                      {isTyping && (
+                        <span className="animate-pulse ml-1 text-architech-brand-green">
+                          |
+                        </span>
+                      )}
+                    </div>
+                  </div>
                   <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-green to-architech-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-green/30 overflow-hidden">
-                    <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
+                    <img
+                      src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                      alt="The Architect"
+                      className="w-8 h-8 object-contain"
+                    />
                   </div>
                 </motion.div>
               </motion.div>
@@ -786,11 +813,21 @@ export default withAuth(DashboardPage);`;
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
-                        <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
+                        <img
+                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          alt="The Architect"
+                          className="w-8 h-8 object-contain"
+                        />
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-foreground text-lg font-medium">Excellent requirements. I've designed a robust architecture optimized for enterprise-scale performance, security, and maintainability.</div>
+                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
+                          The Architect
+                        </div>
+                        <div className="text-foreground text-lg font-medium">
+                          Excellent requirements. I've designed a robust
+                          architecture optimized for enterprise-scale
+                          performance, security, and maintainability.
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -807,12 +844,15 @@ export default withAuth(DashboardPage);`;
                         {/* Line numbers */}
                         <div className="absolute left-0 top-0 bottom-0 w-8 bg-architech-brand-blue/5 border-r border-architech-brand-blue/20 flex flex-col">
                           {blueprintLines.map((_, index) => (
-                            <div key={index} className="text-architech-brand-blue/40 text-xs leading-6 pl-2">
+                            <div
+                              key={index}
+                              className="text-architech-brand-blue/40 text-xs leading-6 pl-2"
+                            >
                               {index + 1}
                             </div>
                           ))}
                         </div>
-                        
+
                         {/* Code content */}
                         <div className="ml-10">
                           {blueprintLines.map((line, index) => (
@@ -823,14 +863,22 @@ export default withAuth(DashboardPage);`;
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1, duration: 0.3 }}
                             >
-                              {line.startsWith('#') ? (
-                                <span className="text-architech-brand-blue/70 font-medium">{line}</span>
-                              ) : line.startsWith('stack:') ? (
-                                <span className="text-architech-brand-blue font-semibold">{line}</span>
-                              ) : line.includes(':') ? (
+                              {line.startsWith("#") ? (
+                                <span className="text-architech-brand-blue/70 font-medium">
+                                  {line}
+                                </span>
+                              ) : line.startsWith("stack:") ? (
+                                <span className="text-architech-brand-blue font-semibold">
+                                  {line}
+                                </span>
+                              ) : line.includes(":") ? (
                                 <>
-                                  <span className="text-architech-brand-blue font-medium">{line.split(':')[0]}:</span>
-                                  <span className="text-architech-brand-green ml-2 font-medium">"{line.split(':')[1].trim()}"</span>
+                                  <span className="text-architech-brand-blue font-medium">
+                                    {line.split(":")[0]}:
+                                  </span>
+                                  <span className="text-architech-brand-green ml-2 font-medium">
+                                    "{line.split(":")[1].trim()}"
+                                  </span>
                                 </>
                               ) : (
                                 <span className="text-foreground">{line}</span>
@@ -865,11 +913,21 @@ export default withAuth(DashboardPage);`;
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
-                        <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
+                        <img
+                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          alt="The Architect"
+                          className="w-8 h-8 object-contain"
+                        />
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-foreground text-lg font-medium">Architecture validated. Now orchestrating enterprise-grade components with precision engineering and seamless integration.</div>
+                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
+                          The Architect
+                        </div>
+                        <div className="text-foreground text-lg font-medium">
+                          Architecture validated. Now orchestrating
+                          enterprise-grade components with precision engineering
+                          and seamless integration.
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -885,124 +943,152 @@ export default withAuth(DashboardPage);`;
                       {/* Central Blueprint Node */}
                       <motion.div
                         className="w-28 h-28 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center shadow-2xl shadow-architech-brand-blue/30 mb-8 overflow-hidden"
-                        animate={{ 
+                        animate={{
                           scale: [1, 1.1, 1],
-                          rotate: [0, 5, 0]
+                          rotate: [0, 5, 0],
                         }}
-                        transition={{ 
-                          duration: 2, 
-                          repeat: Infinity, 
-                          ease: "easeInOut" 
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
                         }}
                       >
-                                                 <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-16 h-16 object-contain" />
+                        <img
+                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          alt="The Architect"
+                          className="w-16 h-16 object-contain"
+                        />
                       </motion.div>
 
-                                             {/* Tech Modules Grid - 2.5D Assembly (Mobile Optimized) */}
-                       <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 gap-8'}`}>
-                         {techStack.map((tech, index) => (
-                           <motion.div
-                             key={tech.name}
-                             className="relative group"
-                             initial={{ 
-                               opacity: 0, 
-                               scale: 0.3, 
-                               y: 150,
-                               rotateX: -120,
-                               rotateY: 45,
-                               z: -100
-                             }}
-                             animate={{ 
-                               opacity: showModules ? 1 : 0, 
-                               scale: showModules ? 1 : 0.3,
-                               y: showModules ? 0 : 150,
-                               rotateX: showModules ? 0 : -120,
-                               rotateY: showModules ? 0 : 45,
-                               z: showModules ? 0 : -100
-                             }}
-                             transition={{ 
-                               delay: index * 0.3, 
-                               duration: 1.2, 
-                               ease: [0.68, -0.55, 0.265, 1.55],
-                               type: "spring",
-                               stiffness: 120,
-                               damping: 12
-                             }}
-                             style={{
-                               transform: `scale(${1 + moduleAssembly * 0.05}) rotateY(${moduleAssembly * 2}deg)`,
-                               transformStyle: "preserve-3d"
-                             }}
-                           >
-                             {/* Connection Line with Glow */}
-                             <motion.div
-                               className="absolute top-1/2 left-1/2 w-24 h-0.5 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green opacity-60 origin-left shadow-lg shadow-architech-brand-blue/50"
-                               initial={{ scaleX: 0, opacity: 0 }}
-                               animate={{ 
-                                 scaleX: showModules ? 1 : 0,
-                                 opacity: showModules ? 0.8 : 0
-                               }}
-                               transition={{ 
-                                 delay: index * 0.4 + 0.3, 
-                                 duration: 0.6, 
-                                 ease: "easeOut" 
-                               }}
-                               style={{
-                                 transform: `rotate(${index * 90}deg)`,
-                                 filter: "blur(0.5px)"
-                               }}
-                             />
-                             
-                             {/* Tech Block with 3D Effect and Interactive Tooltip */}
-                             <motion.div 
-                               className={`bg-gradient-to-br ${tech.color} rounded-xl p-5 text-center shadow-2xl group-hover:scale-105 transition-all duration-300 border border-white/10 cursor-pointer relative`}
-                               style={{
-                                 background: `linear-gradient(135deg, ${tech.brandColor}20, ${tech.brandColor}40)`,
-                                 boxShadow: `0 10px 30px ${tech.brandColor}30, inset 0 1px 0 rgba(255,255,255,0.1)`
-                               }}
-                               whileHover={{ 
-                                 y: -5,
-                                 boxShadow: `0 20px 40px ${tech.brandColor}50`,
-                                 scale: 1.05
-                               }}
-                               onHoverStart={() => !isMobile && setHoveredTech(index)}
-                               onHoverEnd={() => !isMobile && setHoveredTech(null)}
-                               onTap={() => {
-                                 if (isMobile) {
-                                   setHoveredTech(hoveredTech === index ? null : index);
-                                 }
-                                 if (soundEnabled) playSound('snap', 0.1);
-                               }}
-                             >
-                               <motion.div 
-                                 className="mb-3 text-white"
-                                 animate={{ 
-                                   rotateY: moduleAssembly * 10,
-                                   scale: 1 + moduleAssembly * 0.1
-                                 }}
-                                 transition={{ duration: 0.3 }}
-                               >
-                                 {tech.logo}
-                               </motion.div>
-                               <div className="text-white font-semibold text-sm">{tech.name.split(' ')[0]}</div>
-                               
-                               {/* Interactive Tooltip (Mobile Optimized) */}
-                               {hoveredTech === index && (
-                                 <motion.div
-                                   className={`absolute ${isMobile ? '-top-24' : '-top-20'} left-1/2 transform -translate-x-1/2 bg-architech-section-light border border-architech-brand-blue/30 rounded-lg ${isMobile ? 'p-2' : 'p-3'} shadow-xl z-50 ${isMobile ? 'min-w-[150px]' : 'min-w-[200px]'}`}
-                                   initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                                   exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                                   transition={{ duration: 0.2 }}
-                                 >
-                                   <div className="text-architech-brand-blue font-semibold text-sm mb-1">{tech.name}</div>
-                                   <div className="text-muted-foreground text-xs">{tech.description}</div>
-                                   <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-architech-section-light border-r border-b border-architech-brand-blue/30 rotate-45"></div>
-                                 </motion.div>
-                               )}
-                             </motion.div>
-                           </motion.div>
-                         ))}
-                       </div>
+                      {/* Tech Modules Grid - 2.5D Assembly (Mobile Optimized) */}
+                      <div
+                        className={`grid ${
+                          isMobile ? "grid-cols-1 gap-4" : "grid-cols-2 gap-8"
+                        }`}
+                      >
+                        {techStack.map((tech, index) => (
+                          <motion.div
+                            key={tech.name}
+                            className="relative group"
+                            initial={{
+                              opacity: 0,
+                              scale: 0.3,
+                              y: 150,
+                              rotateX: -120,
+                              rotateY: 45,
+                              z: -100,
+                            }}
+                            animate={{
+                              opacity: showModules ? 1 : 0,
+                              scale: showModules ? 1 : 0.3,
+                              y: showModules ? 0 : 150,
+                              rotateX: showModules ? 0 : -120,
+                              rotateY: showModules ? 0 : 45,
+                              z: showModules ? 0 : -100,
+                            }}
+                            transition={{
+                              delay: index * 0.3,
+                              duration: 1.2,
+                              ease: [0.68, -0.55, 0.265, 1.55],
+                              type: "spring",
+                              stiffness: 120,
+                              damping: 12,
+                            }}
+                            style={{
+                              transform: `scale(${
+                                1 + moduleAssembly * 0.05
+                              }) rotateY(${moduleAssembly * 2}deg)`,
+                              transformStyle: "preserve-3d",
+                            }}
+                          >
+                            {/* Connection Line with Glow */}
+                            <motion.div
+                              className="absolute top-1/2 left-1/2 w-24 h-0.5 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green opacity-60 origin-left shadow-lg shadow-architech-brand-blue/50"
+                              initial={{ scaleX: 0, opacity: 0 }}
+                              animate={{
+                                scaleX: showModules ? 1 : 0,
+                                opacity: showModules ? 0.8 : 0,
+                              }}
+                              transition={{
+                                delay: index * 0.4 + 0.3,
+                                duration: 0.6,
+                                ease: "easeOut",
+                              }}
+                              style={{
+                                transform: `rotate(${index * 90}deg)`,
+                                filter: "blur(0.5px)",
+                              }}
+                            />
+
+                            {/* Tech Block with 3D Effect and Interactive Tooltip */}
+                            <motion.div
+                              className={`bg-gradient-to-br ${tech.color} rounded-xl p-5 text-center shadow-2xl group-hover:scale-105 transition-all duration-300 border border-white/10 cursor-pointer relative`}
+                              style={{
+                                background: `linear-gradient(135deg, ${tech.brandColor}20, ${tech.brandColor}40)`,
+                                boxShadow: `0 10px 30px ${tech.brandColor}30, inset 0 1px 0 rgba(255,255,255,0.1)`,
+                              }}
+                              whileHover={{
+                                y: -5,
+                                boxShadow: `0 20px 40px ${tech.brandColor}50`,
+                                scale: 1.05,
+                              }}
+                              onHoverStart={() =>
+                                !isMobile && setHoveredTech(index)
+                              }
+                              onHoverEnd={() =>
+                                !isMobile && setHoveredTech(null)
+                              }
+                              onTap={() => {
+                                if (isMobile) {
+                                  setHoveredTech(
+                                    hoveredTech === index ? null : index
+                                  );
+                                }
+                                if (soundEnabled) playSound("snap", 0.1);
+                              }}
+                            >
+                              <motion.div
+                                className="mb-3 text-white"
+                                animate={{
+                                  rotateY: moduleAssembly * 10,
+                                  scale: 1 + moduleAssembly * 0.1,
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {tech.logo}
+                              </motion.div>
+                              <div className="text-white font-semibold text-sm">
+                                {tech.name.split(" ")[0]}
+                              </div>
+
+                              {/* Interactive Tooltip (Mobile Optimized) */}
+                              {hoveredTech === index && (
+                                <motion.div
+                                  className={`absolute ${
+                                    isMobile ? "-top-24" : "-top-20"
+                                  } left-1/2 transform -translate-x-1/2 bg-architech-section-light border border-architech-brand-blue/30 rounded-lg ${
+                                    isMobile ? "p-2" : "p-3"
+                                  } shadow-xl z-50 ${
+                                    isMobile ? "min-w-[150px]" : "min-w-[200px]"
+                                  }`}
+                                  initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                                  exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  <div className="text-architech-brand-blue font-semibold text-sm mb-1">
+                                    {tech.name}
+                                  </div>
+                                  <div className="text-muted-foreground text-xs">
+                                    {tech.description}
+                                  </div>
+                                  <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-architech-section-light border-r border-b border-architech-brand-blue/30 rotate-45"></div>
+                                </motion.div>
+                              )}
+                            </motion.div>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 </div>
@@ -1029,11 +1115,22 @@ export default withAuth(DashboardPage);`;
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
-                        <img src={darkMode ? "/logo-removebg.png" : "/logo.png"} alt="The Architect" className="w-8 h-8 object-contain" />
+                        <img
+                          src={!darkMode ? "/logo.png" : "/logo-removebg.png"}
+                          alt="The Architect"
+                          className="w-8 h-8 object-contain"
+                        />
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
-                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">The Architect</div>
-                        <div className="text-foreground text-lg font-medium">Mission accomplished. Your enterprise-grade architecture is complete with full source code ownership, comprehensive documentation, and deployment-ready infrastructure.</div>
+                        <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
+                          The Architect
+                        </div>
+                        <div className="text-foreground text-lg font-medium">
+                          Mission accomplished. Your enterprise-grade
+                          architecture is complete with full source code
+                          ownership, comprehensive documentation, and
+                          deployment-ready infrastructure.
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -1047,9 +1144,12 @@ export default withAuth(DashboardPage);`;
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                      <h3 className="text-architech-brand-blue font-semibold mb-3 text-sm">Project Structure</h3>
+                      <h3 className="text-architech-brand-blue font-semibold mb-3 text-sm">
+                        Project Structure
+                      </h3>
                       <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-blue/30 font-mono text-xs max-h-64 overflow-y-auto">
-                        {showProjectStructure && renderProjectStructure(projectStructure)}
+                        {showProjectStructure &&
+                          renderProjectStructure(projectStructure)}
                       </div>
                     </motion.div>
 
@@ -1060,7 +1160,9 @@ export default withAuth(DashboardPage);`;
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                      <h3 className="text-architech-brand-green font-semibold mb-3 text-sm">Live Preview</h3>
+                      <h3 className="text-architech-brand-green font-semibold mb-3 text-sm">
+                        Live Preview
+                      </h3>
                       <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-green/30 overflow-hidden">
                         {showWorkingPreview && (
                           <motion.div
@@ -1072,35 +1174,53 @@ export default withAuth(DashboardPage);`;
                             {/* Dashboard Preview */}
                             <div className="space-y-3">
                               <div className="flex items-center justify-between border-b pb-2">
-                                <h4 className="font-semibold text-gray-800 text-sm">Project Dashboard</h4>
+                                <h4 className="font-semibold text-gray-800 text-sm">
+                                  Project Dashboard
+                                </h4>
                                 <div className="flex gap-1">
                                   <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                                   <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                                 </div>
                               </div>
-                              
+
                               <div className="grid grid-cols-2 gap-2">
                                 <div className="bg-blue-50 p-2 rounded">
-                                  <div className="text-xs text-blue-600 font-medium">Active</div>
-                                  <div className="text-lg font-bold text-blue-800">12</div>
+                                  <div className="text-xs text-blue-600 font-medium">
+                                    Active
+                                  </div>
+                                  <div className="text-lg font-bold text-blue-800">
+                                    12
+                                  </div>
                                 </div>
                                 <div className="bg-green-50 p-2 rounded">
-                                  <div className="text-xs text-green-600 font-medium">Done</div>
-                                  <div className="text-lg font-bold text-green-800">8</div>
+                                  <div className="text-xs text-green-600 font-medium">
+                                    Done
+                                  </div>
+                                  <div className="text-lg font-bold text-green-800">
+                                    8
+                                  </div>
                                 </div>
                               </div>
-                              
+
                               <div className="space-y-1">
                                 <div className="flex items-center gap-2 p-1 bg-gray-50 rounded text-xs">
                                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                                  <span className="text-gray-700">Project Alpha</span>
-                                  <span className="text-gray-500 ml-auto">85%</span>
+                                  <span className="text-gray-700">
+                                    Project Alpha
+                                  </span>
+                                  <span className="text-gray-500 ml-auto">
+                                    85%
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-2 p-1 bg-gray-50 rounded text-xs">
                                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                                  <span className="text-gray-700">Project Beta</span>
-                                  <span className="text-gray-500 ml-auto">100%</span>
+                                  <span className="text-gray-700">
+                                    Project Beta
+                                  </span>
+                                  <span className="text-gray-500 ml-auto">
+                                    100%
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -1112,12 +1232,8 @@ export default withAuth(DashboardPage);`;
                 </div>
               </motion.div>
             )}
-
-
           </AnimatePresence>
         </motion.div>
-        
-
       </div>
 
       {/* Luminous Extraction Particles */}
@@ -1130,15 +1246,17 @@ export default withAuth(DashboardPage);`;
               style={{
                 left: particle.x,
                 top: particle.y,
-                boxShadow: `0 0 20px ${particle.progress > 0.5 ? '#39FF14' : '#00A9FF'}`
+                boxShadow: `0 0 20px ${
+                  particle.progress > 0.5 ? "#39FF14" : "#00A9FF"
+                }`,
               }}
               animate={{
                 scale: [0.5, 1.2, 0.8],
-                opacity: [0, 1, 0.8, 0]
+                opacity: [0, 1, 0.8, 0],
               }}
               transition={{
                 duration: 2,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             />
           ))}
