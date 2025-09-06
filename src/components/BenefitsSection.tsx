@@ -170,7 +170,7 @@ const BenefitsSection = () => {
         </motion.div>
 
         {/* Call to Action */}
-        <motion.div
+        {/* <motion.div
           className="text-center max-w-4xl mx-auto mt-12 sm:mt-20 px-4"
           initial="hidden"
           whileInView="visible"
@@ -199,7 +199,7 @@ const BenefitsSection = () => {
               <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
             </motion.div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
