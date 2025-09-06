@@ -68,7 +68,8 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
+          
+          <div></div>
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4">
@@ -103,7 +104,7 @@ const Footer = () => {
           </div>
 
           {/* Status */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold text-foreground mb-4">
               Status
             </h3>
@@ -121,7 +122,7 @@ const Footer = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}
@@ -130,7 +131,7 @@ const Footer = () => {
             © 2025 The Architech. All rights reserved. Building the future of
             development.
           </div>
-          <div className="flex items-center gap-6 text-sm">
+          {/* <div className="flex items-center gap-6 text-sm">
             <a
               href="#"
               className="text-muted-foreground hover:text-architech-electric transition-colors"
@@ -149,7 +150,7 @@ const Footer = () => {
             >
               Contact
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
