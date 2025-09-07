@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Zap, 
@@ -34,6 +34,17 @@ interface IconData {
 type ComparisonValue = string | IconData;
 
 const WhereWeFitSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   const comparisonData = [
     {
       capability: "Target Audience",
@@ -175,8 +186,171 @@ const WhereWeFitSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Comparison Table */}
-        <motion.div
+        {/* Comparison Table - Desktop / Mobile Cards */}
+        {isMobile ? (
+          /* Mobile Responsive Table Version */
+          <motion.div
+            className="glass-card rounded-3xl overflow-hidden border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={defaultViewport}
+          >
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+            </div>
+
+            <div className="relative z-10 overflow-x-auto">
+              {/* Mobile Table Header */}
+              <div className="grid grid-cols-5 bg-gradient-to-r from-architech-brand-blue/10 to-architech-brand-green/10 border-b border-architech-brand-blue/30 min-w-[600px]">
+                <div className="p-3 font-bold text-foreground text-sm">Capability</div>
+                <div className="p-3 text-center font-semibold text-muted-foreground text-xs">
+                  No-Code<br />
+                  <span className="text-xs text-muted-foreground/60">Platforms</span>
+                </div>
+                <div className="p-3 text-center font-semibold text-muted-foreground text-xs">
+                  AI<br />
+                  <span className="text-xs text-muted-foreground/60">Builders</span>
+                </div>
+                <div className="p-3 text-center font-semibold text-muted-foreground text-xs">
+                  AI<br />
+                  <span className="text-xs text-muted-foreground/60">Assistants</span>
+                </div>
+                <div className="p-3 text-center font-bold text-architech-brand-blue text-xs border-l-2 border-architech-brand-blue bg-architech-brand-blue/5">
+                  The<br />
+                  <span className="text-xs text-architech-brand-green font-semibold">Architech ✨</span>
+                </div>
+              </div>
+
+              {/* Mobile Table Rows */}
+              {comparisonData.map((row, index) => (
+                <motion.div
+                  key={row.capability}
+                  className={`grid grid-cols-5 border-b border-architech-brand-blue/10 hover:bg-architech-brand-blue/5 transition-all duration-300 group min-w-[600px] ${
+                    index % 2 === 0 ? 'bg-architech-section-light/20' : 'bg-architech-section-light/40'
+                  }`}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={defaultViewport}
+                >
+                  {/* Capability Column */}
+                  <div className="p-3 font-semibold text-foreground border-r border-architech-brand-blue/20 text-sm">
+                    {row.capability}
+                  </div>
+                  
+                  {/* No-Code Column */}
+                  <div className="p-3 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm">
+                    {typeof row.noCode === 'object' ? (
+                      <div className="flex flex-col items-center gap-1">
+                        {(row.noCode as IconData).level && (
+                          <div className="flex gap-1">
+                            {Array.from({ length: 3 }).map((_, i) => {
+                              const IconComponent = (row.noCode as IconData).icon;
+                              return (
+                                <IconComponent 
+                                  key={i} 
+                                  className={`w-3 h-3 ${i < (row.noCode as IconData).level! ? 'text-yellow-500' : 'text-gray-300'}`} 
+                                />
+                              );
+                            })}
+                          </div>
+                        )}
+                        <span className="text-xs">{(row.noCode as IconData).text}</span>
+                      </div>
+                    ) : (
+                      <span className="text-xs">{row.noCode}</span>
+                    )}
+                  </div>
+                  
+                  {/* AI Builders Column */}
+                  <div className="p-3 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm">
+                    {typeof row.aiBuilders === 'object' ? (
+                      <div className="flex flex-col items-center gap-1">
+                        {(row.aiBuilders as IconData).level && (
+                          <div className="flex gap-1">
+                            {Array.from({ length: 3 }).map((_, i) => {
+                              const IconComponent = (row.aiBuilders as IconData).icon;
+                              return (
+                                <IconComponent 
+                                  key={i} 
+                                  className={`w-3 h-3 ${i < (row.aiBuilders as IconData).level! ? 'text-yellow-500' : 'text-gray-300'}`} 
+                                />
+                              );
+                            })}
+                          </div>
+                        )}
+                        <span className="text-xs">{(row.aiBuilders as IconData).text}</span>
+                      </div>
+                    ) : (
+                      <span className="text-xs">{row.aiBuilders}</span>
+                    )}
+                  </div>
+                  
+                  {/* AI Assistants Column */}
+                  <div className="p-3 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm">
+                    {typeof row.aiAssistants === 'object' ? (
+                      <div className="flex flex-col items-center gap-1">
+                        {(row.aiAssistants as IconData).level && (
+                          <div className="flex gap-1">
+                            {Array.from({ length: 3 }).map((_, i) => {
+                              const IconComponent = (row.aiAssistants as IconData).icon;
+                              return (
+                                <IconComponent 
+                                  key={i} 
+                                  className={`w-3 h-3 ${i < (row.aiAssistants as IconData).level! ? 'text-yellow-500' : 'text-gray-300'}`} 
+                                />
+                              );
+                            })}
+                          </div>
+                        )}
+                        <span className="text-xs">{(row.aiAssistants as IconData).text}</span>
+                      </div>
+                    ) : (
+                      <span className="text-xs">{row.aiAssistants}</span>
+                    )}
+                  </div>
+                  
+                  {/* The Architech Column - Highlighted */}
+                  <div className={`p-3 text-center font-semibold text-sm relative overflow-hidden ${
+                    row.architechHighlight 
+                      ? 'text-architech-brand-green bg-architech-brand-green/10 border-l-2 border-architech-brand-green' 
+                      : 'text-architech-brand-blue border-l-2 border-architech-brand-blue'
+                  }`}>
+                    {typeof row.architech === 'object' ? (
+                      <div className="flex flex-col items-center gap-1">
+                        {(row.architech as IconData).level && (
+                          <div className="flex gap-1">
+                            {Array.from({ length: 3 }).map((_, i) => {
+                              const IconComponent = (row.architech as IconData).icon;
+                              return (
+                                <IconComponent 
+                                  key={i} 
+                                  className={`w-3 h-3 ${i < (row.architech as IconData).level! ? 'text-architech-brand-green' : 'text-gray-300'}`} 
+                                />
+                              );
+                            })}
+                          </div>
+                        )}
+                        <span className="text-xs font-bold">{(row.architech as IconData).text}</span>
+                      </div>
+                    ) : (
+                      <span className="text-xs font-bold">{row.architech}</span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Mobile scroll indicator */}
+            <div className="absolute bottom-4 right-4 bg-architech-brand-blue/20 text-architech-brand-blue text-xs px-2 py-1 rounded-full">
+              ← Scroll to see more →
+            </div>
+          </motion.div>
+        ) : (
+          /* Desktop Table Version */
+          <motion.div
           className="glass-card rounded-3xl overflow-hidden border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -352,6 +526,7 @@ const WhereWeFitSection = () => {
             ))}
           </div>
         </motion.div>
+        )}
 
         {/* Bottom Summary */}
         <motion.div

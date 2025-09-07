@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Bot, ShoppingCart, BarChart3, PenTool, Zap, Brain, Search, CreditCard, Database, Shield, RefreshCw, User, Triangle } from 'lucide-react';
 import { 
@@ -11,6 +11,44 @@ import {
 
 const UseCaseShowcase = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && activeIndex < useCases.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    }
+    if (isRightSwipe && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
 
   const useCases = [
     {
@@ -148,7 +186,7 @@ const UseCaseShowcase = () => {
   ];
 
   return (
-    <section
+    <section 
       id="use-cases"
       className="min-h-screen bg-architech-section-dark relative overflow-hidden py-16 sm:py-24"
     >
@@ -156,7 +194,7 @@ const UseCaseShowcase = () => {
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
-
+      
       {/* Floating elements */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue rounded-full opacity-20"
@@ -237,7 +275,7 @@ const UseCaseShowcase = () => {
           >
             Production-ready foundation for <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">any project.</span>
           </motion.h2>
-
+          
           <motion.p
             className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-3xl mx-auto px-4"
             variants={fadeInUp}
@@ -247,14 +285,19 @@ const UseCaseShowcase = () => {
         </motion.div>
 
         {/* Use Case Carousel */}
-        <motion.div
+            <motion.div
           className="max-w-7xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={defaultViewport}
+              viewport={defaultViewport}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Left - Visual Pane */}
             <motion.div
               className="relative"
@@ -281,22 +324,22 @@ const UseCaseShowcase = () => {
               <div>
                 <h3 className="text-3xl font-bold text-foreground mb-4">
                   {useCases[activeIndex].title}
-                </h3>
+                    </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {useCases[activeIndex].description}
-                </p>
-              </div>
+                    </p>
+                  </div>
 
               {/* Module Stack */}
               <div>
                 <h4 className="text-xl font-semibold text-architech-brand-blue mb-6">
                   Module Stack Used:
-                </h4>
+                            </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {useCases[activeIndex].stack.map((tech, index) => {
                     const IconComponent = tech.icon;
                     return (
-                      <motion.div
+                                <motion.div
                         key={tech.name}
                         className="flex items-center gap-3 p-4 glass-card rounded-xl border border-architech-brand-blue/20"
                         initial={{ opacity: 0, y: 20 }}
@@ -307,11 +350,11 @@ const UseCaseShowcase = () => {
                           className={`w-10 h-10 rounded-lg ${tech.color} flex items-center justify-center`}
                         >
                           <IconComponent className="w-5 h-5 text-white" />
-                        </div>
+                  </div>
                         <span className="font-medium text-foreground">
                           {tech.name}
                         </span>
-                      </motion.div>
+                    </motion.div>
                     );
                   })}
                 </div>
@@ -327,7 +370,7 @@ const UseCaseShowcase = () => {
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </motion.button> */}
             </motion.div>
-          </div>
+        </div>
 
           {/* Navigation */}
           <div className="flex justify-center mt-12">
@@ -348,7 +391,7 @@ const UseCaseShowcase = () => {
                 </motion.button>
               ))}
             </div>
-          </div>
+            </div>
         </motion.div>
       </div>
     </section>

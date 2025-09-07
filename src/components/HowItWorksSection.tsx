@@ -60,7 +60,7 @@ import { useDatabase } from '@lib/db';
 
 function DashboardPage({ user }) {
   const { data: projects } = useDatabase('projects');
-  
+
   return (
     <Layout user={user}>
       <h1>Welcome, {user.name}</h1>

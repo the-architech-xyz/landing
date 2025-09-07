@@ -11,6 +11,7 @@ const HeroSection = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   const promptText = "A collaborative project management app with JWT auth and a modern design system";
   
@@ -31,6 +32,27 @@ const HeroSection = () => {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Detect if hero section is in view to prevent animation scroll issues
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+    
+    const heroElement = document.getElementById('hero');
+    if (heroElement) {
+      observer.observe(heroElement);
+    }
+    
+    return () => {
+      if (heroElement) {
+        observer.unobserve(heroElement);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -148,7 +170,7 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {showModules && (
+                {showModules && (isInView || !isMobile) && (
                   <motion.div 
                     className="space-y-3"
                     initial={{ opacity: 0, height: 0 }}
