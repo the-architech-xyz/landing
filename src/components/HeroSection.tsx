@@ -12,6 +12,7 @@ const HeroSection = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const promptText = "A collaborative project management app with JWT auth and a modern design system";
   
@@ -27,7 +28,8 @@ const HeroSection = () => {
   // Detect mobile device
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -38,9 +40,14 @@ const HeroSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        // More sensitive threshold for mobile to prevent scroll jumps
+        const threshold = isMobile ? 0.3 : 0.5;
+        setIsInView(entry.isIntersecting && entry.intersectionRatio >= threshold);
       },
-      { threshold: 0.5 }
+      { 
+        threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+        rootMargin: isMobile ? '-10% 0px -10% 0px' : '0px'
+      }
     );
     
     const heroElement = document.getElementById('hero');
@@ -53,7 +60,28 @@ const HeroSection = () => {
         observer.unobserve(heroElement);
       }
     };
-  }, []);
+  }, [isMobile]);
+
+  // Detect scrolling to prevent animations during scroll on mobile
+  useEffect(() => {
+    if (!isMobile) return;
+
+    let scrollTimeout: NodeJS.Timeout;
+    
+    const handleScroll = () => {
+      setIsScrolling(true);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     if (currentText.length < promptText.length) {
@@ -172,7 +200,7 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {showModules && (isInView || !isMobile) && (
+                {showModules && isInView && (!isMobile || !isScrolling) && (
                   <motion.div 
                     className="space-y-3"
                     initial={{ opacity: 0, height: 0 }}
