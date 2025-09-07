@@ -112,6 +112,8 @@ const DesktopStickyScroll = ({ problemCards, pieChartData }: { problemCards: any
 const BenefitsSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [mobileCardIndex, setMobileCardIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Detect mobile device
   useEffect(() => {
@@ -122,6 +124,31 @@ const BenefitsSection = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Touch handlers for swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && mobileCardIndex < problemCards.length - 1) {
+      setMobileCardIndex(mobileCardIndex + 1);
+    }
+    if (isRightSwipe && mobileCardIndex > 0) {
+      setMobileCardIndex(mobileCardIndex - 1);
+    }
+  };
 
   // Create refs and state for both mobile and desktop
   const containerRef = useRef<HTMLDivElement>(null);
@@ -231,14 +258,28 @@ const BenefitsSection = () => {
         <section className="bg-architech-section-dark relative overflow-hidden py-16">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="space-y-8">
-              {/* Mobile Card */}
-        <motion.div
-                key={mobileCardIndex}
-                className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+              {/* Mobile Card with Swipe Support */}
+              <div
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                className="touch-pan-y select-none"
               >
+                {/* Swipe Indicator */}
+                <div className="text-center mb-4">
+                  <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>Swipe to navigate</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+                <motion.div
+                  key={mobileCardIndex}
+                  className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
                 <div className="text-center space-y-6">
                   {/* Icon and Title */}
                   <div className="flex flex-col items-center gap-4 mb-6">
@@ -278,7 +319,8 @@ const BenefitsSection = () => {
                     </div>
                   </div>
                 </div>
-        </motion.div>
+                </motion.div>
+              </div>
 
               {/* Mobile Navigation */}
               <div className="flex justify-center items-center gap-4">

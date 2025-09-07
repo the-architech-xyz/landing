@@ -201,7 +201,11 @@ const Header = () => {
               variant="ghost"
               size="icon"
               className="md:hidden hover:bg-architech-electric/10 transition-all duration-300 w-10 h-10"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
