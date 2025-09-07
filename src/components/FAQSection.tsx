@@ -14,11 +14,11 @@ const FAQSection = () => {
       question: "Do I own the code?",
       answer: "Yes, completely. The Architech assembles standard code that you can export, modify, and deploy anywhere. No vendor lock-in or platform dependencies.",
     },
-    {
-      category: "Integration",
-      question: "How does it integrate with my existing codebase?",
-      answer: "The Architech generates standard code that follows common patterns. You can import it into any project, modify it as needed, and it integrates seamlessly with your existing tools and workflows.",
-    },
+    // {
+    //   category: "Integration",
+    //   question: "How does it integrate with my existing codebase?",
+    //   answer: "The Architech generates standard code that follows common patterns. You can import it into any project, modify it as needed, and it integrates seamlessly with your existing tools and workflows.",
+    // },
     {
       category: "Customization",
       question: "What if I need to customize beyond the modules?",
@@ -42,12 +42,17 @@ const FAQSection = () => {
     {
       category: "Access",
       question: "When can I get access?",
-      answer: "We're currently in closed alpha. Join the waitlist for beta access.",
+      answer: "CLI Tool: Available now (open source). SaaS Platform: Currently in construction.",
+    },
+    {
+      category: "Access",
+      question: "What's the difference between CLI and SaaS?",
+      answer: "CLI Tool: Free, open source command-line tool for local development. SaaS Platform: Web-based platform with advanced features, team collaboration, and cloud integration (coming soon).", 
     },
     {
       category: "Business",
       question: "What does this cost?",
-      answer: "Core platform: Free forever. Pro features: $29/month (advanced modules, priority support, team collaboration). Enterprise: Custom pricing (on-premise, custom modules, dedicated support).",
+      answer: "CLI Tool: Completely free and open source forever. SaaS Platform (soon): Free tier + Pro features at $29/month (advanced modules, priority support, team collaboration). Enterprise: Custom pricing (on-premise, custom modules, dedicated support).",
     },
   ];
 

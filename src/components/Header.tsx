@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Menu, X, Zap } from "lucide-react";
+import { Moon, Sun, Menu, X, Zap, Linkedin } from "lucide-react";
+import DiscordIcon from "@/components/DiscordIcon";
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -156,16 +157,36 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-3 sm:space-x-4">
-           
+            {/* Social Links - High Visibility */}
+            <div className="hidden md:flex items-center space-x-2">
+              <a
+                href="https://discord.gg/sxhdEEWups"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300 hover:scale-110 group"
+                title="Join our Discord community"
+              >
+                <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/the-architech-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300 hover:scale-110 group"
+                title="Follow us on LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+              </a>
+            </div>
 
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
               className="text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/10 transition-all duration-300 hover:scale-110 w-10 h-10 sm:w-11 sm:h-11"
             >
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+            </Button> */}
             
             <Button 
               className="hidden md:inline-flex bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden text-sm lg:text-base px-4 sm:px-6 py-2 sm:py-2"
@@ -252,6 +273,28 @@ const Header = () => {
               >
                 Join Waitlist
               </Button>
+              
+              {/* Mobile Social Links */}
+              <div className="flex items-center justify-center space-x-4 mt-6 px-4">
+                <a
+                  href="https://discord.gg/sxhdEEWups"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300"
+                >
+                  <DiscordIcon className="h-5 w-5" />
+                  <span className="text-sm font-medium">Discord</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/the-architech-ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  <span className="text-sm font-medium">LinkedIn</span>
+                </a>
+              </div>
             </div>
           </nav>
         </div>

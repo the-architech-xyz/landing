@@ -1,22 +1,9 @@
-import { useState, useEffect } from "react";
-import { ArrowUp, Github, Twitter, Linkedin } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
+import { Github, Twitter, Linkedin, MailIcon } from "lucide-react";
+import DiscordIcon from "@/components/DiscordIcon";
 
 const Footer = () => {
-  const [showBackToTop, setShowBackToTop] = useState(false);
   const { darkMode } = useTheme();
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 500);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="relative bg-gradient-surface border-t border-architech-border">
@@ -49,10 +36,20 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-4">
               <a
-                href="https://www.linkedin.com/in/antoinesrvt/" // Updated with real LinkedIn
+                href="https://discord.gg/sxhdEEWups"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+                title="Join our Discord community"
+              >
+                <DiscordIcon className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/the-architech-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+                title="Follow us on LinkedIn"
               >
                 <Linkedin className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
               </a>
@@ -61,10 +58,11 @@ const Footer = () => {
               <a
                 href="mailto:antoine.srvt@gmail.com"
                 className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+                title="Contact us via email"
               >
-                <div className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-xs font-bold">
+                <MailIcon className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-xs font-bold">
                   @
-                </div>
+                </MailIcon>
               </a>
             </div>
           </div>
@@ -154,17 +152,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Back to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-40 w-12 h-12 bg-gradient-electric rounded-full flex items-center justify-center shadow-electric hover:shadow-glow transition-all duration-300 ${
-          showBackToTop
-            ? "translate-y-0 opacity-100 scale-100"
-            : "translate-y-16 opacity-0 scale-75 pointer-events-none"
-        }`}
-      >
-        <ArrowUp className="h-5 w-5 text-white" />
-      </button>
     </footer>
   );
 };

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Loader2, AlertCircle, Linkedin, Users } from "lucide-react";
 import { WAITLIST_CONFIG } from "@/config/waitlist";
+import DiscordIcon from "@/components/DiscordIcon";
 
 const SimpleCTASection = () => {
   const [email, setEmail] = useState("");
@@ -93,7 +94,7 @@ const SimpleCTASection = () => {
                 #{waitlistPosition || '🎯'}
               </div>
               <div className="text-sm text-muted-foreground mt-2">
-                SaaS platform coming Q2 2025
+                SaaS platform coming soon
               </div>
             </div>
             
@@ -172,16 +173,50 @@ const SimpleCTASection = () => {
             No spam, ever. Just updates on the revolution.
           </p>
 
+          {/* Beautiful OR Divider */}
+          <div className="flex items-center my-8">
+            <div className="flex-grow border-t border-architech-border"></div>
+    
+            <div className="flex-grow border-t border-architech-border"></div>
+          </div>
+
+          {/* Community Links - High Conversion */}
+          <div>
+            <p className="text-sm text-muted-foreground mb-4 text-center">
+              Join our community for early access & updates
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://discord.gg/sxhdEEWups"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
+              >
+                <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                <span>Join Discord</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/the-architech-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
+              >
+                <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                <span>Follow on LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
           {/* Enhanced social proof */}
-          {/* <div className="mt-8 glass-card rounded-xl p-4 max-w-sm mx-auto group hover:shadow-glow transition-all duration-300">
+          {/* <div className="mt-8 glass-card rounded-xl p-6 max-w-md mx-auto group hover:shadow-glow transition-all duration-300">
             <div className="text-2xl font-bold text-transparent bg-gradient-rainbow bg-clip-text">
-              2,847
+              500+
             </div>
             <div className="text-sm text-muted-foreground">
               Developers already waiting
             </div>
             <div className="text-xs text-architech-electric mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              +23 joined today
+              +12 joined today
             </div>
           </div> */}
         </div>

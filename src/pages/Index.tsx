@@ -11,6 +11,7 @@ import TeamSection from "@/components/TeamSection";
 import PlatformVisionSection from "@/components/PlatformVisionSection";
 import SimpleCTASection from "@/components/SimpleCTASection";
 import Footer from "@/components/Footer";
+import FloatingSocialWidget from "@/components/FloatingSocialWidget";
 
 const Index = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const Index = () => {
       {/* <PlatformVisionSection /> */}
       <SimpleCTASection />
       <Footer />
+      <FloatingSocialWidget />
     </div>
   );
 };
