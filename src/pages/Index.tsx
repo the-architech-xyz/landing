@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import BenefitsSection from "@/components/BenefitsSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
 import ArchitectsCanvas from "@/components/ArchitectsCanvas";
-import UseCaseShowcase from "@/components/UseCaseShowcase";
 import EcosystemSection from "@/components/EcosystemSection";
 import WhereWeFitSection from "@/components/WhereWeFitSection";
 import FAQSection from "@/components/FAQSection";
@@ -23,13 +23,13 @@ const Index = () => {
       <Header />
       <HeroSection />
       <BenefitsSection />
-      <UseCaseShowcase />
+      <HowItWorksSection />
       <ArchitectsCanvas />
       <EcosystemSection />
       <WhereWeFitSection />
       <FAQSection />
-      <TeamSection />
-      <PlatformVisionSection />
+      {/* <TeamSection /> */}
+      {/* <PlatformVisionSection /> */}
       <SimpleCTASection />
       <Footer />
     </div>

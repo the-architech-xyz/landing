@@ -1,4 +1,5 @@
 import { Zap, TrendingUp, Target, Clock, AlertTriangle, BarChart3, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import ModernPieChart from "./ModernPieChart";
 import { useScrollTriggerGSAP } from "@/hooks/useScrollTriggerGSAP";
 
@@ -39,12 +40,6 @@ const BenefitsSection = () => {
     }
   ];
 
-  console.log('BenefitsSection rendering', { 
-    problemCards: problemCards.length, 
-    activeIndex,
-    containerRef: !!containerRef.current,
-    stickyRef: !!stickyRef.current
-  });
 
   const solutionStats = [
     {
@@ -114,10 +109,7 @@ const BenefitsSection = () => {
         style={{ height: '220vh', minHeight: '220vh' }}
       >
         <div className="sticky-wrapper" style={{ height: '100vh', position: 'sticky', top: '5vh' }}>
-          {/* Debug indicator */}
-          <div className="fixed top-4 right-4 z-50 bg-black/80 text-white p-2 rounded text-sm">
-            Active Index: {activeIndex} / {problemCards.length - 1}
-            </div>
+   
 
           <div className="container mx-auto px-4 sm:px-6">
             <div 
@@ -196,7 +188,7 @@ const BenefitsSection = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div className="mt-8">
+                {/* <div className="mt-8">
                   <button
                     className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-architech-brand-blue to-architech-brand-purple text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-architech-brand-blue/25 transition-all duration-300 group"
                     onClick={() => smoothScrollTo("cta")}
@@ -205,7 +197,7 @@ const BenefitsSection = () => {
                     <span>Eliminate the Tax. Start Architecting.</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
-                </div>
+                </div> */}
                             </div>
 
               {/* Right Side - Visual (Pie Chart) - Static */}
@@ -223,7 +215,7 @@ const BenefitsSection = () => {
       {/* Solution Section */}
       <section className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center">
+          <div className="text-center mb-16">
             <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
               The Architech eliminates the Innovation Tax
             </h3>
@@ -231,6 +223,70 @@ const BenefitsSection = () => {
               By providing a standardized, high-quality foundation that scales with your vision.
             </p>
           </div>
+
+          {/* Proof of Gain Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {solutionStats.map((stat, index) => (
+              <motion.div
+                key={stat.title}
+                className="glass-card rounded-2xl p-8 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2 relative overflow-hidden group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  scale: 1.02,
+                  borderColor: `var(--${stat.color}-500)`,
+                  boxShadow: `0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--${stat.color}-500/20)`
+                }}
+              >
+                {/* Background gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-${stat.color}-500/5 to-${stat.color}-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                
+                <div className="relative z-10">
+                  {/* Icon */}
+                  <div className={`w-16 h-16 rounded-2xl bg-${stat.color}-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <stat.icon className={`w-8 h-8 text-${stat.color}-500`} />
+                  </div>
+
+                  {/* Metric */}
+                  <div className={`text-4xl font-black text-${stat.color}-500 mb-3 group-hover:scale-105 transition-transform duration-300`}>
+                    {stat.metric}
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="text-xl font-bold text-foreground mb-4 group-hover:text-foreground/90 transition-colors duration-300">
+                    {stat.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors duration-300">
+                    {stat.description}
+                  </p>
+
+                  {/* Progress indicator */}
+                  {/* <div className="mt-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className={`w-2 h-2 bg-${stat.color}-500 rounded-full animate-pulse`} />
+                      <span className="text-xs text-muted-foreground font-medium">Proven Results</span>
+                    </div>
+                    <div className={`w-full h-1 bg-${stat.color}-500/20 rounded-full overflow-hidden`}>
+                      <motion.div
+                        className={`h-full bg-gradient-to-r from-${stat.color}-500 to-${stat.color}-600 rounded-full`}
+                        initial={{ width: "0%" }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ duration: 1.5, delay: index * 0.2 }}
+                        viewport={{ once: true }}
+                      />
+                    </div>
+                  </div> */}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+   
         </div>
       </section>
     </>
