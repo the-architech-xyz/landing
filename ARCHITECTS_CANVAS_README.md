@@ -1,10 +1,10 @@
-# The Architect's Canvas
+# The architech's Canvas
 
 A premium, fluid, scroll-driven animated section that demonstrates the product's unique value proposition in a narrative way. This component replaces the static "How It Works" section with an immersive, interactive experience.
 
 ## 🎯 Overview
 
-"The Architect's Canvas" is a core landing page section that creates a memorable, premium experience demonstrating effortless creation and intelligent design. The user's scroll action is the only driver of the animation's progress, creating a seamless narrative flow.
+"The architech's Canvas" is a core landing page section that creates a memorable, premium experience demonstrating effortless creation and intelligent design. The user's scroll action is the only driver of the animation's progress, creating a seamless narrative flow.
 
 ## ✨ Features
 
@@ -222,4 +222,4 @@ useEffect(() => {
 
 ---
 
-**The Architect's Canvas** transforms your landing page from static information to an immersive, interactive experience that demonstrates your product's value through elegant, fluid animations. Every scroll reveals a new layer of sophistication, creating a memorable impression that sets your platform apart.
+**The architech's Canvas** transforms your landing page from static information to an immersive, interactive experience that demonstrates your product's value through elegant, fluid animations. Every scroll reveals a new layer of sophistication, creating a memorable impression that sets your platform apart.

@@ -235,19 +235,14 @@ const UseCaseShowcase = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            Build Anything.
-            <br />
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              Faster. Better.
-            </span>
+            Production-ready foundation for <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">any project.</span>
           </motion.h2>
 
           <motion.p
             className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
-            From internal tools to AI-powered apps, The Architech gives you the
-            perfect, production-ready foundation.
+            Build Anything. <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">Faster. Better.</span>
           </motion.p>
         </motion.div>
 

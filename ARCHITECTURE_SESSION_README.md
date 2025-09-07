@@ -1,8 +1,8 @@
-# The Architecture Session - Component Documentation
+# The architechure Session - Component Documentation
 
 ## 🎯 Overview
 
-"The Architecture Session" is a cinematic, narrative-driven component that replaces the previous scroll-driven "Architect's Canvas" with a premium, auto-playing experience. It tells the story of a real-time collaboration between a user and The Architect AI, demonstrating the platform's capabilities through an engaging 20-second animation sequence.
+"The architechure Session" is a cinematic, narrative-driven component that replaces the previous scroll-driven "Architect's Canvas" with a premium, auto-playing experience. It tells the story of a real-time collaboration between a user and The architech AI, demonstrating the platform's capabilities through an engaging 20-second animation sequence.
 
 ## ✨ Key Features
 
@@ -24,7 +24,7 @@
 - User response types out: "A collaborative project management app with a modern design system"
 - Clean, modern chat interface design
 
-#### **Phase 2: The Architect's Reflection (4-8 seconds)**
+#### **Phase 2: The architech's Reflection (4-8 seconds)**
 - AI responds with architectural insight
 - Blueprint.yaml file builds line by line
 - Shows intelligent technology suggestions
@@ -108,7 +108,7 @@
 - **Tech Stack**: Easily modify the suggested technologies
 - **User Input**: Customize the example user request
 - **Generated Code**: Update the final code output
-- **AI Messages**: Modify The Architect's responses
+- **AI Messages**: Modify The architech's responses
 
 ### **Timing Adjustments**
 - **Phase Durations**: Adjust timing for each phase
@@ -180,4 +180,4 @@
 
 ---
 
-**The Architecture Session** represents a significant evolution from scroll-driven animations to a premium, cinematic experience that better showcases The Architect's AI capabilities while providing users with full control over their viewing experience.
+**The architechure Session** represents a significant evolution from scroll-driven animations to a premium, cinematic experience that better showcases The architech's AI capabilities while providing users with full control over their viewing experience.

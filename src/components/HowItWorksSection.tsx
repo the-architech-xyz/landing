@@ -115,20 +115,14 @@ const HowItWorksSection = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            From Vision to{" "}
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              Production
-            </span>
-            <br />
-            In Three Steps
+            Three simple steps to <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">production-ready code.</span>
           </motion.h2>
 
           <motion.p
             className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-3xl mx-auto px-4 font-inter"
             variants={fadeInUp}
           >
-            The Architech transforms your ideas into production-ready applications using battle-tested, 
-            open-source modules. No proprietary dependencies, no lock-in. Ever.
+            From Vision to <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">Production</span> in minutes.
           </motion.p>
         </motion.div>
 

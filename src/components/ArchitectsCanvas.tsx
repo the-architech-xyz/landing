@@ -395,7 +395,7 @@ export default withAuth(DashboardPage);`;
       })
       .to({}, { duration: 1.5 }) // Pause for reading
 
-    // Phase 2: The Architect's Reflection (4-8 seconds) - Still Vertical Chat
+    // Phase 2: The architech's Reflection (4-8 seconds) - Still Vertical Chat
     .to({}, { duration: 0.5 }) // AI thinking
     .to({}, { 
       duration: 0.1, 
@@ -636,25 +636,15 @@ export default withAuth(DashboardPage);`;
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Witness Architectural{" "}
+            Witness {" "}
             <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              Mastery in Action
+              Architectural Mastery 
             </span>
+            in Action
             <br />
-            Live Session
           </motion.h2>
 
-          <motion.p
-            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 font-inter"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            Experience the precision of AI-driven architecture. Watch as complex
-            requirements transform into elegant, scalable solutions through
-            expert engineering and intelligent automation.
-          </motion.p>
+   
         </motion.div>
       </div>
 
@@ -685,7 +675,7 @@ export default withAuth(DashboardPage);`;
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <img
                 src={"/logo-removebg.png"}
-                alt="The Architect"
+                alt="The architech"
                 className="h-6 w-6 object-contain relative z-10"
               />
               <span className="relative z-10">
@@ -747,13 +737,13 @@ export default withAuth(DashboardPage);`;
                     <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                       <img
                         src={"/logo-removebg.png"}
-                        alt="The Architect"
+                        alt="The architech"
                         className="w-8 h-8 object-contain"
                       />
                     </div>
                     <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg shadow-architech-brand-blue/10">
                       <div className="text-architech-brand-blue font-bold mb-3 text-lg tracking-wide">
-                        The Architect
+                        The architech
                       </div>
                       <div className="text-foreground text-lg font-medium leading-relaxed">
                         What architectural challenge shall we solve today?
@@ -785,7 +775,7 @@ export default withAuth(DashboardPage);`;
                   <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-green to-architech-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-green/30 overflow-hidden">
                     <img
                       src={"/logo-removebg.png"}
-                      alt="The Architect"
+                      alt="The architech"
                       className="w-8 h-8 object-contain"
                     />
                   </div>
@@ -793,7 +783,7 @@ export default withAuth(DashboardPage);`;
               </motion.div>
             )}
 
-            {/* Phase 2: The Architect's Reflection */}
+            {/* Phase 2: The architech's Reflection */}
             {currentPhase === 1 && (
               <motion.div
                 key="phase-2"
@@ -815,13 +805,13 @@ export default withAuth(DashboardPage);`;
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The Architect"
+                          alt="The architech"
                           className="w-8 h-8 object-contain"
                         />
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
-                          The Architect
+                          The architech
                         </div>
                         <div className="text-foreground text-lg font-medium">
                           Excellent requirements. I've designed a robust
@@ -915,13 +905,13 @@ export default withAuth(DashboardPage);`;
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The Architect"
+                          alt="The architech"
                           className="w-8 h-8 object-contain"
                         />
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
-                          The Architect
+                          The architech
                         </div>
                         <div className="text-foreground text-lg font-medium">
                           Architecture validated. Now orchestrating
@@ -955,7 +945,7 @@ export default withAuth(DashboardPage);`;
                       >
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The Architect"
+                          alt="The architech"
                           className="w-16 h-16 object-contain"
                         />
                       </motion.div>
@@ -1117,13 +1107,13 @@ export default withAuth(DashboardPage);`;
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The Architect"
+                          alt="The architech"
                           className="w-8 h-8 object-contain"
                         />
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
-                          The Architect
+                          The architech
                         </div>
                         <div className="text-foreground text-lg font-medium">
                           Mission accomplished. Your enterprise-grade

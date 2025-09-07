@@ -97,13 +97,11 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
-              You're Paying a Tax on Innovation.
-              <br />
-              <span className="text-transparent bg-gradient-brand bg-clip-text">You Just Don't See It.</span>
+              The hidden cost of <span className="text-transparent bg-gradient-brand bg-clip-text">modern software development.</span>
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-inter font-normal">
-              Research shows developers waste over <span className="text-architech-brand-red font-semibold">70% of their time</span> on non-feature work. This is the hidden cost of modern software development.
+              You're Paying a Tax on Innovation. <span className="text-transparent bg-gradient-brand bg-clip-text">You Just Don't See It.</span>
           </p>
         </div>
       </div>
