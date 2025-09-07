@@ -1,10 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Package, ArrowRight, Code2, Cpu, Wifi, MessageSquare, Store, Gamepad2, Music, Camera, Users, Zap } from 'lucide-react';
+import { Code2, Package, Users, ArrowRight } from 'lucide-react';
 import { 
   fadeInUp, 
   fadeInDown, 
-  scaleIn, 
   staggerContainer, 
   defaultViewport 
 } from '@/lib/animations';
@@ -57,9 +56,9 @@ const EcosystemSection = () => {
           >
             A living{" "}
             <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              ecosystem {" "}
+              ecosystem
             </span>
-            for developers.
+            {" "}for developers
           </motion.h2>
 
           <motion.p
@@ -67,13 +66,13 @@ const EcosystemSection = () => {
             variants={fadeInUp}
           >
             Beyond the Templates:{" "}
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text font-semibold">
               Your Vision, Your Stack.
             </span>
           </motion.p>
         </motion.div>
 
-        {/* Main Content */}
+        {/* Main Content - 2 Columns for Desktop */}
         <motion.div
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -82,126 +81,61 @@ const EcosystemSection = () => {
           variants={staggerContainer}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Visual */}
-            <motion.div className="relative" variants={fadeInUp}>
-              <div className="glass-card rounded-3xl p-8 border border-architech-brand-green/20 bg-gradient-to-br from-[#39FF14]/5 to-[#00A9FF]/5 relative overflow-hidden">
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(57,255,20,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(57,255,20,0.1)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
-                </div>
+            {/* Left - Blueprint Visual + Content */}
+            <motion.div className="space-y-8" variants={fadeInUp}>
+              <div>
+                <h3 className="text-3xl font-bold text-foreground mb-6">
+                  How It Works
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  Every module is defined by a simple file describing actions: create a file, run a command, add a dependency, etc... <br /> It's transparent, easy to debug, and simple to create your own.
+                </p>
+              </div>
 
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="flex justify-center mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-architech-brand-green to-architech-brand-blue rounded-full flex items-center justify-center shadow-lg shadow-architech-brand-green/30">
-                      <Package className="w-10 h-10 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Technology Grid */}
-                  <div className="grid grid-cols-4 gap-4 mb-8">
-                    {[
-                      { icon: Code2, name: "Solidity", color: "bg-orange-500" },
-                      { icon: Cpu, name: "Rust", color: "bg-orange-600" },
-                      { icon: Wifi, name: "MQTT", color: "bg-blue-500" },
-                      {
-                        icon: MessageSquare,
-                        name: "WebRTC",
-                        color: "bg-green-500",
-                      },
-                      { icon: Store, name: "Shopify", color: "bg-green-600" },
-                      {
-                        icon: Gamepad2,
-                        name: "Discord",
-                        color: "bg-indigo-500",
-                      },
-                      { icon: Music, name: "Twilio", color: "bg-red-500" },
-                      { icon: Camera, name: "OpenCV", color: "bg-purple-500" },
-                    ].map((tech, index) => {
-                      const IconComponent = tech.icon;
-                      return (
-                        <motion.div
-                          key={tech.name}
-                          className="flex flex-col items-center gap-2 p-3 glass-card rounded-xl border border-architech-brand-blue/20"
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <div
-                            className={`w-8 h-8 rounded-lg ${tech.color} flex items-center justify-center`}
-                          >
-                            <IconComponent className="w-4 h-4 text-white" />
-                          </div>
-                          <span className="text-xs text-foreground font-medium text-center">
-                            {tech.name}
-                          </span>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Coming Soon Badge */}
-                  <div className="text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-full text-architech-brand-green text-sm font-medium">
-                      <div className="w-2 h-2 bg-architech-brand-green rounded-full animate-pulse"></div>
-                      Coming Soon: Community Marketplace
-                    </div>
+              <div className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden">
+                <div className="text-center">
+                  <h4 className="text-xl font-bold text-foreground mb-4">
+                    Simple Blueprint File
+                  </h4>
+                  <div className="bg-[#0D1B2A] rounded-xl p-6 border border-architech-brand-blue/30 font-mono text-sm text-left">
+                    <pre className="text-foreground whitespace-pre-wrap">
+{`# Blueprint: Authentication Module
+version: "1.0"
+actions:
+  - create_file: "auth.js"
+  - run_command: "npm install bcrypt"
+  - add_dependency: "express-session"`}
+                    </pre>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right - Content */}
+            {/* Right - Ecosystem Vision */}
             <motion.div className="space-y-8" variants={fadeInUp}>
               <div>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  We're building a community marketplace where developers can
-                  share pre-built integrations and modules. For unique needs,
-                  our AI will generate custom integrations automatically,
-                  creating the perfect stack for any project.
+               
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  We're building a community marketplace where developers can share pre-built integrations and modules. For unique needs, our AI will generate custom integrations automatically.
                 </p>
               </div>
 
-              {/* Features */}
-              <div className="space-y-4">
-                {[
-                  {
-                    icon: Package,
-                    title: "Community Marketplace",
-                    description:
-                      "Coming soon: Share and discover pre-built integrations from developers worldwide",
-                  },
-
-                  {
-                    icon: Users,
-                    title: "Open Source",
-                    description:
-                      "Contribute your own modules and benefit from the growing community",
-                  },
-                ].map((feature, index) => {
-                  const IconComponent = feature.icon;
-                  return (
-                    <motion.div
-                      key={feature.title}
-                      className="flex items-start gap-4 p-4 glass-card rounded-xl border border-architech-brand-blue/20"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.2 }}
-                    >
-                      <div className="w-10 h-10 bg-architech-brand-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <IconComponent className="w-5 h-5 text-architech-brand-blue" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-1">
-                          {feature.title}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+              {/* Ecosystem Features - Simplified */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 p-3 glass-card rounded-lg border border-architech-brand-blue/20">
+                  <Package className="w-5 h-5 text-architech-brand-blue" />
+                  <span className="text-foreground font-medium">Community Marketplace</span>
+                </div>
+                
+                <div className="flex items-center gap-3 p-3 glass-card rounded-lg border border-architech-brand-green/20">
+                  <Code2 className="w-5 h-5 text-architech-brand-green" />
+                  <span className="text-foreground font-medium">AI Generation</span>
+                </div>
+                
+                <div className="flex items-center gap-3 p-3 glass-card rounded-lg border border-architech-brand-blue/20">
+                  <Users className="w-5 h-5 text-architech-brand-blue" />
+                  <span className="text-foreground font-medium">Open Source</span>
+                </div>
               </div>
 
               {/* CTA */}
@@ -215,13 +149,9 @@ const EcosystemSection = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <DiscordIcon className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
-                  <span>Join Our Discord Community</span>
+                  <span>Join Discord</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </motion.a>
-                
-                <p className="text-sm text-muted-foreground mt-3 text-center">
-                  Connect with developers, share ideas, and shape the future of our ecosystem
-                </p>
               </motion.div>
             </motion.div>
           </div>
