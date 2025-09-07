@@ -350,7 +350,7 @@ const WhereWeFitSection = () => {
           </motion.div>
         ) : (
           /* Desktop Table Version */
-          <motion.div
+        <motion.div
           className="glass-card rounded-3xl overflow-hidden border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
