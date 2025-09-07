@@ -1,12 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
+  Zap, 
+  X, 
+  Check, 
+  Lock, 
+  HelpCircle, 
+  Users, 
+  Target, 
+  Clock, 
+  Code, 
+  Building, 
+  TrendingUp, 
+  Shield, 
+  Settings,
+  LucideIcon
+} from 'lucide-react';
+import { 
   fadeInUp, 
   fadeInDown, 
   scaleIn, 
   staggerContainer, 
   defaultViewport 
 } from '@/lib/animations';
+
+interface IconData {
+  icon: LucideIcon;
+  text: string;
+  level?: number;
+  color?: string;
+}
+
+type ComparisonValue = string | IconData;
 
 const WhereWeFitSection = () => {
   const comparisonData = [
@@ -28,18 +53,18 @@ const WhereWeFitSection = () => {
     },
     {
       capability: "Speed to V1",
-      noCode: "⚡️⚡️⚡️",
-      aiBuilders: "⚡️⚡️⚡️",
-      aiAssistants: "⚡️⚡️",
-      architech: "⚡️⚡️⚡️",
+      noCode: { icon: Zap, text: "Very Fast", level: 3 },
+      aiBuilders: { icon: Zap, text: "Very Fast", level: 3 },
+      aiAssistants: { icon: Zap, text: "Fast", level: 2 },
+      architech: { icon: Zap, text: "Very Fast", level: 3 },
       architechHighlight: true
     },
     {
       capability: "Code Ownership & Control",
-      noCode: "❌ (Platform Lock-in)",
-      aiBuilders: "❌ (Code is a final output)",
-      aiAssistants: "✅ (Your codebase)",
-      architech: "✅ (100% Yours)",
+      noCode: { icon: X, text: "Platform Lock-in", color: "text-red-500" },
+      aiBuilders: { icon: X, text: "Code is final output", color: "text-red-500" },
+      aiAssistants: { icon: Check, text: "Your codebase", color: "text-green-500" },
+      architech: { icon: Check, text: "100% Yours", color: "text-green-500" },
       architechHighlight: true
     },
     {
@@ -52,18 +77,18 @@ const WhereWeFitSection = () => {
     },
     {
       capability: "Scalability",
-      noCode: "🔒 (Limited by Platform)",
-      aiBuilders: "❓ (Uncertain)",
-      aiAssistants: "✅ (Depends on you)",
-      architech: "✅ (Built-in Best Practices)",
+      noCode: { icon: Lock, text: "Limited by Platform", color: "text-orange-500" },
+      aiBuilders: { icon: HelpCircle, text: "Uncertain", color: "text-yellow-500" },
+      aiAssistants: { icon: Check, text: "Depends on you", color: "text-green-500" },
+      architech: { icon: Check, text: "Built-in Best Practices", color: "text-green-500" },
       architechHighlight: true
     },
     {
       capability: "Security",
-      noCode: "🔒 (Platform's Responsibility)",
-      aiBuilders: "❓ (Depends on generation)",
-      aiAssistants: "✅ (Your responsibility)",
-      architech: "✅ (Via Secure Modules)",
+      noCode: { icon: Lock, text: "Platform's Responsibility", color: "text-orange-500" },
+      aiBuilders: { icon: HelpCircle, text: "Depends on generation", color: "text-yellow-500" },
+      aiAssistants: { icon: Check, text: "Your responsibility", color: "text-green-500" },
+      architech: { icon: Check, text: "Via Secure Modules", color: "text-green-500" },
       architechHighlight: true
     },
     {
@@ -139,18 +164,14 @@ const WhereWeFitSection = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            A New Class of Tool.
-            <br />
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              Built for Production.
-            </span>
+            Built for <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">Production.</span>
           </motion.h2>
           
           <motion.p
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
-            How The Architech combines the best of every world, without the compromises.
+            A New Class of Tool. How The Architech combines the best of every world, without the compromises.
           </motion.p>
         </motion.div>
 
@@ -206,13 +227,88 @@ const WhereWeFitSection = () => {
                   {row.capability}
                 </div>
                 <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
-                  {row.noCode}
+                  {typeof row.noCode === 'object' ? (
+                    <div className="flex flex-col items-center gap-2">
+                      {(row.noCode as IconData).level && (
+                        <div className="flex gap-1">
+                          {Array.from({ length: 3 }).map((_, i) => {
+                            const IconComponent = (row.noCode as IconData).icon;
+                            return (
+                              <IconComponent 
+                                key={i} 
+                                className={`w-4 h-4 ${i < (row.noCode as IconData).level! ? 'text-yellow-500' : 'text-gray-300'}`} 
+                              />
+                            );
+                          })}
+                        </div>
+                      )}
+                      {(row.noCode as IconData).icon && !(row.noCode as IconData).level && (
+                        (() => {
+                          const IconComponent = (row.noCode as IconData).icon;
+                          return <IconComponent className={`w-5 h-5 ${(row.noCode as IconData).color || 'text-muted-foreground'}`} />;
+                        })()
+                      )}
+                      <span className={(row.noCode as IconData).color || 'text-muted-foreground'}>{(row.noCode as IconData).text}</span>
+                    </div>
+                  ) : (
+                    row.noCode
+                  )}
                 </div>
                 <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
-                  {row.aiBuilders}
+                  {typeof row.aiBuilders === 'object' ? (
+                    <div className="flex flex-col items-center gap-2">
+                      {(row.aiBuilders as IconData).level && (
+                        <div className="flex gap-1">
+                          {Array.from({ length: 3 }).map((_, i) => {
+                            const IconComponent = (row.aiBuilders as IconData).icon;
+                            return (
+                              <IconComponent 
+                                key={i} 
+                                className={`w-4 h-4 ${i < (row.aiBuilders as IconData).level! ? 'text-yellow-500' : 'text-gray-300'}`} 
+                              />
+                            );
+                          })}
+                        </div>
+                      )}
+                      {(row.aiBuilders as IconData).icon && !(row.aiBuilders as IconData).level && (
+                        (() => {
+                          const IconComponent = (row.aiBuilders as IconData).icon;
+                          return <IconComponent className={`w-5 h-5 ${(row.aiBuilders as IconData).color || 'text-muted-foreground'}`} />;
+                        })()
+                      )}
+                      <span className={(row.aiBuilders as IconData).color || 'text-muted-foreground'}>{(row.aiBuilders as IconData).text}</span>
+                    </div>
+                  ) : (
+                    row.aiBuilders
+                  )}
                 </div>
                 <div className="p-4 sm:p-6 text-center text-muted-foreground border-r border-architech-brand-blue/10 text-sm sm:text-base">
-                  {row.aiAssistants}
+                  {typeof row.aiAssistants === 'object' ? (
+                    <div className="flex flex-col items-center gap-2">
+                      {(row.aiAssistants as IconData).level && (
+                        <div className="flex gap-1">
+                          {Array.from({ length: 3 }).map((_, i) => {
+                            const IconComponent = (row.aiAssistants as IconData).icon;
+                            return (
+                              <IconComponent 
+                                key={i} 
+                                className={`w-4 h-4 ${i < (row.aiAssistants as IconData).level! ? 'text-yellow-500' : 'text-gray-300'}`} 
+                              />
+                            );
+                          })}
+                        </div>
+                      )}
+                      {(row.aiAssistants as IconData).icon && !(row.aiAssistants as IconData).level && (
+                        (() => {
+                          const IconComponent = (row.aiAssistants as IconData).icon;
+                          return <IconComponent className={`w-5 h-5 ${(row.aiAssistants as IconData).color || 'text-muted-foreground'}`} />;
+                        })()
+                      )}
+                      <span className={(row.aiAssistants as IconData).color || 'text-muted-foreground'}>{(row.aiAssistants as IconData).text}</span>
+                    </div>
+                  ) : (
+                    row.aiAssistants
+                  )}
                 </div>
                 <div className={`p-4 sm:p-6 text-center font-semibold border-l-2 text-sm sm:text-base relative overflow-hidden ${
                   row.architechHighlight 
@@ -223,7 +319,34 @@ const WhereWeFitSection = () => {
                   {row.architechHighlight && (
                     <div className="absolute inset-0 bg-gradient-to-r from-architech-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   )}
-                  <span className="relative z-10">{row.architech}</span>
+                  <div className="relative z-10">
+                    {typeof row.architech === 'object' ? (
+                      <div className="flex flex-col items-center gap-2">
+                        {(row.architech as IconData).level && (
+                          <div className="flex gap-1">
+                            {Array.from({ length: 3 }).map((_, i) => {
+                              const IconComponent = (row.architech as IconData).icon;
+                              return (
+                                <IconComponent 
+                                  key={i} 
+                                  className={`w-4 h-4 ${i < (row.architech as IconData).level! ? 'text-architech-brand-green' : 'text-gray-300'}`} 
+                                />
+                              );
+                            })}
+                          </div>
+                        )}
+                        {(row.architech as IconData).icon && !(row.architech as IconData).level && (
+                          (() => {
+                            const IconComponent = (row.architech as IconData).icon;
+                            return <IconComponent className={`w-5 h-5 ${(row.architech as IconData).color || 'text-architech-brand-green'}`} />;
+                          })()
+                        )}
+                        <span className={(row.architech as IconData).color || 'text-architech-brand-green'}>{(row.architech as IconData).text}</span>
+                      </div>
+                    ) : (
+                      row.architech
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -265,15 +388,15 @@ const WhereWeFitSection = () => {
                 variants={fadeInUp}
               >
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
-                  <span className="w-2 h-2 bg-architech-brand-blue rounded-full"></span>
+                  <Building className="w-4 h-4" />
                   <span>Transparent Architecture</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-full text-architech-brand-green">
-                  <span className="w-2 h-2 bg-architech-brand-green rounded-full"></span>
+                  <Shield className="w-4 h-4" />
                   <span>Secure Modules</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
-                  <span className="w-2 h-2 bg-architech-brand-blue rounded-full"></span>
+                  <TrendingUp className="w-4 h-4" />
                   <span>Built-in Best Practices</span>
                 </div>
               </motion.div>
