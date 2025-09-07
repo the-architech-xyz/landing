@@ -248,8 +248,8 @@ const BenefitsSection = () => {
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-inter font-normal">
               You're Paying a Tax on Innovation. <span className="text-transparent bg-gradient-brand bg-clip-text">You Just Don't See It.</span>
           </p>
-        </div>
-      </div>
+            </div>
+            </div>
       </section>
 
       {/* Sticky Scroll Section - Desktop / Mobile Carousel */}
@@ -273,11 +273,11 @@ const BenefitsSection = () => {
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
-                <motion.div
+                    <motion.div
                   key={mobileCardIndex}
                   className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5"
                   initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                      animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
                 >
                 <div className="text-center space-y-6">

@@ -46,7 +46,10 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
-      if (mobileMenuOpen && !target.closest('.mobile-menu-container')) {
+      // Don't close if clicking on mobile menu container OR mobile menu button
+      if (mobileMenuOpen && 
+          !target.closest('.mobile-menu-container') && 
+          !target.closest('.mobile-menu-button')) {
         setMobileMenuOpen(false);
       }
     };
@@ -197,18 +200,17 @@ const Header = () => {
             </Button>
 
             {/* Mobile menu button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden hover:bg-architech-electric/10 transition-all duration-300 w-10 h-10"
+            <button
+              type="button"
+              className="mobile-menu-button md:hidden hover:bg-architech-electric/10 transition-all duration-300 w-10 h-10 flex items-center justify-center rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                setMobileMenuOpen(!mobileMenuOpen);
+                setMobileMenuOpen(prev => !prev);
               }}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            </button>
           </div>
         </div>
 
@@ -219,7 +221,10 @@ const Header = () => {
           <nav className="mt-4 pb-4 border-t border-architech-border pt-4">
             <div className="flex flex-col space-y-2">
               <button 
-                onClick={() => smoothScrollTo('benefits')}
+                onClick={() => {
+                  smoothScrollTo('benefits');
+                  setMobileMenuOpen(false);
+                }}
                 className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
                   activeSection === 'benefits'
                     ? 'text-architech-electric bg-architech-electric/10'
@@ -229,7 +234,10 @@ const Header = () => {
                 Benefits
               </button>
               <button 
-                onClick={() => smoothScrollTo('how-it-works')}
+                onClick={() => {
+                  smoothScrollTo('how-it-works');
+                  setMobileMenuOpen(false);
+                }}
                 className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
                   activeSection === 'how-it-works'
                     ? 'text-architech-electric bg-architech-electric/10'
@@ -239,7 +247,10 @@ const Header = () => {
                 How It Works
               </button>
               <button 
-                onClick={() => smoothScrollTo('use-cases')}
+                onClick={() => {
+                  smoothScrollTo('use-cases');
+                  setMobileMenuOpen(false);
+                }}
                 className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
                   activeSection === 'use-cases'
                     ? 'text-architech-electric bg-architech-electric/10'
@@ -249,7 +260,10 @@ const Header = () => {
                 Use Cases
               </button>
               <button 
-                onClick={() => smoothScrollTo('where-we-fit')}
+                onClick={() => {
+                  smoothScrollTo('where-we-fit');
+                  setMobileMenuOpen(false);
+                }}
                 className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
                   activeSection === 'where-we-fit'
                     ? 'text-architech-electric bg-architech-electric/10'
@@ -259,7 +273,10 @@ const Header = () => {
                 Comparison
               </button>
               <button 
-                onClick={() => smoothScrollTo('faq')}
+                onClick={() => {
+                  smoothScrollTo('faq');
+                  setMobileMenuOpen(false);
+                }}
                 className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
                   activeSection === 'faq'
                     ? 'text-architech-electric bg-architech-electric/10'
@@ -273,7 +290,10 @@ const Header = () => {
               
               <Button 
                 className="mt-4 mx-4 bg-gradient-electric hover:shadow-electric text-white font-semibold py-3 text-base"
-                onClick={() => smoothScrollTo('cta')}
+                onClick={() => {
+                  smoothScrollTo('cta');
+                  setMobileMenuOpen(false);
+                }}
               >
                 Join Waitlist
               </Button>
