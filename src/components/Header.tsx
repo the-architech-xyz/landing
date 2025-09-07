@@ -7,6 +7,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('hero');
 
   // Handle scroll effect and progress
   useEffect(() => {
@@ -17,6 +18,23 @@ const Header = () => {
       
       setScrolled(scrollTop > 20);
       setScrollProgress(progress);
+
+      // Detect active section
+      const sections = ['hero', 'benefits', 'how-it-works', 'use-cases', 'where-we-fit', 'faq'];
+      let currentSection = 'hero';
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -78,7 +96,9 @@ const Header = () => {
               <span className="text-lg sm:text-xl font-bold text-foreground group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
                 The Architech
               </span>
-              <div className="text-xs text-muted-foreground">Alpha Preview</div>
+              <div className="text-xs text-muted-foreground">
+                Alpha Preview • <span className="text-architech-electric font-semibold">500+ developers</span>
+              </div>
             </div>
           </div>
 
@@ -86,27 +106,53 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={() => smoothScrollTo('benefits')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
+              className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
+                activeSection === 'benefits' 
+                  ? 'text-architech-electric' 
+                  : 'text-muted-foreground hover:text-architech-electric'
+              }`}
             >
               Benefits
             </button>
             <button 
               onClick={() => smoothScrollTo('how-it-works')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
+              className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
+                activeSection === 'how-it-works' 
+                  ? 'text-architech-electric' 
+                  : 'text-muted-foreground hover:text-architech-electric'
+              }`}
             >
               How It Works
             </button>
             <button 
-              onClick={() => smoothScrollTo('faq')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
+              onClick={() => smoothScrollTo('use-cases')}
+              className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
+                activeSection === 'use-cases' 
+                  ? 'text-architech-electric' 
+                  : 'text-muted-foreground hover:text-architech-electric'
+              }`}
             >
-              FAQ
+              Use Cases
             </button>
             <button 
-              onClick={() => smoothScrollTo('team')}
-              className="text-muted-foreground hover:text-architech-electric transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base"
+              onClick={() => smoothScrollTo('where-we-fit')}
+              className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
+                activeSection === 'where-we-fit' 
+                  ? 'text-architech-electric' 
+                  : 'text-muted-foreground hover:text-architech-electric'
+              }`}
             >
-              Team
+              Comparison
+            </button>
+            <button 
+              onClick={() => smoothScrollTo('faq')}
+              className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
+                activeSection === 'faq' 
+                  ? 'text-architech-electric' 
+                  : 'text-muted-foreground hover:text-architech-electric'
+              }`}
+            >
+              FAQ
             </button>
           </nav>
 
@@ -151,27 +197,53 @@ const Header = () => {
             <div className="flex flex-col space-y-2">
               <button 
                 onClick={() => smoothScrollTo('benefits')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
+                className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
+                  activeSection === 'benefits'
+                    ? 'text-architech-electric bg-architech-electric/10'
+                    : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
+                }`}
               >
                 Benefits
               </button>
               <button 
                 onClick={() => smoothScrollTo('how-it-works')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
+                className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
+                  activeSection === 'how-it-works'
+                    ? 'text-architech-electric bg-architech-electric/10'
+                    : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
+                }`}
               >
                 How It Works
               </button>
               <button 
-                onClick={() => smoothScrollTo('faq')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
+                onClick={() => smoothScrollTo('use-cases')}
+                className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
+                  activeSection === 'use-cases'
+                    ? 'text-architech-electric bg-architech-electric/10'
+                    : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
+                }`}
               >
-                FAQ
+                Use Cases
               </button>
               <button 
-                onClick={() => smoothScrollTo('team')}
-                className="text-left text-muted-foreground hover:text-architech-electric transition-colors font-medium py-3 px-4 rounded-lg hover:bg-architech-electric/5 text-base"
+                onClick={() => smoothScrollTo('where-we-fit')}
+                className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
+                  activeSection === 'where-we-fit'
+                    ? 'text-architech-electric bg-architech-electric/10'
+                    : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
+                }`}
               >
-                Team
+                Comparison
+              </button>
+              <button 
+                onClick={() => smoothScrollTo('faq')}
+                className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
+                  activeSection === 'faq'
+                    ? 'text-architech-electric bg-architech-electric/10'
+                    : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
+                }`}
+              >
+                FAQ
               </button>
               
            

@@ -6,42 +6,46 @@ const HowItWorksSection = () => {
   const steps = [
     {
       number: "01",
-      title: "Blueprint Your Vision",
-      description: "Describe your intent. The AI suggests a stack. You always have the final say.",
+      title: "Choose Your Blueprint",
+      description: "Select from battle-tested blueprints or create your own. Each blueprint is a proven architecture pattern.",
       icon: FileText,
       details: [
-        "Tell us what you want to build",
-        "AI analyzes your requirements",
-        "Get a suggested tech stack",
-        "Customize and approve the blueprint"
+        "Browse available blueprints",
+        "Choose your tech stack",
+        "Customize the configuration",
+        "Download or clone the blueprint"
       ],
-      codeExample: `# Describe your app:
-description: "A collaborative project management app with modern design"
+      codeExample: `# Available blueprints:
+npx @architech/cli list
 
-# AI suggests a stack (you can edit this):
-stack:
-  framework: "React (Next.js)"
-  styling: "TailwindCSS"
-  database: "PostgreSQL (Supabase)"
-  auth: "JWT (Auth.js)"`
+# Choose a blueprint:
+npx @architech/cli create react-saas
+# or
+npx @architech/cli create nextjs-ecommerce
+# or
+npx @architech/cli create nodejs-api`
     },
     {
       number: "02", 
-      title: "Let the AI Architect",
-      description: "The AI orchestrates battle-tested, open-source modules into a robust system.",
+      title: "CLI Generates Your Project",
+      description: "The CLI transforms your blueprint into a complete, production-ready codebase with all dependencies configured.",
       icon: Cpu,
       details: [
-        "AI selects proven modules",
-        "Configures integrations",
-        "Sets up project structure",
-        "Ensures best practices"
+        "CLI scaffolds the project structure",
+        "Installs all dependencies",
+        "Configures build tools and linting",
+        "Sets up development environment"
       ],
-      codeExample: `# AI orchestrates your stack:
-- Next.js with App Router
-- Supabase for database & auth
-- TailwindCSS for styling
-- TypeScript for type safety
-- ESLint + Prettier for code quality`
+      codeExample: `# CLI generates your project:
+npx @architech/cli create react-saas my-app
+
+# Output:
+✓ Created project structure
+✓ Installed dependencies
+✓ Configured TypeScript
+✓ Set up TailwindCSS
+✓ Added ESLint & Prettier
+✓ Ready to develop!`
     },
     {
       number: "03",

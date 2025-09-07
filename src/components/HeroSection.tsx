@@ -127,7 +127,7 @@ const HeroSection = () => {
               className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-inter font-medium px-4"
               variants={fadeInUp}
             >
-              AI-powered architect that configures your entire stack in minutes, so you can focus on building unique features from day one.
+              Open-source CLI that transforms blueprints into production-ready code. Start with battle-tested modules, customize as needed, deploy anywhere.
             </motion.p>
           </motion.div>
 

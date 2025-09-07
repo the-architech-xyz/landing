@@ -54,7 +54,7 @@ const UseCaseShowcase = () => {
     {
       id: 1,
       title: "AI Writing Assistant",
-      description: "Launch your intelligent content creation platform in a weekend.",
+      description: "Get a complete AI writing platform blueprint with authentication, payments, and OpenAI integration.",
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-emerald-50 to-teal-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
@@ -87,7 +87,7 @@ const UseCaseShowcase = () => {
     {
       id: 2,
       title: "Modern E-commerce",
-      description: "Build a full-featured online store with payments and inventory management.",
+      description: "Complete e-commerce blueprint with Stripe payments, inventory management, and admin dashboard.",
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
@@ -120,7 +120,7 @@ const UseCaseShowcase = () => {
     {
       id: 3,
       title: "Internal Dashboard",
-      description: "Create powerful analytics and admin tools for your team in minutes.",
+      description: "Analytics dashboard blueprint with charts, user management, and real-time data visualization.",
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
@@ -155,7 +155,7 @@ const UseCaseShowcase = () => {
     {
       id: 4,
       title: "Team Whiteboard",
-      description: "Build real-time collaborative workspaces that your team will love.",
+      description: "Real-time collaborative workspace blueprint with WebSocket integration and user presence.",
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">

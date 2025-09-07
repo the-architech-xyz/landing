@@ -84,7 +84,7 @@ const SimpleCTASection = () => {
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8">
-              You're on the waitlist. We'll send your alpha access invitation soon.
+              You're on the waitlist for the SaaS platform. The CLI is available now!
             </p>
             
             <div className="glass-card rounded-2xl p-6 max-w-md mx-auto">
@@ -93,7 +93,7 @@ const SimpleCTASection = () => {
                 #{waitlistPosition || '🎯'}
               </div>
               <div className="text-sm text-muted-foreground mt-2">
-                Alpha access coming September 2025
+                SaaS platform coming Q2 2025
               </div>
             </div>
             

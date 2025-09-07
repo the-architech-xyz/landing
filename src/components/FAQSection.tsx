@@ -15,9 +15,19 @@ const FAQSection = () => {
       answer: "Yes, completely. The Architech assembles standard code that you can export, modify, and deploy anywhere. No vendor lock-in or platform dependencies.",
     },
     {
+      category: "Integration",
+      question: "How does it integrate with my existing codebase?",
+      answer: "The Architech generates standard code that follows common patterns. You can import it into any project, modify it as needed, and it integrates seamlessly with your existing tools and workflows.",
+    },
+    {
+      category: "Customization",
+      question: "What if I need to customize beyond the modules?",
+      answer: "You have full control over the generated code. Modules are starting points that you can modify, extend, or replace entirely. The goal is to give you a solid foundation, not lock you into limitations.",
+    },
+    {
       category: "Difference",
       question: "How is this different from AI code generators?",
-      answer: "Instead of generating code from scratch, we assemble proven modules that have been tested in production. You get reliable architecture, not experimental AI code that needs debugging.",
+      answer: "The Architech CLI uses battle-tested blueprints instead of generating code from scratch. You get proven architecture patterns that have been tested in production, not experimental AI code that needs debugging.",
     },
     {
       category: "Technology",
@@ -25,24 +35,35 @@ const FAQSection = () => {
       answer: "We start with popular stacks (React, Next.js, Node.js, Python) and expand based on demand. The modular design means new technologies can be added without breaking existing projects.",
     },
     {
+      category: "Commercial",
+      question: "Can I use this for commercial projects?",
+      answer: "Absolutely. The generated code is yours to use for any purpose - personal, commercial, or open source. There are no restrictions on how you use the code you generate.",
+    },
+    {
       category: "Access",
       question: "When can I get access?",
-      answer: "We're currently in closed alpha. Join the waitlist for early access—beta begins September 2025.",
+      answer: "We're currently in closed alpha. Join the waitlist for beta access.",
     },
     {
       category: "Business",
       question: "What does this cost?",
-      answer: "The core platform will remain open source. We'll offer premium features like advanced modules and priority support via subscription. Pricing will be transparent and fair.",
-    }
+      answer: "Core platform: Free forever. Pro features: $29/month (advanced modules, priority support, team collaboration). Enterprise: Custom pricing (on-premise, custom modules, dedicated support).",
+    },
   ];
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
       Ownership: "bg-gradient-success", 
-      Difference: "bg-gradient-electric",
-      Technology: "bg-gradient-ocean",
-      Access: "bg-gradient-sunset",
-      Business: "bg-gradient-creative"
+      Integration: "bg-gradient-electric",
+      Customization: "bg-gradient-forest",
+      Difference: "bg-gradient-ocean",
+      Technology: "bg-gradient-sunset",
+      Commercial: "bg-gradient-creative",
+      Timeline: "bg-gradient-aurora",
+      Access: "bg-gradient-electric",
+      Business: "bg-gradient-forest",
+      Documentation: "bg-gradient-ocean",
+      Product: "bg-gradient-sunset"
     };
     return colors[category] || "bg-gradient-electric";
   };

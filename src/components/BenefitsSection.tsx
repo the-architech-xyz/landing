@@ -215,7 +215,7 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
-              The hidden cost of <span className="text-transparent bg-gradient-brand bg-clip-text">modern software development.</span>
+              The hidden cost of <span className="text-transparent bg-gradient-brand bg-clip-text">starting from scratch.</span>
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-inter font-normal">
@@ -334,7 +334,7 @@ const BenefitsSection = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              The Architech eliminates the Innovation Tax
+              The Architech CLI eliminates the setup tax
             </h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
               By providing a standardized, high-quality foundation that scales with your vision.
