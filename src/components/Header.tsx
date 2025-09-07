@@ -96,9 +96,7 @@ const Header = () => {
               <span className="text-lg sm:text-xl font-bold text-foreground group-hover:text-transparent group-hover:bg-gradient-electric group-hover:bg-clip-text transition-all duration-300">
                 The Architech
               </span>
-              <div className="text-xs text-muted-foreground">
-                Alpha Preview • <span className="text-architech-electric font-semibold">500+ developers</span>
-              </div>
+             
             </div>
           </div>
 
