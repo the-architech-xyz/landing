@@ -101,7 +101,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 pt-24 pb-16 sm:py-20 relative z-20">
         <motion.div 
           className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8"
           variants={staggerContainer}
@@ -132,25 +132,27 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Primary CTA - Enhanced for mobile */}
-          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4" variants={fadeInUp}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+          <motion.div className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-4" variants={fadeInUp}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1 sm:flex-none">
               <Button 
                 size="lg" 
-                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-8 py-4 group w-full sm:w-auto h-14 sm:h-auto text-base sm:text-sm" 
+                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-4 sm:px-8 py-4 group w-full h-12 sm:h-auto text-sm sm:text-sm" 
                 onClick={() => smoothScrollTo("cta")}
               >
-                Join Waitlist
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <span className="hidden sm:inline">Join Waitlist</span>
+                <span className="sm:hidden">Join</span>
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.02 }} className="w-full sm:w-auto">
+            <motion.div whileHover={{ scale: 1.02 }} className="flex-1 sm:flex-none">
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="glass-button border-architech-border px-8 py-4 w-full sm:w-auto h-14 sm:h-auto text-base sm:text-sm"
+                className="glass-button border-architech-border px-4 sm:px-8 py-4 w-full h-12 sm:h-auto text-sm sm:text-sm"
                 onClick={() => setIsContactModalOpen(true)}
               >
-                Book Demo
+                <span className="hidden sm:inline">Book Demo</span>
+                <span className="sm:hidden">Demo</span>
               </Button>
             </motion.div>
           </motion.div>

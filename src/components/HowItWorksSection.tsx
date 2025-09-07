@@ -1,8 +1,20 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { fadeInUp, staggerContainer, defaultViewport } from "@/lib/animations";
 import { FileText, Cpu, Download } from "lucide-react";
 
 const HowItWorksSection = () => {
+  // Debug: Force content to be visible (remove this in production)
+  const [forceVisible, setForceVisible] = useState(false);
+
+  useEffect(() => {
+    // Fallback: if animations don't trigger after 1 second, force visibility
+    const timer = setTimeout(() => {
+      setForceVisible(true);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
   const steps = [
     {
       number: "01",
@@ -99,19 +111,84 @@ function DashboardPage({ user }) {
         </motion.div>
 
         {/* Steps */}
-        <motion.div
-          className="max-w-6xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={staggerContainer}
-        >
+        {forceVisible ? (
+          // Fallback: Non-animated version for debugging
+          <div className="max-w-6xl mx-auto">
+            <div className="space-y-16 sm:space-y-24">
+              {steps.map((step, index) => (
+                <div
+                  key={step.number}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+                  style={{ minHeight: '400px' }}
+                >
+                  {/* Content */}
+                  <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                    <div className="flex items-center mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green rounded-xl flex items-center justify-center mr-4">
+                        <step.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-satoshi font-bold text-architech-brand-blue">
+                        {step.number}
+                      </div>
+                    </div>
+
+                    <h3 className="text-2xl sm:text-3xl font-satoshi font-bold text-foreground mb-4">
+                      {step.title}
+              </h3>
+
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    <ul className="space-y-3">
+                      {step.details.map((detail, detailIndex) => (
+                        <li
+                          key={detailIndex}
+                          className="flex items-center text-foreground"
+                        >
+                          <div className="w-2 h-2 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green rounded-full mr-3 flex-shrink-0"></div>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Code Example */}
+                  <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <div className="glass-card rounded-2xl p-6 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5">
+                      <div className="bg-[#0D1B2A] rounded-xl p-6 border border-architech-brand-blue/30 font-mono text-sm overflow-x-auto">
+                        <pre className="text-foreground whitespace-pre-wrap">
+                          <code>{step.codeExample}</code>
+                        </pre>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <motion.div
+            className="max-w-6xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
           <div className="space-y-16 sm:space-y-24">
             {steps.map((step, index) => (
-              <motion.div
+            <motion.div
                 key={step.number}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
                 variants={fadeInUp}
+                initial={forceVisible ? "visible" : "hidden"}
+              whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                // Fallback: ensure content is visible even if animation fails
+                style={{ 
+                  minHeight: '400px',
+                  opacity: forceVisible ? 1 : undefined
+                }}
               >
                 {/* Content */}
                 <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
@@ -154,11 +231,12 @@ function DashboardPage({ user }) {
                       </pre>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                      </div>
+                    </motion.div>
+                  ))}
           </div>
         </motion.div>
+        )}
 
         {/* CTA */}
         {/* <motion.div
