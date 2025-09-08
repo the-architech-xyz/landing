@@ -216,7 +216,7 @@ const Header = () => {
 
         {/* Enhanced Mobile Navigation */}
         <div className={`md:hidden mobile-menu-container overflow-hidden transition-all duration-300 ${
-          mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          mobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <nav className="mt-4 pb-4 border-t border-architech-border pt-4">
             <div className="flex flex-col space-y-2">

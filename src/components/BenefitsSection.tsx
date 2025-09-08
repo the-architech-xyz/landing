@@ -266,13 +266,13 @@ const BenefitsSection = () => {
                 className="touch-pan-y select-none"
               >
                 {/* Swipe Indicator */}
-                <div className="text-center mb-4">
+                {/* <div className="text-center mb-4">
                   <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                     <ChevronLeft className="w-4 h-4" />
                     <span>Swipe to navigate</span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
-                </div>
+                </div> */}
                     <motion.div
                   key={mobileCardIndex}
                   className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5"
