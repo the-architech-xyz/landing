@@ -1,0 +1,419 @@
+{
+  "header": {
+    "nav": {
+      "home": "Accueil",
+      "benefits": "Avantages",
+      "howItWorks": "Comment ça marche",
+      "demo": "Démo",
+      "whereWeFit": "Notre position",
+      "faq": "FAQ"
+    },
+    "cta": "Commencer",
+    "language": "Langue"
+  },
+  "hero": {
+    "title": {
+      "line1": "Cessez de configurer.",
+      "line2": "Architecturez"
+    },
+    "subtitle": "CLI open-source qui transforme les blueprints en code prêt pour la production. Commencez avec des modules éprouvés, personnalisez selon vos besoins, déployez partout.",
+    "prompt": "Une application de gestion de projet collaborative avec authentification JWT et un système de design moderne",
+    "cta": {
+      "primary": "Rejoindre la Liste",
+      "secondary": "Réserver une Démo"
+    },
+    "stats": {
+      "users": "10 000+",
+      "usersLabel": "Développeurs",
+      "apps": "50 000+",
+      "appsLabel": "Apps Générées",
+      "time": "90%",
+      "timeLabel": "Temps Économisé"
+    },
+    "modules": {
+      "authService": "Service d'Auth",
+      "database": "Base de Données",
+      "apiGateway": "Passerelle API",
+      "uiComponents": "Composants UI",
+      "cicdPipeline": "Pipeline CI/CD",
+      "monitoring": "Monitoring",
+      "selected": "Modules sélectionnés :"
+    }
+  },
+  "benefits": {
+    "title": {
+      "line1": "Le vrai coût",
+      "line2": " d'une page blanche."
+    },
+    "subtitle": {
+      "line1": "Vous payez une taxe sur l'innovation.",
+      "line2": "Vous ne le voyez simplement pas."
+    },
+    "problem": "Problème",
+    "solution": {
+      "title": "Le CLI Architech élimine la taxe de configuration",
+      "description": "En fournissant une base standardisée et de haute qualité qui évolue avec votre vision."
+    },
+    "chart": {
+      "innovationTax": "Taxe d'Innovation",
+      "innovationTaxDesc": "Réunions, configuration, débogage, dette technique et travail non-fonctionnel qui draine la productivité.",
+      "actualCoding": "Codage Réel",
+      "actualCodingDesc": "Développement de fonctionnalités pur et résolution créative de problèmes - le travail qui compte vraiment."
+    },
+    "problems": {
+      "timeConsuming": {
+        "title": "La Dette du Premier Jour",
+        "description": "Du temps d'un développeur est perdu à gérer la dette technique, souvent causée par une architecture initiale médiocre et des décisions de configuration précipitées.",
+        "impact": "Temps de développement moyen réduit de 6 mois à 2 semaines"
+      },
+      "complexSetup": {
+        "title": "L'Illusion de l'Assistance IA",
+        "description": "Plus de temps est passé à déboguer et refactoriser lors de l'utilisation de générateurs de code IA sans un framework et une fondation architecturale appropriés.",
+        "impact": "Aucune configuration technique requise - tout est généré automatiquement"
+      },
+      "scalingChallenges": {
+        "title": "Le Chaos de la Configuration",
+        "description": "C'est le temps moyen passé sur la configuration du projet, la configuration et le code standard avant d'écrire une seule fonctionnalité unique.",
+        "impact": "Évolutivité intégrée et maintenance automatisée dès le premier jour"
+      }
+    },
+    "solutions": {
+      "instantGeneration": {
+        "title": "Déployez Plus Fréquemment",
+        "description": "Notre architecture modulaire s'aligne sur les meilleures pratiques qui ont prouvé doubler ou tripler la vélocité de déploiement."
+      },
+      "fullStackReady": {
+        "title": "Augmentation de Productivité",
+        "description": "En fournissant une base standardisée et de haute qualité, nous éliminons les causes racines de la dette technique et du changement de contexte."
+      },
+      "enterpriseGrade": {
+        "title": "Prêt pour la Production",
+        "description": "Commencez avec un projet conçu pour la croissance, réduisant le risque de refactoring coûteux plus tard."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Comment ça Marche",
+    "subtitle": "Trois étapes simples pour transformer votre vision en code prêt pour la production",
+    "steps": {
+      "describe": {
+        "title": "Choisissez votre Blueprint",
+        "description": "Sélectionnez parmi des blueprints éprouvés ou créez le vôtre. Chaque blueprint est un modèle d'architecture prouvé.",
+        "details": [
+          "Parcourez les blueprints disponibles",
+          "Choisissez votre stack technologique",
+          "Personnalisez la configuration",
+          "Téléchargez ou clonez le blueprint"
+        ],
+        "codeExample": "# Blueprints disponibles :\nnpx @architech/cli list\n\n# Choisir un blueprint :\nnpx @architech/cli create react-saas\n# ou\nnpx @architech/cli create nextjs-ecommerce\n# ou\nnpx @architech/cli create nodejs-api"
+      },
+      "generate": {
+        "title": "Le CLI Génère votre Projet",
+        "description": "Le CLI transforme votre blueprint en une base de code complète et prête pour la production avec toutes les dépendances configurées.",
+        "details": [
+          "Le CLI structure le projet",
+          "Installe toutes les dépendances",
+          "Configure les outils de build et de linting",
+          "Configure l'environnement de développement"
+        ],
+        "codeExample": "# Le CLI génère votre projet :\nnpx @architech/cli create react-saas mon-app\n\n# Sortie :\n✓ Structure du projet créée\n✓ Dépendances installées\n✓ TypeScript configuré\n✓ TailwindCSS configuré\n✓ ESLint & Prettier ajoutés\n✓ Prêt à développer !"
+      },
+      "deploy": {
+        "title": "Possédez votre Code, Instantanément",
+        "description": "Obtenez du code prêt pour la production que vous possédez entièrement. Aucune dépendance propriétaire, aucun verrouillage. Jamais.",
+        "details": [
+          "Téléchargez votre projet complet",
+          "Code 100% open-source",
+          "Aucun verrouillage fournisseur",
+          "Propriété et contrôle complets"
+        ],
+        "codeExample": "// Vous obtenez du code propre et standard\nimport { withAuth } from '@lib/auth';\nimport { useDatabase } from '@lib/db';\n\nfunction DashboardPage({ user }) {\n  const { data: projects } = useDatabase('projects');\n\n  return (\n    <Layout user={user}>\n      <h1>Bienvenue, {user.name}</h1>\n      <Button>Créer un Nouveau Projet</Button>\n    </Layout>\n  );\n}"
+      }
+    }
+  },
+  "architectsCanvas": {
+    "theArchitech": "The architech",
+    "buttons": {
+      "startSession": "Démarrer la Session",
+      "replaySession": "Rejouer la Session"
+    },
+    "inAction": " en Action",
+    "sound": {
+      "on": "Son Activé",
+      "off": "Son Désactivé"
+    },
+    "blueprint": {
+      "aiDrafting": "# L'IA élabore le blueprint...",
+      "projectName": "Plateforme de Gestion de Projet"
+    },
+    "techStack": {
+      "react": {
+        "name": "React (Next.js)",
+        "description": "Framework React moderne avec rendu côté serveur"
+      },
+      "postgresql": {
+        "name": "PostgreSQL (Supabase)",
+        "description": "Base de données open source avec capacités temps réel"
+      },
+      "jwt": {
+        "name": "JWT (Auth.js)",
+        "description": "Authentification sécurisée avec JSON Web Tokens"
+      },
+      "tailwind": {
+        "name": "TailwindCSS",
+        "description": "Framework CSS utility-first pour développement UI rapide"
+      }
+    }
+  },
+  "liveDemo": {
+    "badge": "Démo en Direct - Voyez la Magie",
+    "title": {
+      "line1": "Regardez votre App",
+      "line2": "Prendre Vie"
+    },
+    "subtitle": "De l'idée à l'application prête pour la production en quelques minutes. Regardez les agents IA spécialisés collaborer pour construire votre application entière.",
+    "building": "Construction : Plateforme E-commerce",
+    "buttons": {
+      "startDemo": "Démarrer la Démo",
+      "pause": "Pause",
+      "reset": "Réinitialiser"
+    },
+    "readyToBuild": "Prêt à construire...",
+    "clickToStart": "// Cliquez sur 'Démarrer la Démo' pour commencer la construction...",
+    "complete": {
+      "title": "Démo Terminée !",
+      "platform": "Plateforme e-commerce prête pour la production",
+      "features": "Authentification, base de données, UI et API",
+      "time": "Construite en moins de 60 secondes"
+    },
+    "steps": {
+      "auth": {
+        "title": "AuthAgent",
+        "description": "Configuration de l'authentification sécurisée",
+        "code": "// JWT + OAuth2 + Permissions basées sur les rôles\nexport const authConfig = {\n  providers: ['google', 'github'],\n  jwt: { secret: process.env.JWT_SECRET },\n  permissions: ['admin', 'user']\n};"
+      },
+      "database": {
+        "title": "DatabaseAgent",
+        "description": "Configuration du schéma de base de données optimisé",
+        "code": "// Schéma Prisma auto-généré\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  profile   Profile?\n  createdAt DateTime @default(now())\n}"
+      },
+      "ui": {
+        "title": "DesignAgent",
+        "description": "Création de composants UI accessibles",
+        "code": "// Composants responsifs et accessibles\nexport const Button = ({ variant, size, children }) => {\n  return (\n    <button className={cn(buttonVariants({ variant, size }))}>\n      {children}\n    </button>\n  );\n};"
+      },
+      "api": {
+        "title": "APIAgent",
+        "description": "Construction des endpoints REST + GraphQL",
+        "code": "// Routes API type-safe\nexport async function GET(request: Request) {\n  const users = await prisma.user.findMany({\n    include: { profile: true }\n  });\n  return Response.json(users);\n}"
+      }
+    }
+  },
+  "ecosystem": {
+    "badge": "Écosystème",
+    "title": "Un écosystème vivant pour les développeurs",
+    "subtitle": "Au-delà des Modèles : Votre Vision, Votre Stack.",
+    "howItWorks": {
+      "title": "Comment ça Marche",
+      "description": "Chaque module est défini par un fichier simple décrivant les actions : créer un fichier, exécuter une commande, ajouter une dépendance, etc... C'est transparent, facile à déboguer et simple à créer le vôtre."
+    },
+    "blueprint": {
+      "title": "Fichier Blueprint Simple",
+      "code": "# Blueprint : Module d'Authentification\nversion: \"1.0\"\nactions:\n  - create_file: \"auth.js\"\n  - run_command: \"npm install bcrypt\"\n  - add_dependency: \"express-session\""
+    },
+    "vision": {
+      "description": "Nous construisons un marketplace communautaire où les développeurs peuvent partager des intégrations et modules pré-construits. Pour des besoins uniques, notre IA générera automatiquement des intégrations personnalisées."
+    },
+    "features": {
+      "marketplace": "Marketplace Communautaire",
+      "aiGeneration": "Génération IA",
+      "openSource": "Open Source",
+      "frontend": {
+        "title": "Frontend Moderne",
+        "description": "React, TypeScript, Tailwind CSS, et design responsive"
+      },
+      "backend": {
+        "title": "Backend Robuste",
+        "description": "Node.js, Express, authentification JWT, et APIs RESTful"
+      },
+      "database": {
+        "title": "Intégration Base de Données",
+        "description": "PostgreSQL, MongoDB, ou votre solution de base de données préférée"
+      },
+      "deployment": {
+        "title": "Déploiement en Un Clic",
+        "description": "Déploiement automatique vers Vercel, AWS, ou votre plateforme préférée"
+      },
+      "monitoring": {
+        "title": "Monitoring Intégré",
+        "description": "Analytics en temps réel, suivi d'erreurs, et monitoring de performance"
+      },
+      "security": {
+        "title": "Sécurité Entreprise",
+        "description": "Authentification JWT, chiffrement des données, et meilleures pratiques de sécurité"
+      }
+    },
+    "joinDiscord": "Rejoindre Discord"
+  },
+  "whereWeFit": {
+    "badge": "Où Nous Nous Intégrons",
+    "title": {
+      "line1": "Conçu pour la",
+      "line2": "Production."
+    },
+    "subtitle": "Une Nouvelle Classe d'Outils. Comment The Architech combine le meilleur de tous les mondes, sans compromis.",
+    "tableHeaders": {
+      "capability": "Capacité",
+      "noCode": "No-Code",
+      "platforms": "Plateformes",
+      "ai": "IA",
+      "builders": "Constructeurs",
+      "assistants": "Assistants",
+      "the": "The",
+      "architech": "Architech",
+      "noCodePlatforms": "Plateformes No-Code",
+      "noCodeExamples": "(ex: Bubble, Webflow)",
+      "aiBuilders": "Constructeurs IA No-Code",
+      "aiBuildersExamples": "(ex: Vercel v0, Lovable)",
+      "aiAssistants": "Assistants IA Code",
+      "aiAssistantsExamples": "(ex: Copilot, Cursor)",
+      "theArchitech": "The Architech",
+      "theWinner": "Le Gagnant"
+    },
+    "scrollIndicator": "← Faites défiler pour voir plus →",
+    "comparison": {
+      "targetAudience": {
+        "capability": "Public Cible",
+        "noCode": "Non-Développeurs",
+        "aiBuilders": "Designers / PMs",
+        "aiAssistants": "Développeurs",
+        "architech": "Développeurs & Architectes"
+      },
+      "primaryGoal": {
+        "capability": "Objectif Principal",
+        "noCode": "Construire des UIs & Apps Simples",
+        "aiBuilders": "Générer des Composants UI",
+        "aiAssistants": "Écrire du Code Plus Vite",
+        "architech": "Concevoir & Construire des Systèmes"
+      },
+      "speedToV1": {
+        "capability": "Vitesse vers V1",
+        "noCode": "Très Rapide",
+        "aiBuilders": "Très Rapide",
+        "aiAssistants": "Rapide",
+        "architech": "Très Rapide"
+      },
+      "codeOwnership": {
+        "capability": "Propriété & Contrôle du Code",
+        "noCode": "Verrouillage Plateforme",
+        "aiBuilders": "Le code est la sortie finale",
+        "aiAssistants": "Votre base de code",
+        "architech": "100% À Vous"
+      },
+      "architecture": {
+        "capability": "Architecture",
+        "noCode": "Pré-construite (Boîte Noire)",
+        "aiBuilders": "Générée par IA (Opaque)",
+        "aiAssistants": "Manuelle",
+        "architech": "Architecturée par IA (Transparente)"
+      },
+      "scalability": {
+        "capability": "Évolutivité",
+        "noCode": "Limitée par la Plateforme",
+        "aiBuilders": "Incertaine",
+        "aiAssistants": "Dépend de vous",
+        "architech": "Meilleures Pratiques Intégrées"
+      },
+      "security": {
+        "capability": "Sécurité",
+        "noCode": "Responsabilité de la Plateforme",
+        "aiBuilders": "Dépend de la génération",
+        "aiAssistants": "Votre responsabilité",
+        "architech": "Via des Modules Sécurisés"
+      },
+      "flexibility": {
+        "capability": "Flexibilité / Personnalisation",
+        "noCode": "Faible",
+        "aiBuilders": "Faible",
+        "aiAssistants": "Élevée",
+        "architech": "Élevée"
+      }
+    }
+  },
+  "faq": {
+    "title": {
+      "line1": "Des",
+      "line2": "Questions ?"
+    },
+    "subtitle": "Tout ce que vous devez savoir sur The Architech et comment il transformera votre workflow de développement.",
+    "cta": "Vous avez encore des questions ?",
+    "questions": {
+      "whatIsArchitech": {
+        "question": "Qu'est-ce qu'Architech ?",
+        "answer": "Architech est une plateforme alimentée par l'IA qui génère des applications complètes et prêtes pour la production à partir de simples descriptions textuelles. Elle crée des applications full-stack avec frontend, backend, base de données, authentification et configuration de déploiement."
+      },
+      "howDoesItWork": {
+        "question": "Comment ça marche ?",
+        "answer": "Décrivez simplement votre idée d'application en français simple, et notre IA analyse vos exigences pour générer une application complète avec tous les composants nécessaires, suivant les meilleures pratiques de l'industrie et les standards de sécurité."
+      },
+      "whatTechnologies": {
+        "question": "Quelles technologies supporte-t-elle ?",
+        "answer": "Architech supporte les stacks technologiques modernes incluant React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, et peut déployer sur des plateformes comme Vercel, AWS, et plus encore."
+      },
+      "isItSecure": {
+        "question": "Le code généré est-il sécurisé ?",
+        "answer": "Oui, toutes les applications générées suivent les meilleures pratiques de sécurité incluant l'authentification JWT, le chiffrement des données, la validation des entrées, et la protection contre les vulnérabilités communes."
+      },
+      "canICustomize": {
+        "question": "Puis-je personnaliser le code généré ?",
+        "answer": "Absolument ! Le code généré est entièrement personnalisable. Vous pouvez modifier, étendre ou refactoriser n'importe quelle partie de l'application pour répondre à vos exigences spécifiques."
+      },
+      "pricing": {
+        "question": "Quels sont les tarifs ?",
+        "answer": "Nous offrons des plans tarifaires flexibles pour les particuliers, les équipes et les entreprises. Contactez-nous pour en savoir plus sur nos options tarifaires et trouver le plan qui vous convient."
+      }
+    }
+  },
+  "cta": {
+    "title": {
+      "line1": "Prêt à",
+      "line2": "se libérer de la Configuration ?"
+    },
+    "subtitle": "Rejoignez la liste d'attente et soyez parmi les premiers à découvrir l'avenir du développement.",
+    "emailPlaceholder": "Entrez votre email",
+    "joinWaitlist": "Rejoindre la Liste",
+    "joining": "Rejoindre...",
+    "primaryButton": "Commencer à Construire",
+    "secondaryButton": "Planifier une Démo",
+    "trustedBy": "Fait confiance par les développeurs du monde entier"
+  },
+  "footer": {
+    "description": "Libérer les développeurs de l'enfer de la configuration, une architecture modulaire à la fois. Construisez la magie, ignorez la configuration.",
+    "links": {
+      "product": "Produit",
+      "company": "Entreprise",
+      "resources": "Ressources",
+      "legal": "Légal"
+    },
+    "social": {
+      "followUs": "Suivez-nous",
+      "discord": "Discord",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© 2025 The Architech. Tous droits réservés. Construire l'avenir du développement."
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Prêt à transformer vos idées en réalité ? Parlons-en.",
+    "form": {
+      "name": "Nom Complet",
+      "email": "Adresse Email",
+      "company": "Entreprise",
+      "message": "Parlez-nous de votre projet",
+      "submit": "Envoyer le Message",
+      "success": "Merci ! Nous vous recontacterons bientôt.",
+      "error": "Quelque chose s'est mal passé. Veuillez réessayer."
+    }
+  }
+}

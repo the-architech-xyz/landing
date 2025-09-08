@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import ModernPieChart from "./ModernPieChart";
 import { useScrollTriggerGSAP } from "@/hooks/useScrollTriggerGSAP";
+import { useTranslation } from "@/hooks/useTranslation";
 
 // Desktop Sticky Scroll Component
-const DesktopStickyScroll = ({ problemCards, pieChartData }: { problemCards: any[], pieChartData: any[] }) => {
+const DesktopStickyScroll = ({ problemCards, pieChartData, t }: { problemCards: any[], pieChartData: any[], t: any }) => {
   const { containerRef, stickyRef, setContentRef, activeIndex } = useScrollTriggerGSAP();
   
   return (
@@ -41,7 +42,7 @@ const DesktopStickyScroll = ({ problemCards, pieChartData }: { problemCards: any
                         </div>
                         <div>
                           <div className="text-sm font-medium text-muted-foreground mb-1">
-                            Problem {index + 1}
+                            {t('benefits.problem')} {index + 1}
                           </div>
                           <h3 className="text-3xl sm:text-4xl font-bold text-foreground">
                             {card.title}
@@ -110,6 +111,7 @@ const DesktopStickyScroll = ({ problemCards, pieChartData }: { problemCards: any
 };
 
 const BenefitsSection = () => {
+  const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [mobileCardIndex, setMobileCardIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -167,24 +169,24 @@ const BenefitsSection = () => {
     {
       icon: AlertTriangle,
       number: "42%",
-      title: "The Debt of Day One",
-      description: "Of a developer's time is lost dealing with technical debt, often caused by poor initial architecture and rushed setup decisions.",
+      title: t('benefits.problems.timeConsuming.title'),
+      description: t('benefits.problems.timeConsuming.description'),
       source: "Stripe / Chalmers University",
       color: "red"
     },
     {
       icon: BarChart3,
       number: "67%",
-      title: "The Illusion of AI Assistance",
-      description: "More time is spent debugging and refactoring when using AI code generators without a proper framework and architectural foundation.",
+      title: t('benefits.problems.complexSetup.title'),
+      description: t('benefits.problems.complexSetup.description'),
       source: "Harness",
       color: "orange"
     },
     {
       icon: Clock,
       number: "3-5 Days",
-      title: "The Chaos of Configuration",
-      description: "This is the average time spent on project setup, configuration, and boilerplate before writing a single unique feature.",
+      title: t('benefits.problems.scalingChallenges.title'),
+      description: t('benefits.problems.scalingChallenges.description'),
       source: "Industry Average",
       color: "purple"
     }
@@ -195,44 +197,44 @@ const BenefitsSection = () => {
     {
       icon: TrendingUp,
       metric: "2-3x",
-      title: "Deploy More Frequently",
-      description: "Our modular architecture aligns with best practices that have proven to double or triple deployment velocity.",
+      title: t('benefits.solutions.instantGeneration.title'),
+      description: t('benefits.solutions.instantGeneration.description'),
       color: "green"
     },
     {
       icon: Target,
       metric: "41%",
-      title: "Productivity Increase",
-      description: "By providing a standardized, high-quality foundation, we eliminate the root causes of technical debt and context switching.",
+      title: t('benefits.solutions.fullStackReady.title'),
+      description: t('benefits.solutions.fullStackReady.description'),
       color: "blue"
     },
     {
       icon: Zap,
       metric: "100%",
-      title: "Production-Ready",
-      description: "Start with a project that's engineered for growth, reducing the risk of costly refactoring later.",
+      title: t('benefits.solutions.enterpriseGrade.title'),
+      description: t('benefits.solutions.enterpriseGrade.description'),
       color: "purple"
     }
   ];
 
   const pieChartData = [
     {
-      label: "Innovation Tax",
+      label: t('benefits.chart.innovationTax'),
       percentage: 70,
       color: "#ef4444",
-      description: "Meetings, configuration, debugging, technical debt, and non-feature work that drains productivity."
+      description: t('benefits.chart.innovationTaxDesc')
     },
     {
-      label: "Actual Coding",
+      label: t('benefits.chart.actualCoding'),
       percentage: 30,
       color: "#22c55e",
-      description: "Pure feature development and creative problem-solving - the work that truly matters."
+      description: t('benefits.chart.actualCodingDesc')
     }
   ];
 
 
   return (
-    <>
+    <section id="benefits">
       {/* Header Section */}
       <section className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
@@ -242,11 +244,11 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
-              The hidden cost of <span className="text-transparent bg-gradient-brand bg-clip-text">starting from scratch.</span>
+              {t('benefits.title.line1')} <span className="text-transparent bg-gradient-brand bg-clip-text">{t('benefits.title.line2')}</span>
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-inter font-normal">
-              You're Paying a Tax on Innovation. <span className="text-transparent bg-gradient-brand bg-clip-text">You Just Don't See It.</span>
+              {t('benefits.subtitle.line1')} <span className="text-transparent bg-gradient-brand bg-clip-text">{t('benefits.subtitle.line2')}</span>
           </p>
             </div>
             </div>
@@ -291,7 +293,7 @@ const BenefitsSection = () => {
                 </div>
                     <div>
                       <div className="text-sm font-medium text-muted-foreground mb-1">
-                        Problem {mobileCardIndex + 1}
+                        {t('benefits.problem')} {mobileCardIndex + 1}
                       </div>
                       <h3 className="text-2xl font-bold text-foreground">
                         {problemCards[mobileCardIndex].title}
@@ -368,7 +370,7 @@ const BenefitsSection = () => {
         </section>
       ) : (
         /* Desktop Sticky Scroll Version */
-        <DesktopStickyScroll problemCards={problemCards} pieChartData={pieChartData} />
+        <DesktopStickyScroll problemCards={problemCards} pieChartData={pieChartData} t={t} />
       )}
 
       {/* Solution Section */}
@@ -376,10 +378,10 @@ const BenefitsSection = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              The Architech CLI eliminates the setup tax
+              {t('benefits.solution.title')}
             </h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              By providing a standardized, high-quality foundation that scales with your vision.
+              {t('benefits.solution.description')}
             </p>
           </div>
 
@@ -448,7 +450,7 @@ const BenefitsSection = () => {
    
       </div>
     </section>
-    </>
+    </section>
   );
 };
 

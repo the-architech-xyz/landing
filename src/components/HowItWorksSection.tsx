@@ -1,77 +1,50 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { FileText, Cpu, Download } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const HowItWorksSection = () => {
+  const { t } = useTranslation();
+  
   const steps = [
     {
       number: "01",
-      title: "Choose Your Blueprint",
-      description: "Select from battle-tested blueprints or create your own. Each blueprint is a proven architecture pattern.",
+      title: t('howItWorks.steps.describe.title'),
+      description: t('howItWorks.steps.describe.description'),
       icon: FileText,
       details: [
-        "Browse available blueprints",
-        "Choose your tech stack",
-        "Customize the configuration",
-        "Download or clone the blueprint"
+        t('howItWorks.steps.describe.details.0'),
+        t('howItWorks.steps.describe.details.1'),
+        t('howItWorks.steps.describe.details.2'),
+        t('howItWorks.steps.describe.details.3')
       ],
-      codeExample: `# Available blueprints:
-npx @architech/cli list
-
-# Choose a blueprint:
-npx @architech/cli create react-saas
-# or
-npx @architech/cli create nextjs-ecommerce
-# or
-npx @architech/cli create nodejs-api`
+      codeExample: t('howItWorks.steps.describe.codeExample')
     },
     {
       number: "02", 
-      title: "CLI Generates Your Project",
-      description: "The CLI transforms your blueprint into a complete, production-ready codebase with all dependencies configured.",
+      title: t('howItWorks.steps.generate.title'),
+      description: t('howItWorks.steps.generate.description'),
       icon: Cpu,
       details: [
-        "CLI scaffolds the project structure",
-        "Installs all dependencies",
-        "Configures build tools and linting",
-        "Sets up development environment"
+        t('howItWorks.steps.generate.details.0'),
+        t('howItWorks.steps.generate.details.1'),
+        t('howItWorks.steps.generate.details.2'),
+        t('howItWorks.steps.generate.details.3')
       ],
-      codeExample: `# CLI generates your project:
-npx @architech/cli create react-saas my-app
-
-# Output:
-✓ Created project structure
-✓ Installed dependencies
-✓ Configured TypeScript
-✓ Set up TailwindCSS
-✓ Added ESLint & Prettier
-✓ Ready to develop!`
+      codeExample: t('howItWorks.steps.generate.codeExample')
     },
     {
       number: "03",
-      title: "Own Your Code, Instantly", 
-      description: "Get production-ready code you fully own. No proprietary dependencies, no lock-in. Ever.",
+      title: t('howItWorks.steps.deploy.title'), 
+      description: t('howItWorks.steps.deploy.description'),
       icon: Download,
       details: [
-        "Download your complete project",
-        "100% open-source code",
-        "No vendor lock-in",
-        "Full ownership and control"
+        t('howItWorks.steps.deploy.details.0'),
+        t('howItWorks.steps.deploy.details.1'),
+        t('howItWorks.steps.deploy.details.2'),
+        t('howItWorks.steps.deploy.details.3')
       ],
-      codeExample: `// You get clean, standard code
-import { withAuth } from '@lib/auth';
-import { useDatabase } from '@lib/db';
-
-function DashboardPage({ user }) {
-  const { data: projects } = useDatabase('projects');
-
-  return (
-    <Layout user={user}>
-      <h1>Welcome, {user.name}</h1>
-      <Button>Create New Project</Button>
-    </Layout>
-  );
-}`
+      codeExample: t('howItWorks.steps.deploy.codeExample')
     }
   ];
 
@@ -90,11 +63,10 @@ function DashboardPage({ user }) {
           variants={fadeInUp}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-satoshi font-bold text-foreground mb-6 leading-tight">
-            How It Works
+            {t('howItWorks.title')}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Three simple steps to transform your vision into production-ready
-            code
+            {t('howItWorks.subtitle')}
           </p>
         </motion.div>
 

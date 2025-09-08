@@ -1,8 +1,10 @@
 import { useTheme } from "@/hooks/useTheme";
 import { Github, Twitter, Linkedin, MailIcon } from "lucide-react";
 import DiscordIcon from "@/components/DiscordIcon";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const { darkMode } = useTheme();
 
   return (
@@ -29,8 +31,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
-              Liberating developers from configuration hell, one modular
-              architecture at a time. Build the magic, skip the setup.
+              {t('footer.description')}
             </p>
 
             {/* Social Links */}
@@ -71,32 +72,38 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4">
-              Product
+              {t('footer.links.product')}
             </h3>
             <div className="space-y-3">
               <a
                 href="#benefits"
                 className="block text-muted-foreground hover:text-architech-electric transition-colors"
               >
-                Benefits
+                {t('header.nav.benefits')}
+              </a>
+              <a
+                href="#demo"
+                className="block text-muted-foreground hover:text-architech-electric transition-colors"
+              >
+                {t('header.nav.demo')}
+              </a>
+              <a
+                href="#where-we-fit"
+                className="block text-muted-foreground hover:text-architech-electric transition-colors"
+              >
+                {t('header.nav.whereWeFit')}
               </a>
               <a
                 href="#how-it-works"
                 className="block text-muted-foreground hover:text-architech-electric transition-colors"
               >
-                How It Works
+                {t('header.nav.howItWorks')}
               </a>
               <a
                 href="#faq"
                 className="block text-muted-foreground hover:text-architech-electric transition-colors"
               >
-                FAQ
-              </a>
-              <a
-                href="#team"
-                className="block text-muted-foreground hover:text-architech-electric transition-colors"
-              >
-                Team
+                {t('header.nav.faq')}
               </a>
             </div>
           </div>
@@ -126,8 +133,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-architech-border mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm text-muted-foreground">
-            © 2025 The Architech. All rights reserved. Building the future of
-            development.
+            {t('footer.copyright')}
           </div>
           {/* <div className="flex items-center gap-6 text-sm">
             <a

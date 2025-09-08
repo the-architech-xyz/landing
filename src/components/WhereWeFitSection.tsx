@@ -23,6 +23,7 @@ import {
   staggerContainer, 
   defaultViewport 
 } from '@/lib/animations';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface IconData {
   icon: LucideIcon;
@@ -34,6 +35,7 @@ interface IconData {
 type ComparisonValue = string | IconData;
 
 const WhereWeFitSection = () => {
+  const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect mobile device
@@ -47,67 +49,67 @@ const WhereWeFitSection = () => {
   }, []);
   const comparisonData = [
     {
-      capability: "Target Audience",
-      noCode: "Non-Developers",
-      aiBuilders: "Designers / PMs",
-      aiAssistants: "Developers",
-      architech: "Developers & Architects",
+      capability: t('whereWeFit.comparison.targetAudience.capability'),
+      noCode: t('whereWeFit.comparison.targetAudience.noCode'),
+      aiBuilders: t('whereWeFit.comparison.targetAudience.aiBuilders'),
+      aiAssistants: t('whereWeFit.comparison.targetAudience.aiAssistants'),
+      architech: t('whereWeFit.comparison.targetAudience.architech'),
       architechHighlight: true
     },
     {
-      capability: "Primary Goal",
-      noCode: "Build UIs & Simple Apps",
-      aiBuilders: "Generate UI Components",
-      aiAssistants: "Write Code Faster",
-      architech: "Design & Build Systems",
+      capability: t('whereWeFit.comparison.primaryGoal.capability'),
+      noCode: t('whereWeFit.comparison.primaryGoal.noCode'),
+      aiBuilders: t('whereWeFit.comparison.primaryGoal.aiBuilders'),
+      aiAssistants: t('whereWeFit.comparison.primaryGoal.aiAssistants'),
+      architech: t('whereWeFit.comparison.primaryGoal.architech'),
       architechHighlight: true
     },
     {
-      capability: "Speed to V1",
-      noCode: { icon: Zap, text: "Very Fast", level: 3 },
-      aiBuilders: { icon: Zap, text: "Very Fast", level: 3 },
-      aiAssistants: { icon: Zap, text: "Fast", level: 2 },
-      architech: { icon: Zap, text: "Very Fast", level: 3 },
+      capability: t('whereWeFit.comparison.speedToV1.capability'),
+      noCode: { icon: Zap, text: t('whereWeFit.comparison.speedToV1.noCode'), level: 3 },
+      aiBuilders: { icon: Zap, text: t('whereWeFit.comparison.speedToV1.aiBuilders'), level: 3 },
+      aiAssistants: { icon: Zap, text: t('whereWeFit.comparison.speedToV1.aiAssistants'), level: 2 },
+      architech: { icon: Zap, text: t('whereWeFit.comparison.speedToV1.architech'), level: 3 },
       architechHighlight: true
     },
     {
-      capability: "Code Ownership & Control",
-      noCode: { icon: X, text: "Platform Lock-in", color: "text-red-500" },
-      aiBuilders: { icon: X, text: "Code is final output", color: "text-red-500" },
-      aiAssistants: { icon: Check, text: "Your codebase", color: "text-green-500" },
-      architech: { icon: Check, text: "100% Yours", color: "text-green-500" },
+      capability: t('whereWeFit.comparison.codeOwnership.capability'),
+      noCode: { icon: X, text: t('whereWeFit.comparison.codeOwnership.noCode'), color: "text-red-500" },
+      aiBuilders: { icon: X, text: t('whereWeFit.comparison.codeOwnership.aiBuilders'), color: "text-red-500" },
+      aiAssistants: { icon: Check, text: t('whereWeFit.comparison.codeOwnership.aiAssistants'), color: "text-green-500" },
+      architech: { icon: Check, text: t('whereWeFit.comparison.codeOwnership.architech'), color: "text-green-500" },
       architechHighlight: true
     },
     {
-      capability: "Architecture",
-      noCode: "Pre-built (Black Box)",
-      aiBuilders: "AI-Generated (Opaque)",
-      aiAssistants: "Manual",
-      architech: "AI-Architected (Transparent)",
+      capability: t('whereWeFit.comparison.architecture.capability'),
+      noCode: t('whereWeFit.comparison.architecture.noCode'),
+      aiBuilders: t('whereWeFit.comparison.architecture.aiBuilders'),
+      aiAssistants: t('whereWeFit.comparison.architecture.aiAssistants'),
+      architech: t('whereWeFit.comparison.architecture.architech'),
       architechHighlight: true
     },
     {
-      capability: "Scalability",
-      noCode: { icon: Lock, text: "Limited by Platform", color: "text-orange-500" },
-      aiBuilders: { icon: HelpCircle, text: "Uncertain", color: "text-yellow-500" },
-      aiAssistants: { icon: Check, text: "Depends on you", color: "text-green-500" },
-      architech: { icon: Check, text: "Built-in Best Practices", color: "text-green-500" },
+      capability: t('whereWeFit.comparison.scalability.capability'),
+      noCode: { icon: Lock, text: t('whereWeFit.comparison.scalability.noCode'), color: "text-orange-500" },
+      aiBuilders: { icon: HelpCircle, text: t('whereWeFit.comparison.scalability.aiBuilders'), color: "text-yellow-500" },
+      aiAssistants: { icon: Check, text: t('whereWeFit.comparison.scalability.aiAssistants'), color: "text-green-500" },
+      architech: { icon: Check, text: t('whereWeFit.comparison.scalability.architech'), color: "text-green-500" },
       architechHighlight: true
     },
     {
-      capability: "Security",
-      noCode: { icon: Lock, text: "Platform's Responsibility", color: "text-orange-500" },
-      aiBuilders: { icon: HelpCircle, text: "Depends on generation", color: "text-yellow-500" },
-      aiAssistants: { icon: Check, text: "Your responsibility", color: "text-green-500" },
-      architech: { icon: Check, text: "Via Secure Modules", color: "text-green-500" },
+      capability: t('whereWeFit.comparison.security.capability'),
+      noCode: { icon: Lock, text: t('whereWeFit.comparison.security.noCode'), color: "text-orange-500" },
+      aiBuilders: { icon: HelpCircle, text: t('whereWeFit.comparison.security.aiBuilders'), color: "text-yellow-500" },
+      aiAssistants: { icon: Check, text: t('whereWeFit.comparison.security.aiAssistants'), color: "text-green-500" },
+      architech: { icon: Check, text: t('whereWeFit.comparison.security.architech'), color: "text-green-500" },
       architechHighlight: true
     },
     {
-      capability: "Flexibility / Customization",
-      noCode: "Low",
-      aiBuilders: "Low",
-      aiAssistants: "High",
-      architech: "High",
+      capability: t('whereWeFit.comparison.flexibility.capability'),
+      noCode: t('whereWeFit.comparison.flexibility.noCode'),
+      aiBuilders: t('whereWeFit.comparison.flexibility.aiBuilders'),
+      aiAssistants: t('whereWeFit.comparison.flexibility.aiAssistants'),
+      architech: t('whereWeFit.comparison.flexibility.architech'),
       architechHighlight: true
     }
   ];
@@ -168,21 +170,21 @@ const WhereWeFitSection = () => {
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            Where We Fit
+            {t('whereWeFit.badge')}
           </motion.div>
 
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            Built for <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">Production.</span>
+            {t('whereWeFit.title.line1')} <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">{t('whereWeFit.title.line2')}</span>
           </motion.h2>
           
           <motion.p
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
-            A New Class of Tool. How The Architech combines the best of every world, without the compromises.
+            {t('whereWeFit.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -204,22 +206,22 @@ const WhereWeFitSection = () => {
             <div className="relative z-10 overflow-x-auto">
               {/* Mobile Table Header */}
               <div className="grid grid-cols-5 bg-gradient-to-r from-architech-brand-blue/10 to-architech-brand-green/10 border-b border-architech-brand-blue/30 min-w-[600px]">
-                <div className="p-3 font-bold text-foreground text-sm">Capability</div>
+                <div className="p-3 font-bold text-foreground text-sm">{t('whereWeFit.tableHeaders.capability')}</div>
                 <div className="p-3 text-center font-semibold text-muted-foreground text-xs">
-                  No-Code<br />
-                  <span className="text-xs text-muted-foreground/60">Platforms</span>
+                  {t('whereWeFit.tableHeaders.noCode')}<br />
+                  <span className="text-xs text-muted-foreground/60">{t('whereWeFit.tableHeaders.platforms')}</span>
                 </div>
                 <div className="p-3 text-center font-semibold text-muted-foreground text-xs">
-                  AI<br />
-                  <span className="text-xs text-muted-foreground/60">Builders</span>
+                  {t('whereWeFit.tableHeaders.ai')}<br />
+                  <span className="text-xs text-muted-foreground/60">{t('whereWeFit.tableHeaders.builders')}</span>
                 </div>
                 <div className="p-3 text-center font-semibold text-muted-foreground text-xs">
-                  AI<br />
-                  <span className="text-xs text-muted-foreground/60">Assistants</span>
+                  {t('whereWeFit.tableHeaders.ai')}<br />
+                  <span className="text-xs text-muted-foreground/60">{t('whereWeFit.tableHeaders.assistants')}</span>
                 </div>
                 <div className="p-3 text-center font-bold text-architech-brand-blue text-xs border-l-2 border-architech-brand-blue bg-architech-brand-blue/5">
-                  The<br />
-                  <span className="text-xs text-architech-brand-green font-semibold">Architech ✨</span>
+                  {t('whereWeFit.tableHeaders.the')}<br />
+                  <span className="text-xs text-architech-brand-green font-semibold">{t('whereWeFit.tableHeaders.architech')} ✨</span>
                 </div>
               </div>
 
@@ -345,7 +347,7 @@ const WhereWeFitSection = () => {
             
             {/* Mobile scroll indicator */}
             <div className="absolute bottom-4 right-4 bg-architech-brand-blue/20 text-architech-brand-blue text-xs px-2 py-1 rounded-full">
-              ← Scroll to see more →
+              {t('whereWeFit.scrollIndicator')}
             </div>
           </motion.div>
         ) : (
@@ -365,22 +367,22 @@ const WhereWeFitSection = () => {
           <div className="relative z-10">
             {/* Table Header */}
             <div className="grid grid-cols-5 bg-gradient-to-r from-architech-brand-blue/10 to-architech-brand-green/10 border-b border-architech-brand-blue/30">
-              <div className="p-4 sm:p-6 font-bold text-foreground text-base sm:text-lg">Capability</div>
+              <div className="p-4 sm:p-6 font-bold text-foreground text-base sm:text-lg">{t('whereWeFit.tableHeaders.capability')}</div>
               <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
-                No-Code Platforms<br />
-                <span className="text-xs text-muted-foreground/60">(e.g., Bubble, Webflow)</span>
+                {t('whereWeFit.tableHeaders.noCodePlatforms')}<br />
+                <span className="text-xs text-muted-foreground/60">{t('whereWeFit.tableHeaders.noCodeExamples')}</span>
               </div>
               <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
-                No-Code AI Builders<br />
-                <span className="text-xs text-muted-foreground/60">(e.g., Vercel v0, Lovable)</span>
+                {t('whereWeFit.tableHeaders.aiBuilders')}<br />
+                <span className="text-xs text-muted-foreground/60">{t('whereWeFit.tableHeaders.aiBuildersExamples')}</span>
               </div>
               <div className="p-4 sm:p-6 text-center font-semibold text-muted-foreground text-xs sm:text-sm">
-                AI Code Assistants<br />
-                <span className="text-xs text-muted-foreground/60">(e.g., Copilot, Cursor)</span>
+                {t('whereWeFit.tableHeaders.aiAssistants')}<br />
+                <span className="text-xs text-muted-foreground/60">{t('whereWeFit.tableHeaders.aiAssistantsExamples')}</span>
               </div>
               <div className="p-4 sm:p-6 text-center font-bold text-architech-brand-blue text-xs sm:text-sm border-l-2 border-architech-brand-blue bg-architech-brand-blue/5">
-                The Architech<br />
-                <span className="text-xs text-architech-brand-green font-semibold">✨ The Winner</span>
+                {t('whereWeFit.tableHeaders.theArchitech')}<br />
+                <span className="text-xs text-architech-brand-green font-semibold">✨ {t('whereWeFit.tableHeaders.theWinner')}</span>
               </div>
             </div>
 

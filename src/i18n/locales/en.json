@@ -1,0 +1,419 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "benefits": "Benefits",
+      "howItWorks": "How It Works",
+      "demo": "Demo",
+      "whereWeFit": "Where We Fit",
+      "faq": "FAQ"
+    },
+    "cta": "Get Started",
+    "language": "Language"
+  },
+  "hero": {
+    "title": {
+      "line1": "Stop Writing Boilerplate.",
+      "line2": "Start Architecting."
+    },
+    "subtitle": "Open-source CLI that transforms blueprints into production-ready code. Start with battle-tested modules, customize as needed, deploy anywhere.",
+    "prompt": "A collaborative project management app with JWT auth and a modern design system",
+    "cta": {
+      "primary": "Join Waitlist",
+      "secondary": "Book Demo"
+    },
+    "stats": {
+      "users": "10,000+",
+      "usersLabel": "Developers",
+      "apps": "50,000+",
+      "appsLabel": "Apps Generated",
+      "time": "90%",
+      "timeLabel": "Time Saved"
+    },
+    "modules": {
+      "authService": "Auth Service",
+      "database": "Database",
+      "apiGateway": "API Gateway",
+      "uiComponents": "UI Components",
+      "cicdPipeline": "CI/CD Pipeline",
+      "monitoring": "Monitoring",
+      "selected": "Selected modules:"
+    }
+  },
+  "benefits": {
+    "title": {
+      "line1": "The hidden cost of",
+      "line2": "starting from scratch."
+    },
+    "subtitle": {
+      "line1": "You're Paying a Tax on Innovation.",
+      "line2": "You Just Don't See It."
+    },
+    "problem": "Problem",
+    "solution": {
+      "title": "The Architech CLI eliminates the setup tax",
+      "description": "By providing a standardized, high-quality foundation that scales with your vision."
+    },
+    "chart": {
+      "innovationTax": "Innovation Tax",
+      "innovationTaxDesc": "Meetings, configuration, debugging, technical debt, and non-feature work that drains productivity.",
+      "actualCoding": "Actual Coding",
+      "actualCodingDesc": "Pure feature development and creative problem-solving - the work that truly matters."
+    },
+    "problems": {
+      "timeConsuming": {
+        "title": "The Debt of Day One",
+        "description": "Of a developer's time is lost dealing with technical debt, often caused by poor initial architecture and rushed setup decisions.",
+        "impact": "Average development time reduced from 6 months to 2 weeks"
+      },
+      "complexSetup": {
+        "title": "The Illusion of AI Assistance",
+        "description": "More time is spent debugging and refactoring when using AI code generators without a proper framework and architectural foundation.",
+        "impact": "Zero technical setup required - everything is generated automatically"
+      },
+      "scalingChallenges": {
+        "title": "The Chaos of Configuration",
+        "description": "This is the average time spent on project setup, configuration, and boilerplate before writing a single unique feature.",
+        "impact": "Built-in scalability and automated maintenance from day one"
+      }
+    },
+    "solutions": {
+      "instantGeneration": {
+        "title": "Deploy More Frequently",
+        "description": "Our modular architecture aligns with best practices that have proven to double or triple deployment velocity."
+      },
+      "fullStackReady": {
+        "title": "Productivity Increase",
+        "description": "By providing a standardized, high-quality foundation, we eliminate the root causes of technical debt and context switching."
+      },
+      "enterpriseGrade": {
+        "title": "Production-Ready",
+        "description": "Start with a project that's engineered for growth, reducing the risk of costly refactoring later."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Three simple steps to transform your vision into production-ready code",
+    "steps": {
+      "describe": {
+        "title": "Choose Your Blueprint",
+        "description": "Select from battle-tested blueprints or create your own. Each blueprint is a proven architecture pattern.",
+        "details": [
+          "Browse available blueprints",
+          "Choose your tech stack",
+          "Customize the configuration",
+          "Download or clone the blueprint"
+        ],
+        "codeExample": "# Available blueprints:\nnpx @architech/cli list\n\n# Choose a blueprint:\nnpx @architech/cli create react-saas\n# or\nnpx @architech/cli create nextjs-ecommerce\n# or\nnpx @architech/cli create nodejs-api"
+      },
+      "generate": {
+        "title": "CLI Generates Your Project",
+        "description": "The CLI transforms your blueprint into a complete, production-ready codebase with all dependencies configured.",
+        "details": [
+          "CLI scaffolds the project structure",
+          "Installs all dependencies",
+          "Configures build tools and linting",
+          "Sets up development environment"
+        ],
+        "codeExample": "# CLI generates your project:\nnpx @architech/cli create react-saas my-app\n\n# Output:\n✓ Created project structure\n✓ Installed dependencies\n✓ Configured TypeScript\n✓ Set up TailwindCSS\n✓ Added ESLint & Prettier\n✓ Ready to develop!"
+      },
+      "deploy": {
+        "title": "Own Your Code, Instantly",
+        "description": "Get production-ready code you fully own. No proprietary dependencies, no lock-in. Ever.",
+        "details": [
+          "Download your complete project",
+          "100% open-source code",
+          "No vendor lock-in",
+          "Full ownership and control"
+        ],
+        "codeExample": "// You get clean, standard code\nimport { withAuth } from '@lib/auth';\nimport { useDatabase } from '@lib/db';\n\nfunction DashboardPage({ user }) {\n  const { data: projects } = useDatabase('projects');\n\n  return (\n    <Layout user={user}>\n      <h1>Welcome, {user.name}</h1>\n      <Button>Create New Project</Button>\n    </Layout>\n  );\n}"
+      }
+    }
+  },
+  "architectsCanvas": {
+    "theArchitech": "The architech",
+    "buttons": {
+      "startSession": "Start Session",
+      "replaySession": "Replay Session"
+    },
+    "inAction": " in Action",
+    "sound": {
+      "on": "Sound On",
+      "off": "Sound Off"
+    },
+    "blueprint": {
+      "aiDrafting": "# AI is drafting the blueprint...",
+      "projectName": "Project Management Platform"
+    },
+    "techStack": {
+      "react": {
+        "name": "React (Next.js)",
+        "description": "Modern React framework with server-side rendering"
+      },
+      "postgresql": {
+        "name": "PostgreSQL (Supabase)",
+        "description": "Open source database with real-time capabilities"
+      },
+      "jwt": {
+        "name": "JWT (Auth.js)",
+        "description": "Secure authentication with JSON Web Tokens"
+      },
+      "tailwind": {
+        "name": "TailwindCSS",
+        "description": "Utility-first CSS framework for rapid UI development"
+      }
+    }
+  },
+  "liveDemo": {
+    "badge": "Live Demo - See The Magic",
+    "title": {
+      "line1": "Watch Your App",
+      "line2": "Come to Life"
+    },
+    "subtitle": "From idea to production-ready app in minutes. Watch as specialized AI agents collaborate to build your entire application.",
+    "building": "Building: E-commerce Platform",
+    "buttons": {
+      "startDemo": "Start Demo",
+      "pause": "Pause",
+      "reset": "Reset"
+    },
+    "readyToBuild": "Ready to build...",
+    "clickToStart": "// Click 'Start Demo' to begin building...",
+    "complete": {
+      "title": "Demo Complete!",
+      "platform": "Production-ready e-commerce platform",
+      "features": "Authentication, database, UI, and API",
+      "time": "Built in under 60 seconds"
+    },
+    "steps": {
+      "auth": {
+        "title": "AuthAgent",
+        "description": "Setting up secure authentication",
+        "code": "// JWT + OAuth2 + Role-based permissions\nexport const authConfig = {\n  providers: ['google', 'github'],\n  jwt: { secret: process.env.JWT_SECRET },\n  permissions: ['admin', 'user']\n};"
+      },
+      "database": {
+        "title": "DatabaseAgent",
+        "description": "Configuring optimized database schema",
+        "code": "// Auto-generated Prisma schema\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  profile   Profile?\n  createdAt DateTime @default(now())\n}"
+      },
+      "ui": {
+        "title": "DesignAgent",
+        "description": "Creating accessible UI components",
+        "code": "// Responsive, accessible components\nexport const Button = ({ variant, size, children }) => {\n  return (\n    <button className={cn(buttonVariants({ variant, size }))}>\n      {children}\n    </button>\n  );\n};"
+      },
+      "api": {
+        "title": "APIAgent",
+        "description": "Building REST + GraphQL endpoints",
+        "code": "// Type-safe API routes\nexport async function GET(request: Request) {\n  const users = await prisma.user.findMany({\n    include: { profile: true }\n  });\n  return Response.json(users);\n}"
+      }
+    }
+  },
+  "ecosystem": {
+    "badge": "Ecosystem",
+    "title": "A living ecosystem for developers",
+    "subtitle": "Beyond the Templates: Your Vision, Your Stack.",
+    "howItWorks": {
+      "title": "How It Works",
+      "description": "Every module is defined by a simple file describing actions: create a file, run a command, add a dependency, etc... It's transparent, easy to debug, and simple to create your own."
+    },
+    "blueprint": {
+      "title": "Simple Blueprint File",
+      "code": "# Blueprint: Authentication Module\nversion: \"1.0\"\nactions:\n  - create_file: \"auth.js\"\n  - run_command: \"npm install bcrypt\"\n  - add_dependency: \"express-session\""
+    },
+    "vision": {
+      "description": "We're building a community marketplace where developers can share pre-built integrations and modules. For unique needs, our AI will generate custom integrations automatically."
+    },
+    "features": {
+      "marketplace": "Community Marketplace",
+      "aiGeneration": "AI Generation",
+      "openSource": "Open Source",
+      "frontend": {
+        "title": "Modern Frontend",
+        "description": "React, TypeScript, Tailwind CSS, and responsive design"
+      },
+      "backend": {
+        "title": "Robust Backend",
+        "description": "Node.js, Express, JWT authentication, and RESTful APIs"
+      },
+      "database": {
+        "title": "Database Integration",
+        "description": "PostgreSQL, MongoDB, or your preferred database solution"
+      },
+      "deployment": {
+        "title": "One-Click Deployment",
+        "description": "Automatic deployment to Vercel, AWS, or your preferred platform"
+      },
+      "monitoring": {
+        "title": "Built-in Monitoring",
+        "description": "Real-time analytics, error tracking, and performance monitoring"
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "description": "JWT authentication, data encryption, and security best practices"
+      }
+    },
+    "joinDiscord": "Join Discord"
+  },
+  "whereWeFit": {
+    "badge": "Where We Fit",
+    "title": {
+      "line1": "Built for",
+      "line2": "Production."
+    },
+    "subtitle": "A New Class of Tool. How The Architech combines the best of every world, without the compromises.",
+    "tableHeaders": {
+      "capability": "Capability",
+      "noCode": "No-Code",
+      "platforms": "Platforms",
+      "ai": "AI",
+      "builders": "Builders",
+      "assistants": "Assistants",
+      "the": "The",
+      "architech": "Architech",
+      "noCodePlatforms": "No-Code Platforms",
+      "noCodeExamples": "(e.g., Bubble, Webflow)",
+      "aiBuilders": "No-Code AI Builders",
+      "aiBuildersExamples": "(e.g., Vercel v0, Lovable)",
+      "aiAssistants": "AI Code Assistants",
+      "aiAssistantsExamples": "(e.g., Copilot, Cursor)",
+      "theArchitech": "The Architech",
+      "theWinner": "The Winner"
+    },
+    "scrollIndicator": "← Scroll to see more →",
+    "comparison": {
+      "targetAudience": {
+        "capability": "Target Audience",
+        "noCode": "Non-Developers",
+        "aiBuilders": "Designers / PMs",
+        "aiAssistants": "Developers",
+        "architech": "Developers & Architects"
+      },
+      "primaryGoal": {
+        "capability": "Primary Goal",
+        "noCode": "Build UIs & Simple Apps",
+        "aiBuilders": "Generate UI Components",
+        "aiAssistants": "Write Code Faster",
+        "architech": "Design & Build Systems"
+      },
+      "speedToV1": {
+        "capability": "Speed to V1",
+        "noCode": "Very Fast",
+        "aiBuilders": "Very Fast",
+        "aiAssistants": "Fast",
+        "architech": "Very Fast"
+      },
+      "codeOwnership": {
+        "capability": "Code Ownership & Control",
+        "noCode": "Platform Lock-in",
+        "aiBuilders": "Code is final output",
+        "aiAssistants": "Your codebase",
+        "architech": "100% Yours"
+      },
+      "architecture": {
+        "capability": "Architecture",
+        "noCode": "Pre-built (Black Box)",
+        "aiBuilders": "AI-Generated (Opaque)",
+        "aiAssistants": "Manual",
+        "architech": "AI-Architected (Transparent)"
+      },
+      "scalability": {
+        "capability": "Scalability",
+        "noCode": "Limited by Platform",
+        "aiBuilders": "Uncertain",
+        "aiAssistants": "Depends on you",
+        "architech": "Built-in Best Practices"
+      },
+      "security": {
+        "capability": "Security",
+        "noCode": "Platform's Responsibility",
+        "aiBuilders": "Depends on generation",
+        "aiAssistants": "Your responsibility",
+        "architech": "Via Secure Modules"
+      },
+      "flexibility": {
+        "capability": "Flexibility / Customization",
+        "noCode": "Low",
+        "aiBuilders": "Low",
+        "aiAssistants": "High",
+        "architech": "High"
+      }
+    }
+  },
+  "faq": {
+    "title": {
+      "line1": "Got",
+      "line2": "Questions?"
+    },
+    "subtitle": "Everything you need to know about The Architech and how it will transform your development workflow.",
+    "cta": "Still have questions?",
+    "questions": {
+      "whatIsArchitech": {
+        "question": "What is Architech?",
+        "answer": "Architech is an AI-powered platform that generates complete, production-ready applications from simple text descriptions. It creates full-stack applications with frontend, backend, database, authentication, and deployment configuration."
+      },
+      "howDoesItWork": {
+        "question": "How does it work?",
+        "answer": "Simply describe your app idea in plain English, and our AI analyzes your requirements to generate a complete application with all necessary components, following industry best practices and security standards."
+      },
+      "whatTechnologies": {
+        "question": "What technologies does it support?",
+        "answer": "Architech supports modern tech stacks including React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, and can deploy to platforms like Vercel, AWS, and more."
+      },
+      "isItSecure": {
+        "question": "Is the generated code secure?",
+        "answer": "Yes, all generated applications follow security best practices including JWT authentication, data encryption, input validation, and protection against common vulnerabilities."
+      },
+      "canICustomize": {
+        "question": "Can I customize the generated code?",
+        "answer": "Absolutely! The generated code is fully customizable. You can modify, extend, or refactor any part of the application to meet your specific requirements."
+      },
+      "pricing": {
+        "question": "What's the pricing?",
+        "answer": "We offer flexible pricing plans for individuals, teams, and enterprises. Contact us to learn more about our pricing options and find the plan that works for you."
+      }
+    }
+  },
+  "cta": {
+    "title": {
+      "line1": "Ready to",
+      "line2": "Skip the Setup?"
+    },
+    "subtitle": "Join the waitlist and be among the first to experience the future of development.",
+    "emailPlaceholder": "Enter your email",
+    "joinWaitlist": "Join Waitlist",
+    "joining": "Joining...",
+    "primaryButton": "Start Building Now",
+    "secondaryButton": "Schedule a Demo",
+    "trustedBy": "Trusted by developers worldwide"
+  },
+  "footer": {
+    "description": "Liberating developers from configuration hell, one modular architecture at a time. Build the magic, skip the setup.",
+    "links": {
+      "product": "Product",
+      "company": "Company",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "social": {
+      "followUs": "Follow Us",
+      "discord": "Discord",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© 2025 The Architech. All rights reserved. Building the future of development."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Ready to transform your ideas into reality? Let's talk.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "company": "Company",
+      "message": "Tell us about your project",
+      "submit": "Send Message",
+      "success": "Thank you! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    }
+  }
+}

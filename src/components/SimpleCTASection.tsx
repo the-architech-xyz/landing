@@ -4,8 +4,10 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle, Loader2, AlertCircle, Linkedin, Users } from "lucide-react";
 import { WAITLIST_CONFIG } from "@/config/waitlist";
 import DiscordIcon from "@/components/DiscordIcon";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const SimpleCTASection = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -114,13 +116,12 @@ const SimpleCTASection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Ready to{" "}
-            <span className="text-transparent bg-gradient-brand bg-clip-text">Skip the Setup?</span>
+            {t('cta.title.line1')}{" "}
+            <span className="text-transparent bg-gradient-brand bg-clip-text">{t('cta.title.line2')}</span>
           </h2>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
-            Join the waitlist and be among the first to experience 
-            the future of development.
+            {t('cta.subtitle')}
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -129,7 +130,7 @@ const SimpleCTASection = () => {
                 <Input
                   type="email"
                   name="email"
-                  placeholder="Enter your email"
+                  placeholder={t('cta.emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -147,12 +148,12 @@ const SimpleCTASection = () => {
                   {isLoading ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      <span className="ml-2">Joining...</span>
+                      <span className="ml-2">{t('cta.joining')}</span>
                     </>
                   ) : (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                      <span className="relative z-10">Join Waitlist</span>
+                      <span className="relative z-10">{t('cta.joinWaitlist')}</span>
                       <ArrowRight className="ml-2 h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}

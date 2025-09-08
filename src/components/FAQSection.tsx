@@ -3,56 +3,43 @@ import { ChevronDown, Plus, Minus, HelpCircle, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer, scaleIn, defaultViewport } from "@/lib/animations";
 import ContactModal from "@/components/ContactModal";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FAQSection = () => {
+  const { t } = useTranslation();
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const faqs = [
     {
-      category: "Ownership",
-      question: "Do I own the code?",
-      answer: "Yes, completely. The Architech assembles standard code that you can export, modify, and deploy anywhere. No vendor lock-in or platform dependencies.",
-    },
-    // {
-    //   category: "Integration",
-    //   question: "How does it integrate with my existing codebase?",
-    //   answer: "The Architech generates standard code that follows common patterns. You can import it into any project, modify it as needed, and it integrates seamlessly with your existing tools and workflows.",
-    // },
-    {
-      category: "Customization",
-      question: "What if I need to customize beyond the modules?",
-      answer: "You have full control over the generated code. Modules are starting points that you can modify, extend, or replace entirely. The goal is to give you a solid foundation, not lock you into limitations.",
+      category: t('faq.questions.whatIsArchitech.question'),
+      question: t('faq.questions.whatIsArchitech.question'),
+      answer: t('faq.questions.whatIsArchitech.answer'),
     },
     {
-      category: "Difference",
-      question: "How is this different from AI code generators?",
-      answer: "The Architech CLI uses battle-tested blueprints instead of generating code from scratch. You get proven architecture patterns that have been tested in production, not experimental AI code that needs debugging.",
+      category: t('faq.questions.howDoesItWork.question'),
+      question: t('faq.questions.howDoesItWork.question'),
+      answer: t('faq.questions.howDoesItWork.answer'),
     },
     {
-      category: "Technology",
-      question: "What technologies are supported?",
-      answer: "We start with popular stacks (React, Next.js, Node.js, Python) and expand based on demand. The modular design means new technologies can be added without breaking existing projects.",
+      category: t('faq.questions.whatTechnologies.question'),
+      question: t('faq.questions.whatTechnologies.question'),
+      answer: t('faq.questions.whatTechnologies.answer'),
     },
     {
-      category: "Commercial",
-      question: "Can I use this for commercial projects?",
-      answer: "Absolutely. The generated code is yours to use for any purpose - personal, commercial, or open source. There are no restrictions on how you use the code you generate.",
+      category: t('faq.questions.isItSecure.question'),
+      question: t('faq.questions.isItSecure.question'),
+      answer: t('faq.questions.isItSecure.answer'),
     },
     {
-      category: "Access",
-      question: "When can I get access?",
-      answer: "CLI Tool: Available now (open source). SaaS Platform: Currently in construction.",
+      category: t('faq.questions.canICustomize.question'),
+      question: t('faq.questions.canICustomize.question'),
+      answer: t('faq.questions.canICustomize.answer'),
     },
     {
-      category: "Access",
-      question: "What's the difference between CLI and SaaS?",
-      answer: "CLI Tool: Free, open source command-line tool for local development. SaaS Platform: Web-based platform with advanced features, team collaboration, and cloud integration (coming soon).", 
-    },
-    {
-      category: "Business",
-      question: "What does this cost?",
-      answer: "CLI Tool: Completely free and open source forever. SaaS Platform (soon): Free tier + Pro features at $29/month (advanced modules, priority support, team collaboration). Enterprise: Custom pricing (on-premise, custom modules, dedicated support).",
+      category: t('faq.questions.pricing.question'),
+      question: t('faq.questions.pricing.question'),
+      answer: t('faq.questions.pricing.answer'),
     },
   ];
 
@@ -93,18 +80,17 @@ const FAQSection = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            Got{" "}
-              <span className="text-transparent bg-gradient-brand bg-clip-text">
-              Questions?
-              </span>
+            {t('faq.title.line1')}{" "}
+            <span className="text-transparent bg-gradient-brand bg-clip-text">
+              {t('faq.title.line2')}
+            </span>
           </motion.h2>
           
           <motion.p 
             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
             variants={fadeInUp}
           >
-            Everything you need to know about The Architech and how it will 
-            transform your development workflow.
+            {t('faq.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -226,7 +212,7 @@ const FAQSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsContactModalOpen(true)}
           >
-            <span>Still have questions?</span>
+            <span>{t('faq.cta')}</span>
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
           </motion.div>
         </motion.div>

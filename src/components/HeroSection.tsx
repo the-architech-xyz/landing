@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInDown, staggerContainer, scaleIn, floating, defaultViewport } from "@/lib/animations";
 import ContactModal from "@/components/ContactModal";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   const [currentText, setCurrentText] = useState("");
   const [showModules, setShowModules] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
@@ -14,15 +16,15 @@ const HeroSection = () => {
   const [isInView, setIsInView] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  const promptText = "A collaborative project management app with JWT auth and a modern design system";
+  const promptText = t('hero.prompt');
   
   const modules = [
-    { name: "Auth Service", color: "bg-gradient-electric", delay: 0 },
-    { name: "Database", color: "bg-gradient-forest", delay: 200 },
-    { name: "API Gateway", color: "bg-gradient-ocean", delay: 400 },
-    { name: "UI Components", color: "bg-gradient-sunset", delay: 600 },
-    { name: "CI/CD Pipeline", color: "bg-gradient-creative", delay: 800 },
-    { name: "Monitoring", color: "bg-gradient-aurora", delay: 1000 }
+    { name: t('hero.modules.authService'), color: "bg-gradient-electric", delay: 0 },
+    { name: t('hero.modules.database'), color: "bg-gradient-forest", delay: 200 },
+    { name: t('hero.modules.apiGateway'), color: "bg-gradient-ocean", delay: 400 },
+    { name: t('hero.modules.uiComponents'), color: "bg-gradient-sunset", delay: 600 },
+    { name: t('hero.modules.cicdPipeline'), color: "bg-gradient-creative", delay: 800 },
+    { name: t('hero.modules.monitoring'), color: "bg-gradient-aurora", delay: 1000 }
   ];
 
   // Detect mobile device
@@ -144,10 +146,10 @@ const HeroSection = () => {
               className="text-4xl sm:text-5xl lg:text-7xl font-satoshi font-black leading-tight tracking-tight px-2"
               variants={fadeInDown}
             >
-              <motion.span className="text-foreground">Stop Writing Boilerplate.</motion.span>
+              <motion.span className="text-foreground">{t('hero.title.line1')}</motion.span>
               <br />
               <motion.span className="text-foreground">
-                <span className="text-transparent bg-gradient-brand bg-clip-text"> Start Architecting.</span>
+                <span className="text-transparent bg-gradient-brand bg-clip-text"> {t('hero.title.line2')}</span>
               </motion.span>
             </motion.h1>
             
@@ -155,7 +157,7 @@ const HeroSection = () => {
               className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-inter font-medium px-4"
               variants={fadeInUp}
             >
-              Open-source CLI that transforms blueprints into production-ready code. Start with battle-tested modules, customize as needed, deploy anywhere.
+              {t('hero.subtitle')}
             </motion.p>
           </motion.div>
 
@@ -167,7 +169,7 @@ const HeroSection = () => {
                 className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-4 sm:px-8 py-4 group w-full h-12 sm:h-auto text-sm sm:text-sm" 
                 onClick={() => smoothScrollTo("cta")}
               >
-                <span className="hidden sm:inline">Join Waitlist</span>
+                <span className="hidden sm:inline">{t('hero.cta.primary')}</span>
                 <span className="sm:hidden">Join</span>
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -179,7 +181,7 @@ const HeroSection = () => {
                 className="glass-button border-architech-border px-4 sm:px-8 py-4 w-full h-12 sm:h-auto text-sm sm:text-sm"
                 onClick={() => setIsContactModalOpen(true)}
               >
-                <span className="hidden sm:inline">Book Demo</span>
+                <span className="hidden sm:inline">{t('hero.cta.secondary')}</span>
                 <span className="sm:hidden">Demo</span>
               </Button>
             </motion.div>
@@ -207,7 +209,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                    <div className="text-sm text-muted-foreground">Selected modules:</div>
+                    <div className="text-sm text-muted-foreground">{t('hero.modules.selected')}</div>
                     <motion.div 
                       className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                       variants={staggerContainer}

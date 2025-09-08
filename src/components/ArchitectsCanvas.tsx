@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { useTheme } from "@/hooks/useTheme";
+import { useTranslation } from "@/hooks/useTranslation";
 
 // Sound effects (optional, muted by default)
 const playSound = (soundType: 'typing' | 'snap' | 'transition', volume: number = 0.1) => {
@@ -63,6 +64,7 @@ declare global {
 }
 
 const ArchitectsCanvas = () => {
+  const { t } = useTranslation();
   const { darkMode } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -89,7 +91,7 @@ const ArchitectsCanvas = () => {
 
   const techStack = [
     { 
-      name: "React (Next.js)", 
+      name: t('architectsCanvas.techStack.react.name'), 
       logo: (
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
           <circle cx="12" cy="12" r="2" fill="#61DAFB"/>
@@ -101,10 +103,10 @@ const ArchitectsCanvas = () => {
       ), 
       color: "from-blue-500 to-cyan-500",
       brandColor: "#61DAFB",
-      description: "Modern React framework with server-side rendering"
+      description: t('architectsCanvas.techStack.react.description')
     },
     { 
-      name: "PostgreSQL (Supabase)", 
+      name: t('architectsCanvas.techStack.postgresql.name'), 
       logo: (
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#336791"/>
@@ -112,10 +114,10 @@ const ArchitectsCanvas = () => {
       ), 
       color: "from-teal-500 to-green-500",
       brandColor: "#336791",
-      description: "Open source database with real-time capabilities"
+      description: t('architectsCanvas.techStack.postgresql.description')
     },
     { 
-      name: "JWT (Auth.js)", 
+      name: t('architectsCanvas.techStack.jwt.name'), 
       logo: (
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#000000"/>
@@ -124,10 +126,10 @@ const ArchitectsCanvas = () => {
       ), 
       color: "from-green-500 to-emerald-500",
       brandColor: "#000000",
-      description: "Secure authentication with JSON Web Tokens"
+      description: t('architectsCanvas.techStack.jwt.description')
     },
     { 
-      name: "TailwindCSS", 
+      name: t('architectsCanvas.techStack.tailwind.name'), 
       logo: (
         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" fill="#06B6D4"/>
@@ -135,14 +137,14 @@ const ArchitectsCanvas = () => {
       ), 
       color: "from-cyan-500 to-teal-500",
       brandColor: "#06B6D4",
-      description: "Utility-first CSS framework for rapid UI development"
+      description: t('architectsCanvas.techStack.tailwind.description')
     }
   ];
 
   const blueprintContent = [
-    "# AI is drafting the blueprint...",
+    t('architectsCanvas.blueprint.aiDrafting'),
     "project:",
-    "  name: \"Project Management Platform\"",
+    `  name: "${t('architectsCanvas.blueprint.projectName')}"`,
     "  type: \"nextjs-fullstack\"",
     "  version: \"1.0.0\"",
     "",
@@ -640,7 +642,7 @@ export default withAuth(DashboardPage);`;
             <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
               Architectural Mastery 
             </span>
-            in Action
+            {t('architectsCanvas.inAction')}
             <br />
           </motion.h2>
 
@@ -679,7 +681,7 @@ export default withAuth(DashboardPage);`;
                 className="h-6 w-6 object-contain relative z-10"
               />
               <span className="relative z-10">
-                {currentPhase === 3 ? "Replay Session" : "Start Session"}
+                {currentPhase === 3 ? t('architectsCanvas.buttons.replaySession') : t('architectsCanvas.buttons.startSession')}
               </span>
             </motion.button>
 
@@ -701,7 +703,7 @@ export default withAuth(DashboardPage);`;
                   <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 )}
               </svg>
-              <span>{soundEnabled ? 'Sound On' : 'Sound Off'}</span>
+              <span>{soundEnabled ? t('architectsCanvas.sound.on') : t('architectsCanvas.sound.off')}</span>
             </motion.button> */}
           </motion.div>
         )}
@@ -743,7 +745,7 @@ export default withAuth(DashboardPage);`;
                     </div>
                     <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg shadow-architech-brand-blue/10">
                       <div className="text-architech-brand-blue font-bold mb-3 text-lg tracking-wide">
-                        The architech
+                        {t('architectsCanvas.theArchitech')}
                       </div>
                       <div className="text-foreground text-lg font-medium leading-relaxed">
                         What architectural challenge shall we solve today?
@@ -811,7 +813,7 @@ export default withAuth(DashboardPage);`;
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
-                          The architech
+                          {t('architectsCanvas.theArchitech')}
                         </div>
                         <div className="text-foreground text-lg font-medium">
                           Excellent requirements. I've designed a robust
@@ -911,7 +913,7 @@ export default withAuth(DashboardPage);`;
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
-                          The architech
+                          {t('architectsCanvas.theArchitech')}
                         </div>
                         <div className="text-foreground text-lg font-medium">
                           Architecture validated. Now orchestrating
@@ -1113,7 +1115,7 @@ export default withAuth(DashboardPage);`;
                       </div>
                       <div className="bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
                         <div className="text-architech-brand-blue font-semibold mb-3 text-lg">
-                          The architech
+                          {t('architectsCanvas.theArchitech')}
                         </div>
                         <div className="text-foreground text-lg font-medium">
                           Mission accomplished. Your enterprise-grade

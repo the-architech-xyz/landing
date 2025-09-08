@@ -8,8 +8,11 @@ import {
   defaultViewport 
 } from '@/lib/animations';
 import DiscordIcon from '@/components/DiscordIcon';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const EcosystemSection = () => {
+  const { t } = useTranslation();
+  
   return (
     <section
       id="ecosystem"
@@ -47,28 +50,21 @@ const EcosystemSection = () => {
                 d="M13 10V3L4 14h7v7l9-11h-7z"
               />
             </svg>
-            Ecosystem
+            {t('ecosystem.badge')}
           </motion.div>
 
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            A living{" "}
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              ecosystem
-            </span>
-            {" "}for developers
+            {t('ecosystem.title')}
           </motion.h2>
 
           <motion.p
             className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-4xl mx-auto leading-relaxed px-4"
             variants={fadeInUp}
           >
-            Beyond the Templates:{" "}
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text font-semibold">
-              Your Vision, Your Stack.
-            </span>
+            {t('ecosystem.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -85,26 +81,21 @@ const EcosystemSection = () => {
             <motion.div className="space-y-8" variants={fadeInUp}>
               <div>
                 <h3 className="text-3xl font-bold text-foreground mb-6">
-                  How It Works
+                  {t('ecosystem.howItWorks.title')}
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Every module is defined by a simple file describing actions: create a file, run a command, add a dependency, etc... <br /> It's transparent, easy to debug, and simple to create your own.
+                  {t('ecosystem.howItWorks.description')}
                 </p>
               </div>
 
               <div className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden">
                 <div className="text-center">
                   <h4 className="text-xl font-bold text-foreground mb-4">
-                    Simple Blueprint File
+                    {t('ecosystem.blueprint.title')}
                   </h4>
                   <div className="bg-[#0D1B2A] rounded-xl p-6 border border-architech-brand-blue/30 font-mono text-sm text-left">
                     <pre className="text-foreground whitespace-pre-wrap">
-{`# Blueprint: Authentication Module
-version: "1.0"
-actions:
-  - create_file: "auth.js"
-  - run_command: "npm install bcrypt"
-  - add_dependency: "express-session"`}
+{t('ecosystem.blueprint.code')}
                     </pre>
                   </div>
                 </div>
@@ -116,7 +107,7 @@ actions:
               <div>
                
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  We're building a community marketplace where developers can share pre-built integrations and modules. For unique needs, our AI will generate custom integrations automatically.
+                  {t('ecosystem.vision.description')}
                 </p>
               </div>
 
@@ -124,17 +115,17 @@ actions:
               <div className="space-y-3">
                 <div className="flex items-center gap-3 p-3 glass-card rounded-lg border border-architech-brand-blue/20">
                   <Package className="w-5 h-5 text-architech-brand-blue" />
-                  <span className="text-foreground font-medium">Community Marketplace</span>
+                  <span className="text-foreground font-medium">{t('ecosystem.features.marketplace')}</span>
                 </div>
                 
                 <div className="flex items-center gap-3 p-3 glass-card rounded-lg border border-architech-brand-green/20">
                   <Code2 className="w-5 h-5 text-architech-brand-green" />
-                  <span className="text-foreground font-medium">AI Generation</span>
+                  <span className="text-foreground font-medium">{t('ecosystem.features.aiGeneration')}</span>
                 </div>
                 
                 <div className="flex items-center gap-3 p-3 glass-card rounded-lg border border-architech-brand-blue/20">
                   <Users className="w-5 h-5 text-architech-brand-blue" />
-                  <span className="text-foreground font-medium">Open Source</span>
+                  <span className="text-foreground font-medium">{t('ecosystem.features.openSource')}</span>
                 </div>
               </div>
 
@@ -149,7 +140,7 @@ actions:
                   whileTap={{ scale: 0.95 }}
                 >
                   <DiscordIcon className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
-                  <span>Join Discord</span>
+                  <span>{t('ecosystem.joinDiscord')}</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </motion.a>
               </motion.div>

@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X, Zap, Linkedin } from "lucide-react";
 import DiscordIcon from "@/components/DiscordIcon";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Header = () => {
+  const { t } = useTranslation();
   const [darkMode, setDarkMode] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -114,7 +117,7 @@ const Header = () => {
                   : 'text-muted-foreground hover:text-architech-electric'
               }`}
             >
-              Benefits
+              {t('header.nav.benefits')}
             </button>
             <button 
               onClick={() => smoothScrollTo('how-it-works')}
@@ -124,17 +127,17 @@ const Header = () => {
                   : 'text-muted-foreground hover:text-architech-electric'
               }`}
             >
-              How It Works
+              {t('header.nav.howItWorks')}
             </button>
             <button 
-              onClick={() => smoothScrollTo('use-cases')}
+              onClick={() => smoothScrollTo('demo')}
               className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
                 activeSection === 'use-cases' 
                   ? 'text-architech-electric' 
                   : 'text-muted-foreground hover:text-architech-electric'
               }`}
             >
-              Use Cases
+              {t('header.nav.demo')}
             </button>
             <button 
               onClick={() => smoothScrollTo('where-we-fit')}
@@ -144,7 +147,7 @@ const Header = () => {
                   : 'text-muted-foreground hover:text-architech-electric'
               }`}
             >
-              Comparison
+              {t('header.nav.whereWeFit')}
             </button>
             <button 
               onClick={() => smoothScrollTo('faq')}
@@ -154,12 +157,15 @@ const Header = () => {
                   : 'text-muted-foreground hover:text-architech-electric'
               }`}
             >
-              FAQ
+              {t('header.nav.faq')}
             </button>
           </nav>
 
           {/* Actions */}
           <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+            
             {/* Social Links - High Visibility */}
             <div className="hidden md:flex items-center space-x-2">
               <a
@@ -196,7 +202,7 @@ const Header = () => {
               onClick={() => smoothScrollTo('cta')}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              Join Waitlist
+              {t('header.cta')}
             </Button>
 
             {/* Mobile menu button */}
@@ -231,7 +237,7 @@ const Header = () => {
                     : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
                 }`}
               >
-                Benefits
+                {t('header.nav.benefits')}
               </button>
               <button 
                 onClick={() => {
@@ -244,11 +250,11 @@ const Header = () => {
                     : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
                 }`}
               >
-                How It Works
+                {t('header.nav.howItWorks')}
               </button>
               <button 
                 onClick={() => {
-                  smoothScrollTo('use-cases');
+                  smoothScrollTo('demo');
                   setMobileMenuOpen(false);
                 }}
                 className={`text-left transition-colors font-medium py-3 px-4 rounded-lg text-base ${
@@ -257,7 +263,7 @@ const Header = () => {
                     : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
                 }`}
               >
-                Use Cases
+                {t('header.nav.demo')}
               </button>
               <button 
                 onClick={() => {
@@ -270,7 +276,7 @@ const Header = () => {
                     : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
                 }`}
               >
-                Comparison
+                {t('header.nav.whereWeFit')}
               </button>
               <button 
                 onClick={() => {
@@ -283,7 +289,7 @@ const Header = () => {
                     : 'text-muted-foreground hover:text-architech-electric hover:bg-architech-electric/5'
                 }`}
               >
-                FAQ
+                {t('header.nav.faq')}
               </button>
               
            
@@ -295,7 +301,7 @@ const Header = () => {
                   setMobileMenuOpen(false);
                 }}
               >
-                Join Waitlist
+                {t('header.cta')}
               </Button>
               
               {/* Mobile Social Links */}

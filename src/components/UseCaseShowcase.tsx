@@ -8,8 +8,10 @@ import {
   staggerContainer, 
   defaultViewport 
 } from '@/lib/animations';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const UseCaseShowcase = () => {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -53,8 +55,8 @@ const UseCaseShowcase = () => {
   const useCases = [
     {
       id: 1,
-      title: "AI Writing Assistant",
-      description: "Get a complete AI writing platform blueprint with authentication, payments, and OpenAI integration.",
+      title: t('useCases.aiWriting.title'),
+      description: t('useCases.aiWriting.description'),
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-emerald-50 to-teal-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
