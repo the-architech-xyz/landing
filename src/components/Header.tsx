@@ -162,9 +162,11 @@ const Header = () => {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Language Switcher */}
-            <LanguageSwitcher />
+            <div className="relative">
+              <LanguageSwitcher />
+            </div>
             
             {/* Social Links - High Visibility */}
             <div className="hidden md:flex items-center space-x-2">
