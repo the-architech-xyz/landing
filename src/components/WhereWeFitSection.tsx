@@ -531,7 +531,7 @@ const WhereWeFitSection = () => {
         )}
 
         {/* Bottom Summary */}
-        <motion.div
+        {/* <motion.div
           className="text-center mt-12 sm:mt-16"
           initial="hidden"
           whileInView="visible"
@@ -542,7 +542,6 @@ const WhereWeFitSection = () => {
             className="glass-card rounded-3xl p-6 sm:p-8 lg:p-12 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5 relative overflow-hidden max-w-4xl mx-auto"
             variants={fadeInUp}
           >
-            {/* Background pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
             </div>
@@ -552,8 +551,8 @@ const WhereWeFitSection = () => {
                 className="text-lg sm:text-xl text-muted-foreground mb-6 leading-relaxed"
                 variants={fadeInUp}
               >
-                The Architech is the only tool that combines{" "}
-                <span className="text-architech-brand-blue font-semibold">AI-architected systems</span>{" "}
+                {t('whereWeFit.subtitle')}{" "}
+                <span className="text-architech-brand-blue font-semibold">{t('whereWeFit.comparison.architecture.architech')}</span>{" "}
                 with{" "}
                 <span className="text-architech-brand-green font-semibold">100% code ownership</span>{" "}
                 and{" "}
@@ -566,20 +565,20 @@ const WhereWeFitSection = () => {
               >
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
                   <Building className="w-4 h-4" />
-                  <span>Transparent Architecture</span>
+                  <span>{t('whereWeFit.comparison.architecture.architech')}</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-full text-architech-brand-green">
                   <Shield className="w-4 h-4" />
-                  <span>Secure Modules</span>
+                  <span>{t('whereWeFit.comparison.security.architech')}</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-architech-brand-blue">
                   <TrendingUp className="w-4 h-4" />
-                  <span>Built-in Best Practices</span>
+                  <span>{t('whereWeFit.comparison.scalability.architech')}</span>
                 </div>
               </motion.div>
             </div>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

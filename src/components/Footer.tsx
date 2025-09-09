@@ -17,7 +17,7 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                 <img
                   src={darkMode ? "/logo-removebg.png" : "/logo.png"}
-                  alt="The Architech Logo"
+                  alt={t('common.alt.logo')}
                   className="w-10 h-10 object-contain"
                 />
               </div>
@@ -41,7 +41,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
-                title="Join our Discord community"
+                title={t('social.discord.title')}
               >
                 <DiscordIcon className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
               </a>
@@ -50,7 +50,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
-                title="Follow us on LinkedIn"
+                title={t('social.linkedin.title')}
               >
                 <Linkedin className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
               </a>
@@ -59,7 +59,7 @@ const Footer = () => {
               <a
                 href="mailto:antoine.srvt@gmail.com"
                 className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
-                title="Contact us via email"
+                title={t('social.email.title')}
               >
                 <MailIcon className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-xs font-bold">
                   @

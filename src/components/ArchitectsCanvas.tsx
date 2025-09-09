@@ -677,7 +677,7 @@ export default withAuth(DashboardPage);`;
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <img
                 src={"/logo-removebg.png"}
-                alt="The architech"
+                alt={t('common.alt.architech')}
                 className="h-6 w-6 object-contain relative z-10"
               />
               <span className="relative z-10">
@@ -739,7 +739,7 @@ export default withAuth(DashboardPage);`;
                     <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                       <img
                         src={"/logo-removebg.png"}
-                        alt="The architech"
+                        alt={t('common.alt.architech')}
                         className="w-8 h-8 object-contain"
                       />
                     </div>
@@ -748,7 +748,7 @@ export default withAuth(DashboardPage);`;
                         {t('architectsCanvas.theArchitech')}
                       </div>
                       <div className="text-foreground text-lg font-medium leading-relaxed">
-                        What architectural challenge shall we solve today?
+                        {t('architectsCanvas.dialogue.challenge')}
                       </div>
                     </div>
                   </div>
@@ -763,7 +763,7 @@ export default withAuth(DashboardPage);`;
                 >
                   <div className="bg-architech-brand-green/10 border border-architech-brand-green/20 rounded-2xl p-6 backdrop-blur-sm max-w-md shadow-lg">
                     <div className="text-architech-brand-green font-bold mb-3 text-lg tracking-wide">
-                      You
+                      {t('architectsCanvas.dialogue.you')}
                     </div>
                     <div className="text-foreground font-mono text-lg font-medium leading-relaxed">
                       {typingText || typedText}
@@ -777,7 +777,7 @@ export default withAuth(DashboardPage);`;
                   <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-green to-architech-brand-blue rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-green/30 overflow-hidden">
                     <img
                       src={"/logo-removebg.png"}
-                      alt="The architech"
+                      alt={t('common.alt.architech')}
                       className="w-8 h-8 object-contain"
                     />
                   </div>
@@ -807,7 +807,7 @@ export default withAuth(DashboardPage);`;
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The architech"
+                          alt={t('common.alt.architech')}
                           className="w-8 h-8 object-contain"
                         />
                       </div>
@@ -816,9 +816,7 @@ export default withAuth(DashboardPage);`;
                           {t('architectsCanvas.theArchitech')}
                         </div>
                         <div className="text-foreground text-lg font-medium">
-                          Excellent requirements. I've designed a robust
-                          architecture optimized for enterprise-scale
-                          performance, security, and maintainability.
+                          {t('architectsCanvas.dialogue.excellentRequirements')}
                         </div>
                       </div>
                     </div>
@@ -907,7 +905,7 @@ export default withAuth(DashboardPage);`;
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The architech"
+                          alt={t('common.alt.architech')}
                           className="w-8 h-8 object-contain"
                         />
                       </div>
@@ -916,9 +914,7 @@ export default withAuth(DashboardPage);`;
                           {t('architectsCanvas.theArchitech')}
                         </div>
                         <div className="text-foreground text-lg font-medium">
-                          Architecture validated. Now orchestrating
-                          enterprise-grade components with precision engineering
-                          and seamless integration.
+                          {t('architectsCanvas.dialogue.architectureValidated')}
                         </div>
                       </div>
                     </div>
@@ -947,7 +943,7 @@ export default withAuth(DashboardPage);`;
                       >
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The architech"
+                          alt={t('common.alt.architech')}
                           className="w-16 h-16 object-contain"
                         />
                       </motion.div>
@@ -1109,7 +1105,7 @@ export default withAuth(DashboardPage);`;
                       <div className="w-12 h-12 bg-gradient-to-br from-architech-brand-blue to-architech-brand-green rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-architech-brand-blue/30 overflow-hidden">
                         <img
                           src={"/logo-removebg.png"}
-                          alt="The architech"
+                          alt={t('common.alt.architech')}
                           className="w-8 h-8 object-contain"
                         />
                       </div>
@@ -1118,10 +1114,7 @@ export default withAuth(DashboardPage);`;
                           {t('architectsCanvas.theArchitech')}
                         </div>
                         <div className="text-foreground text-lg font-medium">
-                          Mission accomplished. Your enterprise-grade
-                          architecture is complete with full source code
-                          ownership, comprehensive documentation, and
-                          deployment-ready infrastructure.
+                          {t('architectsCanvas.dialogue.missionAccomplished')}
                         </div>
                       </div>
                     </div>
@@ -1137,7 +1130,7 @@ export default withAuth(DashboardPage);`;
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
                       <h3 className="text-architech-brand-blue font-semibold mb-3 text-sm">
-                        Project Structure
+                        {t('architectsCanvas.projectStructure.title')}
                       </h3>
                       <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-blue/30 font-mono text-xs max-h-64 overflow-y-auto">
                         {showProjectStructure &&
@@ -1153,7 +1146,7 @@ export default withAuth(DashboardPage);`;
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     >
                       <h3 className="text-architech-brand-green font-semibold mb-3 text-sm">
-                        Live Preview
+                        {t('architectsCanvas.livePreview.title')}
                       </h3>
                       <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-green/30 overflow-hidden">
                         {showWorkingPreview && (
@@ -1167,7 +1160,7 @@ export default withAuth(DashboardPage);`;
                             <div className="space-y-3">
                               <div className="flex items-center justify-between border-b pb-2">
                                 <h4 className="font-semibold text-gray-800 text-sm">
-                                  Project Dashboard
+                                  {t('architectsCanvas.livePreview.dashboard')}
                                 </h4>
                                 <div className="flex gap-1">
                                   <div className="w-2 h-2 bg-red-500 rounded-full"></div>
@@ -1179,7 +1172,7 @@ export default withAuth(DashboardPage);`;
                               <div className="grid grid-cols-2 gap-2">
                                 <div className="bg-blue-50 p-2 rounded">
                                   <div className="text-xs text-blue-600 font-medium">
-                                    Active
+                                    {t('architectsCanvas.livePreview.active')}
                                   </div>
                                   <div className="text-lg font-bold text-blue-800">
                                     12
@@ -1187,7 +1180,7 @@ export default withAuth(DashboardPage);`;
                                 </div>
                                 <div className="bg-green-50 p-2 rounded">
                                   <div className="text-xs text-green-600 font-medium">
-                                    Done
+                                    {t('architectsCanvas.livePreview.done')}
                                   </div>
                                   <div className="text-lg font-bold text-green-800">
                                     8
@@ -1199,7 +1192,7 @@ export default withAuth(DashboardPage);`;
                                 <div className="flex items-center gap-2 p-1 bg-gray-50 rounded text-xs">
                                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                                   <span className="text-gray-700">
-                                    Project Alpha
+                                    {t('architectsCanvas.livePreview.projectAlpha')}
                                   </span>
                                   <span className="text-gray-500 ml-auto">
                                     85%
@@ -1208,7 +1201,7 @@ export default withAuth(DashboardPage);`;
                                 <div className="flex items-center gap-2 p-1 bg-gray-50 rounded text-xs">
                                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                   <span className="text-gray-700">
-                                    Project Beta
+                                    {t('architectsCanvas.livePreview.projectBeta')}
                                   </span>
                                   <span className="text-gray-500 ml-auto">
                                     100%

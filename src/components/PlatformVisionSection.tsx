@@ -1,45 +1,48 @@
 import { Palette, Code, Rocket, BarChart3, RotateCcw, Sparkles, Globe, Settings, Zap, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, defaultViewport, floating } from "@/lib/animations";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const PlatformVisionSection = () => {
+  const { t } = useTranslation();
+  
   const platformFeatures = [
     {
       icon: Palette,
-      title: "Design-to-Code",
-      description: "Design your interfaces in a visual tool (integrating Penpot's open source technology) and instantly transform them into a library of reusable components.",
+      title: t('platformVision.features.designToCode.title'),
+      description: t('platformVision.features.designToCode.description'),
       gradient: "bg-gradient-creative",
-      coming: "Q1 2026"
+      coming: t('platformVision.features.designToCode.coming')
     },
     {
       icon: Globe,
-      title: "Integrated CMS & i18n",
-      description: "Manage your application content and translations directly from the platform, with one click.",
+      title: t('platformVision.features.cmsI18n.title'),
+      description: t('platformVision.features.cmsI18n.description'),
       gradient: "bg-gradient-icon-2",
-      coming: "Q2 2026"
+      coming: t('platformVision.features.cmsI18n.coming')
     },
     {
       icon: Rocket,
-      title: "Automated DevOps & Analytics",
-      description: "From one-click deployment on European clouds to performance and user behavior monitoring, everything is integrated.",
+      title: t('platformVision.features.devopsAnalytics.title'),
+      description: t('platformVision.features.devopsAnalytics.description'),
       gradient: "bg-gradient-icon-3",
-      coming: "Q3 2026"
+      coming: t('platformVision.features.devopsAnalytics.coming')
     },
     {
       icon: Zap,
-      title: "AI-Powered Project Management",
-      description: "Connect your feature requests directly to AI agents for ultra-fast development cycles.",
+      title: t('platformVision.features.aiProjectManagement.title'),
+      description: t('platformVision.features.aiProjectManagement.description'),
       gradient: "bg-gradient-electric",
-      coming: "Q4 2026"
+      coming: t('platformVision.features.aiProjectManagement.coming')
     }
   ];
 
   const cycleSteps = [
-    { icon: Palette, label: "Design", color: "text-architech-purple" },
-    { icon: Code, label: "Code", color: "text-architech-electric" },
-    { icon: Rocket, label: "Deploy", color: "text-muted-foreground" },
-    { icon: BarChart3, label: "Analyze", color: "text-muted-foreground" },
-    { icon: RotateCcw, label: "Iterate", color: "text-architech-electric" }
+    { icon: Palette, label: t('platformVision.cycleSteps.design'), color: "text-architech-purple" },
+    { icon: Code, label: t('platformVision.cycleSteps.code'), color: "text-architech-electric" },
+    { icon: Rocket, label: t('platformVision.cycleSteps.deploy'), color: "text-muted-foreground" },
+    { icon: BarChart3, label: t('platformVision.cycleSteps.analyze'), color: "text-muted-foreground" },
+    { icon: RotateCcw, label: t('platformVision.cycleSteps.iterate'), color: "text-architech-electric" }
   ];
 
   const smoothScrollTo = (elementId: string) => {
@@ -64,16 +67,16 @@ const PlatformVisionSection = () => {
             variants={scaleIn}
           >
             <Sparkles className="h-4 w-4" />
-            Platform Roadmap
+            {t('platformVision.badge')}
           </motion.div>
 
           <motion.h2 
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            The Journey{" "}
+            {t('platformVision.title.line1')}{" "}
             <span className="text-transparent bg-gradient-brand bg-clip-text">
-              Ahead
+              {t('platformVision.title.line2')}
             </span>
           </motion.h2>
           
@@ -81,8 +84,7 @@ const PlatformVisionSection = () => {
             className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto px-4"
             variants={fadeInUp}
           >
-            From code assembly to complete development ecosystem. Here's how The Architech 
-            evolves into the only platform you'll ever need—each milestone building upon the last.
+            {t('platformVision.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -285,7 +287,7 @@ const PlatformVisionSection = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => smoothScrollTo("cta")}
           >
-            <span>Join Waitlist</span>
+            <span>{t('platformVision.cta')}</span>
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
           </motion.div>
         </motion.div>

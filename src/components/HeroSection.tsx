@@ -170,7 +170,7 @@ const HeroSection = () => {
                 onClick={() => smoothScrollTo("cta")}
               >
                 <span className="hidden sm:inline">{t('hero.cta.primary')}</span>
-                <span className="sm:hidden">Join</span>
+                <span className="sm:hidden">{t('hero.cta.primary').split(' ')[0]}</span>
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
@@ -182,7 +182,7 @@ const HeroSection = () => {
                 onClick={() => setIsContactModalOpen(true)}
               >
                 <span className="hidden sm:inline">{t('hero.cta.secondary')}</span>
-                <span className="sm:hidden">Demo</span>
+                <span className="sm:hidden">{t('hero.cta.secondary').split(' ')[0]}</span>
               </Button>
             </motion.div>
           </motion.div>
@@ -195,7 +195,7 @@ const HeroSection = () => {
             <div className="glass-card rounded-2xl p-6 sm:p-8 border border-architech-border">
               <div className="space-y-4 sm:space-y-6">
                 <div className="text-left">
-                  <div className="text-sm text-muted-foreground mb-2">Describe your app:</div>
+                  <div className="text-sm text-muted-foreground mb-2">{t('hero.prompt')}</div>
                   <div className="bg-muted/30 rounded-lg p-3 sm:p-4 min-h-[60px] font-mono text-sm border">
                     <span className="text-architech-electric">{currentText}</span>
                     {isTyping && <span className="animate-pulse">|</span>}

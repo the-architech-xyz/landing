@@ -71,7 +71,7 @@ const DesktopStickyScroll = ({ problemCards, pieChartData, t }: { problemCards: 
                       {/* Source */}
                       <div className="glass-card rounded-xl p-4 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2">
                         <div className="text-sm text-muted-foreground/70">
-                          <span className="font-medium">Source:</span> {card.source}
+                          <span className="font-medium">{t('common.source')}</span> {card.source}
                         </div>
                       </div>
 
@@ -187,7 +187,7 @@ const BenefitsSection = () => {
       number: "3-5 Days",
       title: t('benefits.problems.scalingChallenges.title'),
       description: t('benefits.problems.scalingChallenges.description'),
-      source: "Industry Average",
+      source: t('benefits.industryAverage'),
       color: "purple"
     }
   ];
@@ -271,7 +271,7 @@ const BenefitsSection = () => {
                 {/* <div className="text-center mb-4">
                   <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                     <ChevronLeft className="w-4 h-4" />
-                    <span>Swipe to navigate</span>
+                    <span>{t('common.swipeToNavigate')}</span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div> */}
@@ -317,7 +317,7 @@ const BenefitsSection = () => {
                   {/* Source */}
                   <div className="glass-card rounded-xl p-4 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2">
                     <div className="text-sm text-muted-foreground/70">
-                      <span className="font-medium">Source:</span> {problemCards[mobileCardIndex].source}
+                      <span className="font-medium">{t('common.source')}</span> {problemCards[mobileCardIndex].source}
                     </div>
                   </div>
                 </div>
@@ -429,7 +429,7 @@ const BenefitsSection = () => {
                   {/* <div className="mt-6">
                     <div className="flex items-center gap-2 mb-2">
                       <div className={`w-2 h-2 bg-${stat.color}-500 rounded-full animate-pulse`} />
-                      <span className="text-xs text-muted-foreground font-medium">Proven Results</span>
+                      <span className="text-xs text-muted-foreground font-medium">{t('common.provenResults')}</span>
                     </div>
                     <div className={`w-full h-1 bg-${stat.color}-500/20 rounded-full overflow-hidden`}>
             <motion.div

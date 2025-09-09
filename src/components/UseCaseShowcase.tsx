@@ -63,7 +63,7 @@ const UseCaseShowcase = () => {
             <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center">
               <Bot className="w-6 h-6 text-white" />
             </div>
-            <div className="text-sm text-emerald-600 font-medium">AI Assistant</div>
+            <div className="text-sm text-emerald-600 font-medium">{t('useCases.aiWriting.category')}</div>
           </div>
           <div className="space-y-4 flex-1">
             <div className="h-24 bg-white rounded-xl shadow-sm p-4">
@@ -74,7 +74,7 @@ const UseCaseShowcase = () => {
               </div>
             </div>
             <div className="h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-xl flex items-center justify-center">
-              <span className="text-white font-medium text-sm">Generating content...</span>
+              <span className="text-white font-medium text-sm">{t('useCases.aiWriting.status')}</span>
             </div>
           </div>
         </div>
@@ -88,15 +88,15 @@ const UseCaseShowcase = () => {
     },
     {
       id: 2,
-      title: "Modern E-commerce",
-      description: "Complete e-commerce blueprint with Stripe payments, inventory management, and admin dashboard.",
+      title: t('useCases.ecommerce.title'),
+      description: t('useCases.ecommerce.description'),
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <div className="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center">
               <ShoppingCart className="w-6 h-6 text-white" />
             </div>
-            <div className="text-sm text-pink-600 font-medium">E-commerce</div>
+            <div className="text-sm text-pink-600 font-medium">{t('useCases.ecommerce.category')}</div>
           </div>
           <div className="space-y-4 flex-1">
             <div className="h-24 bg-white rounded-xl shadow-sm p-4">
@@ -107,7 +107,7 @@ const UseCaseShowcase = () => {
               </div>
             </div>
             <div className="h-12 bg-gradient-to-r from-pink-400 to-rose-400 rounded-xl flex items-center justify-center">
-              <span className="text-white font-medium text-sm">Products loading...</span>
+              <span className="text-white font-medium text-sm">{t('useCases.ecommerce.status')}</span>
             </div>
           </div>
         </div>
@@ -121,15 +121,15 @@ const UseCaseShowcase = () => {
     },
     {
       id: 3,
-      title: "Internal Dashboard",
-      description: "Analytics dashboard blueprint with charts, user management, and real-time data visualization.",
+      title: t('useCases.dashboard.title'),
+      description: t('useCases.dashboard.description'),
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
               <BarChart3 className="w-6 h-6 text-white" />
             </div>
-            <div className="text-sm text-blue-600 font-medium">Dashboard</div>
+            <div className="text-sm text-blue-600 font-medium">{t('useCases.dashboard.category')}</div>
           </div>
           <div className="space-y-4 flex-1">
             <div className="h-24 bg-white rounded-xl shadow-sm p-4">
@@ -142,7 +142,7 @@ const UseCaseShowcase = () => {
               </div>
             </div>
             <div className="h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl flex items-center justify-center">
-              <span className="text-white font-medium text-sm">Analytics ready</span>
+              <span className="text-white font-medium text-sm">{t('useCases.dashboard.status')}</span>
             </div>
           </div>
         </div>
@@ -156,15 +156,15 @@ const UseCaseShowcase = () => {
     },
     {
       id: 4,
-      title: "Team Whiteboard",
-      description: "Real-time collaborative workspace blueprint with WebSocket integration and user presence.",
+      title: t('useCases.whiteboard.title'),
+      description: t('useCases.whiteboard.description'),
       visual: (
         <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-100 rounded-2xl p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <div className="w-12 h-12 bg-violet-500 rounded-xl flex items-center justify-center">
               <PenTool className="w-6 h-6 text-white" />
             </div>
-            <div className="text-sm text-violet-600 font-medium">Whiteboard</div>
+            <div className="text-sm text-violet-600 font-medium">{t('useCases.whiteboard.category')}</div>
           </div>
           <div className="space-y-4 flex-1 relative">
             <div className="absolute top-2 right-2 w-4 h-4 bg-red-400 rounded-full animate-pulse"></div>
@@ -173,7 +173,7 @@ const UseCaseShowcase = () => {
               <div className="absolute bottom-2 right-2 w-8 h-6 bg-purple-200 rounded"></div>
         </div>
             <div className="h-12 bg-gradient-to-r from-violet-400 to-purple-400 rounded-xl flex items-center justify-center">
-              <span className="text-white font-medium text-sm">Collaborating...</span>
+              <span className="text-white font-medium text-sm">{t('useCases.whiteboard.status')}</span>
             </div>
           </div>
         </div>
@@ -275,15 +275,14 @@ const UseCaseShowcase = () => {
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
           >
-            Production-ready foundation for <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">any project.</span>
+            {t('useCases.title.line1')} <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">{t('useCases.title.line2')}</span>
           </motion.h2>
           
           <motion.p
             className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-3xl mx-auto px-4"
             variants={fadeInUp}
-          >
-            Build Anything. <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">Faster. Better.</span>
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: t('useCases.subtitle') }}
+          />
         </motion.div>
 
         {/* Use Case Carousel */}
@@ -335,7 +334,7 @@ const UseCaseShowcase = () => {
               {/* Module Stack */}
               <div>
                 <h4 className="text-xl font-semibold text-architech-brand-blue mb-6">
-                  Module Stack Used:
+                  {t('useCases.moduleStack')}
                             </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {useCases[activeIndex].stack.map((tech, index) => {

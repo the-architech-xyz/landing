@@ -184,7 +184,7 @@ const FAQSection = () => {
                             >
                               <div className="flex items-center gap-2 text-sm text-architech-electric font-medium">
                                 <span>💡</span>
-                                <span>Pro tip: Early waitlist members get priority access and special pricing!</span>
+                                <span>{t('faq.cta')}</span>
                               </div>
                             </motion.div>
                           )}

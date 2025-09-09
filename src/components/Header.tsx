@@ -94,7 +94,7 @@ const Header = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                 <img 
                   src={darkMode ? "/logo-removebg.png" : "/logo.png"}
-                  alt="The Architech Logo" 
+                  alt={t('common.alt.logo')} 
                   className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 />
               </div>
@@ -175,7 +175,7 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300 hover:scale-110 group"
-                title="Join our Discord community"
+                title={t('social.discord.title')}
               >
                 <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
@@ -184,7 +184,7 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300 hover:scale-110 group"
-                title="Follow us on LinkedIn"
+                title={t('social.linkedin.title')}
               >
                 <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               </a>

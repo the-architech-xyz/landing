@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface PieChartData {
   label: string;
@@ -14,6 +15,7 @@ interface ModernPieChartProps {
 }
 
 const ModernPieChart: React.FC<ModernPieChartProps> = ({ data, className = "" }) => {
+  const { t } = useTranslation();
   const [hoveredSegment, setHoveredSegment] = useState<string | null>(null);
 
   // Calculate the conic gradient
@@ -133,8 +135,8 @@ const ModernPieChart: React.FC<ModernPieChartProps> = ({ data, className = "" })
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {hoveredSegment === 'Innovation Tax' ? 'Innovation Tax' :
-               hoveredSegment === 'Actual Coding' ? 'Actual Coding' : 'Minutes'}
+              {hoveredSegment === 'Innovation Tax' ? t('chart.innovationTax') :
+               hoveredSegment === 'Actual Coding' ? t('chart.actualCoding') : t('chart.minutes')}
             </motion.div>
             <motion.div 
               className="text-xs text-muted-foreground/70 mt-1"
@@ -143,8 +145,8 @@ const ModernPieChart: React.FC<ModernPieChartProps> = ({ data, className = "" })
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2, delay: 0.1 }}
             >
-              {hoveredSegment === 'Innovation Tax' ? 'Setup, config, debugging' :
-               hoveredSegment === 'Actual Coding' ? 'Pure feature development' : 'Actual Coding'}
+              {hoveredSegment === 'Innovation Tax' ? t('chart.setupConfig') :
+               hoveredSegment === 'Actual Coding' ? t('chart.pureFeature') : t('chart.actualCoding')}
             </motion.div>
           </div>
         </div>

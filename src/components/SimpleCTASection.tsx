@@ -24,12 +24,12 @@ const SimpleCTASection = () => {
     setError("");
 
     if (!email) {
-      setError("Email is required");
+      setError(t('validation.emailRequired'));
       return;
     }
 
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
+      setError(t('validation.emailInvalid'));
       return;
     }
 
@@ -82,8 +82,8 @@ const SimpleCTASection = () => {
             </div>
             
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Welcome to the{" "}
-              <span className="text-transparent bg-gradient-brand bg-clip-text">Revolution!</span>
+              {t('finalCta.success.title')}{" "}
+              <span className="text-transparent bg-gradient-brand bg-clip-text">{t('finalCta.success.revolution')}</span>
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8">
@@ -91,7 +91,7 @@ const SimpleCTASection = () => {
             </p>
             
             <div className="glass-card rounded-2xl p-6 max-w-md mx-auto">
-              <div className="text-sm text-muted-foreground mb-2">Your position</div>
+              <div className="text-sm text-muted-foreground mb-2">{t('cta.emailPlaceholder')}</div>
               <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">
                 #{waitlistPosition || '🎯'}
               </div>
@@ -171,7 +171,7 @@ const SimpleCTASection = () => {
           </form>
 
           <p className="text-sm text-muted-foreground mt-4">
-            No spam, ever. Just updates on the revolution.
+            {t('cta.noSpamText')}
           </p>
 
           {/* Beautiful OR Divider */}
@@ -184,7 +184,7 @@ const SimpleCTASection = () => {
           {/* Community Links - High Conversion */}
           <div>
             <p className="text-sm text-muted-foreground mb-4 text-center">
-              Join our community for early access & updates
+              {t('cta.communityText')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -194,7 +194,7 @@ const SimpleCTASection = () => {
                 className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
               >
                 <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                <span>Join Discord</span>
+                <span>{t('social.discord.text')}</span>
               </a>
               <a
                 href="https://www.linkedin.com/company/the-architech-ai/"
@@ -203,7 +203,7 @@ const SimpleCTASection = () => {
                 className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
               >
                 <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                <span>Follow on LinkedIn</span>
+                <span>{t('social.linkedin.text')}</span>
               </a>
             </div>
           </div>

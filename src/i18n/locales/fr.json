@@ -41,6 +41,7 @@
     }
   },
   "benefits": {
+    "industryAverage": "Moyenne de l'Industrie",
     "title": {
       "line1": "Le vrai coût",
       "line2": " d'une page blanche."
@@ -51,7 +52,7 @@
     },
     "problem": "Problème",
     "solution": {
-      "title": "Le CLI Architech élimine la taxe de configuration",
+      "title": "La CLI Architech élimine la taxe de configuration",
       "description": "En fournissant une base standardisée et de haute qualité qui évolue avec votre vision."
     },
     "chart": {
@@ -108,15 +109,15 @@
         "codeExample": "# Blueprints disponibles :\nnpx @architech/cli list\n\n# Choisir un blueprint :\nnpx @architech/cli create react-saas\n# ou\nnpx @architech/cli create nextjs-ecommerce\n# ou\nnpx @architech/cli create nodejs-api"
       },
       "generate": {
-        "title": "Le CLI Génère votre Projet",
-        "description": "Le CLI transforme votre blueprint en une base de code complète et prête pour la production avec toutes les dépendances configurées.",
+        "title": "La CLI Génère votre Projet",
+        "description": "La CLI transforme votre blueprint en une base de code complète et prête pour la production avec toutes les dépendances configurées.",
         "details": [
-          "Le CLI structure le projet",
+          "La CLI structure le projet",
           "Installe toutes les dépendances",
           "Configure les outils de build et de linting",
           "Configure l'environnement de développement"
         ],
-        "codeExample": "# Le CLI génère votre projet :\nnpx @architech/cli create react-saas mon-app\n\n# Sortie :\n✓ Structure du projet créée\n✓ Dépendances installées\n✓ TypeScript configuré\n✓ TailwindCSS configuré\n✓ ESLint & Prettier ajoutés\n✓ Prêt à développer !"
+        "codeExample": "# La CLI génère votre projet :\nnpx @architech/cli create react-saas mon-app\n\n# Sortie :\n✓ Structure du projet créée\n✓ Dépendances installées\n✓ TypeScript configuré\n✓ TailwindCSS configuré\n✓ ESLint & Prettier ajoutés\n✓ Prêt à développer !"
       },
       "deploy": {
         "title": "Possédez votre Code, Instantanément",
@@ -163,6 +164,24 @@
         "name": "TailwindCSS",
         "description": "Framework CSS utility-first pour développement UI rapide"
       }
+    },
+    "dialogue": {
+      "challenge": "Quel défi architectural allons-nous résoudre aujourd'hui ?",
+      "you": "Vous",
+      "excellentRequirements": "Excellents besoins. J'ai conçu une architecture robuste optimisée pour les performances à l'échelle entreprise, la sécurité et la maintenabilité.",
+      "architectureValidated": "Architecture validée. Maintenant orchestration des composants de niveau entreprise avec ingénierie de précision et intégration transparente.",
+      "missionAccomplished": "Mission accomplie. Votre architecture de niveau entreprise est complète avec propriété complète du code source, documentation complète et infrastructure prête pour le déploiement."
+    },
+    "projectStructure": {
+      "title": "Structure du Projet"
+    },
+    "livePreview": {
+      "title": "Aperçu en Direct",
+      "dashboard": "Tableau de Bord du Projet",
+      "active": "Actif",
+      "done": "Terminé",
+      "projectAlpha": "Projet Alpha",
+      "projectBeta": "Projet Beta"
     }
   },
   "liveDemo": {
@@ -211,7 +230,7 @@
   },
   "ecosystem": {
     "badge": "Écosystème",
-    "title": "Un écosystème vivant pour les développeurs",
+    "title": "Un <span class=\"text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text font-medium\">écosystème vivant</span> pour les développeurs",
     "subtitle": "Au-delà des Modèles : Votre Vision, Votre Stack.",
     "howItWorks": {
       "title": "Comment ça Marche",
@@ -385,7 +404,9 @@
     "joining": "Rejoindre...",
     "primaryButton": "Commencer à Construire",
     "secondaryButton": "Planifier une Démo",
-    "trustedBy": "Fait confiance par les développeurs du monde entier"
+    "trustedBy": "Fait confiance par les développeurs du monde entier",
+    "communityText": "Rejoignez notre communauté pour un accès anticipé et des mises à jour",
+    "noSpamText": "Pas de spam, jamais. Juste des mises à jour sur la révolution."
   },
   "footer": {
     "description": "Libérer les développeurs de l'enfer de la configuration, une architecture modulaire à la fois. Construisez la magie, ignorez la configuration.",
@@ -414,6 +435,185 @@
       "submit": "Envoyer le Message",
       "success": "Merci ! Nous vous recontacterons bientôt.",
       "error": "Quelque chose s'est mal passé. Veuillez réessayer."
+    },
+    "options": {
+      "scheduleCall": {
+        "title": "Planifier un appel",
+        "description": "Discussion ciblée de 15 minutes sur votre projet"
+      },
+      "sendEmail": {
+        "title": "Envoyer un email",
+        "description": "Pour des questions détaillées ou des propositions"
+      }
+    },
+    "responseTime": "Réponse généralement sous 24 heures"
+  },
+  "team": {
+    "badge": "Rencontrez le Constructeur",
+    "title": {
+      "line1": "Construit par",
+      "line2": "Développeurs",
+      "line3": "Pour Développeurs"
+    },
+    "subtitle": "The Architech est né de la vraie frustration avec l'état actuel des outils de développement. Nous construisons la plateforme que nous aurions souhaité avoir.",
+    "founder": {
+      "name": "Antoine",
+      "title": "Fondateur & Architecte Principal",
+      "status": "Construire l'avenir",
+      "location": "Construire depuis la France"
+    },
+    "story": {
+      "title": "Du Fondateur",
+      "paragraph1": "Après près d'une décennie à construire des logiciels et 3 ans en tant que CTO dans plusieurs startups, j'ai vu des idées brillantes mourir non par manque de vision, mais à cause de l'<span class=\"text-architech-electric font-medium\">enfer de la configuration</span>.",
+      "paragraph2": "J'ai vu des équipes passer 70% de leur temps sur la configuration, l'authentification, les pipelines de déploiement et les schémas de base de données au lieu de construire ce qui rend leur produit unique. Les mêmes solutions, construites encore et encore, avec les mêmes bugs, les mêmes vulnérabilités de sécurité.",
+      "paragraph3": "<span class=\"text-foreground font-medium\">The Architech est né de la frustration.</span> Pourquoi chaque développeur devrait-il reconstruire l'authentification ? Pourquoi chaque startup devrait-elle perdre des mois sur DevOps ? N'y a-t-il pas une meilleure façon ?",
+      "paragraph4": "Ce n'est pas juste un autre outil - c'est une <span class=\"text-transparent bg-gradient-brand bg-clip-text font-medium\">révolution contre la complexité</span>. Je construis la plateforme que j'aurais souhaité avoir quand je me noyais dans les fichiers de configuration à 2h du matin, rêvant de me concentrer sur la magie au lieu de la plomberie."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Donner des superpouvoirs à chaque développeur. Éliminer le travail de configuration fastidieux qui nous empêche de construire des choses incroyables. Démocratiser l'architecture de niveau entreprise et la rendre accessible à tous.",
+      "tagline": "Construire l'avenir, un module à la fois"
     }
+  },
+  "platformVision": {
+    "badge": "Feuille de Route de la Plateforme",
+    "title": {
+      "line1": "Le Voyage",
+      "line2": "À Venir"
+    },
+    "subtitle": "De l'assemblage de code à l'écosystème de développement complet. Voici comment The Architech évolue vers la seule plateforme dont vous aurez jamais besoin—chaque étape construisant sur la précédente.",
+    "features": {
+      "designToCode": {
+        "title": "Design-vers-Code",
+        "description": "Concevez vos interfaces dans un outil visuel (intégrant la technologie open source de Penpot) et transformez-les instantanément en une bibliothèque de composants réutilisables.",
+        "coming": "Q1 2026"
+      },
+      "cmsI18n": {
+        "title": "CMS Intégré & i18n",
+        "description": "Gérez le contenu et les traductions de votre application directement depuis la plateforme, en un clic.",
+        "coming": "Q2 2026"
+      },
+      "devopsAnalytics": {
+        "title": "DevOps & Analytics Automatisés",
+        "description": "Du déploiement en un clic sur les clouds européens au monitoring des performances et du comportement utilisateur, tout est intégré.",
+        "coming": "Q3 2026"
+      },
+      "aiProjectManagement": {
+        "title": "Gestion de Projet Alimentée par l'IA",
+        "description": "Connectez vos demandes de fonctionnalités directement aux agents IA pour des cycles de développement ultra-rapides.",
+        "coming": "Q4 2026"
+      }
+    },
+    "cycleSteps": {
+      "design": "Design",
+      "code": "Code",
+      "deploy": "Déployer",
+      "analyze": "Analyser",
+      "iterate": "Itérer"
+    },
+    "cta": "Rejoindre la Liste"
+  },
+  "useCases": {
+    "title": {
+      "line1": "Fondation prête pour la production pour",
+      "line2": "tout projet."
+    },
+    "subtitle": "Construisez N'importe Quoi. <span class=\"text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text\">Plus Vite. Mieux.</span>",
+    "moduleStack": "Stack de Modules Utilisé :",
+    "aiWriting": {
+      "title": "Assistant d'Écriture IA",
+      "description": "Plateforme de génération de contenu intelligente avec intégration OpenAI, recherche vectorielle et gestion d'abonnements.",
+      "category": "Assistant IA",
+      "status": "Génération de contenu..."
+    },
+    "ecommerce": {
+      "title": "E-commerce Moderne",
+      "description": "Blueprint e-commerce complet avec paiements Stripe, gestion d'inventaire et tableau de bord administrateur.",
+      "category": "E-commerce",
+      "status": "Chargement des produits..."
+    },
+    "dashboard": {
+      "title": "Tableau de Bord Interne",
+      "description": "Blueprint de tableau de bord analytique avec graphiques, gestion d'utilisateurs et visualisation de données en temps réel.",
+      "category": "Tableau de Bord",
+      "status": "Analytics prêt"
+    },
+    "whiteboard": {
+      "title": "Tableau Blanc d'Équipe",
+      "description": "Blueprint d'espace de travail collaboratif en temps réel avec intégration WebSocket et présence utilisateur.",
+      "category": "Tableau Blanc",
+      "status": "Collaboration..."
+    }
+  },
+  "finalCta": {
+    "revolutionaryCount": "révolutionnaires ont rejoint",
+    "title": {
+      "line1": "La",
+      "line2": "Révolution",
+      "line3": "Commence",
+      "line4": "Avec Vous"
+    },
+    "subtitle": "Chaque grande révolution a besoin de ses premiers adoptants. Rejoignez l'alpha fermé et aidez-nous à libérer les développeurs de la tyrannie de la configuration pour toujours.",
+    "form": {
+      "title": "Rejoindre l'Alliance Révolutionnaire",
+      "placeholder": "votre-email-revolutionnaire@domaine.com",
+      "button": "Réclamer Mon Statut Révolutionnaire",
+      "buttonLoading": "Rejoindre l'Alliance...",
+      "disclaimer": "Rejoignez la révolution. Pas de spam, pas de BS corporate, juste des mises à jour révolutionnaires pures."
+    },
+    "success": {
+      "title": "Bienvenue dans la",
+      "revolution": "Révolution !",
+      "message": "Le révolutionnaire #{position} a rejoint la lutte contre la tyrannie de la configuration. Votre invitation à l'alpha arrive bientôt.",
+      "benefits": {
+        "alphaAccess": {
+          "title": "Accès Alpha",
+          "description": "Premier à expérimenter la révolution"
+        },
+        "shapeFuture": {
+          "title": "Façonner l'Avenir",
+          "description": "Votre voix dirige notre mission"
+        },
+        "globalImpact": {
+          "title": "Impact Mondial",
+          "description": "Changer le développement logiciel pour toujours"
+        }
+      }
+    },
+    "finalMessage": "L'Avenir du Développement est Entre Vos Mains"
+  },
+  "social": {
+    "discord": {
+      "title": "Rejoignez notre communauté Discord",
+      "text": "Rejoindre Discord"
+    },
+    "linkedin": {
+      "title": "Suivez-nous sur LinkedIn",
+      "text": "Suivre LinkedIn"
+    },
+    "email": {
+      "title": "Contactez-nous par email"
+    }
+  },
+  "common": {
+    "source": "Source :",
+    "swipeToNavigate": "Glissez pour naviguer",
+    "provenResults": "Résultats Prouvés",
+    "alt": {
+      "logo": "Logo The Architech",
+      "architech": "The architech",
+      "founder": "Antoine, Fondateur de The Architech"
+    }
+  },
+  "chart": {
+    "actualCoding": "Code Réel",
+    "innovationTax": "Taxe d'Innovation",
+    "minutes": "Minutes",
+    "setupConfig": "Configuration, config, débogage",
+    "pureFeature": "Développement de fonctionnalités pures"
+  },
+  "validation": {
+    "emailRequired": "L'email est requis",
+    "emailInvalid": "Veuillez entrer une adresse email valide"
   }
 }

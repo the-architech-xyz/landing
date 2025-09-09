@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Linkedin, X, ChevronUp } from "lucide-react";
 import DiscordIcon from "@/components/DiscordIcon";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FloatingSocialWidget = () => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -35,10 +37,10 @@ const FloatingSocialWidget = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            title="Join our Discord community"
+            title={t('social.discord.title')}
           >
             <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-            <span className="font-semibold text-sm">Join Discord</span>
+            <span className="font-semibold text-sm">{t('social.discord.text')}</span>
           </a>
 
           {/* LinkedIn Link */}
@@ -47,10 +49,10 @@ const FloatingSocialWidget = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            title="Follow us on LinkedIn"
+            title={t('social.linkedin.title')}
           >
             <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-            <span className="font-semibold text-sm">Follow LinkedIn</span>
+            <span className="font-semibold text-sm">{t('social.linkedin.text')}</span>
           </a>
         </div>
 

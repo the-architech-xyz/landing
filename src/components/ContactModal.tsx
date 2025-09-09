@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -9,21 +10,22 @@ interface ContactModalProps {
 }
 
 const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
+  const { t } = useTranslation();
   const [hoveredOption, setHoveredOption] = useState<number | null>(null);
 
   const contactOptions = [
     {
       id: 1,
-      title: "Schedule a call",
-      description: "15-minute focused discussion about your project",
+      title: t('contact.options.scheduleCall.title'),
+      description: t('contact.options.scheduleCall.description'),
       action: () => window.open('https://calendly.com/antoine-srvt/rdv-antoine', '_blank'),
       icon: Calendar,
       primary: true
     },
     {
       id: 2,
-      title: "Send an email",
-      description: "For detailed questions or proposals",
+      title: t('contact.options.sendEmail.title'),
+      description: t('contact.options.sendEmail.description'),
       action: () => window.open('mailto:antoine.srvt@gmail.com?subject=Regarding The Architech', '_blank'),
       icon: Mail,
       primary: false
@@ -66,8 +68,8 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   <MessageCircle className="h-4 w-4 text-background" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold text-foreground">Get in touch</h2>
-                  <p className="text-sm text-muted-foreground">Choose your preferred method</p>
+                  <h2 className="text-lg font-semibold text-foreground">{t('contact.title')}</h2>
+                  <p className="text-sm text-muted-foreground">{t('contact.subtitle')}</p>
                 </div>
               </div>
 
@@ -132,7 +134,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
           {/* Footer */}
           <div className="px-6 pb-6 pt-2">
             <p className="text-xs text-muted-foreground text-center">
-              Typically respond within 24 hours
+              {t('contact.responseTime')}
             </p>
           </div>
         </motion.div>

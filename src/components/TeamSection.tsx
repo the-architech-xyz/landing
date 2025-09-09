@@ -1,8 +1,11 @@
 import { Github, Linkedin, Twitter, MapPin, Code, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, defaultViewport, floating } from "@/lib/animations";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const TeamSection = () => {
+  const { t } = useTranslation();
+  
   return (
     <section id="team" className="py-24 bg-architech-section-light relative overflow-hidden">
       {/* Background elements */}
@@ -28,27 +31,26 @@ const TeamSection = () => {
             variants={scaleIn}
           >
             <Code className="h-4 w-4" />
-            Meet the Builder
+            {t('team.badge')}
           </motion.div>
 
           <motion.h2 
             className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
             variants={fadeInUp}
           >
-            Built by{" "}
+            {t('team.title.line1')}{" "}
             <span className="text-transparent bg-gradient-brand bg-clip-text">
-              Developers
+              {t('team.title.line2')}
             </span>
             <br />
-            For Developers
+            {t('team.title.line3')}
           </motion.h2>
           
           <motion.p 
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={fadeInUp}
           >
-            The Architech is born from real frustration with the current state of development tooling. 
-            We're building the platform we wish we had.
+            {t('team.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -70,18 +72,18 @@ const TeamSection = () => {
               <div className="aspect-square rounded-3xl overflow-hidden relative shadow-2xl shadow-electric-blue/20 max-w-xs sm:max-w-sm md:max-w-md mx-auto">
                 <motion.img
                   src={"/me.jpg"}
-                  alt="Antoine, Founder of The Architech"
+                  alt={t('common.alt.founder')}
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-white">
-                  <h3 className="text-xl md:text-2xl font-bold">Antoine</h3>
-                  <p className="text-base md:text-lg text-white/80">Founder & Lead Architect</p>
+                  <h3 className="text-xl md:text-2xl font-bold">{t('team.founder.name')}</h3>
+                  <p className="text-base md:text-lg text-white/80">{t('team.founder.title')}</p>
                   <div className="mt-2 flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-white/70">Building the future</span>
+                    <span className="text-sm text-white/70">{t('team.founder.status')}</span>
                   </div>
                 </div>
               </div>
@@ -117,7 +119,7 @@ const TeamSection = () => {
                   whileHover={{ color: "hsl(var(--architech-electric))" }}
                   transition={{ duration: 0.3 }}
                 >
-                  From the Founder
+                  {t('team.story.title')}
                 </motion.h3>
                 
                 <motion.div 
@@ -127,7 +129,7 @@ const TeamSection = () => {
                   transition={{ delay: 0.4 }}
                 >
                   <MapPin className="h-4 w-4" />
-                  <span>Building from France</span>
+                  <span>{t('team.founder.location')}</span>
                 </motion.div>
               </div>
 
@@ -141,30 +143,27 @@ const TeamSection = () => {
                 <motion.p 
                   className="leading-relaxed"
                   variants={fadeInUp}
-                >
-                  After nearly a decade building software and 3 years as CTO across multiple startups, I've watched brilliant ideas die not from lack of vision, but from <span className="text-architech-electric font-medium">configuration hell</span>.
-                </motion.p>
+                  dangerouslySetInnerHTML={{ __html: t('team.story.paragraph1') }}
+                />
                 
                 <motion.p 
                   className="leading-relaxed"
                   variants={fadeInUp}
                 >
-                  I've seen teams spend 70% of their time on setup, authentication, deployment pipelines, and database schemas instead of building what makes their product unique. The same solutions, built over and over, with the same bugs, the same security vulnerabilities.
+                  {t('team.story.paragraph2')}
                 </motion.p>
 
                 <motion.p 
                   className="leading-relaxed"
                   variants={fadeInUp}
-                >
-                  <span className="text-foreground font-medium">The Architech was born from frustration.</span> Why should every developer rebuild authentication? Why should every startup waste months on DevOps? Why isn't there a better way?
-                </motion.p>
+                  dangerouslySetInnerHTML={{ __html: t('team.story.paragraph3') }}
+                />
                 
                 <motion.p 
                   className="leading-relaxed"
                   variants={fadeInUp}
-                >
-                  This isn't just another tool - it's a <span className="text-transparent bg-gradient-brand bg-clip-text font-medium">revolution against complexity</span>. I'm building the platform I wish I had when I was drowning in configuration files at 2 AM, dreaming of focusing on the magic instead of the plumbing.
-                </motion.p>
+                  dangerouslySetInnerHTML={{ __html: t('team.story.paragraph4') }}
+                />
               </motion.div>
             </motion.div>
           </motion.div>
@@ -189,7 +188,7 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Our Mission
+              {t('team.mission.title')}
             </motion.h3>
             <motion.p 
               className="text-lg text-muted-foreground leading-relaxed"
@@ -197,9 +196,7 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              To give every developer superpowers. To eliminate the tedious setup work that 
-              prevents us from building amazing things. To democratize enterprise-grade architecture 
-              and make it accessible to everyone.
+              {t('team.mission.description')}
             </motion.p>
             
             <motion.div 
@@ -209,7 +206,7 @@ const TeamSection = () => {
               transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
             >
               <Zap className="h-4 w-4" />
-              <span>Building the future, one module at a time</span>
+              <span>{t('team.mission.tagline')}</span>
             </motion.div>
           </motion.div>
         </motion.div>

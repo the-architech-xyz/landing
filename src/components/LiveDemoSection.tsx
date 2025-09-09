@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, RotateCcw, CheckCircle, Zap, Code, Database, Shield, Palette, TestTube } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const LiveDemoSection = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -10,35 +12,35 @@ const LiveDemoSection = () => {
   const buildSteps = [
     {
       id: "auth",
-      title: "AuthAgent",
-      description: "Setting up secure authentication",
+      title: t('liveDemo.steps.auth.title'),
+      description: t('liveDemo.steps.auth.description'),
       icon: Shield,
       color: "from-blue-600 to-blue-400",
-      code: "// JWT + OAuth2 + Role-based permissions\nexport const authConfig = {\n  providers: ['google', 'github'],\n  jwt: { secret: process.env.JWT_SECRET },\n  permissions: ['admin', 'user']\n};"
+      code: t('liveDemo.steps.auth.code')
     },
     {
       id: "database",
-      title: "DatabaseAgent", 
-      description: "Configuring optimized database schema",
+      title: t('liveDemo.steps.database.title'), 
+      description: t('liveDemo.steps.database.description'),
       icon: Database,
       color: "from-muted to-muted-foreground",
-      code: "// Auto-generated Prisma schema\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  profile   Profile?\n  createdAt DateTime @default(now())\n}"
+      code: t('liveDemo.steps.database.code')
     },
     {
       id: "ui",
-      title: "DesignAgent",
-      description: "Creating accessible UI components",
+      title: t('liveDemo.steps.ui.title'),
+      description: t('liveDemo.steps.ui.description'),
       icon: Palette,
       color: "from-purple-600 to-purple-400", 
-      code: "// Responsive, accessible components\nexport const Button = ({ variant, size, children }) => {\n  return (\n    <button className={cn(buttonVariants({ variant, size }))}>\n      {children}\n    </button>\n  );\n};"
+      code: t('liveDemo.steps.ui.code')
     },
     {
       id: "api",
-      title: "APIAgent",
-      description: "Building REST + GraphQL endpoints",
+      title: t('liveDemo.steps.api.title'),
+      description: t('liveDemo.steps.api.description'),
       icon: Code,
       color: "from-muted to-muted-foreground",
-      code: "// Type-safe API routes\nexport async function GET(request: Request) {\n  const users = await prisma.user.findMany({\n    include: { profile: true }\n  });\n  return Response.json(users);\n}"
+      code: t('liveDemo.steps.api.code')
     }
   ];
 
@@ -79,19 +81,18 @@ const LiveDemoSection = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-electric-blue/10 border border-electric-blue/20 rounded-full text-sm font-medium text-electric-blue mb-8">
             <Zap className="h-4 w-4" />
-            Live Demo - See The Magic
+            {t('liveDemo.badge')}
           </div>
 
           <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Watch Your App{" "}
+            {t('liveDemo.title.line1')}{" "}
             <span className="text-transparent bg-gradient-electric bg-clip-text">
-              Come to Life
+              {t('liveDemo.title.line2')}
             </span>
           </h2>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From idea to production-ready app in minutes. Watch as specialized
-            AI agents collaborate to build your entire application.
+            {t('liveDemo.subtitle')}
           </p>
         </div>
 
@@ -101,7 +102,7 @@ const LiveDemoSection = () => {
             <div className="space-y-8">
               <div className="bg-card border border-border rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Building: E-commerce Platform
+                  {t('liveDemo.building')}
                 </h3>
 
                 {/* Demo controls */}
@@ -119,12 +120,12 @@ const LiveDemoSection = () => {
                     ) : (
                       <Play className="h-4 w-4 mr-2" />
                     )}
-                    {isPlaying ? "Pause" : "Start Demo"}
+                    {isPlaying ? t('liveDemo.buttons.pause') : t('liveDemo.buttons.startDemo')}
                   </Button>
 
                   <Button variant="outline" onClick={handleReset}>
                     <RotateCcw className="h-4 w-4 mr-2" />
-                    Reset
+                    {t('liveDemo.buttons.reset')}
                   </Button>
                 </div>
 
@@ -187,7 +188,7 @@ const LiveDemoSection = () => {
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
                     <div className="text-sm font-medium text-foreground">
-                      {buildSteps[currentStep]?.title || "Ready to build..."}
+                      {buildSteps[currentStep]?.title || t('liveDemo.readyToBuild')}
                     </div>
                   </div>
                 </div>
@@ -196,19 +197,19 @@ const LiveDemoSection = () => {
                   <pre className="text-sm text-muted-foreground font-mono leading-relaxed whitespace-pre-wrap">
                     {currentStep < buildSteps.length
                       ? buildSteps[currentStep].code
-                      : "// Click 'Start Demo' to begin building..."}
+                      : t('liveDemo.clickToStart')}
                   </pre>
                 </div>
               </div>
 
               {/* Results summary */}
               <div className="mt-6 p-6 bg-gradient-electric rounded-2xl text-white">
-                <h4 className="font-bold text-lg mb-2">Demo Complete!</h4>
+                <h4 className="font-bold text-lg mb-2">{t('liveDemo.complete.title')}</h4>
                 <p className="text-sm opacity-90">
-                  ✅ Production-ready e-commerce platform
+                  ✅ {t('liveDemo.complete.platform')}
                   <br />
-                  ✅ Authentication, database, UI, and API
-                  <br />✅ Built in under 60 seconds
+                  ✅ {t('liveDemo.complete.features')}
+                  <br />✅ {t('liveDemo.complete.time')}
                 </p>
               </div>
             </div>

@@ -56,9 +56,8 @@ const EcosystemSection = () => {
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F8F9FA] mb-4 sm:mb-6 leading-tight px-2"
             variants={fadeInUp}
-          >
-            {t('ecosystem.title')}
-          </motion.h2>
+            dangerouslySetInnerHTML={{ __html: t('ecosystem.title') }}
+          />
 
           <motion.p
             className="text-lg sm:text-xl text-[#F8F9FA]/80 max-w-4xl mx-auto leading-relaxed px-4"

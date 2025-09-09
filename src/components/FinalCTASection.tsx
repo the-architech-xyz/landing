@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle, Crown, Zap, Users, Clock, Shield, Lightbulb, Globe, Loader2 } from "lucide-react";
 import { WAITLIST_CONFIG } from "@/config/waitlist";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const FinalCTASection = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -81,36 +83,36 @@ const FinalCTASection = () => {
             </div>
             
             <h2 className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight">
-              Welcome to the{" "}
+              {t('finalCta.success.title')}{" "}
               <span className="relative">
-                <span className="text-yellow-300">Revolution!</span>
+                <span className="text-yellow-300">{t('finalCta.success.revolution')}</span>
                 <div className="absolute -bottom-2 left-0 w-full h-1 bg-yellow-300 animate-pulse"></div>
               </span>
             </h2>
             
             <p className="text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
               {waitlistPosition ? (
-                <>Revolutionary #{waitlistPosition} has joined the fight against configuration tyranny. Your invitation to the alpha is coming soon.</>
+                t('finalCta.success.message').replace('{position}', waitlistPosition.toString())
               ) : (
-                <>Revolutionary #{revolutionaryCount.toLocaleString()} has joined the fight against configuration tyranny. Your invitation to the alpha is coming soon.</>
+                t('finalCta.success.message').replace('{position}', revolutionaryCount.toLocaleString())
               )}
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <Shield className="h-8 w-8 text-white mb-3 mx-auto" />
-                <h3 className="font-bold text-white mb-2">Alpha Access</h3>
-                <p className="text-white/80 text-sm">First to experience the revolution</p>
+                <h3 className="font-bold text-white mb-2">{t('finalCta.success.benefits.alphaAccess.title')}</h3>
+                <p className="text-white/80 text-sm">{t('finalCta.success.benefits.alphaAccess.description')}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <Lightbulb className="h-8 w-8 text-white mb-3 mx-auto" />
-                <h3 className="font-bold text-white mb-2">Shape the Future</h3>
-                <p className="text-white/80 text-sm">Your voice directs our mission</p>
+                <h3 className="font-bold text-white mb-2">{t('finalCta.success.benefits.shapeFuture.title')}</h3>
+                <p className="text-white/80 text-sm">{t('finalCta.success.benefits.shapeFuture.description')}</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <Globe className="h-8 w-8 text-white mb-3 mx-auto" />
-                <h3 className="font-bold text-white mb-2">Global Impact</h3>
-                <p className="text-white/80 text-sm">Change software development forever</p>
+                <h3 className="font-bold text-white mb-2">{t('finalCta.success.benefits.globalImpact.title')}</h3>
+                <p className="text-white/80 text-sm">{t('finalCta.success.benefits.globalImpact.description')}</p>
               </div>
             </div>
           </div>
@@ -133,26 +135,25 @@ const FinalCTASection = () => {
           {/* Revolutionary countdown */}
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-electric-blue/10 border border-electric-blue/20 rounded-full text-electric-blue mb-8">
             <Users className="h-5 w-5" />
-            <span className="font-mono font-semibold">{revolutionaryCount.toLocaleString()} revolutionaries joined</span>
+            <span className="font-mono font-semibold">{revolutionaryCount.toLocaleString()} {t('finalCta.revolutionaryCount')}</span>
             <Clock className="h-5 w-5 animate-pulse" />
           </div>
           
           <div className="animate-fade-in-up">
             <h2 className="text-6xl lg:text-8xl font-black text-foreground mb-8 leading-tight">
-              The{" "}
+              {t('finalCta.title.line1')}{" "}
               <span className="text-transparent bg-gradient-electric bg-clip-text">
-                Revolution
+                {t('finalCta.title.line2')}
               </span>
               <br />
-              Starts{" "}
+              {t('finalCta.title.line3')}{" "}
               <span className="text-transparent bg-gradient-to-r from-green-500 via-electric-blue to-purple-500 bg-clip-text border-b-2 border-green-500 pb-1">
-                With You
+                {t('finalCta.title.line4')}
               </span>
             </h2>
 
             <p className="text-2xl lg:text-3xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-              Every great revolution needs its early adopters. Join the closed alpha and help us 
-              liberate developers from configuration tyranny forever.
+              {t('finalCta.subtitle')}
             </p>
 
             {/* Revolutionary signup */}
@@ -162,14 +163,14 @@ const FinalCTASection = () => {
               
               <div className="relative">
                 <h3 className="text-3xl font-bold text-foreground mb-6">
-                  Join the Revolutionary Alliance
+                  {t('finalCta.form.title')}
                 </h3>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="relative">
                     <Input
                       type="email"
-                      placeholder="your-revolutionary-email@domain.com"
+                      placeholder={t('finalCta.form.placeholder')}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -193,7 +194,7 @@ const FinalCTASection = () => {
                     ) : (
                       <Crown className="mr-3 h-6 w-6 group-hover:animate-pulse" />
                     )}
-                    {isLoading ? "Joining the Alliance..." : "Claim My Revolutionary Status"}
+                    {isLoading ? t('finalCta.form.buttonLoading') : t('finalCta.form.button')}
                     {!isLoading && <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />}
                   </Button>
                 </form>
@@ -201,7 +202,7 @@ const FinalCTASection = () => {
                 {error && <p className="text-sm text-red-500 mt-4">{error}</p>}
 
                 <p className="text-sm text-muted-foreground mt-4">
-                  Join the revolution. No spam, no corporate BS, just pure revolutionary updates.
+                  {t('finalCta.form.disclaimer')}
                 </p>
               </div>
             </div>
@@ -213,10 +214,10 @@ const FinalCTASection = () => {
                   <Shield className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">
-                  Alpha Revolutionary Access
+                  {t('finalCta.benefits.alphaAccess.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Be among the first to wield The Architech's power and shape its evolution
+                  {t('finalCta.benefits.alphaAccess.description')}
                 </p>
               </div>
               
@@ -225,10 +226,10 @@ const FinalCTASection = () => {
                   <Lightbulb className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">
-                  Revolutionary Council Voice
+                  {t('finalCta.benefits.councilVoice.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Your feedback directly influences our mission and product roadmap
+                  {t('finalCta.benefits.councilVoice.description')}
                 </p>
               </div>
               
@@ -237,10 +238,10 @@ const FinalCTASection = () => {
                   <Globe className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">
-                  Legacy Revolutionary Status
+                  {t('finalCta.benefits.legacyStatus.title')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Be remembered as one who helped liberate software development
+                  {t('finalCta.benefits.legacyStatus.description')}
                 </p>
               </div>
             </div>
@@ -250,7 +251,7 @@ const FinalCTASection = () => {
               <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-electric-blue/20 to-purple-500/20 border border-electric-blue/30 rounded-full backdrop-blur-sm">
                 <Crown className="h-6 w-6 text-electric-blue animate-pulse" />
                 <span className="text-lg font-semibold text-foreground">
-                  The Future of Development is in Your Hands
+                  {t('finalCta.finalMessage')}
                 </span>
                 <Zap className="h-6 w-6 text-electric-blue animate-pulse" />
               </div>

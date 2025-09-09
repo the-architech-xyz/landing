@@ -41,6 +41,7 @@
     }
   },
   "benefits": {
+    "industryAverage": "Industry Average",
     "title": {
       "line1": "The hidden cost of",
       "line2": "starting from scratch."
@@ -163,6 +164,24 @@
         "name": "TailwindCSS",
         "description": "Utility-first CSS framework for rapid UI development"
       }
+    },
+    "dialogue": {
+      "challenge": "What architectural challenge shall we solve today?",
+      "you": "You",
+      "excellentRequirements": "Excellent requirements. I've designed a robust architecture optimized for enterprise-scale performance, security, and maintainability.",
+      "architectureValidated": "Architecture validated. Now orchestrating enterprise-grade components with precision engineering and seamless integration.",
+      "missionAccomplished": "Mission accomplished. Your enterprise-grade architecture is complete with full source code ownership, comprehensive documentation, and deployment-ready infrastructure."
+    },
+    "projectStructure": {
+      "title": "Project Structure"
+    },
+    "livePreview": {
+      "title": "Live Preview",
+      "dashboard": "Project Dashboard",
+      "active": "Active",
+      "done": "Done",
+      "projectAlpha": "Project Alpha",
+      "projectBeta": "Project Beta"
     }
   },
   "liveDemo": {
@@ -211,7 +230,7 @@
   },
   "ecosystem": {
     "badge": "Ecosystem",
-    "title": "A living ecosystem for developers",
+    "title": "A <span class=\"text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text font-medium\">living ecosystem</span> for developers",
     "subtitle": "Beyond the Templates: Your Vision, Your Stack.",
     "howItWorks": {
       "title": "How It Works",
@@ -385,7 +404,9 @@
     "joining": "Joining...",
     "primaryButton": "Start Building Now",
     "secondaryButton": "Schedule a Demo",
-    "trustedBy": "Trusted by developers worldwide"
+    "trustedBy": "Trusted by developers worldwide",
+    "communityText": "Join our community for early access & updates",
+    "noSpamText": "No spam, ever. Just updates on the revolution."
   },
   "footer": {
     "description": "Liberating developers from configuration hell, one modular architecture at a time. Build the magic, skip the setup.",
@@ -414,6 +435,185 @@
       "submit": "Send Message",
       "success": "Thank you! We'll get back to you soon.",
       "error": "Something went wrong. Please try again."
+    },
+    "options": {
+      "scheduleCall": {
+        "title": "Schedule a call",
+        "description": "15-minute focused discussion about your project"
+      },
+      "sendEmail": {
+        "title": "Send an email",
+        "description": "For detailed questions or proposals"
+      }
+    },
+    "responseTime": "Typically respond within 24 hours"
+  },
+  "team": {
+    "badge": "Meet the Builder",
+    "title": {
+      "line1": "Built by",
+      "line2": "Developers",
+      "line3": "For Developers"
+    },
+    "subtitle": "The Architech is born from real frustration with the current state of development tooling. We're building the platform we wish we had.",
+    "founder": {
+      "name": "Antoine",
+      "title": "Founder & Lead Architect",
+      "status": "Building the future",
+      "location": "Building from France"
+    },
+    "story": {
+      "title": "From the Founder",
+      "paragraph1": "After nearly a decade building software and 3 years as CTO across multiple startups, I've watched brilliant ideas die not from lack of vision, but from <span class=\"text-architech-electric font-medium\">configuration hell</span>.",
+      "paragraph2": "I've seen teams spend 70% of their time on setup, authentication, deployment pipelines, and database schemas instead of building what makes their product unique. The same solutions, built over and over, with the same bugs, the same security vulnerabilities.",
+      "paragraph3": "<span class=\"text-foreground font-medium\">The Architech was born from frustration.</span> Why should every developer rebuild authentication? Why should every startup waste months on DevOps? Why isn't there a better way?",
+      "paragraph4": "This isn't just another tool - it's a <span class=\"text-transparent bg-gradient-brand bg-clip-text font-medium\">revolution against complexity</span>. I'm building the platform I wish I had when I was drowning in configuration files at 2 AM, dreaming of focusing on the magic instead of the plumbing."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To give every developer superpowers. To eliminate the tedious setup work that prevents us from building amazing things. To democratize enterprise-grade architecture and make it accessible to everyone.",
+      "tagline": "Building the future, one module at a time"
     }
+  },
+  "platformVision": {
+    "badge": "Platform Roadmap",
+    "title": {
+      "line1": "The Journey",
+      "line2": "Ahead"
+    },
+    "subtitle": "From code assembly to complete development ecosystem. Here's how The Architech evolves into the only platform you'll ever need—each milestone building upon the last.",
+    "features": {
+      "designToCode": {
+        "title": "Design-to-Code",
+        "description": "Design your interfaces in a visual tool (integrating Penpot's open source technology) and instantly transform them into a library of reusable components.",
+        "coming": "Q1 2026"
+      },
+      "cmsI18n": {
+        "title": "Integrated CMS & i18n",
+        "description": "Manage your application content and translations directly from the platform, with one click.",
+        "coming": "Q2 2026"
+      },
+      "devopsAnalytics": {
+        "title": "Automated DevOps & Analytics",
+        "description": "From one-click deployment on European clouds to performance and user behavior monitoring, everything is integrated.",
+        "coming": "Q3 2026"
+      },
+      "aiProjectManagement": {
+        "title": "AI-Powered Project Management",
+        "description": "Connect your feature requests directly to AI agents for ultra-fast development cycles.",
+        "coming": "Q4 2026"
+      }
+    },
+    "cycleSteps": {
+      "design": "Design",
+      "code": "Code",
+      "deploy": "Deploy",
+      "analyze": "Analyze",
+      "iterate": "Iterate"
+    },
+    "cta": "Join Waitlist"
+  },
+  "useCases": {
+    "title": {
+      "line1": "Production-ready foundation for",
+      "line2": "any project."
+    },
+    "subtitle": "Build Anything. <span class=\"text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text\">Faster. Better.</span>",
+    "moduleStack": "Module Stack Used:",
+    "aiWriting": {
+      "title": "AI Writing Assistant",
+      "description": "Intelligent content generation platform with OpenAI integration, vector search, and subscription management.",
+      "category": "AI Assistant",
+      "status": "Generating content..."
+    },
+    "ecommerce": {
+      "title": "Modern E-commerce",
+      "description": "Complete e-commerce blueprint with Stripe payments, inventory management, and admin dashboard.",
+      "category": "E-commerce",
+      "status": "Products loading..."
+    },
+    "dashboard": {
+      "title": "Internal Dashboard",
+      "description": "Analytics dashboard blueprint with charts, user management, and real-time data visualization.",
+      "category": "Dashboard",
+      "status": "Analytics ready"
+    },
+    "whiteboard": {
+      "title": "Team Whiteboard",
+      "description": "Real-time collaborative workspace blueprint with WebSocket integration and user presence.",
+      "category": "Whiteboard",
+      "status": "Collaborating..."
+    }
+  },
+  "finalCta": {
+    "revolutionaryCount": "revolutionaries joined",
+    "title": {
+      "line1": "The",
+      "line2": "Revolution",
+      "line3": "Starts",
+      "line4": "With You"
+    },
+    "subtitle": "Every great revolution needs its early adopters. Join the closed alpha and help us liberate developers from configuration tyranny forever.",
+    "form": {
+      "title": "Join the Revolutionary Alliance",
+      "placeholder": "your-revolutionary-email@domain.com",
+      "button": "Claim My Revolutionary Status",
+      "buttonLoading": "Joining the Alliance...",
+      "disclaimer": "Join the revolution. No spam, no corporate BS, just pure revolutionary updates."
+    },
+    "success": {
+      "title": "Welcome to the",
+      "revolution": "Revolution!",
+      "message": "Revolutionary #{position} has joined the fight against configuration tyranny. Your invitation to the alpha is coming soon.",
+      "benefits": {
+        "alphaAccess": {
+          "title": "Alpha Access",
+          "description": "First to experience the revolution"
+        },
+        "shapeFuture": {
+          "title": "Shape the Future",
+          "description": "Your voice directs our mission"
+        },
+        "globalImpact": {
+          "title": "Global Impact",
+          "description": "Change software development forever"
+        }
+      }
+    },
+    "finalMessage": "The Future of Development is in Your Hands"
+  },
+  "social": {
+    "discord": {
+      "title": "Join our Discord community",
+      "text": "Join Discord"
+    },
+    "linkedin": {
+      "title": "Follow us on LinkedIn",
+      "text": "Follow LinkedIn"
+    },
+    "email": {
+      "title": "Contact us via email"
+    }
+  },
+  "common": {
+    "source": "Source:",
+    "swipeToNavigate": "Swipe to navigate",
+    "provenResults": "Proven Results",
+    "alt": {
+      "logo": "The Architech Logo",
+      "architech": "The architech",
+      "founder": "Antoine, Founder of The Architech"
+    }
+  },
+  "chart": {
+    "actualCoding": "Actual Coding",
+    "innovationTax": "Innovation Tax",
+    "minutes": "Minutes",
+    "setupConfig": "Setup, config, debugging",
+    "pureFeature": "Pure feature development"
+  },
+  "validation": {
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email address"
   }
 }
