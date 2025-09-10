@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInDown, staggerContainer, scaleIn, floating, defaultViewport } from "@/lib/animations";
 import ContactModal from "@/components/ContactModal";
+import AnimatedBlueprint from "@/components/AnimatedBlueprint";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const HeroSection = () => {
@@ -130,6 +131,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 opacity-3 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
+
+      {/* Animated Blueprint Background */}
+      <AnimatedBlueprint className="z-10" />
       
       <div className="container mx-auto px-4 sm:px-6 pt-24 pb-16 sm:py-20 relative z-20">
         <motion.div 
