@@ -36,36 +36,39 @@ const SimpleCTASection = () => {
     setIsLoading(true);
 
     try {
-      // Using Waitlist.email API
-      const response = await fetch(`${WAITLIST_CONFIG.API_URL}/create`, {
+      // Using our new API
+      const response = await fetch(WAITLIST_CONFIG.API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          waitlist: WAITLIST_CONFIG.WAITLIST_ID,
           email: email.trim().toLowerCase(),
-          metadata: {
-            source: 'landing_page_simple_cta',
-            timestamp: new Date().toISOString()
-          }
+          language: t('language') === 'fr' ? 'fr' : 'en',
+          source: 'landing_page_simple_cta'
         }),
       });
 
-      const body = await response.json();
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(body.message || 'Failed to join waitlist');
+        if (response.status === 409) {
+          // Email already exists
+          setError(t('waitlist.alreadyExists'));
+          setWaitlistPosition(data.position);
+          return;
+        }
+        throw new Error(data.error || 'Failed to join waitlist');
       }
 
       // Set position if returned by API
-      if (body.position) {
-        setWaitlistPosition(body.position);
+      if (data.position) {
+        setWaitlistPosition(data.position);
       }
 
       setIsSubmitted(true);
     } catch (err: any) {
-      setError(err.message || 'Failed to join the waitlist. Please try again.');
+      setError(err.message || t('waitlist.error'));
       console.error('Waitlist submission error:', err);
     } finally {
       setIsLoading(false);

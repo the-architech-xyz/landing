@@ -615,5 +615,10 @@
   "validation": {
     "emailRequired": "L'email est requis",
     "emailInvalid": "Veuillez entrer une adresse email valide"
+  },
+  "waitlist": {
+    "alreadyExists": "Vous êtes déjà sur notre liste d'attente !",
+    "error": "Échec de l'inscription à la liste d'attente. Veuillez réessayer.",
+    "success": "Inscription à la liste d'attente réussie !"
   }
 }
