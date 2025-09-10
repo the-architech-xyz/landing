@@ -1,10 +1,22 @@
-const { Resend } = require('resend');
+import { Resend } from 'resend';
+import type { 
+  Language, 
+  EmailResult, 
+  WelcomeEmailData, 
+  EmailTemplate 
+} from '../types/waitlist';
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Send welcome email
-async function sendWelcomeEmail(email, language = 'en', referralCode = null) {
+/**
+ * Send welcome email with proper error handling and type safety
+ */
+export async function sendWelcomeEmail(
+  email: string, 
+  language: Language = 'en', 
+  referralCode?: string
+): Promise<EmailResult> {
   try {
     const isFrench = language === 'fr';
     
@@ -12,7 +24,9 @@ async function sendWelcomeEmail(email, language = 'en', referralCode = null) {
       ? 'Bienvenue sur la liste d\'attente d\'Architech Code Forge !' 
       : 'Welcome to Architech Code Forge waitlist!';
     
-    const htmlContent = isFrench ? getFrenchEmailTemplate(email, referralCode) : getEnglishEmailTemplate(email, referralCode);
+    const htmlContent = isFrench 
+      ? getFrenchEmailTemplate({ email, language, referralCode: referralCode || undefined }) 
+      : getEnglishEmailTemplate({ email, language, referralCode: referralCode || undefined });
     
     const result = await resend.emails.send({
       from: 'Architech Code Forge <noreply@architech-code-forge.com>',
@@ -21,22 +35,36 @@ async function sendWelcomeEmail(email, language = 'en', referralCode = null) {
       html: htmlContent
     });
     
+    if (result.error) {
+      throw new Error(`Resend API error: ${result.error.message}`);
+    }
+    
     return {
       success: true,
-      data: result
+      data: {
+        id: result.data?.id || '',
+        from: 'Architech Code Forge <noreply@architech-code-forge.com>',
+        to: [email],
+        subject: subject,
+        created_at: new Date().toISOString()
+      }
     };
     
   } catch (error) {
     console.error('Email error:', error);
     return {
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : 'Unknown email error'
     };
   }
 }
 
-// English email template
-function getEnglishEmailTemplate(email, referralCode) {
+/**
+ * Generate English email template with proper typing
+ */
+function getEnglishEmailTemplate(data: WelcomeEmailData): string {
+  const { email, referralCode } = data;
+  
   return `
     <!DOCTYPE html>
     <html>
@@ -92,8 +120,12 @@ function getEnglishEmailTemplate(email, referralCode) {
   `;
 }
 
-// French email template
-function getFrenchEmailTemplate(email, referralCode) {
+/**
+ * Generate French email template with proper typing
+ */
+function getFrenchEmailTemplate(data: WelcomeEmailData): string {
+  const { email, referralCode } = data;
+  
   return `
     <!DOCTYPE html>
     <html>
@@ -149,6 +181,26 @@ function getFrenchEmailTemplate(email, referralCode) {
   `;
 }
 
-module.exports = {
-  sendWelcomeEmail
-};
+/**
+ * Validate email address format
+ */
+export function validateEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email.trim());
+}
+
+/**
+ * Get email template by language
+ */
+export function getEmailTemplate(data: WelcomeEmailData): EmailTemplate {
+  const isFrench = data.language === 'fr';
+  
+  return {
+    subject: isFrench 
+      ? 'Bienvenue sur la liste d\'attente d\'Architech Code Forge !' 
+      : 'Welcome to Architech Code Forge waitlist!',
+    html: isFrench 
+      ? getFrenchEmailTemplate(data) 
+      : getEnglishEmailTemplate(data)
+  };
+}
