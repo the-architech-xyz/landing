@@ -182,15 +182,15 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Enhanced scroll indicator - More touch-friendly */}
+      {/* Enhanced scroll indicator - Centered */}
       <motion.div 
-        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30" 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30" 
         onClick={scrollToNext}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <div className="glass-button rounded-full p-4 sm:p-3 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
-          <ChevronDown className="h-6 w-6 sm:h-5 sm:w-5 text-architech-electric" />
+        <div className="glass-button rounded-full p-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
+          <ChevronDown className="h-6 w-6 text-architech-electric" />
         </div>
       </motion.div>
 
