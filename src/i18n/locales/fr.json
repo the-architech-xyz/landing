@@ -368,26 +368,32 @@
     "cta": "Vous avez encore des questions ?",
     "questions": {
       "whatIsArchitech": {
+        "category": "Produit",
         "question": "Qu'est-ce qu'Architech ?",
         "answer": "Architech est une plateforme alimentée par l'IA qui génère des applications complètes et prêtes pour la production à partir de simples descriptions textuelles. Elle crée des applications full-stack avec frontend, backend, base de données, authentification et configuration de déploiement."
       },
       "howDoesItWork": {
+        "category": "Processus",
         "question": "Comment ça marche ?",
         "answer": "Décrivez simplement votre idée d'application en français simple, et notre IA analyse vos exigences pour générer une application complète avec tous les composants nécessaires, suivant les meilleures pratiques de l'industrie et les standards de sécurité."
       },
       "whatTechnologies": {
+        "category": "Technologie",
         "question": "Quelles technologies supporte-t-elle ?",
         "answer": "Architech supporte les stacks technologiques modernes incluant React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, et peut déployer sur des plateformes comme Vercel, AWS, et plus encore."
       },
       "isItSecure": {
+        "category": "Sécurité",
         "question": "Le code généré est-il sécurisé ?",
         "answer": "Oui, toutes les applications générées suivent les meilleures pratiques de sécurité incluant l'authentification JWT, le chiffrement des données, la validation des entrées, et la protection contre les vulnérabilités communes."
       },
       "canICustomize": {
+        "category": "Personnalisation",
         "question": "Puis-je personnaliser le code généré ?",
         "answer": "Absolument ! Le code généré est entièrement personnalisable. Vous pouvez modifier, étendre ou refactoriser n'importe quelle partie de l'application pour répondre à vos exigences spécifiques."
       },
       "pricing": {
+        "category": "Tarification",
         "question": "Quels sont les tarifs ?",
         "answer": "Nous offrons des plans tarifaires flexibles pour les particuliers, les équipes et les entreprises. Contactez-nous pour en savoir plus sur nos options tarifaires et trouver le plan qui vous convient."
       }

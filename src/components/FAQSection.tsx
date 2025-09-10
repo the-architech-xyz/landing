@@ -12,32 +12,32 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      category: t('faq.questions.whatIsArchitech.question'),
+      category: t('faq.questions.whatIsArchitech.category'),
       question: t('faq.questions.whatIsArchitech.question'),
       answer: t('faq.questions.whatIsArchitech.answer'),
     },
     {
-      category: t('faq.questions.howDoesItWork.question'),
+      category: t('faq.questions.howDoesItWork.category'),
       question: t('faq.questions.howDoesItWork.question'),
       answer: t('faq.questions.howDoesItWork.answer'),
     },
     {
-      category: t('faq.questions.whatTechnologies.question'),
+      category: t('faq.questions.whatTechnologies.category'),
       question: t('faq.questions.whatTechnologies.question'),
       answer: t('faq.questions.whatTechnologies.answer'),
     },
     {
-      category: t('faq.questions.isItSecure.question'),
+      category: t('faq.questions.isItSecure.category'),
       question: t('faq.questions.isItSecure.question'),
       answer: t('faq.questions.isItSecure.answer'),
     },
     {
-      category: t('faq.questions.canICustomize.question'),
+      category: t('faq.questions.canICustomize.category'),
       question: t('faq.questions.canICustomize.question'),
       answer: t('faq.questions.canICustomize.answer'),
     },
     {
-      category: t('faq.questions.pricing.question'),
+      category: t('faq.questions.pricing.category'),
       question: t('faq.questions.pricing.question'),
       answer: t('faq.questions.pricing.answer'),
     },
@@ -45,17 +45,29 @@ const FAQSection = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
+      // English categories
+      Product: "bg-gradient-sunset",
+      Process: "bg-gradient-electric", 
+      Technology: "bg-gradient-forest",
+      Security: "bg-gradient-ocean",
+      Customization: "bg-gradient-creative",
+      Pricing: "bg-gradient-aurora",
+      // French categories
+      Produit: "bg-gradient-sunset",
+      Processus: "bg-gradient-electric",
+      Technologie: "bg-gradient-forest", 
+      Sécurité: "bg-gradient-ocean",
+      Personnalisation: "bg-gradient-creative",
+      Tarification: "bg-gradient-aurora",
+      // Legacy categories
       Ownership: "bg-gradient-success", 
       Integration: "bg-gradient-electric",
-      Customization: "bg-gradient-forest",
       Difference: "bg-gradient-ocean",
-      Technology: "bg-gradient-sunset",
       Commercial: "bg-gradient-creative",
       Timeline: "bg-gradient-aurora",
       Access: "bg-gradient-electric",
       Business: "bg-gradient-forest",
-      Documentation: "bg-gradient-ocean",
-      Product: "bg-gradient-sunset"
+      Documentation: "bg-gradient-ocean"
     };
     return colors[category] || "bg-gradient-electric";
   };

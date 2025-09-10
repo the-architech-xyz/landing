@@ -368,26 +368,32 @@
     "cta": "Still have questions?",
     "questions": {
       "whatIsArchitech": {
+        "category": "Product",
         "question": "What is Architech?",
         "answer": "Architech is an AI-powered platform that generates complete, production-ready applications from simple text descriptions. It creates full-stack applications with frontend, backend, database, authentication, and deployment configuration."
       },
       "howDoesItWork": {
+        "category": "Process",
         "question": "How does it work?",
         "answer": "Simply describe your app idea in plain English, and our AI analyzes your requirements to generate a complete application with all necessary components, following industry best practices and security standards."
       },
       "whatTechnologies": {
+        "category": "Technology",
         "question": "What technologies does it support?",
         "answer": "Architech supports modern tech stacks including React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, and can deploy to platforms like Vercel, AWS, and more."
       },
       "isItSecure": {
+        "category": "Security",
         "question": "Is the generated code secure?",
         "answer": "Yes, all generated applications follow security best practices including JWT authentication, data encryption, input validation, and protection against common vulnerabilities."
       },
       "canICustomize": {
+        "category": "Customization",
         "question": "Can I customize the generated code?",
         "answer": "Absolutely! The generated code is fully customizable. You can modify, extend, or refactor any part of the application to meet your specific requirements."
       },
       "pricing": {
+        "category": "Pricing",
         "question": "What's the pricing?",
         "answer": "We offer flexible pricing plans for individuals, teams, and enterprises. Contact us to learn more about our pricing options and find the plan that works for you."
       }
