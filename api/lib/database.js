@@ -34,9 +34,9 @@ async function addToWaitlist(email, language = 'en', source = 'website') {
     
     // Add to waitlist
     const result = await sql`
-      INSERT INTO waitlist (email, position, source, referral_code, created_at, status)
-      VALUES (${normalizedEmail}, ${nextPosition}, ${source}, ${referralCode}, NOW(), 'waiting')
-      RETURNING id, email, position, created_at, source, referral_code, status
+      INSERT INTO waitlist (email, position, source, referral_code, language, created_at, status)
+      VALUES (${normalizedEmail}, ${nextPosition}, ${source}, ${referralCode}, ${language}, NOW(), 'waiting')
+      RETURNING id, email, position, created_at, source, referral_code, status, language
     `;
     
     return {
@@ -59,7 +59,7 @@ async function getWaitlistPosition(email) {
     const normalizedEmail = email.trim().toLowerCase();
     
     const result = await sql`
-      SELECT id, email, position, created_at, source, referral_code, status
+      SELECT id, email, position, created_at, source, referral_code, status, language
       FROM waitlist 
       WHERE email = ${normalizedEmail}
     `;

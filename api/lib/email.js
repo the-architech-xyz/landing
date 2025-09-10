@@ -12,7 +12,7 @@ async function sendWelcomeEmail(email, language = 'en', referralCode = null) {
       ? 'Bienvenue sur la liste d\'attente d\'Architech Code Forge !' 
       : 'Welcome to Architech Code Forge waitlist!';
     
-    const htmlContent = isFrench ? getFrenchEmailTemplate(referralCode) : getEnglishEmailTemplate(referralCode);
+    const htmlContent = isFrench ? getFrenchEmailTemplate(email, referralCode) : getEnglishEmailTemplate(email, referralCode);
     
     const result = await resend.emails.send({
       from: 'Architech Code Forge <noreply@architech-code-forge.com>',
@@ -36,7 +36,7 @@ async function sendWelcomeEmail(email, language = 'en', referralCode = null) {
 }
 
 // English email template
-function getEnglishEmailTemplate(referralCode) {
+function getEnglishEmailTemplate(email, referralCode) {
   return `
     <!DOCTYPE html>
     <html>
@@ -93,7 +93,7 @@ function getEnglishEmailTemplate(referralCode) {
 }
 
 // French email template
-function getFrenchEmailTemplate(referralCode) {
+function getFrenchEmailTemplate(email, referralCode) {
   return `
     <!DOCTYPE html>
     <html>

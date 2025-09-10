@@ -64,7 +64,7 @@ router.post('/', async (req, res) => {
         email: result.data.email,
         position: result.data.position,
         referralCode: result.data.referral_code,
-        language: result.data.language,
+        language: result.data.language || language,
         createdAt: result.data.created_at
       }
     });
