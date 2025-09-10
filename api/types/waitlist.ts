@@ -4,7 +4,7 @@
 
 export type Language = 'en' | 'fr' | 'es' | 'de' | 'it';
 export type WaitlistStatus = 'waiting' | 'invited' | 'active' | 'cancelled' | 'converted' | 'bounced';
-export type Source = 'website' | 'landing_page' | 'referral' | 'social' | 'email' | 'other';
+export type Source = 'website' | 'landing_page' | 'landing_page_simple_cta' | 'referral' | 'social' | 'email' | 'other';
 
 // =====================================================
 // Database Models

@@ -223,7 +223,7 @@ export function validateLanguage(language: string): language is Language {
  * Validate source
  */
 export function validateSource(source: string): source is Source {
-  const validSources: Source[] = ['website', 'landing_page', 'referral', 'social', 'email', 'other'];
+  const validSources: Source[] = ['website', 'landing_page', 'landing_page_simple_cta', 'referral', 'social', 'email', 'other'];
   return validSources.includes(source as Source);
 }
 
