@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useTranslation } from "@/hooks/useTranslation";
 import { 
   Clock, 
   AlertTriangle, 
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 
 const BenefitsBeforeAfterSection = () => {
+  const { t } = useTranslation();
   const beforeItems = [
     { icon: Clock, text: "Des semaines de configuration", color: "text-red-500" },
     { icon: AlertTriangle, text: "Erreurs de configuration", color: "text-red-500" },
@@ -39,13 +41,13 @@ const BenefitsBeforeAfterSection = () => {
           variants={fadeInUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            La Fin du{" "}
+            {t('benefits.beforeAfter.title.line1')}{" "}
             <span className="text-transparent bg-gradient-brand bg-clip-text">
-              Travail Répétitif
+              {t('benefits.beforeAfter.title.line2')}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comparez l'expérience de développement traditionnelle avec Architech
+            {t('benefits.beforeAfter.subtitle')}
           </p>
         </motion.div>
 

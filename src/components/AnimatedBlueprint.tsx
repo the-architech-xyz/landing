@@ -6,243 +6,507 @@ interface AnimatedBlueprintProps {
 }
 
 const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Set canvas size
-    const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * window.devicePixelRatio;
-      canvas.height = rect.height * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    };
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Blueprint elements
-    const elements = [
-      // Main structure
-      {
-        type: "rect",
-        x: 0.1,
-        y: 0.2,
-        width: 0.3,
-        height: 0.4,
-        label: "Frontend",
-        delay: 0
-      },
-      {
-        type: "rect",
-        x: 0.6,
-        y: 0.2,
-        width: 0.3,
-        height: 0.4,
-        label: "Backend",
-        delay: 0.5
-      },
-      {
-        type: "rect",
-        x: 0.35,
-        y: 0.7,
-        width: 0.3,
-        height: 0.2,
-        label: "Database",
-        delay: 1
-      },
-      // Connection lines
-      {
-        type: "line",
-        from: { x: 0.4, y: 0.4 },
-        to: { x: 0.6, y: 0.4 },
-        delay: 1.5
-      },
-      {
-        type: "line",
-        from: { x: 0.5, y: 0.6 },
-        to: { x: 0.5, y: 0.7 },
-        delay: 2
-      },
-      {
-        type: "line",
-        from: { x: 0.4, y: 0.4 },
-        to: { x: 0.5, y: 0.7 },
-        delay: 2.5
-      },
-      {
-        type: "line",
-        from: { x: 0.6, y: 0.4 },
-        to: { x: 0.5, y: 0.7 },
-        delay: 3
-      },
-      // Additional architectural elements
-      {
-        type: "rect",
-        x: 0.05,
-        y: 0.05,
-        width: 0.15,
-        height: 0.1,
-        label: "Auth",
-        delay: 3.5
-      },
-      {
-        type: "rect",
-        x: 0.8,
-        y: 0.05,
-        width: 0.15,
-        height: 0.1,
-        label: "API",
-        delay: 4
-      },
-      {
-        type: "line",
-        from: { x: 0.125, y: 0.15 },
-        to: { x: 0.25, y: 0.25 },
-        delay: 4.5
-      },
-      {
-        type: "line",
-        from: { x: 0.875, y: 0.15 },
-        to: { x: 0.75, y: 0.25 },
-        delay: 5
-      }
-    ];
-
-    let animationId: number;
-    let startTime = Date.now();
-
-    const draw = () => {
-      const currentTime = (Date.now() - startTime) / 1000;
-      const canvasRect = canvas.getBoundingClientRect();
-      
-      // Clear canvas
-      ctx.clearRect(0, 0, canvasRect.width, canvasRect.height);
-      
-      // Set drawing style
-      ctx.strokeStyle = "rgba(0, 169, 255, 0.15)"; // Very subtle blue
-      ctx.fillStyle = "rgba(57, 255, 20, 0.1)"; // Very subtle green
-      ctx.lineWidth = 1;
-      ctx.font = "10px monospace";
-      ctx.textAlign = "center";
-
-      // Draw elements based on timing
-      elements.forEach((element) => {
-        const progress = Math.max(0, Math.min(1, (currentTime - element.delay) / 2));
-        
-        if (progress > 0) {
-          const x = element.x * canvasRect.width;
-          const y = element.y * canvasRect.height;
-          const width = element.width * canvasRect.width;
-          const height = element.height * canvasRect.height;
-
-          ctx.globalAlpha = progress * 0.6; // Fade in effect
-
-          if (element.type === "rect") {
-            // Draw rectangle
-            ctx.strokeRect(x, y, width, height);
-            
-            // Draw label
-            ctx.fillStyle = "rgba(0, 169, 255, 0.3)";
-            ctx.fillText(
-              element.label,
-              x + width / 2,
-              y + height / 2 + 3
-            );
-            ctx.fillStyle = "rgba(57, 255, 20, 0.1)";
-          } else if (element.type === "line") {
-            // Draw line
-            ctx.beginPath();
-            ctx.moveTo(element.from.x * canvasRect.width, element.from.y * canvasRect.height);
-            ctx.lineTo(element.to.x * canvasRect.width, element.to.y * canvasRect.height);
-            ctx.stroke();
-          }
+    // Add CSS animation keyframes for smooth line drawing
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes drawLine {
+        0% {
+          stroke-dashoffset: 1000;
+          opacity: 0;
         }
-      });
+        5% {
+          opacity: 0.06;
+        }
+        15% {
+          opacity: 0.08;
+        }
+        85% {
+          opacity: 0.08;
+        }
+        95% {
+          opacity: 0.06;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          opacity: 0.08;
+        }
+      }
+      
+      @keyframes drawLineSlow {
+        0% {
+          stroke-dashoffset: 1000;
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.04;
+        }
+        20% {
+          opacity: 0.06;
+        }
+        80% {
+          opacity: 0.06;
+        }
+        90% {
+          opacity: 0.04;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          opacity: 0.06;
+        }
+      }
+      
+      @keyframes drawLineFade {
+        0% {
+          stroke-dashoffset: 1000;
+          opacity: 0;
+        }
+        15% {
+          opacity: 0.03;
+        }
+        25% {
+          opacity: 0.05;
+        }
+        75% {
+          opacity: 0.05;
+        }
+        85% {
+          opacity: 0.03;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          opacity: 0.05;
+        }
+      }
+    `;
+    document.head.appendChild(style);
 
-      // Reset alpha
-      ctx.globalAlpha = 1;
-
-      // Continue animation
-      animationId = requestAnimationFrame(draw);
-    };
-
-    // Start animation
-    draw();
-
+    // Clean up
     return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resizeCanvas);
+      document.head.removeChild(style);
     };
   }, []);
 
   return (
     <div className={`absolute inset-0 pointer-events-none ${className}`}>
-      <canvas
-        ref={canvasRef}
+      {/* Main animated blueprint SVG */}
+      <svg
+        ref={svgRef}
         className="w-full h-full"
-        style={{ opacity: 0.3 }}
-      />
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid slice"
+        style={{ opacity: 0.4 }}
+      >
+        {/* Background grid */}
+        <defs>
+          <pattern id="blueprintGrid" width="5" height="5" patternUnits="userSpaceOnUse">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="rgb(0, 169, 255)" strokeWidth="0.1" opacity="0.03"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#blueprintGrid)" />
+        
+        {/* Main architectural structure - interlocking rectangles */}
+        <rect
+          x="10"
+          y="15"
+          width="25"
+          height="35"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.5"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.08"
+          style={{
+            animation: "drawLine 8s ease-in-out 0s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <rect
+          x="65"
+          y="15"
+          width="25"
+          height="35"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.5"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.08"
+          style={{
+            animation: "drawLine 8s ease-in-out 2s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <rect
+          x="37.5"
+          y="60"
+          width="25"
+          height="20"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.5"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.08"
+          style={{
+            animation: "drawLine 6s ease-in-out 4s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        
+        {/* Connection lines */}
+        <line
+          x1="35"
+          y1="32.5"
+          x2="65"
+          y2="32.5"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.3"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.06"
+          style={{
+            animation: "drawLine 4s ease-in-out 6s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="50"
+          y1="50"
+          x2="50"
+          y2="60"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.3"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.06"
+          style={{
+            animation: "drawLine 3s ease-in-out 7s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="35"
+          y1="32.5"
+          x2="50"
+          y2="60"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.3"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.06"
+          style={{
+            animation: "drawLine 4s ease-in-out 8s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="65"
+          y1="32.5"
+          x2="50"
+          y2="60"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.3"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.06"
+          style={{
+            animation: "drawLine 4s ease-in-out 9s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        
+        {/* Additional architectural elements */}
+        <rect
+          x="5"
+          y="5"
+          width="12"
+          height="8"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.4"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.06"
+          style={{
+            animation: "drawLine 5s ease-in-out 10s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <rect
+          x="83"
+          y="5"
+          width="12"
+          height="8"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.4"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.06"
+          style={{
+            animation: "drawLine 5s ease-in-out 11s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="11"
+          y1="13"
+          x2="22.5"
+          y2="22.5"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.2"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.05"
+          style={{
+            animation: "drawLine 3s ease-in-out 12s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="89"
+          y1="13"
+          x2="77.5"
+          y2="22.5"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.2"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.05"
+          style={{
+            animation: "drawLine 3s ease-in-out 13s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        
+        {/* Grid lines for blueprint feel - using different animation styles */}
+        <line
+          x1="0"
+          y1="25"
+          x2="100"
+          y2="25"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.03"
+          style={{
+            animation: "drawLineSlow 15s ease-in-out 14s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="0"
+          y1="50"
+          x2="100"
+          y2="50"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.03"
+          style={{
+            animation: "drawLineSlow 15s ease-in-out 15s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="0"
+          y1="75"
+          x2="100"
+          y2="75"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.03"
+          style={{
+            animation: "drawLineSlow 15s ease-in-out 16s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="25"
+          y1="0"
+          x2="25"
+          y2="100"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.03"
+          style={{
+            animation: "drawLineSlow 15s ease-in-out 17s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="50"
+          y1="0"
+          x2="50"
+          y2="100"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.03"
+          style={{
+            animation: "drawLineSlow 15s ease-in-out 18s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="75"
+          y1="0"
+          x2="75"
+          y2="100"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.03"
+          style={{
+            animation: "drawLineSlow 15s ease-in-out 19s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        
+        {/* Additional architectural details */}
+        <circle
+          cx="22.5"
+          cy="32.5"
+          r="1"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.2"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.04"
+          style={{
+            animation: "drawLineFade 8s ease-in-out 20s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <circle
+          cx="77.5"
+          cy="32.5"
+          r="1"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.2"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.04"
+          style={{
+            animation: "drawLineFade 8s ease-in-out 21s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <circle
+          cx="50"
+          cy="70"
+          r="1.5"
+          fill="none"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.2"
+          strokeDasharray="1000 1000"
+          strokeDashoffset="1000"
+          opacity="0.04"
+          style={{
+            animation: "drawLineFade 8s ease-in-out 22s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        
+        {/* Architectural dimension lines */}
+        <line
+          x1="5"
+          y1="5"
+          x2="17"
+          y2="5"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="2 1"
+          opacity="0.02"
+          style={{
+            animation: "drawLineFade 10s ease-in-out 23s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+        <line
+          x1="83"
+          y1="5"
+          x2="95"
+          y2="5"
+          stroke="rgb(0, 169, 255)"
+          strokeWidth="0.1"
+          strokeDasharray="2 1"
+          opacity="0.02"
+          style={{
+            animation: "drawLineFade 10s ease-in-out 24s infinite",
+            animationFillMode: "forwards"
+          }}
+        />
+      </svg>
       
       {/* Additional subtle grid overlay */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0, 169, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 169, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(0, 169, 255, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 169, 255, 0.05) 1px, transparent 1px)
             `,
-            backgroundSize: "40px 40px"
+            backgroundSize: "60px 60px"
           }}
         />
       </div>
 
-      {/* Floating architectural elements */}
+      {/* Floating architectural elements with more subtle movement */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-2 h-2 bg-architech-brand-blue rounded-full opacity-20"
+        className="absolute top-1/4 left-1/4 w-1 h-1 bg-architech-brand-blue rounded-full"
         animate={{
-          y: [0, -20, 0],
-          x: [0, 10, 0],
-          opacity: [0.2, 0.4, 0.2],
+          y: [0, -8, 0],
+          x: [0, 4, 0],
+          opacity: [0.1, 0.2, 0.1],
         }}
         transition={{
-          duration: 8,
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       <motion.div
-        className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-architech-brand-green rounded-full opacity-30"
+        className="absolute top-3/4 right-1/4 w-0.5 h-0.5 bg-architech-brand-green rounded-full"
         animate={{
-          y: [0, -15, 0],
-          x: [0, -8, 0],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 3,
-        }}
-      />
-      <motion.div
-        className="absolute top-1/2 right-1/3 w-1 h-1 bg-architech-brand-blue rounded-full opacity-25"
-        animate={{
-          y: [0, -10, 0],
-          x: [0, 5, 0],
-          opacity: [0.25, 0.4, 0.25],
+          y: [0, -6, 0],
+          x: [0, -3, 0],
+          opacity: [0.15, 0.25, 0.15],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 1,
+          delay: 4,
+        }}
+      />
+      <motion.div
+        className="absolute top-1/2 right-1/3 w-0.5 h-0.5 bg-architech-brand-blue rounded-full"
+        animate={{
+          y: [0, -4, 0],
+          x: [0, 2, 0],
+          opacity: [0.12, 0.2, 0.12],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
         }}
       />
     </div>

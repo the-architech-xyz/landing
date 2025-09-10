@@ -183,16 +183,18 @@ const HeroSection = () => {
       </div>
 
       {/* Enhanced scroll indicator - Centered */}
-      <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group z-30" 
-        onClick={scrollToNext}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <div className="glass-button rounded-full p-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
-          <ChevronDown className="h-6 w-6 text-architech-electric" />
-        </div>
-      </motion.div>
+      <div className="w-full flex justify-center absolute bottom-8 left-0 z-30 pointer-events-none">
+        <motion.div
+          className="pointer-events-auto group"
+          onClick={scrollToNext}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <div className="glass-button rounded-full p-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 flex items-center justify-center">
+            <ChevronDown className="h-6 w-6 text-architech-electric" />
+          </div>
+        </motion.div>
+      </div>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </section>

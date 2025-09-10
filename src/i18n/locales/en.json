@@ -48,6 +48,27 @@
     },
     "subtitle": "Discover how Architech transforms your vision into production-ready application",
     "cue": "Click 'Start Demo' to see the magic happen",
+    "canvas": {
+      "title": "From Idea to Code,",
+      "titleHighlight": "in Real Time",
+      "subtitle": "Describe your project and see the architecture generate instantly",
+      "input": {
+        "label": "Describe your project",
+        "placeholder": "Let the AI analyze and generate your architecture",
+        "examples": "Or click on an example:"
+      },
+      "technologies": {
+        "title": "Technologies detected",
+        "count": "technologie intelligently detected",
+        "countPlural": "technologies intelligently detected"
+      },
+      "tabs": {
+        "technologies": "Technologies",
+        "blueprint": "Blueprint",
+        "structure": "Structure",
+        "preview": "Preview"
+      }
+    },
     "building": "Launch the Demonstration",
     "buttons": {
       "startDemo": "Start Demo",
@@ -86,6 +107,13 @@
     "title": {
       "line1": "The hidden cost of",
       "line2": "starting from scratch."
+    },
+    "beforeAfter": {
+      "title": {
+        "line1": "The End of",
+        "line2": "Repetitive Work"
+      },
+      "subtitle": "Compare the traditional development experience with Architech"
     },
     "subtitle": {
       "line1": "You're Paying a Tax on Innovation.",
@@ -137,6 +165,35 @@
   "howItWorks": {
     "title": "How It Works",
     "subtitle": "Three simple steps to transform your vision into production-ready code",
+    "supplyChain": {
+      "title": "The Supply Chain for",
+      "titleHighlight": "Modern Software",
+      "subtitle": "A simple 3-step process to transform your vision into application",
+      "steps": {
+        "blueprint": {
+          "title": "Blueprint",
+          "subtitle": "Your Intention",
+          "description": "Describe your application in natural language",
+          "example": "A task management app with JWT authentication and PostgreSQL database"
+        },
+        "aiArchitect": {
+          "title": "AI Architect",
+          "subtitle": "Our Orchestration",
+          "description": "Our AI selects and configures the optimal modules",
+          "example": "Automatic selection of adapters: Auth, Database, UI, API Gateway"
+        },
+        "yourCode": {
+          "title": "Your Code",
+          "subtitle": "Your Property",
+          "description": "Generated, documented code ready for production",
+          "example": "Complete structure with tests, documentation and deployment configuration"
+        }
+      },
+      "cta": {
+        "button": "Read our Whitepaper",
+        "description": "For complete technical details"
+      }
+    },
     "steps": {
       "describe": {
         "title": "Choose Your Blueprint",

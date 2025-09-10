@@ -21,6 +21,7 @@ const ArchitectsCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, targetX: number, targetY: number, progress: number}>>([]);
   const [showParticles, setShowParticles] = useState(false);
+  const [activeTab, setActiveTab] = useState<'technologies' | 'blueprint' | 'structure' | 'preview'>('technologies');
 
   const techStack = [
     { 
@@ -228,6 +229,7 @@ const ArchitectsCanvas = () => {
     setTimeout(() => {
       const blueprint = generateBlueprint(input, modules);
       setShowBlueprint(true);
+      setActiveTab('blueprint');
       
       // Type blueprint line by line
       blueprint.forEach((line, index) => {
@@ -327,266 +329,492 @@ const ArchitectsCanvas = () => {
     <section
       ref={containerRef}
       id="interactive-demo"
-      className="min-h-screen bg-architech-section-light relative overflow-hidden py-24"
+      className="min-h-screen bg-gradient-to-br from-architech-section-light via-architech-section-dark to-architech-section-light relative overflow-hidden py-32"
     >
-      {/* Enhanced background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.1)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+      {/* Sophisticated background layers */}
+      <div className="absolute inset-0">
+        {/* Primary grid */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.15)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+        </div>
+        
+        {/* Secondary subtle pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(0,169,255,0.1)_0%,transparent_50%),radial-gradient(circle_at_75%_75%,rgba(57,255,20,0.08)_0%,transparent_50%)]"></div>
+        </div>
+        
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-architech-surface/5 to-transparent"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Header */}
+        {/* Clean Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-satoshi font-bold text-foreground mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-satoshi font-bold text-foreground mb-6 leading-tight tracking-tight"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            De l'Idée au Code,{" "}
+            {t('interactiveDemo.canvas.title')}{" "}
             <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              en Temps Réel
+              {t('interactiveDemo.canvas.titleHighlight')}
             </span>
           </motion.h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Décrivez votre projet et voyez la magie opérer instantanément
-          </p>
+          <motion.p 
+            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            {t('interactiveDemo.canvas.subtitle')}
+          </motion.p>
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Input and Modules */}
-            <div className="space-y-8">
-              {/* Input Section */}
+            <div className="space-y-10">
+              {/* Enhanced Input Section */}
               <motion.div
-                className="bg-card border border-border rounded-2xl p-8"
-                initial={{ opacity: 0, y: 20 }}
+                className="relative group"
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                whileHover={{ y: -2 }}
               >
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Décrivez votre projet
+                {/* Glass morphism card */}
+                <div className="relative bg-gradient-to-br from-card/80 via-card/90 to-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-10 shadow-2xl shadow-architech-electric/5 group-hover:shadow-architech-electric/10 transition-all duration-500">
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-architech-electric/5 via-transparent to-architech-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Clean Header */}
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">
+                  {t('interactiveDemo.canvas.input.label')}
                 </h3>
+                    <p className="text-muted-foreground">
+                      {t('interactiveDemo.canvas.input.placeholder')}
+                    </p>
+                  </div>
                 
-                <div className="space-y-4">
+                  <div className="space-y-6">
+                    {/* Clean Input */}
+                    <div className="relative">
                   <Input
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Ex: Un SaaS avec authentification et paiements Stripe"
-                    className="text-lg py-4"
+                        className="text-lg py-6 px-6 bg-architech-surface/50 border-2 border-border/50 rounded-2xl focus:border-architech-electric/50 focus:ring-4 focus:ring-architech-electric/10 transition-all duration-300 placeholder:text-muted-foreground/60"
                     disabled={isProcessing}
-                  />
-                  
-                  {/* Example Projects */}
-                  <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground">Ou cliquez sur un exemple :</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exampleProjects.map((example, index) => (
-                        <Button
-                          key={index}
-                          variant="outline"
-                          size="sm"
-                          onClick={() => processInput(example)}
-                          disabled={isProcessing}
-                          className="text-xs"
-                        >
-                          {example}
-                        </Button>
-                      ))}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && !isProcessing && userInput.trim()) {
+                            processInput(userInput);
+                          }
+                        }}
+                      />
+                      {isProcessing && (
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          >
+                            <Sparkles className="h-5 w-5 text-architech-electric/60" />
+                          </motion.div>
+                        </div>
+                      )}
                     </div>
+                    
+                    {/* Clean Example Projects */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gradient-to-b from-architech-electric to-architech-brand-green rounded-full"></div>
+                        <p className="text-sm font-medium text-muted-foreground">{t('interactiveDemo.canvas.input.examples')}</p>
+                      </div>
+                      <div className="grid grid-cols-1 gap-2 relative z-10">
+                        {exampleProjects.map((example, index) => (
+                          <motion.div
+                            key={index}
+                            whileHover={{ scale: 1.01, x: 2 }}
+                            whileTap={{ scale: 0.99 }}
+                            className="w-full relative z-10"
+                          >
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                console.log('Example clicked:', example); // Debug log
+                                setUserInput(example);
+                                processInput(example);
+                              }}
+                              disabled={isProcessing}
+                              className="w-full text-left p-4 bg-architech-surface/20 border border-border/30 hover:border-architech-electric/40 hover:bg-architech-electric/5 rounded-xl transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-architech-electric/20"
+                              type="button"
+                              style={{
+                                pointerEvents: isProcessing ? 'none' : 'auto',
+                                position: 'relative',
+                                zIndex: 10
+                              }}
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-architech-electric/40 group-hover:bg-architech-electric transition-colors duration-300"></div>
+                                <span className="text-sm font-medium text-foreground group-hover:text-architech-electric transition-colors duration-300">{example}</span>
+                              </div>
+                            </button>
+                          </motion.div>
+                        ))}
+                      </div>
                   </div>
                   
+                    {/* Enhanced CTA Button */}
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
                   <Button
                     onClick={() => processInput(userInput)}
                     disabled={!userInput.trim() || isProcessing}
-                    className="w-full bg-gradient-electric hover:shadow-electric text-white font-semibold py-4 text-lg"
+                        className="w-full bg-gradient-to-r from-architech-electric via-architech-brand-blue to-architech-electric hover:shadow-2xl hover:shadow-architech-electric/25 text-white font-bold py-6 text-lg rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
                   >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        <div className="relative flex items-center justify-center gap-3">
                     {isProcessing ? (
                       <>
-                        <Sparkles className="h-5 w-5 mr-2 animate-spin" />
-                        Génération en cours...
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              >
+                                <Sparkles className="h-6 w-6" />
+                              </motion.div>
+                              <span>Génération en cours...</span>
                       </>
                     ) : (
                       <>
-                        <Zap className="h-5 w-5 mr-2" />
-                        Générer mon architecture
+                              <Zap className="h-6 w-6" />
+                              <span>Générer mon architecture</span>
                       </>
                     )}
+                        </div>
                   </Button>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
 
-              {/* Modules Selection */}
-              <motion.div
-                className="bg-card border border-border rounded-2xl p-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              >
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Modules sélectionnés
-                </h3>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  {techStack.map((tech, index) => (
-                    <motion.div
-                      key={tech.name}
-                      className={`p-4 rounded-xl border transition-all duration-300 ${
-                        selectedModules.includes(index)
-                          ? "border-architech-brand-blue bg-architech-brand-blue/10 shadow-lg shadow-architech-brand-blue/20"
-                          : "border-border bg-card"
-                      }`}
-                      animate={{
-                        scale: selectedModules.includes(index) ? 1.05 : 1,
-                        opacity: selectedModules.includes(index) ? 1 : 0.6
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tech.color} flex items-center justify-center`}>
-                          <tech.icon className="h-5 w-5 text-white" />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-foreground text-sm">
-                            {tech.name}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {tech.description}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
             </div>
 
-            {/* Right side - Blueprint and Results */}
-            <div className="space-y-8">
-              {/* Blueprint */}
-              {showBlueprint && (
-                <motion.div
-                  className="bg-card border border-border rounded-2xl p-6"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Blueprint généré
-                  </h3>
-                  
-                  <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-blue/30 font-mono text-sm max-h-64 overflow-y-auto">
-                    {blueprintLines.map((line, index) => (
-                      <motion.div
-                        key={index}
-                        className="text-foreground min-h-[1.5rem] leading-6"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1, duration: 0.3 }}
+            {/* Right side - Tabbed Results */}
+            {(selectedModules.length > 0 || showBlueprint || showProjectStructure || showWorkingPreview) && (
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <div className="bg-gradient-to-br from-card/80 via-card/90 to-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl">
+                  {/* Tab Navigation */}
+                  <div className="flex gap-2 mb-6">
+                    {selectedModules.length > 0 && (
+                      <button
+                        onClick={() => setActiveTab('technologies')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          activeTab === 'technologies'
+                            ? 'bg-architech-brand-green text-white shadow-lg'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                        }`}
                       >
+                        <div className="flex items-center gap-2">
+                          <Layers className="h-4 w-4" />
+{t('interactiveDemo.canvas.tabs.technologies')}
+                        </div>
+                      </button>
+                    )}
+                    {showBlueprint && (
+                      <button
+                        onClick={() => setActiveTab('blueprint')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          activeTab === 'blueprint'
+                            ? 'bg-architech-brand-blue text-white shadow-lg'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Database className="h-4 w-4" />
+{t('interactiveDemo.canvas.tabs.blueprint')}
+                        </div>
+                      </button>
+                    )}
+                    {showProjectStructure && (
+                      <button
+                        onClick={() => setActiveTab('structure')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          activeTab === 'structure'
+                            ? 'bg-architech-brand-green text-white shadow-lg'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Layers className="h-4 w-4" />
+{t('interactiveDemo.canvas.tabs.structure')}
+                        </div>
+                      </button>
+                    )}
+                    {showWorkingPreview && (
+                      <button
+                        onClick={() => setActiveTab('preview')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          activeTab === 'preview'
+                            ? 'bg-architech-electric text-white shadow-lg'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Zap className="h-4 w-4" />
+{t('interactiveDemo.canvas.tabs.preview')}
+                        </div>
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Tab Content */}
+                  <div className="min-h-[400px]">
+                    {/* Technologies Tab */}
+                    {activeTab === 'technologies' && selectedModules.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-brand-green/20 shadow-inner"
+                      >
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-architech-brand-green to-architech-electric flex items-center justify-center">
+                            <Layers className="h-5 w-5 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-foreground">
+                              {t('interactiveDemo.canvas.technologies.title')}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {selectedModules.length} {selectedModules.length > 1 ? t('interactiveDemo.canvas.technologies.countPlural') : t('interactiveDemo.canvas.technologies.count')}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {selectedModules.map((index) => {
+                            const tech = techStack[index];
+                            return (
+                              <motion.div
+                                key={tech.name}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.3, delay: selectedModules.indexOf(index) * 0.1 }}
+                                className="flex items-center gap-4 p-4 bg-gradient-to-r from-architech-brand-blue/10 to-architech-electric/10 border border-architech-brand-blue/20 rounded-xl hover:border-architech-brand-blue/40 transition-all duration-300 group"
+                              >
+                                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                                  <tech.icon className="h-6 w-6 text-white" />
+                                </div>
+                                <div className="flex-1">
+                                  <h4 className="font-bold text-foreground text-lg mb-1">
+                                    {tech.name}
+                                  </h4>
+                                  <p className="text-sm text-muted-foreground leading-relaxed">
+                                    {tech.description}
+                                  </p>
+                                </div>
+                                <div className="w-2 h-2 rounded-full bg-architech-brand-blue animate-pulse"></div>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Blueprint Tab */}
+                    {activeTab === 'blueprint' && showBlueprint && (
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-brand-blue/20 shadow-inner"
+                      >
+                        {/* Code editor styling */}
+                        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/30">
+                          <div className="flex gap-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          </div>
+                          <span className="text-xs text-muted-foreground font-mono ml-4">architecture.yml</span>
+                        </div>
+                        
+                        <div className="font-mono text-sm max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-architech-brand-blue/30 scrollbar-track-transparent">
+                          {blueprintLines.map((line, index) => (
+                            <motion.div
+                              key={index}
+                              className="text-foreground min-h-[1.5rem] leading-6 flex items-center"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.05, duration: 0.4 }}
+                            >
+                              <span className="text-muted-foreground/50 text-xs w-8 select-none">
+                                {String(index + 1).padStart(2, '0')}
+                              </span>
+                              <span className="ml-4">
                         {line.startsWith("#") ? (
-                          <span className="text-architech-brand-blue/70 font-medium">
+                                  <span className="text-architech-brand-blue/80 font-semibold">
                             {line}
                           </span>
                         ) : line.includes(":") ? (
                           <>
-                            <span className="text-architech-brand-blue font-medium">
+                                    <span className="text-architech-brand-blue font-semibold">
                               {line.split(":")[0]}:
                             </span>
                             <span className="text-architech-brand-green ml-2 font-medium">
                               "{line.split(":")[1].trim()}"
                             </span>
                           </>
+                                ) : line.startsWith("  -") ? (
+                                  <span className="text-architech-electric font-medium">
+                                    {line}
+                                  </span>
                         ) : (
                           <span className="text-foreground">{line}</span>
                         )}
+                              </span>
                       </motion.div>
                     ))}
                   </div>
                 </motion.div>
               )}
 
-              {/* Project Structure */}
-              {showProjectStructure && (
+                    {/* Structure Tab */}
+                    {activeTab === 'structure' && showProjectStructure && (
                 <motion.div
-                  className="bg-card border border-border rounded-2xl p-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Structure du projet
-                  </h3>
-                  
-                  <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-green/30 font-mono text-sm max-h-64 overflow-y-auto">
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-brand-green/20 shadow-inner"
+                      >
+                        {/* File explorer styling */}
+                        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/30">
+                          <div className="flex gap-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          </div>
+                          <span className="text-xs text-muted-foreground font-mono ml-4">📁 project-structure</span>
+                        </div>
+                        
+                        <div className="font-mono text-sm max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-architech-brand-green/30 scrollbar-track-transparent">
                     {renderProjectStructure(generateProjectStructure(selectedModules))}
                   </div>
                 </motion.div>
               )}
 
-              {/* Working Preview */}
-              {showWorkingPreview && (
+                    {/* Preview Tab */}
+                    {activeTab === 'preview' && showWorkingPreview && (
                 <motion.div
-                  className="bg-card border border-border rounded-2xl p-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Aperçu en direct
-                  </h3>
-                  
-                  <div className="bg-architech-section-light rounded-xl p-4 border border-architech-brand-green/30">
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-electric/20 shadow-inner"
+                      >
                     <motion.div
-                      className="bg-white rounded-lg p-4 shadow-lg"
+                          className="bg-white rounded-2xl p-6 shadow-2xl shadow-architech-electric/10 border border-architech-electric/10"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between border-b pb-2">
-                          <h4 className="font-semibold text-gray-800 text-sm">
+                          transition={{ duration: 0.6, delay: 0.1 }}
+                        >
+                          {/* Browser header */}
+                          <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
+                            <div className="flex items-center gap-3">
+                              <div className="flex gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                              </div>
+                              <h4 className="font-bold text-gray-800 text-lg">
                             Dashboard
                           </h4>
-                          <div className="flex gap-1">
-                            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                            <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          </div>
-                        </div>
-                        
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="bg-blue-50 p-2 rounded">
-                            <div className="text-xs text-blue-600 font-medium">
-                              Projets actifs
                             </div>
-                            <div className="text-lg font-bold text-blue-800">
-                              3
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                              <span className="text-xs text-gray-500">Live</span>
                             </div>
                           </div>
-                          <div className="bg-green-50 p-2 rounded">
-                            <div className="text-xs text-green-600 font-medium">
+                          
+                          {/* Dashboard content */}
+                          <div className="space-y-6">
+                            <div className="grid grid-cols-2 gap-4">
+                              <motion.div 
+                                className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl border border-blue-200"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <div className="flex items-center gap-3 mb-2">
+                                  <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                                    <Database className="h-4 w-4 text-white" />
+                                  </div>
+                                  <div className="text-sm text-blue-600 font-semibold">
+                                    Projets actifs
+                                  </div>
+                                </div>
+                                <div className="text-3xl font-bold text-blue-800">
+                                  3
+                                </div>
+                              </motion.div>
+                              
+                              <motion.div 
+                                className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border border-green-200"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <div className="flex items-center gap-3 mb-2">
+                                  <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                                    <Sparkles className="h-4 w-4 text-white" />
+                                  </div>
+                                  <div className="text-sm text-green-600 font-semibold">
                               Tâches terminées
+                                  </div>
+                                </div>
+                                <div className="text-3xl font-bold text-green-800">
+                                  12
+                                </div>
+                              </motion.div>
                             </div>
-                            <div className="text-lg font-bold text-green-800">
-                              12
+                            
+                            {/* Additional dashboard elements */}
+                            <div className="bg-gray-50 rounded-xl p-4">
+                              <div className="text-sm text-gray-600 font-medium mb-2">Activité récente</div>
+                              <div className="space-y-2">
+                                <div className="flex items-center gap-2 text-xs text-gray-500">
+                                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                  Nouveau projet créé
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-gray-500">
+                                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                  Tâche terminée
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                        </motion.div>
                     </motion.div>
+                    )}
+                  </div>
                   </div>
                 </motion.div>
               )}
-            </div>
           </div>
         </div>
       </div>

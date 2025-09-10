@@ -48,6 +48,27 @@
     },
     "subtitle": "Découvrez comment Architech transforme votre vision en application prête pour la production",
     "cue": "Cliquez sur 'Démarrer la Démo' pour voir la magie opérer",
+    "canvas": {
+      "title": "De l'Idée au Code,",
+      "titleHighlight": "en Temps Réel",
+      "subtitle": "Décrivez votre projet et voyez l'architecture se générer instantanément",
+      "input": {
+        "label": "Décrivez votre projet",
+        "placeholder": "Laissez l'IA analyser et générer votre architecture",
+        "examples": "Ou cliquez sur un exemple :"
+      },
+      "technologies": {
+        "title": "Technologies détectées",
+        "count": "technologie intelligemment détectée",
+        "countPlural": "technologies intelligemment détectées"
+      },
+      "tabs": {
+        "technologies": "Technologies",
+        "blueprint": "Blueprint",
+        "structure": "Structure",
+        "preview": "Preview"
+      }
+    },
     "building": "Lancez la Démonstration",
     "buttons": {
       "startDemo": "Démarrer la Démo",
@@ -86,6 +107,13 @@
     "title": {
       "line1": "Le vrai coût",
       "line2": " d'une page blanche."
+    },
+    "beforeAfter": {
+      "title": {
+        "line1": "La Fin du",
+        "line2": "Travail Répétitif"
+      },
+      "subtitle": "Comparez l'expérience de développement traditionnelle avec Architech"
     },
     "subtitle": {
       "line1": "Vous payez une taxe sur l'innovation.",
@@ -137,6 +165,35 @@
   "howItWorks": {
     "title": "Comment ça Marche",
     "subtitle": "Trois étapes simples pour transformer votre vision en code prêt pour la production",
+    "supplyChain": {
+      "title": "The Supply Chain for",
+      "titleHighlight": "Modern Software",
+      "subtitle": "Un processus simple en 3 étapes pour transformer votre vision en application",
+      "steps": {
+        "blueprint": {
+          "title": "Blueprint",
+          "subtitle": "Votre Intention",
+          "description": "Décrivez votre application en langage naturel",
+          "example": "Une app de gestion de tâches avec authentification JWT et base de données PostgreSQL"
+        },
+        "aiArchitect": {
+          "title": "AI Architect",
+          "subtitle": "Notre Orchestration",
+          "description": "Notre IA sélectionne et configure les modules optimaux",
+          "example": "Sélection automatique des adapters: Auth, Database, UI, API Gateway"
+        },
+        "yourCode": {
+          "title": "Your Code",
+          "subtitle": "Votre Propriété",
+          "description": "Code généré, documenté et prêt pour la production",
+          "example": "Structure complète avec tests, documentation et configuration de déploiement"
+        }
+      },
+      "cta": {
+        "button": "Lire notre Whitepaper",
+        "description": "Pour les détails techniques complets"
+      }
+    },
     "steps": {
       "describe": {
         "title": "Choisissez votre Blueprint",

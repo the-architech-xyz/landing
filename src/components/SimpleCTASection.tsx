@@ -94,7 +94,7 @@ const SimpleCTASection = () => {
             </p>
             
             <div className="glass-card rounded-2xl p-6 max-w-md mx-auto">
-              <div className="text-sm text-muted-foreground mb-2">{t('finalCta.success.position')}</div>
+              <div className="text-sm text-muted-foreground mb-2">{t('cta.position')}</div>
               <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">
                 {waitlistPosition ? `#${waitlistPosition}` : '🎯'}
               </div>

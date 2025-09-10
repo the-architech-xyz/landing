@@ -422,6 +422,10 @@ Professional meets artistic - perfect for creative developers.
     animation: gradient-shift 8s ease-in-out infinite;
   }
 
+  .animate-gradient-flow {
+    animation: gradient-flow 3s ease-in-out infinite;
+  }
+
   @keyframes fade-in-up {
     from {
       opacity: 0;
