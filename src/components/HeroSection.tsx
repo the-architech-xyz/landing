@@ -112,7 +112,7 @@ const HeroSection = () => {
   }, []);
 
   const scrollToNext = () => {
-    const element = document.getElementById('demo');
+    const element = document.getElementById('interactive-demo');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -133,7 +133,7 @@ const HeroSection = () => {
       </div>
 
       {/* Animated Blueprint Background */}
-      <AnimatedBlueprint className="z-10" />
+      <AnimatedBlueprint className="z-0" />
       
       <div className="container mx-auto px-4 sm:px-6 pt-24 pb-16 sm:py-20 relative z-20">
         <motion.div 
@@ -166,12 +166,12 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Single CTA - Centered */}
-          <motion.div className="flex justify-center items-center px-4" variants={fadeInUp}>
+          <motion.div className="flex justify-center items-center px-4 w-full" variants={fadeInUp}>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 size="lg" 
-                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-12 py-6 text-lg group" 
-                onClick={() => smoothScrollTo("demo")}
+                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-12 py-6 text-lg group w-full max-w-xs" 
+                onClick={() => smoothScrollTo("interactive-demo")}
               >
                 {t('hero.cta.primary')}
                 <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
