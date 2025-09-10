@@ -13,13 +13,13 @@
   },
   "hero": {
     "title": {
-      "line1": "Stop Writing Boilerplate.",
+      "line1": "Stop Configuring.",
       "line2": "Start Architecting."
     },
-    "subtitle": "Open-source CLI that transforms blueprints into production-ready code. Start with battle-tested modules, customize as needed, deploy anywhere.",
+    "subtitle": "Generate production-ready application foundations in seconds.",
     "prompt": "A collaborative project management app with JWT auth and a modern design system",
     "cta": {
-      "primary": "Join Waitlist",
+      "primary": "See in Action",
       "secondary": "Book Demo"
     },
     "stats": {
@@ -38,6 +38,47 @@
       "cicdPipeline": "CI/CD Pipeline",
       "monitoring": "Monitoring",
       "selected": "Selected modules:"
+    }
+  },
+  "interactiveDemo": {
+    "badge": "Interactive Demo",
+    "title": {
+      "line1": "From Idea to Code,",
+      "line2": "in Real Time"
+    },
+    "subtitle": "Discover how Architech transforms your vision into production-ready application",
+    "cue": "Click 'Start Demo' to see the magic happen",
+    "building": "Launch the Demonstration",
+    "buttons": {
+      "startDemo": "Start Demo",
+      "pause": "In Progress...",
+      "reset": "Restart"
+    },
+    "steps": {
+      "idea": {
+        "title": "Your Idea",
+        "description": "Describe your application"
+      },
+      "adapters": {
+        "title": "Adapter Selection",
+        "description": "Our modules activate automatically"
+      },
+      "blueprint": {
+        "title": "Generated Blueprint",
+        "description": "Complete architecture created"
+      },
+      "output": {
+        "title": "Ready Code",
+        "description": "Your application is generated"
+      }
+    },
+    "readyToBuild": "Ready to start",
+    "clickToStart": "Click 'Start Demo' to see the magic happen",
+    "complete": {
+      "title": "🎉 Demo Complete!",
+      "platform": "Complete architecture generated",
+      "features": "4 modules assembled automatically",
+      "time": "Total time: 2.3 seconds"
     }
   },
   "benefits": {

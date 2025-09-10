@@ -14,12 +14,12 @@
   "hero": {
     "title": {
       "line1": "Cessez de configurer.",
-      "line2": "Architecturez"
+      "line2": "Architecturez."
     },
-    "subtitle": "CLI open-source qui transforme les blueprints en code prêt pour la production. Commencez avec des modules éprouvés, personnalisez selon vos besoins, déployez partout.",
+    "subtitle": "Générez des fondations d'application prêtes pour la production en quelques secondes.",
     "prompt": "Une application de gestion de projet collaborative avec authentification JWT et un système de design moderne",
     "cta": {
-      "primary": "Rejoindre la Liste",
+      "primary": "Voir en Action",
       "secondary": "Réserver une Démo"
     },
     "stats": {
@@ -38,6 +38,47 @@
       "cicdPipeline": "Pipeline CI/CD",
       "monitoring": "Monitoring",
       "selected": "Modules sélectionnés :"
+    }
+  },
+  "interactiveDemo": {
+    "badge": "Démo Interactive",
+    "title": {
+      "line1": "De l'Idée au Code,",
+      "line2": "en Temps Réel"
+    },
+    "subtitle": "Découvrez comment Architech transforme votre vision en application prête pour la production",
+    "cue": "Cliquez sur 'Démarrer la Démo' pour voir la magie opérer",
+    "building": "Lancez la Démonstration",
+    "buttons": {
+      "startDemo": "Démarrer la Démo",
+      "pause": "En Cours...",
+      "reset": "Recommencer"
+    },
+    "steps": {
+      "idea": {
+        "title": "Votre Idée",
+        "description": "Décrivez votre application"
+      },
+      "adapters": {
+        "title": "Sélection des Adapters",
+        "description": "Nos modules s'activent automatiquement"
+      },
+      "blueprint": {
+        "title": "Blueprint Généré",
+        "description": "Architecture complète créée"
+      },
+      "output": {
+        "title": "Code Prêt",
+        "description": "Votre application est générée"
+      }
+    },
+    "readyToBuild": "Prêt à démarrer",
+    "clickToStart": "Cliquez sur 'Démarrer la Démo' pour voir la magie opérer",
+    "complete": {
+      "title": "🎉 Démonstration Terminée !",
+      "platform": "Architecture complète générée",
+      "features": "4 modules assemblés automatiquement",
+      "time": "Temps total: 2.3 secondes"
     }
   },
   "benefits": {

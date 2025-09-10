@@ -111,7 +111,7 @@ const HeroSection = () => {
   }, []);
 
   const scrollToNext = () => {
-    const element = document.getElementById('benefits');
+    const element = document.getElementById('demo');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -140,110 +140,41 @@ const HeroSection = () => {
           viewport={defaultViewport}
         >
           
-          {/* Hero Message */}
-          <motion.div className="space-y-4 sm:space-y-6" variants={fadeInUp}>
+          {/* Hero Message - Minimalist */}
+          <motion.div className="space-y-8 sm:space-y-12" variants={fadeInUp}>
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-7xl font-satoshi font-black leading-tight tracking-tight px-2"
+              className="text-5xl sm:text-6xl lg:text-8xl font-satoshi font-black leading-tight tracking-tight px-2"
               variants={fadeInDown}
             >
               <motion.span className="text-foreground">{t('hero.title.line1')}</motion.span>
               <br />
               <motion.span className="text-foreground">
-                <span className="text-transparent bg-gradient-brand bg-clip-text"> {t('hero.title.line2')}</span>
+                <span className="text-transparent bg-gradient-brand bg-clip-text">{t('hero.title.line2')}</span>
               </motion.span>
             </motion.h1>
             
             <motion.p 
-              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-inter font-medium px-4"
+              className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-inter font-medium px-4"
               variants={fadeInUp}
             >
               {t('hero.subtitle')}
             </motion.p>
           </motion.div>
 
-          {/* Primary CTA - Enhanced for mobile */}
-          <motion.div className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-4" variants={fadeInUp}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1 sm:flex-none">
+          {/* Single CTA - Centered */}
+          <motion.div className="flex justify-center items-center px-4" variants={fadeInUp}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 size="lg" 
-                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-4 sm:px-8 py-4 group w-full h-12 sm:h-auto text-sm sm:text-sm" 
-                onClick={() => smoothScrollTo("cta")}
+                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-12 py-6 text-lg group" 
+                onClick={() => smoothScrollTo("demo")}
               >
-                <span className="hidden sm:inline">{t('hero.cta.primary')}</span>
-                <span className="sm:hidden">{t('hero.cta.primary').split(' ')[0]}</span>
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.02 }} className="flex-1 sm:flex-none">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="glass-button border-architech-border px-4 sm:px-8 py-4 w-full h-12 sm:h-auto text-sm sm:text-sm"
-                onClick={() => setIsContactModalOpen(true)}
-              >
-                <span className="hidden sm:inline">{t('hero.cta.secondary')}</span>
-                <span className="sm:hidden">{t('hero.cta.secondary').split(' ')[0]}</span>
+                {t('hero.cta.primary')}
+                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
           </motion.div>
 
-          {/* Live Demo Card - Mobile optimized */}
-          <motion.div 
-            className="max-w-2xl mx-auto mt-12 sm:mt-16 px-4"
-            variants={scaleIn}
-          >
-            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-architech-border">
-              <div className="space-y-4 sm:space-y-6">
-                <div className="text-left">
-                  <div className="text-sm text-muted-foreground mb-2">{t('hero.prompt')}</div>
-                  <div className="bg-muted/30 rounded-lg p-3 sm:p-4 min-h-[60px] font-mono text-sm border">
-                    <span className="text-architech-electric">{currentText}</span>
-                    {isTyping && <span className="animate-pulse">|</span>}
-                  </div>
-                </div>
-
-                {showModules && isInView && (!isMobile || !isScrolling) && (
-                  <motion.div 
-                    className="space-y-3"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                  >
-                    <div className="text-sm text-muted-foreground">{t('hero.modules.selected')}</div>
-                    <motion.div 
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-3"
-                      variants={staggerContainer}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      {modules.map((module, index) => (
-                        <motion.div
-                          key={module.name}
-                          className={`${module.color} text-white px-4 py-3 sm:py-2 rounded-lg text-sm font-medium text-center shadow-lg`}
-                          variants={scaleIn}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {module.name}
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="text-center pt-4"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.5 }}
-                    >
-                      <div className="text-sm text-muted-foreground">
-                        <span className="text-architech-electric font-semibold">6 modules</span> assembled in 
-                        <span className="text-architech-electric font-semibold"> 2.3 seconds</span>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                )}
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
 
