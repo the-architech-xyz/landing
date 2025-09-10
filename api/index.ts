@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import waitlistRoutes from './routes/waitlist';
 import statsRoutes from './routes/stats';
+import testEmailRoutes from './routes/test-email';
 import type { HealthResponse } from './types/waitlist';
 
 const app = express();
@@ -25,6 +26,7 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
 // Routes
 app.use('/api/waitlist', waitlistRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/test-email', testEmailRoutes);
 
 // Health check endpoint
 app.get('/api/health', (_req: Request, res: Response<HealthResponse>) => {

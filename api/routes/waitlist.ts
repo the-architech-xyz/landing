@@ -76,16 +76,17 @@ router.post('/', async (req: Request<{}, WaitlistResponse, WaitlistRequest>, res
     }
     
     // Send welcome email (async, don't wait for it)
+    console.log(`Attempting to send welcome email to ${email} with language ${language}`);
     sendWelcomeEmail(email, language as Language, result.data?.referral_code)
       .then(emailResult => {
         if (emailResult.success) {
-          console.log(`Welcome email sent to ${email}`);
+          console.log(`✅ Welcome email sent successfully to ${email}`);
         } else {
-          console.error(`Failed to send welcome email to ${email}:`, emailResult.error);
+          console.error(`❌ Failed to send welcome email to ${email}:`, emailResult.error);
         }
       })
       .catch(err => {
-        console.error(`Error sending welcome email to ${email}:`, err);
+        console.error(`❌ Error sending welcome email to ${email}:`, err);
       });
     
     // Return success response
