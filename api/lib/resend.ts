@@ -2,12 +2,6 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export interface EmailTemplate {
-  subject: string;
-  html: string;
-  text?: string;
-}
-
 export interface WelcomeEmailData {
   email: string;
   position: number;
@@ -18,7 +12,7 @@ export interface WelcomeEmailData {
 /**
  * Get email templates for different languages
  */
-function getEmailTemplates(data: WelcomeEmailData): EmailTemplate {
+function getEmailTemplates(data: WelcomeEmailData): { subject: string; html: string; text: string } {
   const { position, language, referralCode } = data;
   
   const templates = {
@@ -211,81 +205,6 @@ export async function sendWelcomeEmail(data: WelcomeEmailData): Promise<{
     
   } catch (error) {
     console.error('Error sending welcome email:', error);
-    return { 
-      success: false, 
-      error: 'Failed to send email' 
-    };
-  }
-}
-
-/**
- * Send position update email
- */
-export async function sendPositionUpdateEmail(
-  email: string,
-  newPosition: number,
-  language: 'en' | 'fr' = 'en'
-): Promise<{
-  success: boolean;
-  messageId?: string;
-  error?: string;
-}> {
-  try {
-    const templates = {
-      en: {
-        subject: `🎯 Your position updated! You're now #${newPosition}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2>🎯 Great news!</h2>
-            <p>Your position in The Architech waitlist has been updated!</p>
-            <div style="background: #28a745; color: white; padding: 20px; text-align: center; border-radius: 8px; font-size: 24px; font-weight: bold; margin: 20px 0;">
-              You're now #${newPosition}
-            </div>
-            <p>Keep sharing your referral code to move up even faster!</p>
-            <p>Best regards,<br>The Architech Team</p>
-          </div>
-        `
-      },
-      fr: {
-        subject: `🎯 Votre position mise à jour ! Vous êtes maintenant #${newPosition}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2>🎯 Excellente nouvelle !</h2>
-            <p>Votre position dans la liste d'attente The Architech a été mise à jour !</p>
-            <div style="background: #28a745; color: white; padding: 20px; text-align: center; border-radius: 8px; font-size: 24px; font-weight: bold; margin: 20px 0;">
-              Vous êtes maintenant #${newPosition}
-            </div>
-            <p>Continuez à partager votre code de référence pour monter encore plus vite !</p>
-            <p>Cordialement,<br>L'équipe The Architech</p>
-          </div>
-        `
-      }
-    };
-    
-    const template = templates[language];
-    
-    const result = await resend.emails.send({
-      from: 'The Architech <noreply@architech.dev>',
-      to: [email],
-      subject: template.subject,
-      html: template.html
-    });
-    
-    if (result.error) {
-      console.error('Resend error:', result.error);
-      return { 
-        success: false, 
-        error: result.error.message || 'Failed to send email' 
-      };
-    }
-    
-    return { 
-      success: true, 
-      messageId: result.data?.id 
-    };
-    
-  } catch (error) {
-    console.error('Error sending position update email:', error);
     return { 
       success: false, 
       error: 'Failed to send email' 
