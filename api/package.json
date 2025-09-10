@@ -1,0 +1,10 @@
+{
+  "name": "architech-api",
+  "version": "1.0.0",
+  "description": "The Architech Waitlist API",
+  "main": "index.js",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
+    "resend": "^6.0.3"
+  }
+}
