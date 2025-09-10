@@ -1,4 +1,28 @@
-import { getWaitlistStats } from './lib/neon';
+import { neon } from '@neondatabase/serverless';
+
+const sql = neon(process.env.NEON_DATABASE_URL!);
+
+async function getWaitlistStats() {
+  try {
+    const stats = await sql`
+      SELECT 
+        COUNT(*) as total,
+        COUNT(CASE WHEN status = 'waiting' THEN 1 END) as waiting,
+        COALESCE(MAX(position), 0) as last_position
+      FROM waitlist
+    `;
+    
+    return {
+      total: parseInt(stats[0].total),
+      waiting: parseInt(stats[0].waiting),
+      lastPosition: parseInt(stats[0].last_position)
+    };
+    
+  } catch (error) {
+    console.error('Error getting waitlist stats:', error);
+    return { total: 0, waiting: 0, lastPosition: 0 };
+  }
+}
 
 export default async function handler(req: any, res: any) {
   // Handle CORS
