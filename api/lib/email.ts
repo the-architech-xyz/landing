@@ -28,6 +28,9 @@ export async function sendWelcomeEmail(
       ? getFrenchEmailTemplate({ email, language, referralCode: referralCode || undefined }) 
       : getEnglishEmailTemplate({ email, language, referralCode: referralCode || undefined });
     
+    console.log(`Sending email to ${email} with subject: ${subject}`);
+    console.log(`From: Architech Code Forge <noreply@architech-code-forge.com>`);
+    
     const result = await resend.emails.send({
       from: 'Architech Code Forge <noreply@architech-code-forge.com>',
       to: [email],
@@ -35,7 +38,10 @@ export async function sendWelcomeEmail(
       html: htmlContent
     });
     
+    console.log(`Resend API response:`, JSON.stringify(result, null, 2));
+    
     if (result.error) {
+      console.error(`Resend API error:`, result.error);
       throw new Error(`Resend API error: ${result.error.message}`);
     }
     
