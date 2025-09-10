@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
-import InteractiveArchitectsCanvas from "@/components/InteractiveArchitectsCanvas";
+import ArchitectsCanvas from "@/components/ArchitectsCanvas";
 import BenefitsBeforeAfterSection from "@/components/BenefitsBeforeAfterSection";
 import HowItWorksSimplifiedSection from "@/components/HowItWorksSimplifiedSection";
 import WhereWeFitSection from "@/components/WhereWeFitSection";
@@ -22,7 +22,7 @@ const Index = () => {
       <Header />
       <HeroSection />
       <SocialProofSection />
-      <InteractiveArchitectsCanvas />
+      <ArchitectsCanvas />
       <BenefitsBeforeAfterSection />
       <HowItWorksSimplifiedSection />
       <WhereWeFitSection />
