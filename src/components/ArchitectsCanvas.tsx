@@ -68,26 +68,20 @@ const ArchitectsCanvas = () => {
   const { darkMode } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentPhase, setCurrentPhase] = useState(0);
-  const [typedText, setTypedText] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [selectedModules, setSelectedModules] = useState<number[]>([]);
   const [showBlueprint, setShowBlueprint] = useState(false);
   const [blueprintLines, setBlueprintLines] = useState<string[]>([]);
-  const [showModules, setShowModules] = useState(false);
-  const [moduleAssembly, setModuleAssembly] = useState(0);
-  const [showCode, setShowCode] = useState(false);
-  const [showCheckmarks, setShowCheckmarks] = useState(false);
+  const [showProjectStructure, setShowProjectStructure] = useState(false);
+  const [showWorkingPreview, setShowWorkingPreview] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [typingText, setTypingText] = useState("");
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const [layoutMode, setLayoutMode] = useState<'vertical' | 'horizontal'>('vertical');
+  const [hoveredTech, setHoveredTech] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, targetX: number, targetY: number, progress: number}>>([]);
   const [showParticles, setShowParticles] = useState(false);
-  const [hoveredTech, setHoveredTech] = useState<number | null>(null);
-  const [animationProgress, setAnimationProgress] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [showProjectStructure, setShowProjectStructure] = useState(false);
-  const [showWorkingPreview, setShowWorkingPreview] = useState(false);
 
   const techStack = [
     { 

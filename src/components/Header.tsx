@@ -40,7 +40,7 @@ const Header = () => {
       
       setActiveSection(currentSection);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -149,7 +149,7 @@ const Header = () => {
             >
               {t('header.nav.whereWeFit')}
             </button>
-            <button 
+              <button
               onClick={() => smoothScrollTo('faq')}
               className={`transition-all duration-300 hover:scale-105 font-medium text-sm lg:text-base ${
                 activeSection === 'faq' 
@@ -158,7 +158,7 @@ const Header = () => {
               }`}
             >
               {t('header.nav.faq')}
-            </button>
+              </button>
           </nav>
 
           {/* Actions */}
@@ -199,7 +199,7 @@ const Header = () => {
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button> */}
             
-            <Button 
+            <Button
               className="hidden md:inline-flex bg-gradient-electric hover:shadow-electric text-white font-semibold group relative overflow-hidden text-sm lg:text-base px-4 sm:px-6 py-2 sm:py-2"
               onClick={() => smoothScrollTo('cta')}
             >
@@ -280,7 +280,7 @@ const Header = () => {
               >
                 {t('header.nav.whereWeFit')}
               </button>
-              <button 
+                    <button
                 onClick={() => {
                   smoothScrollTo('faq');
                   setMobileMenuOpen(false);
@@ -292,11 +292,11 @@ const Header = () => {
                 }`}
               >
                 {t('header.nav.faq')}
-              </button>
+                    </button>
               
            
               
-              <Button 
+                    <Button
                 className="mt-4 mx-4 bg-gradient-electric hover:shadow-electric text-white font-semibold py-3 text-base"
                 onClick={() => {
                   smoothScrollTo('cta');
@@ -304,26 +304,26 @@ const Header = () => {
                 }}
               >
                 {t('header.cta')}
-              </Button>
-              
-              {/* Mobile Social Links */}
+                    </Button>
+
+                  {/* Mobile Social Links */}
               <div className="flex items-center justify-center space-x-4 mt-6 px-4">
-                <a
-                  href="https://discord.gg/sxhdEEWups"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                    <a
+                      href="https://discord.gg/sxhdEEWups"
+                      target="_blank"
+                      rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300"
-                >
-                  <DiscordIcon className="h-5 w-5" />
+                    >
+                      <DiscordIcon className="h-5 w-5" />
                   <span className="text-sm font-medium">Discord</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/the-architech-ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/the-architech-ai/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-architech-electric/10 hover:bg-architech-electric/20 text-architech-electric hover:text-white transition-all duration-300"
-                >
-                  <Linkedin className="h-5 w-5" />
+                    >
+                      <Linkedin className="h-5 w-5" />
                   <span className="text-sm font-medium">LinkedIn</span>
                 </a>
               </div>
