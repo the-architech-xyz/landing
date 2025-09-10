@@ -60,7 +60,7 @@ importers:
         specifier: ^1.1.0
         version: 1.1.7(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-radio-group':
-        specifier: ^1.2.0
+        specifier: ^1.1.0
         version: 1.3.8(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-scroll-area':
         specifier: ^1.1.0
@@ -107,6 +107,9 @@ importers:
       '@vercel/kv':
         specifier: ^3.0.0
         version: 3.0.0
+      '@vercel/node':
+        specifier: ^5.3.6
+        version: 5.3.21(@swc/core@1.13.5)(rollup@4.50.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -119,9 +122,6 @@ importers:
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
-      dotenv:
-        specifier: ^17.2.2
-        version: 17.2.2
       embla-carousel-react:
         specifier: ^8.3.0
         version: 8.6.0(react@18.3.1)
@@ -213,9 +213,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.7(@types/react@18.3.24)
-      '@vercel/node':
-        specifier: ^5.3.21
-        version: 5.3.21(@swc/core@1.13.5)(rollup@4.50.0)
       '@vitejs/plugin-react-swc':
         specifier: ^3.5.0
         version: 3.11.0(vite@5.4.19(@types/node@22.18.1))
@@ -238,7 +235,7 @@ importers:
         specifier: ^1.1.7
         version: 1.1.9(ts-node@10.9.1(@swc/core@1.13.5)(@types/node@22.18.1)(typescript@5.9.2))(vite@5.4.19(@types/node@22.18.1))
       postcss:
-        specifier: ^8.4.47
+        specifier: ^8.5.6
         version: 8.5.6
       tailwindcss:
         specifier: ^3.4.11
@@ -2311,10 +2308,6 @@ packages:
 
   dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
-
-  dotenv@17.2.2:
-    resolution: {integrity: sha512-Sf2LSQP+bOlhKWWyhFsn0UsfdK/kCWRv1iuA2gXAwt3dyNabr6QSj00I2V10pidqz69soatm9ZwZvpQMTIOd5Q==}
-    engines: {node: '>=12'}
 
   draw-svg-path@1.0.0:
     resolution: {integrity: sha512-P8j3IHxcgRMcY6sDzr0QvJDLzBnJJqpTG33UZ2Pvp8rw0apCHhJCWqYprqrXjrgHnJ6tuhP1iTJSAodPDHxwkg==}
@@ -6130,8 +6123,6 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.28.4
       csstype: 3.1.3
-
-  dotenv@17.2.2: {}
 
   draw-svg-path@1.0.0:
     dependencies:
