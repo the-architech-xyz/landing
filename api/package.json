@@ -1,9 +1,16 @@
 {
-  "name": "architech-api",
+  "name": "architech-code-forge-api",
   "version": "1.0.0",
-  "type": "module",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.js",
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
-    "resend": "^6.0.3"
+    "resend": "^6.0.3",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }

@@ -4,7 +4,7 @@ import { neon } from '@neondatabase/serverless';
 // Import Resend
 import { Resend } from 'resend';
 
-const sql = neon(process.env.NEON_DATABASE_URL!);
+const sql = neon(process.env.DATABASE_URL!);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export interface WaitlistRequest {
