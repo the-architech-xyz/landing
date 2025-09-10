@@ -55,15 +55,15 @@ const SimpleCTASection = () => {
         if (response.status === 409) {
           // Email already exists
           setError(t('waitlist.alreadyExists'));
-          setWaitlistPosition(data.position);
+          setWaitlistPosition(data.data?.position);
           return;
         }
         throw new Error(data.error || 'Failed to join waitlist');
       }
 
       // Set position if returned by API
-      if (data.position) {
-        setWaitlistPosition(data.position);
+      if (data.data?.position) {
+        setWaitlistPosition(data.data.position);
       }
 
       setIsSubmitted(true);
@@ -94,9 +94,9 @@ const SimpleCTASection = () => {
             </p>
             
             <div className="glass-card rounded-2xl p-6 max-w-md mx-auto">
-              <div className="text-sm text-muted-foreground mb-2">{t('cta.emailPlaceholder')}</div>
+              {/* <div className="text-sm text-muted-foreground mb-2">{t('cta.emailPlaceholder')}</div> */}
               <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">
-                #{waitlistPosition || '🎯'}
+                {waitlistPosition ? `#${waitlistPosition}` : '🎯'}
               </div>
               <div className="text-sm text-muted-foreground mt-2">
                 SaaS platform coming soon
