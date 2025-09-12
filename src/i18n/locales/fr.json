@@ -115,6 +115,28 @@
       },
       "subtitle": "Comparez l'expérience de développement traditionnelle avec Architech"
     },
+    "innovationTax": {
+      "title": "Pourquoi nous existons :",
+      "titleHighlight": "La Taxe d'Innovation",
+      "subtitle": "Trois coûts cachés qui paralysent la productivité des développeurs",
+      "components": {
+        "setupTax": {
+          "title": "La Taxe de Configuration : 3-5 Jours Perdus Avant le Jour 1",
+          "description": "Chaque nouveau projet commence avec une dette : des jours de configuration, de gestion des dépendances et de code répétitif avant la première ligne de vraie valeur.",
+          "statistic": "3-5 Jours"
+        },
+        "technicalDebtTax": {
+          "title": "La Taxe de Dette Cachée : 42% de Votre Temps",
+          "description": "est perdu dans la maintenance et le débogage en raison de mauvais choix architecturaux initiaux, paralysant l'innovation future.",
+          "statistic": "42%"
+        },
+        "aiSupervisionTax": {
+          "title": "La Taxe de Supervision IA : +26% de Reviews Plus Longues",
+          "description": "Les assistants IA actuels promettent la vitesse mais livrent la complexité. Le temps de review de code augmente de 26% car vos développeurs doivent passer leur temps à superviser la machine.",
+          "statistic": "+26%"
+        }
+      }
+    },
     "subtitle": {
       "line1": "Vous payez une taxe sur l'innovation.",
       "line2": "Vous ne le voyez simplement pas."
@@ -163,7 +185,8 @@
     }
   },
   "howItWorks": {
-    "title": "Comment ça Marche",
+    "title": "The Supply Chain for",
+    "titleHighlight": "Modern Software",
     "subtitle": "Trois étapes simples pour transformer votre vision en code prêt pour la production",
     "supplyChain": {
       "title": "The Supply Chain for",
@@ -171,32 +194,40 @@
       "subtitle": "Un processus simple en 3 étapes pour transformer votre vision en application",
       "steps": {
         "blueprint": {
-          "title": "Blueprint",
-          "subtitle": "Votre Intention",
-          "description": "Décrivez votre application en langage naturel",
-          "example": "Une app de gestion de tâches avec authentification JWT et base de données PostgreSQL"
+          "title": "Définissez Votre Blueprint",
+          "description": "Décrivez votre projet avec des modules pré-validés dans un simple fichier YAML. Choisissez votre stack, intégrations et fonctionnalités. C'est la source de vérité pour votre architecture.",
+          "yamlExample": "# blueprint.yaml\nproject: MySaaS\narchitecture:\n  - auth: better-auth\n  - database: drizzle\n  - ui: shadcn-ui\n  - api: tRPC\n  - deployment: vercel"
         },
-        "aiArchitect": {
-          "title": "AI Architect",
-          "subtitle": "Notre Orchestration",
-          "description": "Notre IA sélectionne et configure les modules optimaux",
-          "example": "Sélection automatique des adapters: Auth, Database, UI, API Gateway"
+        "generation": {
+          "title": "Laissez l'Architecte Construire",
+          "description": "Notre CLI n'est pas une boîte noire. Il orchestre une série d'actions claires : installation des adapters, configuration des dépendances, et exécution des blueprints d'intégration.",
+          "checklist": [
+            "Structure du projet créée",
+            "Dépendances installées",
+            "TypeScript configuré",
+            "ESLint & Prettier ajoutés",
+            "Prêt à développer !"
+          ]
         },
-        "yourCode": {
-          "title": "Your Code",
-          "subtitle": "Votre Propriété",
-          "description": "Code généré, documenté et prêt pour la production",
-          "example": "Structure complète avec tests, documentation et configuration de déploiement"
+        "code": {
+          "title": "Possédez 100% du Code",
+          "description": "Le résultat est un code propre et modulaire qui vous appartient entièrement. Aucune dépendance cachée, aucun verrouillage fournisseur. Vous avez un contrôle total pour le modifier et le déployer où vous voulez.",
+          "codeExample": "// Vous obtenez du code propre et standard\nimport { withAuth } from \"@lib/auth\";\nimport { useDatabase } from \"@lib/db\";\n\nfunction DashboardPage({ data }) {\n  const { user } = withAuth();\n  const db = useDatabase();\n  \n  return (\n    <div className=\"p-6\">\n      <h1>Bienvenue, {user.name} !</h1>\n      {/* Votre code propre et modulaire */}\n    </div>\n  );\n}"
         }
       },
+      "navigation": {
+        "blueprint": "Blueprint",
+        "generation": "Génération", 
+        "code": "Code"
+      },
       "cta": {
-        "button": "Lire notre Whitepaper",
-        "description": "Pour les détails techniques complets"
+        "button": "Télécharger le Whitepaper",
+        "description": "En savoir plus sur notre approche architecturale"
       }
     },
     "steps": {
       "describe": {
-        "title": "Choisissez votre Blueprint",
+        "title": "Choisissez votre Génome",
         "description": "Sélectionnez parmi des blueprints éprouvés ou créez le vôtre. Chaque blueprint est un modèle d'architecture prouvé.",
         "details": [
           "Parcourez les blueprints disponibles",

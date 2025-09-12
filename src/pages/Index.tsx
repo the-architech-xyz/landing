@@ -3,13 +3,14 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import ArchitectsCanvas from "@/components/ArchitectsCanvas";
-import BenefitsBeforeAfterSection from "@/components/BenefitsBeforeAfterSection";
+import BenefitsSection from "@/components/BenefitsSection";
 import HowItWorksSimplifiedSection from "@/components/HowItWorksSimplifiedSection";
 import WhereWeFitSection from "@/components/WhereWeFitSection";
 import FAQSection from "@/components/FAQSection";
 import SimpleCTASection from "@/components/SimpleCTASection";
 import Footer from "@/components/Footer";
 import FloatingSocialWidget from "@/components/FloatingSocialWidget";
+import HowItWorksSection from "@/components/HowItWorksSection";
 
 const Index = () => {
   useEffect(() => {
@@ -23,8 +24,9 @@ const Index = () => {
       <HeroSection />
       <SocialProofSection />
       <ArchitectsCanvas />
-      <BenefitsBeforeAfterSection />
-      <HowItWorksSimplifiedSection />
+      <BenefitsSection />
+      <HowItWorksSection />
+      {/* <HowItWorksSimplifiedSection /> */}
       <WhereWeFitSection />
       <FAQSection />
       <SimpleCTASection />

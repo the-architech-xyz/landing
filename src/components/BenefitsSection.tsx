@@ -6,26 +6,28 @@ import { useScrollTriggerGSAP } from "@/hooks/useScrollTriggerGSAP";
 import { useTranslation } from "@/hooks/useTranslation";
 
 // Desktop Sticky Scroll Component
-const DesktopStickyScroll = ({ problemCards, pieChartData, t }: { problemCards: any[], pieChartData: any[], t: any }) => {
+const DesktopStickyScroll = ({ innovationTaxCards, pieChartData, t }: { innovationTaxCards: any[], pieChartData: any[], t: any }) => {
   const { containerRef, stickyRef, setContentRef, activeIndex } = useScrollTriggerGSAP();
   
   return (
-    <section 
+    <section
       ref={containerRef}
       className="bg-architech-section-dark relative overflow-hidden"
-      style={{ height: '220vh', minHeight: '220vh' }}
+      style={{ height: "220vh", minHeight: "220vh" }}
     >
-      <div className="sticky-wrapper" style={{ height: '100vh', position: 'sticky', top: '5vh' }}>
+      <div
+        className="sticky-wrapper"
+        style={{ height: "100vh", position: "sticky", top: "5vh" }}
+      >
         <div className="container mx-auto px-4 sm:px-6">
-          <div 
+          <div
             ref={stickyRef}
             className="grid lg:grid-cols-2 gap-16 items-center h-[90vh]"
           >
-            
             {/* Left Side - Content Cards */}
             <div className="relative h-full">
               <div className="tabs-content-container h-full">
-                {problemCards.map((card, index) => (
+                {innovationTaxCards.map((card, index) => (
                   <div
                     key={index}
                     ref={setContentRef(index)}
@@ -34,15 +36,23 @@ const DesktopStickyScroll = ({ problemCards, pieChartData, t }: { problemCards: 
                     <div className="space-y-6">
                       {/* Icon and Title */}
                       <div className="flex items-center gap-4 mb-6">
-                        <div className={`w-16 h-16 rounded-2xl bg-${card.color}-500/20 flex items-center justify-center`}>
+                        <div
+                          className={`w-16 h-16 rounded-2xl bg-${card.color}-500/20 flex items-center justify-center`}
+                        >
                           {(() => {
                             const IconComponent = card.icon;
-                            return <IconComponent className={`w-8 h-8 text-${card.color}-500`} />;
+                            return (
+                              <IconComponent
+                                className={`w-8 h-8 text-${card.color}-500`}
+                              />
+                            );
                           })()}
                         </div>
                         <div>
+                         
                           <div className="text-sm font-medium text-muted-foreground mb-1">
-                            {t('benefits.problem')} {index + 1}
+                            {t("benefits.innovationTax.titleHighlight")}{" "}
+                            {index + 1}
                           </div>
                           <h3 className="text-3xl sm:text-4xl font-bold text-foreground">
                             {card.title}
@@ -58,34 +68,39 @@ const DesktopStickyScroll = ({ problemCards, pieChartData, t }: { problemCards: 
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="text-center space-y-6">
                       {/* Large Number */}
                       <div className="relative">
-                        <div className={`text-9xl font-black text-${card.color}-500 mb-2`}>
+                        <div
+                          className={`text-9xl font-black text-${card.color}-500 mb-2`}
+                        >
                           {card.number}
                         </div>
                         <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
                       </div>
-                      
+
                       {/* Source */}
                       <div className="glass-card rounded-xl p-4 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2">
                         <div className="text-sm text-muted-foreground/70">
-                          <span className="font-medium">{t('common.source')}</span> {card.source}
+                          <span className="font-medium">
+                            {t("common.source")}
+                          </span>{" "}
+                          {card.source}
                         </div>
                       </div>
 
                       {/* Progress Dots */}
                       <div className="flex justify-center gap-2">
-                        {problemCards.map((_, i) => (
+                        {innovationTaxCards.map((_, i) => (
                           <div
                             key={i}
                             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                              i === index 
-                                ? `bg-${card.color}-500 w-8` 
-                                : i < index 
-                                  ? 'bg-green-500' 
-                                  : 'bg-gray-600'
+                              i === index
+                                ? `bg-${card.color}-500 w-8`
+                                : i < index
+                                ? "bg-green-500"
+                                : "bg-gray-600"
                             }`}
                           />
                         ))}
@@ -98,10 +113,7 @@ const DesktopStickyScroll = ({ problemCards, pieChartData, t }: { problemCards: 
 
             {/* Right Side - Visual (Pie Chart) - Static */}
             <div className="relative h-full flex items-center justify-center">
-              <ModernPieChart 
-                data={pieChartData}
-                className="mx-auto"
-              />
+              <ModernPieChart data={pieChartData} className="mx-auto" />
             </div>
           </div>
         </div>
@@ -144,7 +156,7 @@ const BenefitsSection = () => {
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && mobileCardIndex < problemCards.length - 1) {
+    if (isLeftSwipe && mobileCardIndex < innovationTaxCards.length - 1) {
       setMobileCardIndex(mobileCardIndex + 1);
     }
     if (isRightSwipe && mobileCardIndex > 0) {
@@ -165,29 +177,29 @@ const BenefitsSection = () => {
     }
   };
 
-  const problemCards = [
+  const innovationTaxCards = [
     {
-      icon: AlertTriangle,
-      number: "42%",
-      title: t('benefits.problems.timeConsuming.title'),
-      description: t('benefits.problems.timeConsuming.description'),
-      source: "Stripe / Chalmers University",
+      icon: Clock,
+      number: t('benefits.innovationTax.components.setupTax.statistic'),
+      title: t('benefits.innovationTax.components.setupTax.title'),
+      description: t('benefits.innovationTax.components.setupTax.description'),
+      source: "Industry Research",
       color: "red"
     },
     {
-      icon: BarChart3,
-      number: "67%",
-      title: t('benefits.problems.complexSetup.title'),
-      description: t('benefits.problems.complexSetup.description'),
-      source: "Harness",
+      icon: AlertTriangle,
+      number: t('benefits.innovationTax.components.technicalDebtTax.statistic'),
+      title: t('benefits.innovationTax.components.technicalDebtTax.title'),
+      description: t('benefits.innovationTax.components.technicalDebtTax.description'),
+      source: "Stripe / Chalmers University",
       color: "orange"
     },
     {
-      icon: Clock,
-      number: "3-5 Days",
-      title: t('benefits.problems.scalingChallenges.title'),
-      description: t('benefits.problems.scalingChallenges.description'),
-      source: t('benefits.industryAverage'),
+      icon: BarChart3,
+      number: t('benefits.innovationTax.components.aiSupervisionTax.statistic'),
+      title: t('benefits.innovationTax.components.aiSupervisionTax.title'),
+      description: t('benefits.innovationTax.components.aiSupervisionTax.description'),
+      source: "AI Research Institute",
       color: "purple"
     }
   ];
@@ -237,21 +249,22 @@ const BenefitsSection = () => {
     <section id="benefits">
       {/* Header Section */}
       <section className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-      </div>
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+        </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2">
-              {t('benefits.title.line1')} <span className="text-transparent bg-gradient-brand bg-clip-text">{t('benefits.title.line2')}</span>
-          </h2>
-
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-inter font-normal">
-              {t('benefits.subtitle.line1')} <span className="text-transparent bg-gradient-brand bg-clip-text">{t('benefits.subtitle.line2')}</span>
-          </p>
-            </div>
-            </div>
+        <motion.h2
+          className="text-center text-4xl sm:text-5xl lg:text-6xl font-satoshi font-bold text-foreground leading-tight tracking-tight"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          {t("benefits.innovationTax.title")}{" "}
+          <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
+            {t("benefits.innovationTax.titleHighlight")}
+          </span>
+        </motion.h2>  
       </section>
 
       {/* Sticky Scroll Section - Desktop / Mobile Carousel */}
@@ -275,59 +288,74 @@ const BenefitsSection = () => {
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div> */}
-                    <motion.div
+                <motion.div
                   key={mobileCardIndex}
                   className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-architech-brand-blue/5 to-architech-brand-green/5"
                   initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                <div className="text-center space-y-6">
-                  {/* Icon and Title */}
-                  <div className="flex flex-col items-center gap-4 mb-6">
-                    <div className={`w-16 h-16 rounded-2xl bg-${problemCards[mobileCardIndex].color}-500/20 flex items-center justify-center`}>
-                      {(() => {
-                        const IconComponent = problemCards[mobileCardIndex].icon;
-                        return <IconComponent className={`w-8 h-8 text-${problemCards[mobileCardIndex].color}-500`} />;
-                      })()}
-                </div>
-                    <div>
-                      <div className="text-sm font-medium text-muted-foreground mb-1">
-                        {t('benefits.problem')} {mobileCardIndex + 1}
+                  <div className="text-center space-y-6">
+                    {/* Icon and Title */}
+                    <div className="flex flex-col items-center gap-4 mb-6">
+                      <div
+                        className={`w-16 h-16 rounded-2xl bg-${innovationTaxCards[mobileCardIndex].color}-500/20 flex items-center justify-center`}
+                      >
+                        {(() => {
+                          const IconComponent =
+                            innovationTaxCards[mobileCardIndex].icon;
+                          return (
+                            <IconComponent
+                              className={`w-8 h-8 text-${innovationTaxCards[mobileCardIndex].color}-500`}
+                            />
+                          );
+                        })()}
                       </div>
-                      <h3 className="text-2xl font-bold text-foreground">
-                        {problemCards[mobileCardIndex].title}
-                      </h3>
+                      <div>
+                        <div className="text-sm font-medium text-muted-foreground mb-1">
+                          {t("benefits.innovationTax.title")}{" "}
+                          {mobileCardIndex + 1}
+                        </div>
+                        <h3 className="text-2xl font-bold text-foreground">
+                          {innovationTaxCards[mobileCardIndex].title}
+                        </h3>
                       </div>
-                </div>
+                    </div>
 
-                  {/* Large Number */}
-                  <div className="relative">
-                    <div className={`text-6xl font-black text-${problemCards[mobileCardIndex].color}-500 mb-2`}>
-                      {problemCards[mobileCardIndex].number}
-                              </div>
-                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-                            </div>
+                    {/* Large Number */}
+                    <div className="relative">
+                      <div
+                        className={`text-6xl font-black text-${innovationTaxCards[mobileCardIndex].color}-500 mb-2`}
+                      >
+                        {innovationTaxCards[mobileCardIndex].number}
+                      </div>
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
 
-                  {/* Description */}
-                  <p className="text-base text-muted-foreground leading-relaxed">
-                    {problemCards[mobileCardIndex].description}
-                  </p>
+                    {/* Description */}
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {innovationTaxCards[mobileCardIndex].description}
+                    </p>
 
-                  {/* Source */}
-                  <div className="glass-card rounded-xl p-4 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2">
-                    <div className="text-sm text-muted-foreground/70">
-                      <span className="font-medium">{t('common.source')}</span> {problemCards[mobileCardIndex].source}
+                    {/* Source */}
+                    <div className="glass-card rounded-xl p-4 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2">
+                      <div className="text-sm text-muted-foreground/70">
+                        <span className="font-medium">
+                          {t("common.source")}
+                        </span>{" "}
+                        {innovationTaxCards[mobileCardIndex].source}
+                      </div>
                     </div>
                   </div>
-                </div>
                 </motion.div>
               </div>
 
               {/* Mobile Navigation */}
               <div className="flex justify-center items-center gap-4">
                 <button
-                  onClick={() => setMobileCardIndex(Math.max(0, mobileCardIndex - 1))}
+                  onClick={() =>
+                    setMobileCardIndex(Math.max(0, mobileCardIndex - 1))
+                  }
                   disabled={mobileCardIndex === 0}
                   className="w-12 h-12 rounded-full bg-architech-brand-blue/20 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -336,22 +364,29 @@ const BenefitsSection = () => {
 
                 {/* Progress Dots */}
                 <div className="flex gap-2">
-                  {problemCards.map((_, i) => (
+                  {innovationTaxCards.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setMobileCardIndex(i)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        i === mobileCardIndex 
-                          ? 'bg-architech-brand-blue w-8' 
-                          : 'bg-gray-600'
+                        i === mobileCardIndex
+                          ? "bg-architech-brand-blue w-8"
+                          : "bg-gray-600"
                       }`}
                     />
-              ))}
-            </div>
+                  ))}
+                </div>
 
                 <button
-                  onClick={() => setMobileCardIndex(Math.min(problemCards.length - 1, mobileCardIndex + 1))}
-                  disabled={mobileCardIndex === problemCards.length - 1}
+                  onClick={() =>
+                    setMobileCardIndex(
+                      Math.min(
+                        innovationTaxCards.length - 1,
+                        mobileCardIndex + 1
+                      )
+                    )
+                  }
+                  disabled={mobileCardIndex === innovationTaxCards.length - 1}
                   className="w-12 h-12 rounded-full bg-architech-brand-blue/20 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="w-6 h-6 text-architech-brand-blue" />
@@ -360,58 +395,65 @@ const BenefitsSection = () => {
 
               {/* Mobile Pie Chart */}
               <div className="flex justify-center">
-                <ModernPieChart 
-                  data={pieChartData}
-                  className="mx-auto"
-                />
+                <ModernPieChart data={pieChartData} className="mx-auto" />
               </div>
             </div>
           </div>
         </section>
       ) : (
         /* Desktop Sticky Scroll Version */
-        <DesktopStickyScroll problemCards={problemCards} pieChartData={pieChartData} t={t} />
+        <DesktopStickyScroll
+          innovationTaxCards={innovationTaxCards}
+          pieChartData={pieChartData}
+          t={t}
+        />
       )}
 
       {/* Solution Section */}
-      <section className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
+      <section className="py-12 sm:py-24 bg-architech-section-dark relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              {t('benefits.solution.title')}
+              {t("benefits.solution.title")}
             </h3>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {t('benefits.solution.description')}
+              {t("benefits.solution.description")}
             </p>
           </div>
 
           {/* Proof of Gain Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {solutionStats.map((stat, index) => (
-        <motion.div
+              <motion.div
                 key={stat.title}
                 className="glass-card rounded-2xl p-8 border border-muted-foreground/20 bg-gradient-to-br from-white/5 to-white/2 relative overflow-hidden group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   borderColor: `var(--${stat.color}-500)`,
-                  boxShadow: `0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--${stat.color}-500/20)`
+                  boxShadow: `0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--${stat.color}-500/20)`,
                 }}
               >
                 {/* Background gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-${stat.color}-500/5 to-${stat.color}-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br from-${stat.color}-500/5 to-${stat.color}-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                />
+
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className={`w-16 h-16 rounded-2xl bg-${stat.color}-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-16 h-16 rounded-2xl bg-${stat.color}-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <stat.icon className={`w-8 h-8 text-${stat.color}-500`} />
                   </div>
 
                   {/* Metric */}
-                  <div className={`text-4xl font-black text-${stat.color}-500 mb-3 group-hover:scale-105 transition-transform duration-300`}>
+                  <div
+                    className={`text-4xl font-black text-${stat.color}-500 mb-3 group-hover:scale-105 transition-transform duration-300`}
+                  >
                     {stat.metric}
                   </div>
 
@@ -442,14 +484,13 @@ const BenefitsSection = () => {
                     </div>
                   </div> */}
                 </div>
-            </motion.div>
+              </motion.div>
             ))}
           </div>
 
           {/* Bottom CTA */}
-   
-      </div>
-    </section>
+        </div>
+      </section>
     </section>
   );
 };
