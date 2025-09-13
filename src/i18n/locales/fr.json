@@ -756,5 +756,80 @@
     "alreadyExists": "Vous êtes déjà sur notre liste d'attente !",
     "error": "Échec de l'inscription à la liste d'attente. Veuillez réessayer.",
     "success": "Inscription à la liste d'attente réussie !"
+  },
+  "lightPaper": {
+    "title": "L'Architech : La Chaîne d'Approvisionnement du Logiciel Moderne",
+    "subtitle": "Nous avons optimisé toutes les industries sauf la nôtre. Il est temps de changer cela.",
+    "sections": {
+      "digitalParadox": {
+        "title": "1. Le Paradoxe Numérique",
+        "content": "Nous avons une opportunité incroyable de travailler dans le monde numérique. Une chance que l'industrie physique n'a jamais eue.\n\nDans notre monde, une fois qu'un produit est créé, son coût de duplication est pratiquement nul. Nous pouvons le livrer à des millions de personnes instantanément. C'est un avantage colossal.\n\nPourtant, voici le paradoxe : alors que l'industrie physique a passé un siècle à optimiser ses lignes de production pour la vitesse, la qualité et la standardisation, l'industrie qui construit le monde de demain—la nôtre, l'industrie du logiciel—fonctionne encore largement comme un atelier artisanal."
+      },
+      "innovationTax": {
+        "title": "2. L'Artisan Numérique et sa \"Taxe d'Innovation\"",
+        "content": "Chaque nouveau projet est une réinvention. Nous choisissons nos outils, assemblons nos configurations, et écrivons du code de \"plomberie\" encore et encore. C'est lent. C'est cher. C'est frustrant.\n\nCe n'est pas un sentiment. C'est une réalité quantifiable, une \"Taxe d'Innovation\" que chaque projet paie. Les études industrielles le confirment : selon Software.com, les développeurs passent en moyenne seulement 52 minutes par jour sur du codage actif réel. La recherche de Stripe montre que jusqu'à 42% de leur temps est consommé par la gestion de la dette technique, souvent née d'une configuration initiale défaillante.\n\nNous passons notre temps comme des artisans surchargés quand nous devrions être des architectes visionnaires."
+      },
+      "aiMirage": {
+        "title": "3. Le Mirage de l'IA : La Mauvaise Solution",
+        "content": "Face à cet artisanat inefficace, on nous a vendu une balle d'argent : l'Intelligence Artificielle. Mais l'IA qu'on nous propose aujourd'hui ne résout pas le problème structurel. Elle assiste simplement un processus qui est fondamentalement cassé.\n\nC'est comme placer un robot à côté d'un maître forgeron et lui demander d'imiter ses gestes. Elle ignore l'histoire. La vraie révolution n'est pas de remplacer l'artisan ; c'est de changer la ligne de production.\n\nPire, l'IA d'aujourd'hui transforme le rôle passionnant du développeur en un travail déshumanisant de vérification et de correction des erreurs d'une machine. Elle vole la joie de la conception pour laisser la corvée de la correction."
+      },
+      "softwareSupplyChain": {
+        "title": "4. La Vraie Révolution : La Chaîne d'Approvisionnement Logicielle",
+        "content": "Le vrai problème n'est pas l'outil. C'est la méthode. La vraie solution est d'appliquer les leçons de la révolution industrielle au développement logiciel.\n\nC'est ce que nous avons construit. L'Architech est la première vraie \"Chaîne d'Approvisionnement pour le Logiciel\".\n\nNotre orchestrateur intelligent assemble votre application en minutes, suivant une logique claire et maîtrisée. Ceci est rendu possible par une nouvelle architecture modulaire :",
+        "adapters": {
+          "title": "Les Matières Premières (Adaptateurs)",
+          "description": "Chaque technologie (Next.js, Drizzle, Stripe...) est empaquetée dans un Adaptateur. C'est un bloc de construction pur, agnostique et de qualité industrielle qui installe un outil de manière isolée et parfaite. Plus besoin de passer des heures à chercher le bon template."
+        },
+        "integrators": {
+          "title": "Les Composants Intelligents (Intégrateurs)",
+          "description": "Un Intégrateur est un \"pont\" intelligent qui sait comment connecter deux ou plusieurs Adaptateurs. Il contient la logique experte pour faire parler Drizzle avec Next.js ou intégrer Sentry de manière transparente avec votre authentification, en modifiant le code de manière chirurgicale."
+        },
+        "assemblyPlant": {
+          "title": "L'Usine d'Assemblage (Le Moteur CLI)",
+          "description": "Au cœur du CLI, un moteur sophistiqué basé sur un Système de Fichiers Virtuel (VFS) à la demande et des \"Modificateurs\" pilotés par AST garantit que chaque opération est sûre, atomique et prévisible. Il garantit la qualité du produit final."
+        },
+        "result": "Le résultat n'est pas une boîte noire. C'est votre code—propre, testé, maintenable, basé sur les meilleures pratiques, et 100% possédé par vous."
+      },
+      "useCases": {
+        "title": "5. Construisez N'importe Quoi, Plus Vite. (Cas d'Usage)",
+        "subtitle": "Ce n'est pas théorique. Voici ce que vous pouvez construire en minutes, pas en mois.",
+        "aiWriting": {
+          "title": "Assistant d'Écriture IA",
+          "description": "Lancez votre plateforme de création de contenu intelligente en un week-end.",
+          "stack": ["Next.js", "OpenAI", "Pinecone", "Stripe"]
+        },
+        "ecommerce": {
+          "title": "E-commerce Moderne",
+          "description": "Construisez une boutique en ligne complète avec paiements et gestion d'inventaire.",
+          "stack": ["Remix", "Sanity", "Algolia", "Stripe"]
+        },
+        "dashboard": {
+          "title": "Tableau de Bord Interne",
+          "description": "Créez des outils d'analyse et d'administration puissants pour votre équipe en minutes.",
+          "stack": ["React", "Tremor UI", "Supabase", "Auth.js"]
+        }
+      },
+      "humanBenefit": {
+        "title": "6. De l'Artisan à l'Architecte : Le Bénéfice Humain",
+        "content": "Ce que L'Architech change est fondamental. Il ne vous rend pas seulement plus rapide. Il change votre rôle.\n\nVous n'êtes plus l'artisan qui passe ses journées sur des tâches ingrates. Vous n'êtes plus le vérificateur d'erreurs de l'IA.\n\nVous êtes l'Architecte. Le superviseur. Celui qui pense, structure et innove. Vous êtes élevé là où vous avez toujours voulu être. Nous vous redonnons ce qui vous a amené au développement en premier lieu : la joie de la création."
+      },
+      "founder": {
+        "title": "7. Un Mot du Fondateur",
+        "content": "Cette mission est profondément personnelle. Elle est née d'une décennie passée dans les tranchées du développement, voyant des idées incroyables retenues par une complexité inutile. L'Architech est la culmination de cette frustration. C'est un outil que j'ai d'abord construit pour moi-même, pour retrouver cette \"étincelle\" créative initiale.\n\nMa philosophie est simple : la technologie devrait être un levier d'émancipation, pas une barrière. Mon objectif est de vous élever, de vous libérer des tâches ingrates pour que vous puissiez vous concentrer sur ce qui vous a amené au développement en premier lieu : le désir d'innover, de penser et de construire.\n\nL'Architech est la première pierre. C'est un outil pragmatique pour résoudre un problème d'aujourd'hui. Mais il est construit sur une fondation—modularité, standards ouverts et propriété—qui prépare pour l'Internet souverain de demain.\n\nSi cette vision de libérer la créativité humaine des contraintes inutiles résonne avec vous, alors rejoignez-nous.\n\n- Antoine"
+      },
+      "startBuilding": {
+        "title": "8. Commencez à Construire",
+        "content": "L'ère de l'artisanat frustrant est terminée. L'ère de la création fluide et puissante commence maintenant.",
+        "builders": "Pour les Constructeurs : Prêt à arrêter de configurer et commencer à créer ?",
+        "architects": "Pour les Architectes du Futur : Voulez-vous construire l'écosystème avec nous ?",
+        "whitepaper": "Curieux de notre vision à long terme pour un web souverain ? Lisez notre Whitepaper complet."
+      }
+    },
+    "actions": {
+      "downloadPdf": "Télécharger PDF",
+      "tryCli": "Essayer Le CLI",
+      "joinCommunity": "Rejoindre la Communauté & Découvrir la Feuille de Route",
+      "readWhitepaper": "Lire notre Whitepaper complet"
+    }
   }
 }

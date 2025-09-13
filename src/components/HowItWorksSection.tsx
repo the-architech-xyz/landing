@@ -314,7 +314,7 @@ const HowItWorksSection = () => {
         </motion.div>
 
         {/* CTA */}
-        {/* <motion.div
+        <motion.div
           className="text-center mt-16 sm:mt-20"
           initial="hidden"
           whileInView="visible"
@@ -322,22 +322,19 @@ const HowItWorksSection = () => {
           variants={fadeInUp}
         >
           <p className="text-lg text-muted-foreground mb-6">
-            Ready to see it in action?
+            Want to learn more about our vision?
           </p>
           <motion.button
             className="bg-gradient-to-r from-architech-brand-blue to-architech-brand-green text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-architech-brand-blue/25 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
-              const element = document.getElementById('architects-canvas');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
+              window.open('/lightpaper', '_blank');
             }}
           >
-            Watch Live Demo
+            Read Our Light Paper
           </motion.button>
-        </motion.div> */}
+        </motion.div>
       </div>
     </section>
   );

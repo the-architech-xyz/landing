@@ -756,5 +756,80 @@
     "alreadyExists": "You're already on our waitlist!",
     "error": "Failed to join the waitlist. Please try again.",
     "success": "Successfully added to waitlist!"
+  },
+  "lightPaper": {
+    "title": "The Architech: The Supply Chain for Modern Software",
+    "subtitle": "We've optimized every industry but our own. It's time to change that.",
+    "sections": {
+      "digitalParadox": {
+        "title": "1. The Digital Paradox",
+        "content": "We have an incredible opportunity working in the digital world. A chance the physical industry never had.\n\nIn our world, once a product is created, its duplication cost is virtually zero. We can deliver it to millions of people instantly. This is a colossal advantage.\n\nYet, here is the paradox: while the physical industry spent a century optimizing its production lines for speed, quality, and standardization, the industry building the world of tomorrow—ours, the software industry—still largely operates like a craft workshop."
+      },
+      "innovationTax": {
+        "title": "2. The Digital Artisan and its \"Innovation Tax\"",
+        "content": "Each new project is a reinvention. We choose our tools, assemble our configurations, and write \"plumbing\" code over and over again. It's slow. It's expensive. It's frustrating.\n\nThis is not a feeling. It's a quantifiable reality, an \"Innovation Tax\" that every project pays. Industry studies confirm it: according to Software.com, developers spend an average of only 52 minutes per day on actual, active coding. Research from Stripe shows that up to 42% of their time is consumed by managing technical debt, often born from a flawed initial setup.\n\nWe spend our time as overburdened artisans when we should be visionary architects."
+      },
+      "aiMirage": {
+        "title": "3. The AI Mirage: The Wrong Solution",
+        "content": "Faced with this inefficient craftsmanship, we've been sold a silver bullet: Artificial Intelligence. But the AI we are offered today does not solve the structural problem. It merely assists a process that is fundamentally broken.\n\nIt's like placing a robot next to a master blacksmith and asking it to imitate his gestures. It ignores history. The real revolution isn't replacing the artisan; it's changing the production line.\n\nWorse, today's AI transforms the exciting role of the developer into a dehumanizing job of verifying and fixing a machine's errors. It steals the joy of design to leave the chore of correction."
+      },
+      "softwareSupplyChain": {
+        "title": "4. The Real Revolution: The Software Supply Chain",
+        "content": "The real problem isn't the tool. It's the method. The real solution is to apply the lessons of the industrial revolution to software development.\n\nThis is what we have built. The Architech is the first true \"Supply Chain for Software.\"\n\nOur intelligent orchestrator assembles your application in minutes, following a clear and mastered logic. This is made possible by a new, modular architecture:",
+        "adapters": {
+          "title": "The Raw Materials (Adapters)",
+          "description": "Each technology (Next.js, Drizzle, Stripe...) is packaged into an Adapter. It's a pure, agnostic, and industrial-grade building block that installs a tool in an isolated and perfect way. No more spending hours searching for the right template."
+        },
+        "integrators": {
+          "title": "The Intelligent Components (Integrators)",
+          "description": "An Integrator is a smart \"bridge\" that knows how to connect two or more Adapters. It contains the expert logic to make Drizzle talk to Next.js or to integrate Sentry seamlessly with your authentication, by surgically modifying the code."
+        },
+        "assemblyPlant": {
+          "title": "The Assembly Plant (The CLI Engine)",
+          "description": "At the core of the CLI, a sophisticated engine based on an on-demand Virtual File System (VFS) and AST-driven \"Modifiers\" ensures that every operation is safe, atomic, and predictable. It guarantees the quality of the final product."
+        },
+        "result": "The result is not a black box. It is your code—clean, tested, maintainable, based on best practices, and 100% owned by you."
+      },
+      "useCases": {
+        "title": "5. Build Anything, Faster. (Use Cases)",
+        "subtitle": "This isn't theoretical. Here is what you can build in minutes, not months.",
+        "aiWriting": {
+          "title": "AI Writing Assistant",
+          "description": "Launch your intelligent content creation platform in a weekend.",
+          "stack": ["Next.js", "OpenAI", "Pinecone", "Stripe"]
+        },
+        "ecommerce": {
+          "title": "Modern E-commerce",
+          "description": "Build a full-featured online store with payments and inventory management.",
+          "stack": ["Remix", "Sanity", "Algolia", "Stripe"]
+        },
+        "dashboard": {
+          "title": "Internal Dashboard",
+          "description": "Create powerful analytics and admin tools for your team in minutes.",
+          "stack": ["React", "Tremor UI", "Supabase", "Auth.js"]
+        }
+      },
+      "humanBenefit": {
+        "title": "6. From Artisan to Architect: The Human Benefit",
+        "content": "What The Architech changes is fundamental. It doesn't just make you faster. It changes your role.\n\nYou are no longer the artisan spending your days on thankless tasks. You are no longer the AI's error checker.\n\nYou are the Architect. The supervisor. The one who thinks, structures, and innovates. You are elevated to where you always wanted to be. We give you back what brought you to development in the first place: the joy of creation."
+      },
+      "founder": {
+        "title": "7. A Word from the Founder",
+        "content": "This mission is deeply personal. It was born from a decade spent in the trenches of development, seeing incredible ideas held back by unnecessary complexity. The Architech is the culmination of that frustration. It's a tool I first built for myself, to recapture that initial creative \"spark.\"\n\nMy philosophy is simple: technology should be a lever for emancipation, not a barrier. My goal is to elevate you, to free you from thankless tasks so you can focus on what brought you to development in the first place: the desire to innovate, to think, and to build.\n\nThe Architech is the first stone. It is a pragmatic tool to solve a problem of today. But it is built on a foundation—modularity, open standards, and ownership—that prepares for the sovereign Internet of tomorrow.\n\nIf this vision of freeing human creativity from useless constraints resonates with you, then join us.\n\n- Antoine"
+      },
+      "startBuilding": {
+        "title": "8. Start Building",
+        "content": "The era of frustrating craftsmanship is over. The era of fluid and powerful creation begins now.",
+        "builders": "For the Builders: Ready to stop configuring and start creating?",
+        "architects": "For the Architects of the Future: Want to build the ecosystem with us?",
+        "whitepaper": "Curious about our long-term vision for a sovereign web? Read our full Whitepaper."
+      }
+    },
+    "actions": {
+      "downloadPdf": "Download PDF",
+      "tryCli": "Try The CLI",
+      "joinCommunity": "Join the Community & Discover the Roadmap",
+      "readWhitepaper": "Read our full Whitepaper"
+    }
   }
 }
