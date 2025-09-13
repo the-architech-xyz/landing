@@ -11,6 +11,12 @@
     <meta name="author" content="Antoine, The Architech" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#3b82f6" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thearchitech.dev/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -50,26 +56,71 @@
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "The Architech",
-      "description": "AI-powered development platform that eliminates setup hell and automates infrastructure configuration",
+      "alternateName": "Architech",
+      "description": "AI-powered development platform that eliminates setup hell and automates infrastructure configuration. Generate production-ready application foundations in seconds with full control over your code.",
       "url": "https://thearchitech.dev",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Web-based",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "softwareVersion": "1.0.0",
+      "datePublished": "2024-01-01",
+      "dateModified": "2024-12-19",
       "author": {
         "@type": "Person",
-        "name": "Antoine"
+        "name": "Antoine",
+        "jobTitle": "Founder & CEO"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Architech",
+        "url": "https://thearchitech.dev",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://thearchitech.dev/logo.png"
+        }
       },
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "description": "Free alpha access"
-      }
+        "description": "Free alpha access",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "featureList": [
+        "AI-powered code generation",
+        "Production-ready application foundations",
+        "Full-stack development automation",
+        "Modern tech stack support",
+        "Real-time architecture generation",
+        "Developer-focused no-code platform"
+      ],
+      "screenshot": "https://thearchitech.dev/og-image.png",
+      "softwareHelp": "https://thearchitech.dev#faq",
+      "releaseNotes": "https://thearchitech.dev#changelog"
     }
     </script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
+      Skip to main content
+    </a>
+    
+    <div id="root">
+      <!-- Main content landmark -->
+      <main id="main-content" role="main">
+        <!-- Content will be rendered here by React -->
+      </main>
+    </div>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

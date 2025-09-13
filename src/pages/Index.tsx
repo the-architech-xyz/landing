@@ -22,7 +22,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground font-inter">
       <Header />
       <HeroSection />
-      <SocialProofSection />
+      {/* <SocialProofSection /> */}
       <ArchitectsCanvas />
       <BenefitsSection />
       <HowItWorksSection />
