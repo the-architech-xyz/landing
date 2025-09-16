@@ -619,12 +619,12 @@ const LightPaper = () => {
                         ))}
                       </div>
                     </div>
-                    <Button 
+                    {/* <Button 
                       variant="outline" 
                       className="w-full mt-4 border-architech-brand-blue/30 text-architech-brand-blue hover:bg-architech-brand-blue/10"
                     >
                       See the Blueprint <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    </Button> */}
                   </CardContent>
                 </Card>
               ))}
