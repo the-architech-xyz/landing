@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architech - Ship Production Apps in Minutes</title>
+    <meta name="description" content="From configuration to production in minutes. One command. Complete architecture. Production ready.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== CSS VARIABLES ==================== */
+        :root {
+            --midnight: #0A0A0F;
+            --concrete: #1A1A1F;
+            --steel: #2A2A2F;
+            --white: #FFFFFF;
+            --aluminum: #8B92A0;
+            --electric: #0066FF;
+            --cyan: #00D9FF;
+            --amber: #FFB800;
+            --red: #FF4757;
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+        
+        /* ==================== RESET & BASE ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--midnight);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==================== UTILITY CLASSES ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--electric) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(26, 26, 31, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(0, 102, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 102, 255, 0.15);
+        }
+        
+        .section {
+            padding: 7.5rem 0;
+            position: relative;
+        }
+        
+        .section-alt {
+            background: rgba(26, 26, 31, 0.3);
+        }
+        
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            animation: slideDown 0.6s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric) 0%, var(--cyan) 100%);
+            /* -webkit-background-clip: text; */
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--aluminum);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--white);
+        }
+        
+        .btn-primary {
+            background: var(--electric);
+            color: var(--white);
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--aluminum);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .hero-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        .terminal {
+            background: var(--concrete);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            font-family: var(--font-code);
+            font-size: 0.875rem;
+        }
+        
+        .terminal-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #FF5F57; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #28CA42; }
+        
+        .terminal-line {
+            margin: 0.5rem 0;
+            opacity: 0;
+            animation: terminalType 0.5s ease forwards;
+        }
+        
+        .terminal-line:nth-child(1) { animation-delay: 1s; }
+        .terminal-line:nth-child(2) { animation-delay: 1.3s; }
+        .terminal-line:nth-child(3) { animation-delay: 1.6s; }
+        .terminal-line:nth-child(4) { animation-delay: 1.9s; }
+        .terminal-line:nth-child(5) { animation-delay: 2.2s; }
+        .terminal-line:nth-child(6) { animation-delay: 2.5s; }
+        
+        @keyframes terminalType {
+            to { opacity: 1; }
+        }
+        
+        .terminal-command { color: var(--cyan); }
+        .terminal-success { color: #28CA42; }
+        .terminal-result { 
+            color: var(--white);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        
+        .architecture-viz {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            align-content: center;
+        }
+        
+        .arch-node {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            animation: nodeFloat 2s ease-in-out infinite;
+        }
+        
+        .arch-node:nth-child(1) { animation-delay: 0s; }
+        .arch-node:nth-child(2) { animation-delay: 0.3s; }
+        .arch-node:nth-child(3) { animation-delay: 0.6s; }
+        .arch-node:nth-child(4) { animation-delay: 0.9s; }
+        .arch-node:nth-child(5) { animation-delay: 1.2s; }
+        .arch-node:nth-child(6) { animation-delay: 1.5s; }
+        
+        @keyframes nodeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .arch-icon {
+            font-size: 1.5rem;
+        }
+        
+        .scroll-indicator {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--aluminum);
+            font-size: 0.875rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        
+        /* ==================== FLOW SECTION ==================== */
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .flow-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -2rem;
+            top: 3rem;
+            font-size: 2rem;
+            color: var(--electric);
+        }
+        
+        .flow-step:last-child::after {
+            display: none;
+        }
+        
+        .flow-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 217, 255, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .flow-step h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .flow-step p {
+            color: var(--aluminum);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .code-snippet {
+            background: var(--concrete);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            text-align: left;
+            overflow-x: auto;
+        }
+        
+        /* ==================== PRODUCTS SECTION ==================== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--amber);
+            color: var(--midnight);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 217, 255, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-tagline {
+            color: var(--cyan);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .product-description {
+            color: var(--aluminum);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-features li {
+            color: var(--aluminum);
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--electric);
+            font-weight: 700;
+        }
+        
+        .product-cta {
+            color: var(--electric);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+        
+        .product-cta:hover {
+            gap: 0.75rem;
+        }
+        
+        /* ==================== INNOVATION TAX SECTION ==================== */
+        .tax-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .tax-viz {
+            margin: 3rem auto;
+            max-width: 500px;
+        }
+        
+        .pie-chart {
+            display: grid;
+            grid-template-columns: 70fr 30fr;
+            height: 100px;
+            border-radius: 50px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .pie-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .pie-setup {
+            background: linear-gradient(135deg, var(--red), #FF6B7A);
+        }
+        
+        .pie-building {
+            background: linear-gradient(135deg, var(--cyan), #00FFD1);
+            color: var(--midnight);
+        }
+        
+        .tax-concept {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0;
+            color: var(--electric);
+        }
+        
+        .tax-description {
+            font-size: 1.25rem;
+            color: var(--aluminum);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        
+        .pain-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pain-point {
+            text-align: center;
+        }
+        
+        .pain-point h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+        }
+        
+        .pain-point p {
+            color: var(--aluminum);
+            font-size: 0.875rem;
+        }
+        
+        .tax-solution {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            line-height: 1.6;
+        }
+        
+        .tax-solution .highlight {
+            color: var(--electric);
+        }
+        
+        /* ==================== FOR YOU SECTION ==================== */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .audience-card {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .audience-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .audience-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .audience-card p {
+            color: var(--aluminum);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .audience-cta {
+            color: var(--electric);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+        
+        .audience-cta:hover {
+            gap: 0.75rem;
+        }
+        
+        /* ==================== FINAL CTA SECTION ==================== */
+        .final-cta {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        .install-box {
+            background: var(--concrete);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-code);
+            font-size: 1rem;
+        }
+        
+        .copy-btn {
+            background: var(--electric);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: var(--cyan);
+            transform: scale(1.05);
+        }
+        
+        .cta-button-large {
+            background: var(--electric);
+            color: var(--white);
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin: 2rem 0;
+            transition: all 0.3s;
+        }
+        
+        .cta-button-large:hover {
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .trust-signals {
+            color: var(--aluminum);
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+        
+        .secondary-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .secondary-link {
+            color: var(--aluminum);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .secondary-link:hover {
+            color: var(--electric);
+        }
+        
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--concrete);
+            padding: 3rem 0 2rem;
+            margin-top: 8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h4 {
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--aluminum);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--electric);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--aluminum);
+            font-size: 0.875rem;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .hero-visual {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-step::after {
+                display: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pain-points {
+                grid-template-columns: 1fr;
+            }
+            
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .install-box {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .secondary-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">The Architech</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Product</a>
+                <a href="#" class="nav-link">Docs</a>
+                <a href="#" class="nav-link">Pricing</a>
+                <a href="#" class="nav-link">GitHub</a>
+                <a href="#" class="btn-primary">Get Started</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                Ship Production Apps<br>
+                <span class="gradient-text">in Minutes</span>
+            </h1>
+            <p class="hero-subtitle">
+                One command. Complete architecture. Production ready.
+            </p>
+            
+            <div class="hero-visual">
+                <!-- Terminal -->
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-command">$ architech init my-saas</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓ Generating architecture...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓ Configuring modules...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓ Installing dependencies...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-success">✓ Deploying to production...</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-result">🚀 Done in 47 seconds</span>
+                    </div>
+                </div>
+                
+                <!-- Architecture Visualization -->
+                <div class="architecture-viz">
+                    <div class="arch-node">
+                        <span class="arch-icon">🔐</span>
+                        <div>
+                            <strong>Auth</strong><br>
+                            <small style="color: var(--aluminum)">Clerk</small>
+                        </div>
+                    </div>
+                    <div class="arch-node">
+                        <span class="arch-icon">💾</span>
+                        <div>
+                            <strong>Database</strong><br>
+                            <small style="color: var(--aluminum)">Postgres</small>
+                        </div>
+                    </div>
+                    <div class="arch-node">
+                        <span class="arch-icon">🎨</span>
+                        <div>
+                            <strong>UI</strong><br>
+                            <small style="color: var(--aluminum)">Shadcn</small>
+                        </div>
+                    </div>
+                    <div class="arch-node">
+                        <span class="arch-icon">💳</span>
+                        <div>
+                            <strong>Payments</strong><br>
+                            <small style="color: var(--aluminum)">Stripe</small>
+                        </div>
+                    </div>
+                    <div class="arch-node">
+                        <span class="arch-icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            <small style="color: var(--aluminum)">Resend</small>
+                        </div>
+                    </div>
+                    <div class="arch-node">
+                        <span class="arch-icon">🚀</span>
+                        <div>
+                            <strong>Deploy</strong><br>
+                            <small style="color: var(--aluminum)">Vercel</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>See how it works</span>
+                <span>↓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-alt fade-in">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-icon">📝</div>
+                    <h3>Define Your Architecture</h3>
+                    <p>Simple configuration file. Your application DNA.</p>
+                    <div class="code-snippet">
+<span style="color: var(--aluminum)">// genome.ts</span>
+export default {
+  modules: {
+    auth: "clerk",
+    db: "postgres",
+    ui: "shadcn"
+  }
+}
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-icon">⚡</div>
+                    <h3>We Generate Everything</h3>
+                    <p>Complete project structure, integrations, and configurations.</p>
+                    <div class="code-snippet" style="text-align: center; padding: 2rem 1rem;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🏗️</div>
+                        <div style="color: var(--aluminum);">Architecture generated</div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-icon">🚀</div>
+                    <h3>Deploy in Seconds</h3>
+                    <p>Production-ready. No manual setup required.</p>
+                    <div class="code-snippet">
+$ architech deploy
+<span style="color: #28CA42;">✓ Live in 47 seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Three Ways to Build</h2>
+            
+            <div class="products-grid">
+                <!-- CLI -->
+                <div class="product-card glass-card">
+                    <div class="product-icon">💻</div>
+                    <h3>CLI</h3>
+                    <div class="product-tagline">For Developers</div>
+                    <p class="product-description">
+                        Command-line power. Generate projects instantly. Store your preferred stacks. Full control.
+                    </p>
+                    <ul class="product-features">
+                        <li>TypeScript-first</li>
+                        <li>Open source</li>
+                        <li>128 modules</li>
+                        <li>Zero lock-in</li>
+                    </ul>
+                    <a href="#" class="product-cta">Explore CLI →</a>
+                </div>
+                
+                <!-- Team -->
+                <div class="product-card glass-card">
+                    <div class="product-icon">👥</div>
+                    <h3>Team</h3>
+                    <div class="product-tagline">For Collaboration</div>
+                    <p class="product-description">
+                        Internal marketplace. Share genomes across your team. Never lose sight of your standards.
+                    </p>
+                    <ul class="product-features">
+                        <li>Private modules</li>
+                        <li>Shared templates</li>
+                        <li>Team governance</li>
+                        <li>Instant onboarding</li>
+                    </ul>
+                    <a href="#" class="product-cta">See Team Features →</a>
+                </div>
+                
+                <!-- SAAS -->
+                <div class="product-card glass-card">
+                    <span class="product-badge">Coming Soon</span>
+                    <div class="product-icon">✨</div>
+                    <h3>SAAS</h3>
+                    <div class="product-tagline">For Creators</div>
+                    <p class="product-description">
+                        No-code power. AI-generated apps. The simplicity of no-code without the limitations.
+                    </p>
+                    <ul class="product-features">
+                        <li>Natural language</li>
+                        <li>Visual interface</li>
+                        <li>AI-powered</li>
+                        <li>Full code ownership</li>
+                    </ul>
+                    <a href="#" class="product-cta">Join Waitlist →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Tax Section -->
+    <section class="section section-alt fade-in">
+        <div class="container">
+            <div class="tax-content">
+                <h2 class="section-title">Why This Exists</h2>
+                
+                <div class="tax-viz">
+                    <div class="pie-chart">
+                        <div class="pie-segment pie-setup">70%</div>
+                        <div class="pie-segment pie-building">30%</div>
+                    </div>
+                    <p style="color: var(--aluminum); font-size: 0.875rem;">
+                        <span style="color: var(--red); font-weight: 600;">70% Setup</span> • 
+                        <span style="color: var(--cyan); font-weight: 600;">30% Building</span>
+                    </p>
+                </div>
+                
+                <div class="tax-concept">The Innovation Tax</div>
+                
+                <p class="tax-description">
+                    Developers spend 70% of their time on setup, configuration, and integration.<br>
+                    Not building. Not creating. Just... configuring.
+                </p>
+                
+                <div class="pain-points">
+                    <div class="pain-point">
+                        <h4>Setup Hell</h4>
+                        <p>2-3 days just to start. Every. Single. Project.</p>
+                    </div>
+                    <div class="pain-point">
+                        <h4>Integration Nightmare</h4>
+                        <p>Tools don't talk to each other. You're the translator.</p>
+                    </div>
+                    <div class="pain-point">
+                        <h4>Repetition Fatigue</h4>
+                        <p>Building the same auth flow for the 17th time.</p>
+                    </div>
+                </div>
+                
+                <div class="tax-solution">
+                    <span class="highlight">The Architech eliminates the Innovation Tax.</span>
+                    <br><br>
+                    Define once. Deploy forever.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For You Section -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Where Do You Want to Start?</h2>
+            
+            <div class="audience-grid">
+                <div class="audience-card glass-card">
+                    <div class="audience-emoji">🚀</div>
+                    <h3>Indie Hackers</h3>
+                    <p>Ship Your MVP This Weekend</p>
+                    <a href="#" class="audience-cta">Start Building →</a>
+                </div>
+                
+                <div class="audience-card glass-card">
+                    <div class="audience-emoji">💻</div>
+                    <h3>Developers</h3>
+                    <p>Explore the Architecture</p>
+                    <a href="#" class="audience-cta">View Docs →</a>
+                </div>
+                
+                <div class="audience-card glass-card">
+                    <div class="audience-emoji">👥</div>
+                    <h3>Teams</h3>
+                    <p>Standardize Your Stack</p>
+                    <a href="#" class="audience-cta">See Team Features →</a>
+                </div>
+                
+                <div class="audience-card glass-card">
+                    <div class="audience-emoji">🏢</div>
+                    <h3>Enterprise</h3>
+                    <p>Custom Solutions & Support</p>
+                    <a href="#" class="audience-cta">Contact Sales →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section fade-in">
+        <div class="container">
+            <div class="final-cta">
+                <h2>Start Building Today</h2>
+                
+                <div class="install-box">
+                    <code>npm install -g @architech/cli</code>
+                    <button class="copy-btn" onclick="copyInstall()">Copy</button>
+                </div>
+                
+                <a href="#" class="cta-button-large">Get Started Free</a>
+                
+                <div class="trust-signals">
+                    Open Source • MIT License • No Lock-in
+                </div>
+                
+                <div class="secondary-links">
+                    <a href="#" class="secondary-link">View Examples</a>
+                    <a href="#" class="secondary-link">Read Documentation</a>
+                    <a href="#" class="secondary-link">Join Discord</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo gradient-text">The Architech</div>
+                    <p style="color: var(--aluminum); font-size: 0.875rem;">
+                        Architecture as code.<br>Application as result.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">CLI</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2025 The Architech. Open source under MIT License.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Copy install command
+        function copyInstall() {
+            navigator.clipboard.writeText('npm install -g @architech/cli');
+            const btn = document.querySelector('.copy-btn');
+            btn.textContent = 'Copied!';
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+            }, 2000);
+        }
+        
+        // Smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

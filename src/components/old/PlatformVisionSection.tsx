@@ -32,7 +32,7 @@ const PlatformVisionSection = () => {
       icon: Zap,
       title: t('platformVision.features.aiProjectManagement.title'),
       description: t('platformVision.features.aiProjectManagement.description'),
-      gradient: "bg-gradient-electric",
+      gradient: "bg-primary",
       coming: t('platformVision.features.aiProjectManagement.coming')
     }
   ];
@@ -63,7 +63,7 @@ const PlatformVisionSection = () => {
           variants={staggerContainer}
         >
           <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 text-sm font-medium text-architech-electric mb-6 sm:mb-8"
             variants={scaleIn}
           >
             <Sparkles className="h-4 w-4" />
@@ -126,7 +126,7 @@ const PlatformVisionSection = () => {
                       whileHover={{ y: -4 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
-                      <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
+                      <div className="glass-card p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
                         {/* Gradient overlay */}
                         <motion.div 
                           className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
@@ -137,7 +137,7 @@ const PlatformVisionSection = () => {
                           {/* Header with Icon and Timeline Badge */}
                           <div className="flex items-start justify-between mb-4">
                             <motion.div 
-                              className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
+                              className={`w-12 h-12 ${feature.gradient} flex items-center justify-center shadow-lg`}
                               whileHover={{ scale: 1.1, rotate: 5 }}
                               transition={{ type: "spring", stiffness: 300 }}
                             >
@@ -145,7 +145,7 @@ const PlatformVisionSection = () => {
                             </motion.div>
                             
                             <motion.div 
-                              className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs font-medium text-architech-electric"
+                              className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 text-xs font-medium text-architech-electric"
                               initial={{ opacity: 0, scale: 0.8 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ delay: delay + 0.3, type: "spring" }}
@@ -171,7 +171,7 @@ const PlatformVisionSection = () => {
                           whileHover={{ y: -8 }}
                           transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         >
-                          <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
+                          <div className="glass-card p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
                             {/* Gradient overlay */}
                             <motion.div 
                               className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
@@ -190,7 +190,7 @@ const PlatformVisionSection = () => {
                               {/* Header with Icon and Timeline Badge */}
                               <div className="flex items-start justify-between mb-4">
                                 <motion.div 
-                                  className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
+                                  className={`w-12 h-12 ${feature.gradient} flex items-center justify-center shadow-lg`}
                                   whileHover={{ scale: 1.1, rotate: 5 }}
                                   transition={{ type: "spring", stiffness: 300 }}
                                 >
@@ -198,7 +198,7 @@ const PlatformVisionSection = () => {
                                 </motion.div>
                                 
                                 <motion.div 
-                                  className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs font-medium text-architech-electric"
+                                  className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 text-xs font-medium text-architech-electric"
                                   initial={{ opacity: 0, scale: 0.8 }}
                                   whileInView={{ opacity: 1, scale: 1 }}
                                   transition={{ delay: delay + 0.3, type: "spring" }}
@@ -223,7 +223,7 @@ const PlatformVisionSection = () => {
                           whileHover={{ y: -8 }}
                           transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         >
-                          <div className="glass-card rounded-2xl p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
+                          <div className="glass-card p-6 border border-architech-border hover:border-architech-electric/50 transition-all duration-300 relative overflow-hidden">
                             {/* Gradient overlay */}
                             <motion.div 
                               className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
@@ -242,7 +242,7 @@ const PlatformVisionSection = () => {
                               {/* Header with Icon and Timeline Badge */}
                               <div className="flex items-start justify-between mb-4">
                                 <motion.div 
-                                  className={`w-12 h-12 ${feature.gradient} rounded-xl flex items-center justify-center shadow-lg`}
+                                  className={`w-12 h-12 ${feature.gradient} flex items-center justify-center shadow-lg`}
                                   whileHover={{ scale: 1.1, rotate: 5 }}
                                   transition={{ type: "spring", stiffness: 300 }}
                                 >
@@ -250,7 +250,7 @@ const PlatformVisionSection = () => {
                                 </motion.div>
                                 
                                 <motion.div 
-                                  className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-xs font-medium text-architech-electric"
+                                  className="px-3 py-1 bg-architech-electric/10 border border-architech-electric/20 text-xs font-medium text-architech-electric"
                                   initial={{ opacity: 0, scale: 0.8 }}
                                   whileInView={{ opacity: 1, scale: 1 }}
                                   transition={{ delay: delay + 0.3, type: "spring" }}
@@ -282,7 +282,7 @@ const PlatformVisionSection = () => {
           variants={fadeInUp}
         >
           <motion.div
-            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
+            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => smoothScrollTo("cta")}

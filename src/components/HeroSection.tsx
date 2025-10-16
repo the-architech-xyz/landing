@@ -1,114 +1,33 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { Terminal, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { fadeInUp, fadeInDown, staggerContainer, scaleIn, floating, defaultViewport } from "@/lib/animations";
-import ContactModal from "@/components/ContactModal";
-import AnimatedBlueprint from "@/components/AnimatedBlueprint";
+import { BrandedButton } from "@/components/ui/branded-button";
+import { BRANDING } from "@/lib/branding";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const HeroSection = () => {
   const { t } = useTranslation();
-  const [currentText, setCurrentText] = useState("");
-  const [showModules, setShowModules] = useState(false);
-  const [isTyping, setIsTyping] = useState(true);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [isInView, setIsInView] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
 
-  const promptText = t('hero.prompt');
-  
-  const modules = [
-    { name: t('hero.modules.authService'), color: "bg-gradient-electric", delay: 0 },
-    { name: t('hero.modules.database'), color: "bg-gradient-forest", delay: 200 },
-    { name: t('hero.modules.apiGateway'), color: "bg-gradient-ocean", delay: 400 },
-    { name: t('hero.modules.uiComponents'), color: "bg-gradient-sunset", delay: 600 },
-    { name: t('hero.modules.cicdPipeline'), color: "bg-gradient-creative", delay: 800 },
-    { name: t('hero.modules.monitoring'), color: "bg-gradient-aurora", delay: 1000 }
-  ];
-
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobile(isMobileDevice);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Detect if hero section is in view to prevent animation scroll issues
+  // Detect if hero section is in view for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // More sensitive threshold for mobile to prevent scroll jumps
-        const threshold = isMobile ? 0.3 : 0.5;
-        setIsInView(entry.isIntersecting && entry.intersectionRatio >= threshold);
+        setIsInView(entry.isIntersecting);
       },
-      { 
-        threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
-        rootMargin: isMobile ? '-10% 0px -10% 0px' : '0px'
-      }
+      { threshold: 0.5 }
     );
-    
+
     const heroElement = document.getElementById('hero');
     if (heroElement) {
       observer.observe(heroElement);
     }
-    
+
     return () => {
       if (heroElement) {
         observer.unobserve(heroElement);
       }
     };
-  }, [isMobile]);
-
-  // Detect scrolling to prevent animations during scroll on mobile
-  useEffect(() => {
-    if (!isMobile) return;
-
-    let scrollTimeout: NodeJS.Timeout;
-    
-    const handleScroll = () => {
-      setIsScrolling(true);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        setIsScrolling(false);
-      }, 150);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
-  }, [isMobile]);
-
-  useEffect(() => {
-    if (currentText.length < promptText.length) {
-      const timer = setTimeout(() => {
-        setCurrentText(promptText.slice(0, currentText.length + 1));
-      }, isMobile ? 80 : 50); // Slower typing on mobile for better readability
-      return () => clearTimeout(timer);
-    } else {
-      setIsTyping(false);
-      const timer = setTimeout(() => {
-        setShowModules(true);
-      }, 800);
-      return () => clearTimeout(timer);
-    }
-  }, [currentText, promptText, isMobile]);
-
-  // Reset animation every 12 seconds
-  useEffect(() => {
-    const resetTimer = setInterval(() => {
-      setCurrentText("");
-      setShowModules(false);
-      setIsTyping(true);
-    }, 12000);
-    return () => clearInterval(resetTimer);
   }, []);
 
   const scrollToNext = () => {
@@ -118,85 +37,83 @@ const HeroSection = () => {
     }
   };
 
-   const smoothScrollTo = (elementId: string) => {
-     const element = document.getElementById(elementId);
-     if (element) {
-       element.scrollIntoView({ behavior: "smooth" });
-     }
-   };
+  const smoothScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-3 z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-      </div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Musical Grid Background */}
+      <div className="absolute inset-0 musical-grid" />
 
-      {/* Animated Blueprint Background */}
-      <AnimatedBlueprint className="z-0" />
-      
-      <div className="container mx-auto px-4 sm:px-6 pt-24 pb-16 sm:py-20 relative z-20">
-        <motion.div 
-          className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-        >
-          
-          {/* Hero Message - Minimalist */}
-          <motion.div className="space-y-8 sm:space-y-12" variants={fadeInUp}>
-            <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-8xl font-satoshi font-black leading-tight tracking-tight px-2"
-              variants={fadeInDown}
-            >
-              <motion.span className="text-foreground">{t('hero.title.line1')}</motion.span>
-              <br />
-              <motion.span className="text-foreground">
-                <span className="text-transparent bg-gradient-brand bg-clip-text">{t('hero.title.line2')}</span>
-              </motion.span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-inter font-medium px-4"
-              variants={fadeInUp}
-            >
-              {t('hero.subtitle')}
-            </motion.p>
+      {/* Decorative corner elements */}
+      <div className="absolute top-8 left-8 w-32 h-32 border-l-2 border-t-2 border-primary/20 z-10" />
+      <div className="absolute top-8 right-8 w-32 h-32 border-r-2 border-t-2 border-primary/20 z-10" />
+      <div className="absolute bottom-8 left-8 w-32 h-32 border-l-2 border-b-2 border-primary/20 z-10" />
+      <div className="absolute bottom-8 right-8 w-32 h-32 border-r-2 border-b-2 border-primary/20 z-10" />
+
+      <div className="container px-4 md:px-6 relative z-20">
+        <div className="flex flex-col items-center text-center gap-8 max-w-5xl mx-auto">
+          {/* Logo/Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3"
+          >
+           <img src="/logo-removebg.png" alt="The Architech" className="w-12 h-12" />
+            <span className="text-2xl font-bold tracking-tight">The Architech</span>
           </motion.div>
 
-          {/* Single CTA - Centered */}
-          <motion.div className="flex justify-center items-center px-4 w-full" variants={fadeInUp}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                size="lg" 
-                className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-12 py-6 text-lg group w-full max-w-xs" 
-                onClick={() => smoothScrollTo("interactive-demo")}
-              >
-                {t('hero.cta.primary')}
-                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </motion.div>
+          {/* Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className={BRANDING.typography.headline.large}
+          >
+            Compose applications at the <span className="text-primary">speed of thought</span>
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className={BRANDING.typography.body.large}
+          >
+            One command. Complete architecture. Production ready.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 mt-4"
+          >
+            <BrandedButton 
+              variant="accent"
+              onClick={() => smoothScrollTo("cta")}
+              icon={<Terminal className="h-5 w-5" />}
+            >
+              Try the CLI
+            </BrandedButton>
+            <BrandedButton
+              variant="outline"
+              onClick={() => smoothScrollTo("cta")}
+              icon={<Sparkles className="h-5 w-5" />}
+            >
+              Join Waitlist
+            </BrandedButton>
           </motion.div>
 
-        </motion.div>
-      </div>
 
-      {/* Enhanced scroll indicator - Centered */}
-      <div className="w-full flex justify-center absolute bottom-8 left-0 z-30 pointer-events-none">
-        <motion.div
-          className="pointer-events-auto group"
-          onClick={scrollToNext}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <div className="glass-button rounded-full p-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 flex items-center justify-center">
-            <ChevronDown className="h-6 w-6 text-architech-electric" />
-          </div>
-        </motion.div>
+        </div>
       </div>
-
-      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </section>
   );
 };

@@ -102,7 +102,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
         {/* Background grid */}
         <defs>
           <pattern id="blueprintGrid" width="5" height="5" patternUnits="userSpaceOnUse">
-            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="rgb(0, 169, 255)" strokeWidth="0.1" opacity="0.03"/>
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="hsl(var(--cyan-electric))" strokeWidth="0.1" opacity="0.03"/>
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#blueprintGrid)" />
@@ -114,7 +114,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           width="25"
           height="35"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.5"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -130,7 +130,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           width="25"
           height="35"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.5"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -146,7 +146,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           width="25"
           height="20"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.5"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -163,7 +163,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="32.5"
           x2="65"
           y2="32.5"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.3"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -178,7 +178,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="50"
           x2="50"
           y2="60"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.3"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -193,7 +193,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="32.5"
           x2="50"
           y2="60"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.3"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -208,7 +208,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="32.5"
           x2="50"
           y2="60"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.3"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -226,7 +226,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           width="12"
           height="8"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.4"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -242,7 +242,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           width="12"
           height="8"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.4"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -257,7 +257,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="13"
           x2="22.5"
           y2="22.5"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.2"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -272,7 +272,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="13"
           x2="77.5"
           y2="22.5"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.2"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -289,7 +289,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="25"
           x2="100"
           y2="25"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -304,7 +304,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="50"
           x2="100"
           y2="50"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -319,7 +319,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="75"
           x2="100"
           y2="75"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -334,7 +334,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="0"
           x2="25"
           y2="100"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -349,7 +349,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="0"
           x2="50"
           y2="100"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -364,7 +364,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="0"
           x2="75"
           y2="100"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -381,7 +381,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           cy="32.5"
           r="1"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.2"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -396,7 +396,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           cy="32.5"
           r="1"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.2"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -411,7 +411,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           cy="70"
           r="1.5"
           fill="none"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.2"
           strokeDasharray="1000 1000"
           strokeDashoffset="1000"
@@ -428,7 +428,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="5"
           x2="17"
           y2="5"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="2 1"
           opacity="0.02"
@@ -442,7 +442,7 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
           y1="5"
           x2="95"
           y2="5"
-          stroke="rgb(0, 169, 255)"
+          stroke="hsl(var(--cyan-electric))"
           strokeWidth="0.1"
           strokeDasharray="2 1"
           opacity="0.02"
@@ -469,7 +469,8 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
 
       {/* Floating architectural elements with more subtle movement */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-1 h-1 bg-architech-brand-blue rounded-full"
+        className="absolute top-1/4 left-1/4 w-1 h-1"
+        style={{ backgroundColor: 'hsl(var(--cyan-electric))' }}
         animate={{
           y: [0, -8, 0],
           x: [0, 4, 0],
@@ -482,7 +483,8 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
         }}
       />
       <motion.div
-        className="absolute top-3/4 right-1/4 w-0.5 h-0.5 bg-architech-brand-green rounded-full"
+        className="absolute top-3/4 right-1/4 w-0.5 h-0.5"
+        style={{ backgroundColor: 'hsl(var(--gold-accent))' }}
         animate={{
           y: [0, -6, 0],
           x: [0, -3, 0],
@@ -496,7 +498,8 @@ const AnimatedBlueprint = ({ className = "" }: AnimatedBlueprintProps) => {
         }}
       />
       <motion.div
-        className="absolute top-1/2 right-1/3 w-0.5 h-0.5 bg-architech-brand-blue rounded-full"
+        className="absolute top-1/2 right-1/3 w-0.5 h-0.5"
+        style={{ backgroundColor: 'hsl(var(--cyan-electric))' }}
         animate={{
           y: [0, -4, 0],
           x: [0, 2, 0],

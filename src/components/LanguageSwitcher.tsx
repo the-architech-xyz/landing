@@ -39,7 +39,7 @@ const LanguageSwitcher = () => {
         <Button 
           variant="ghost" 
           size="sm" 
-          className="group flex items-center gap-1 w-12 h-10 rounded-lg hover:bg-accent/50 transition-all duration-200 relative overflow-hidden"
+          className="group flex items-center gap-1 w-12 h-10 hover:bg-accent/50 transition-all duration-200 relative overflow-hidden"
           disabled={isChanging}
         >
           <motion.div
@@ -76,7 +76,7 @@ const LanguageSwitcher = () => {
           
           {/* Subtle hover effect */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-architech-brand-blue/5 to-architech-brand-green/5 rounded-lg opacity-0 group-hover:opacity-100"
+            className="absolute inset-0 bg-gradient-to-r from-architech-brand-blue/5 to-architech-brand-green/5 opacity-0 group-hover:opacity-100"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: isChanging ? 0 : 1 }}
             transition={{ duration: 0.2 }}
@@ -93,7 +93,7 @@ const LanguageSwitcher = () => {
             <DropdownMenuItem
               key={language.code}
               onClick={() => handleLanguageChange(language.code)}
-              className={`group relative flex items-center gap-2 cursor-pointer rounded-lg p-2 transition-all duration-200 ${
+              className={`group relative flex items-center gap-2 cursor-pointer p-2 transition-all duration-200 ${
                 currentLanguage === language.code 
                   ? 'bg-gradient-to-r from-architech-brand-blue/20 to-architech-brand-green/20 border border-architech-brand-blue/30' 
                   : 'hover:bg-accent/50'
@@ -129,7 +129,7 @@ const LanguageSwitcher = () => {
               
               {/* Hover effect */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-architech-brand-blue/5 to-architech-brand-green/5 rounded-lg opacity-0 group-hover:opacity-100"
+                className="absolute inset-0 bg-gradient-to-r from-architech-brand-blue/5 to-architech-brand-green/5 opacity-0 group-hover:opacity-100"
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: isChanging ? 0 : 1 }}
                 transition={{ duration: 0.2 }}

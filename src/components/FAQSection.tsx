@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { ChevronDown, Plus, Minus, HelpCircle, ArrowRight } from "lucide-react";
+import { Plus, Minus, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { fadeInUp, staggerContainer, scaleIn, defaultViewport } from "@/lib/animations";
+import { Badge } from "@/components/ui/badge";
 import ContactModal from "@/components/ContactModal";
+import { SectionHeader } from "@/components/ui/section-header";
+import { BRANDING } from "@/lib/branding";
 import { useTranslation } from "@/hooks/useTranslation";
+
+/**
+ * THE ARCHITECH FAQ SECTION - "Technical Elegance"
+ * Clean, scannable accordion with new design system
+ */
 
 const FAQSection = () => {
   const { t } = useTranslation();
@@ -20,6 +27,21 @@ const FAQSection = () => {
       category: t('faq.questions.howDoesItWork.category'),
       question: t('faq.questions.howDoesItWork.question'),
       answer: t('faq.questions.howDoesItWork.answer'),
+    },
+    {
+      category: t('faq.questions.vsCreateNextApp.category'),
+      question: t('faq.questions.vsCreateNextApp.question'),
+      answer: t('faq.questions.vsCreateNextApp.answer'),
+    },
+    {
+      category: t('faq.questions.production.category'),
+      question: t('faq.questions.production.question'),
+      answer: t('faq.questions.production.answer'),
+    },
+    {
+      category: t('faq.questions.canIEject.category'),
+      question: t('faq.questions.canIEject.question'),
+      answer: t('faq.questions.canIEject.answer'),
     },
     {
       category: t('faq.questions.whatTechnologies.category'),
@@ -43,119 +65,61 @@ const FAQSection = () => {
     },
   ];
 
-  const getCategoryColor = (category: string) => {
-    const colors: Record<string, string> = {
-      // English categories
-      Product: "bg-gradient-sunset",
-      Process: "bg-gradient-electric", 
-      Technology: "bg-gradient-forest",
-      Security: "bg-gradient-ocean",
-      Customization: "bg-gradient-creative",
-      Pricing: "bg-gradient-aurora",
-      // French categories
-      Produit: "bg-gradient-sunset",
-      Processus: "bg-gradient-electric",
-      Technologie: "bg-gradient-forest", 
-      Sécurité: "bg-gradient-ocean",
-      Personnalisation: "bg-gradient-creative",
-      Tarification: "bg-gradient-aurora",
-      // Legacy categories
-      Ownership: "bg-gradient-success", 
-      Integration: "bg-gradient-electric",
-      Difference: "bg-gradient-ocean",
-      Commercial: "bg-gradient-creative",
-      Timeline: "bg-gradient-aurora",
-      Access: "bg-gradient-electric",
-      Business: "bg-gradient-forest",
-      Documentation: "bg-gradient-ocean"
-    };
-    return colors[category] || "bg-gradient-electric";
-  };
-
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-architech-section-dark relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-20 w-32 h-32 bg-architech-electric rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-20 w-24 h-24 bg-architech-purple rounded-full blur-xl"></div>
+    <section id="faq" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--cyan-electric))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--cyan-electric))_1px,transparent_1px)] bg-[size:80px_80px]" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <motion.div 
-          className="text-center mb-12 sm:mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={staggerContainer}
-        >
-          <motion.h2 
-            className="text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
-            variants={fadeInUp}
-          >
-            {t('faq.title.line1')}{" "}
-            <span className="text-transparent bg-gradient-brand bg-clip-text">
-              {t('faq.title.line2')}
-            </span>
-          </motion.h2>
-          
-          <motion.p 
-            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4"
-            variants={fadeInUp}
-          >
-            {t('faq.subtitle')}
-          </motion.p>
-        </motion.div>
+      <div className={BRANDING.spacing.container}>
+        {/* Section Header */}
+        <SectionHeader section="faq" />
 
         <motion.div 
           className="max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={staggerContainer}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
-                  key={index}
-                variants={fadeInUp}
-                className="glass-card rounded-2xl border border-architech-border hover:border-architech-electric/50 transition-all duration-300 overflow-hidden"
+                key={index}
+                className="bg-card border border-border hover:border-primary/50 transition-colors overflow-hidden rounded-lg"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
               >
-                <motion.button
-                  className="w-full p-4 sm:p-6 text-left focus:outline-none group"
+                <button
+                  className="w-full p-6 text-left focus:outline-none group"
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                  whileHover={{ backgroundColor: "rgba(59, 130, 246, 0.05)" }}
-                  transition={{ duration: 0.2 }}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3 sm:gap-4 flex-1">
-                  {/* Category badge - Larger for mobile */}
-                      <motion.div 
-                        className={`${getCategoryColor(faq.category)} rounded-xl p-2 sm:p-2 text-white text-xs font-semibold min-w-fit`}
-                        whileHover={{ scale: 1.05 }}
-                      >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-4 flex-1">
+                      <Badge variant={index === openFAQ ? "default" : "outline"} className="text-xs whitespace-nowrap">
                         {faq.category}
-                      </motion.div>
+                      </Badge>
                       
-                      {/* Question */}
-                      <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-architech-electric transition-colors duration-300 flex-1">
+                      <h3 className="text-base sm:text-lg font-semibold group-hover:text-primary transition-colors flex-1">
                         {faq.question}
                       </h3>
                     </div>
 
-                    {/* Toggle icon - Larger for mobile */}
                     <motion.div
                       animate={{ rotate: openFAQ === index ? 180 : 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="flex-shrink-0 ml-3 sm:ml-4 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center"
+                      transition={{ duration: 0.2 }}
+                      className="flex-shrink-0"
                     >
                       {openFAQ === index ? (
-                        <Minus className="h-5 w-5 text-architech-electric" />
+                        <Minus className="h-5 w-5 text-primary" />
                       ) : (
-                        <Plus className="h-5 w-5 text-muted-foreground group-hover:text-architech-electric transition-colors" />
+                        <Plus className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
                       )}
                     </motion.div>
                   </div>
-                </motion.button>
+                </button>
 
                 <AnimatePresence>
                   {openFAQ === index && (
@@ -163,45 +127,16 @@ const FAQSection = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ 
-                        duration: 0.3,
-                        ease: "easeInOut",
-                        opacity: { duration: 0.2 }
-                      }}
+                      transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <motion.div 
-                        className="px-4 sm:px-6 pb-4 sm:pb-6"
-                        initial={{ y: -20 }}
-                        animate={{ y: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                      >
-                        <div className="border-t border-architech-border/50 pt-4 ml-0">
-                          <motion.p 
-                            className="text-sm sm:text-base text-muted-foreground leading-relaxed"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.1, duration: 0.3 }}
-                          >
+                      <div className="px-6 pb-6">
+                        <div className="border-t border-subtle pt-4">
+                          <p className="font-inter text-sm sm:text-base text-subtle leading-relaxed">
                             {faq.answer}
-                          </motion.p>
-                          
-                          {/* Info box for some FAQs */}
-                          {index === 3 && (
-                            <motion.div 
-                              className="mt-4 glass-card rounded-xl p-4 bg-architech-electric/5 border border-architech-electric/20"
-                              initial={{ opacity: 0, scale: 0.95 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: 0.2, duration: 0.3 }}
-                            >
-                              <div className="flex items-center gap-2 text-sm text-architech-electric font-medium">
-                                <span>💡</span>
-                                <span>{t('faq.cta')}</span>
-                              </div>
-                            </motion.div>
-                          )}
+                          </p>
                         </div>
-                      </motion.div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -210,23 +145,21 @@ const FAQSection = () => {
           </div>
         </motion.div>
 
-        {/* CTA - Mobile optimized */}
+        {/* CTA */}
         <motion.div 
-          className="text-center mt-12 sm:mt-16 px-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={fadeInUp}
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <motion.div
-            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-electric text-white rounded-full font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300 cursor-pointer group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={() => setIsContactModalOpen(true)}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-semibold text-lg hover:bg-primary/90 transition-colors rounded-md group"
           >
             <span>{t('faq.cta')}</span>
-            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
-          </motion.div>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </button>
         </motion.div>
       </div>
 

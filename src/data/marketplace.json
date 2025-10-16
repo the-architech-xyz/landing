@@ -1,0 +1,760 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-09-16T18:00:00.000Z",
+  "stats": {
+    "totalModules": 38,
+    "adapters": 18,
+    "integrators": 20,
+    "features": 0,
+    "templates": 0,
+    "contributors": 150
+  },
+  "modules": [
+    {
+      "id": "auth/better-auth",
+      "version": "0.18.0",
+      "path": "adapters/auth/better-auth/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Better Auth",
+      "description": "Better Auth integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/auth/better-auth"
+    },
+    {
+      "id": "blockchain/web3",
+      "version": "1.0.0",
+      "path": "adapters/blockchain/web3/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Web3.js",
+      "description": "Web3.js integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/blockchain/web3"
+    },
+    {
+      "id": "content/next-intl",
+      "version": "1.0.0",
+      "path": "adapters/content/next-intl/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [
+        "framework/nextjs"
+      ],
+      "tags": [],
+      "name": "next-intl",
+      "description": "next-intl integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/content/next-intl"
+    },
+    {
+      "id": "database/drizzle",
+      "version": "0.29.0",
+      "path": "adapters/database/drizzle/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Drizzle ORM",
+      "description": "Drizzle ORM integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/database/drizzle"
+    },
+    {
+      "id": "database/prisma",
+      "version": "5.0.0",
+      "path": "adapters/database/prisma/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Prisma",
+      "description": "Prisma integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/database/prisma"
+    },
+    {
+      "id": "database/sequelize",
+      "version": "6.0.0",
+      "path": "adapters/database/sequelize/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Sequelize",
+      "description": "Sequelize integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/database/sequelize"
+    },
+    {
+      "id": "database/typeorm",
+      "version": "0.3.0",
+      "path": "adapters/database/typeorm/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "TypeORM",
+      "description": "TypeORM integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/database/typeorm"
+    },
+    {
+      "id": "deployment/docker",
+      "version": "1.0.0",
+      "path": "adapters/deployment/docker/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Docker",
+      "description": "Docker integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/deployment/docker"
+    },
+    {
+      "id": "email/resend",
+      "version": "1.0.0",
+      "path": "adapters/email/resend/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Resend",
+      "description": "Resend integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/email/resend"
+    },
+    {
+      "id": "framework/nextjs",
+      "version": "15.0.0",
+      "path": "adapters/framework/nextjs/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Next.js",
+      "description": "Next.js integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/framework/nextjs"
+    },
+    {
+      "id": "observability/sentry",
+      "version": "1.0.0",
+      "path": "adapters/observability/sentry/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Sentry",
+      "description": "Sentry integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/observability/sentry"
+    },
+    {
+      "id": "payment/stripe",
+      "version": "1.0.0",
+      "path": "adapters/payment/stripe/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Stripe",
+      "description": "Stripe integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/payment/stripe"
+    },
+    {
+      "id": "state/zustand",
+      "version": "1.0.0",
+      "path": "adapters/state/zustand/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Zustand",
+      "description": "Zustand integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/state/zustand"
+    },
+    {
+      "id": "testing/vitest",
+      "version": "1.0.0",
+      "path": "adapters/testing/vitest/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [
+        "framework/nextjs"
+      ],
+      "tags": [],
+      "name": "Vitest",
+      "description": "Vitest integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/testing/vitest"
+    },
+    {
+      "id": "ui/shadcn-ui",
+      "version": "1.0.0",
+      "path": "adapters/ui/shadcn-ui/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "shadcn/ui",
+      "description": "shadcn/ui integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/ui/shadcn-ui"
+    },
+    {
+      "id": "ui/forms",
+      "version": "1.0.0",
+      "path": "adapters/ui/forms/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Forms",
+      "description": "Forms integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/ui/forms"
+    },
+    {
+      "id": "ui/tailwind",
+      "version": "1.0.0",
+      "path": "adapters/ui/tailwind/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Tailwind CSS",
+      "description": "Tailwind CSS integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/ui/tailwind"
+    },
+    {
+      "id": "tooling/dev-tools",
+      "version": "1.0.0",
+      "path": "adapters/tooling/dev-tools/adapter.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "adapter",
+      "dependencies": [],
+      "tags": [],
+      "name": "Dev Tools",
+      "description": "Dev Tools integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/adapters/tooling/dev-tools"
+    },
+    {
+      "id": "better-auth-drizzle-integration",
+      "version": "1.0.0",
+      "path": "integrations/better-auth-drizzle-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Better-auth-drizzle-integration",
+      "description": "Better-auth-drizzle-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/better-auth-drizzle-integration"
+    },
+    {
+      "id": "better-auth-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/better-auth-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Better-auth-nextjs-integration",
+      "description": "Better-auth-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/better-auth-nextjs-integration"
+    },
+    {
+      "id": "docker-drizzle-integration",
+      "version": "1.0.0",
+      "path": "integrations/docker-drizzle-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Docker-drizzle-integration",
+      "description": "Docker-drizzle-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/docker-drizzle-integration"
+    },
+    {
+      "id": "docker-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/docker-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Docker-nextjs-integration",
+      "description": "Docker-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/docker-nextjs-integration"
+    },
+    {
+      "id": "drizzle-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/drizzle-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Drizzle-nextjs-integration",
+      "description": "Drizzle-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/drizzle-nextjs-integration"
+    },
+    {
+      "id": "prisma-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/prisma-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Prisma-nextjs-integration",
+      "description": "Prisma-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/prisma-nextjs-integration"
+    },
+    {
+      "id": "resend-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/resend-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Resend-nextjs-integration",
+      "description": "Resend-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/resend-nextjs-integration"
+    },
+    {
+      "id": "resend-shadcn-integration",
+      "version": "1.0.0",
+      "path": "integrations/resend-shadcn-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Resend-shadcn-integration",
+      "description": "Resend-shadcn-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/resend-shadcn-integration"
+    },
+    {
+      "id": "sentry-drizzle-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/sentry-drizzle-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Sentry-drizzle-nextjs-integration",
+      "description": "Sentry-drizzle-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/sentry-drizzle-nextjs-integration"
+    },
+    {
+      "id": "sentry-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/sentry-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Sentry-nextjs-integration",
+      "description": "Sentry-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/sentry-nextjs-integration"
+    },
+    {
+      "id": "shadcn-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/shadcn-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Shadcn-nextjs-integration",
+      "description": "Shadcn-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/shadcn-nextjs-integration"
+    },
+    {
+      "id": "shadcn-zustand-integration",
+      "version": "1.0.0",
+      "path": "integrations/shadcn-zustand-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Shadcn-zustand-integration",
+      "description": "Shadcn-zustand-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/shadcn-zustand-integration"
+    },
+    {
+      "id": "stripe-drizzle-integration",
+      "version": "1.0.0",
+      "path": "integrations/stripe-drizzle-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [
+        "stripe",
+        "drizzle"
+      ],
+      "tags": [],
+      "name": "Stripe-drizzle-integration",
+      "description": "Stripe-drizzle-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/stripe-drizzle-integration"
+    },
+    {
+      "id": "stripe-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/stripe-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Stripe-nextjs-integration",
+      "description": "Stripe-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/stripe-nextjs-integration"
+    },
+    {
+      "id": "stripe-shadcn-integration",
+      "version": "1.0.0",
+      "path": "integrations/stripe-shadcn-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [
+        "stripe",
+        "shadcn-ui"
+      ],
+      "tags": [],
+      "name": "Stripe-shadcn-integration",
+      "description": "Stripe-shadcn-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/stripe-shadcn-integration"
+    },
+    {
+      "id": "vitest-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/vitest-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Vitest-nextjs-integration",
+      "description": "Vitest-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/vitest-nextjs-integration"
+    },
+    {
+      "id": "vitest-zustand-integration",
+      "version": "1.0.0",
+      "path": "integrations/vitest-zustand-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Vitest-zustand-integration",
+      "description": "Vitest-zustand-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/vitest-zustand-integration"
+    },
+    {
+      "id": "web3-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/web3-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Web3-nextjs-integration",
+      "description": "Web3-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/web3-nextjs-integration"
+    },
+    {
+      "id": "web3-shadcn-integration",
+      "version": "1.0.0",
+      "path": "integrations/web3-shadcn-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Web3-shadcn-integration",
+      "description": "Web3-shadcn-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/web3-shadcn-integration"
+    },
+    {
+      "id": "zustand-nextjs-integration",
+      "version": "1.0.0",
+      "path": "integrations/zustand-nextjs-integration/integration.json",
+      "engine": {
+        "cliVersion": ">=1.0.0"
+      },
+      "category": "integrator",
+      "dependencies": [],
+      "tags": [],
+      "name": "Zustand-nextjs-integration",
+      "description": "Zustand-nextjs-integration integration for The Architech",
+      "author": "the-architech",
+      "stars": 0,
+      "downloads": 0,
+      "githubUrl": "https://github.com/the-architech-xyz/marketplace/tree/main/integrations/zustand-nextjs-integration"
+    }
+  ],
+  "genomes": [
+    {
+      "id": "comprehensive-app",
+      "name": "Comprehensive App",
+      "description": "A comprehensive full-stack application showcasing all marketplace features",
+      "modules": [],
+      "useCase": "full-stack",
+      "tags": [
+        "full-stack",
+        "comprehensive",
+        "all-features"
+      ],
+      "genome": {
+        "adapters": [],
+        "integrators": [],
+        "features": []
+      },
+      "complexity": "advanced",
+      "moduleCount": 39,
+      "file": "comprehensive-app.genome.ts",
+      "code": ""
+    },
+    {
+      "id": "saas-starter",
+      "name": "SaaS Application",
+      "description": "Complete SaaS application with authentication, payments, and dashboard",
+      "modules": [],
+      "useCase": "saas",
+      "showcaseUrl": "/solutions/saas-starter",
+      "tags": [
+        "saas",
+        "authentication",
+        "payments",
+        "dashboard"
+      ],
+      "genome": {
+        "adapters": [],
+        "integrators": [],
+        "features": []
+      },
+      "complexity": "intermediate",
+      "moduleCount": 10,
+      "file": "saas-app.genome.ts",
+      "code": "import { Genome } from '@thearchitech.xyz/marketplace';\n\n/**\n * SaaS Application Template\n * \n * A complete SaaS application with authentication, payments, dashboard, and admin panel.\n * Perfect for building subscription-based software products.\n */\nconst saasAppGenome: Genome = {\n  version: '1.0.0',\n  project: {\n    name: 'saas-app',\n    description: 'Complete SaaS application with authentication, payments, and dashboard',\n    version: '1.0.0',\n    framework: 'nextjs'\n  },\n  modules: [\n    // === CORE FRAMEWORK ===\n    {\n      id: 'framework/nextjs',\n      parameters: {\n        appRouter: true,\n        typescript: true,\n        tailwind: true,\n        eslint: true},\n      features: {\n          'api-routes': true,\n          middleware: true,\n          performance: true,\n          security: true,\n          seo: true,\n          'server-actions': true\n    }\n    },\n    \n    // === UI FRAMEWORK ===\n    {\n      id: 'ui/shadcn-ui',\n      parameters: {\n        components: ['button', 'input', 'card', 'form', 'table', 'dialog', 'dropdown-menu']},\n      features: {\n          accessibility: true,\n          theming: true\n    }\n    },\n    \n    // === AUTHENTICATION ===\n    {\n      id: 'auth/better-auth',\n      parameters: {\n        providers: ['email']},\n      features: {\n          'email-verification': true,\n          'password-reset': true,\n          'multi-factor': true,\n          'session-management': true,\n          'admin-panel': true\n        }\n    },\n    \n    // === DATABASE ===\n    {\n      id: 'database/drizzle',\n      parameters: {\n        provider: 'neon',\n        databaseType: 'postgresql'\n      },\n      features: {\n          migrations: true,\n          seeding: true,\n          studio: true,\n          relations: true\n        }\n    },\n    \n    // === PAYMENTS ===\n    {\n      id: 'payment/stripe',\n      parameters: {\n        currency: 'usd',\n        mode: 'test',\n        webhooks: true,\n        dashboard: true\n      },\n      features: {\n        subscriptions: true,\n        'one-time-payments': true,\n        marketplace: true,\n        invoicing: true\n      }\n    },\n    \n    // === STATE MANAGEMENT ===\n    {\n      id: 'state/zustand',\n      parameters: {\n        middleware: ['persist']\n      },\n      features: {\n        devtools: true,\n        persistence: true\n      }\n    },\n    \n    // === TESTING ===\n    {\n      id: 'testing/vitest',\n      parameters: {\n        jsx: true,\n        environment: 'jsdom'\n      },\n      features: {\n        coverage: true,\n        ui: true\n      }\n    },\n    \n    // === INTEGRATIONS ===\n    {\n      id: 'better-auth-drizzle-integration',\n      parameters: {\n        features: {\n          userManagement: true,\n          sessionStorage: true,\n          accountLinking: true\n        }\n      }\n    },\n    \n    {\n      id: 'stripe-drizzle-integration',\n      parameters: {\n        features: {\n          subscriptionTracking: true,\n          paymentHistory: true,\n          customerManagement: true\n        }\n      }\n    },\n    \n    {\n      id: 'shadcn-zustand-integration',\n      parameters: {\n        features: {\n          formManagement: true,\n          modalState: true,\n          toastNotifications: true\n        }\n      }\n    }\n  ]\n};\n\nexport default saasAppGenome;\n"
+    },
+    {
+      "id": "ecommerce-app",
+      "name": "E-commerce Platform",
+      "description": "Complete e-commerce platform with products, cart, and payments",
+      "modules": [],
+      "useCase": "ecommerce",
+      "tags": [
+        "ecommerce",
+        "products",
+        "cart",
+        "payments"
+      ],
+      "genome": {
+        "adapters": [],
+        "integrators": [],
+        "features": []
+      },
+      "complexity": "intermediate",
+      "moduleCount": 9,
+      "file": "ecommerce-app.genome.ts",
+      "code": "import { Genome } from '@thearchitech.xyz/marketplace';\n\n/**\n * E-commerce Application Template\n * \n * A complete e-commerce platform with product management, shopping cart, payments, and order tracking.\n * Perfect for building online stores and marketplaces.\n */\nconst ecommerceAppGenome: Genome = {\n  version: '1.0.0',\n  project: {\n    name: 'ecommerce-app',\n    description: 'Complete e-commerce platform with products, cart, and payments',\n    version: '1.0.0',\n    framework: 'nextjs'\n  },\n  modules: [\n    // === CORE FRAMEWORK ===\n    {\n      id: 'framework/nextjs',\n      parameters: {\n        appRouter: true,\n        typescript: true,\n        tailwind: true,\n        eslint: true},\n      features: {\n          'api-routes': true,\n          middleware: true,\n          performance: true,\n          security: true,\n          seo: true,\n          'server-actions': true\n    }\n    },\n    \n    // === UI FRAMEWORK ===\n    {\n      id: 'ui/shadcn-ui',\n      parameters: {\n        components: ['button', 'input', 'card', 'form', 'table', 'dialog', 'dropdown-menu', 'badge', 'carousel']},\n      features: {\n          accessibility: true,\n          theming: true\n    }\n    },\n    \n    // === AUTHENTICATION ===\n    {\n      id: 'auth/better-auth',\n      parameters: {\n        providers: ['email']},\n      features: {\n          'email-verification': true,\n          'password-reset': true,\n          'session-management': true\n        }\n    },\n    \n    // === DATABASE ===\n    {\n      id: 'database/drizzle',\n      parameters: {\n        provider: 'neon',\n        databaseType: 'postgresql'\n      },\n      features: {\n          migrations: true,\n          seeding: true,\n          studio: true,\n          relations: true\n        }\n    },\n    \n    // === PAYMENTS ===\n    {\n      id: 'payment/stripe',\n      parameters: {\n        currency: 'usd',\n        mode: 'test',\n        webhooks: true,\n        dashboard: true\n      },\n      features: {\n        'one-time-payments': true,\n        subscriptions: true,\n        marketplace: true,\n        invoicing: true\n      }\n    },\n    \n    // === STATE MANAGEMENT ===\n    {\n      id: 'state/zustand',\n      parameters: {\n        middleware: ['persist']\n      },\n      features: {\n        devtools: true,\n        persistence: true\n      }\n    },\n    \n    // === TESTING ===\n    {\n      id: 'testing/vitest',\n      parameters: {\n        jsx: true,\n        environment: 'jsdom'\n      },\n      features: {\n        coverage: true,\n        ui: true\n      }\n    },\n    \n    // === INTEGRATIONS ===\n    {\n      id: 'better-auth-drizzle-integration',\n      parameters: {\n        features: {\n          userManagement: true,\n          sessionStorage: true\n        }\n      }\n    },\n    \n    {\n      id: 'stripe-drizzle-integration',\n      parameters: {\n        features: {\n          paymentTracking: true,\n          orderManagement: true,\n          customerManagement: true\n        }\n      }\n    },\n    \n    {\n      id: 'shadcn-zustand-integration',\n      parameters: {\n        features: {\n          cartManagement: true,\n          wishlistState: true,\n          toastNotifications: true\n        }\n      }\n    }\n  ]\n};\n\nexport default ecommerceAppGenome;\n"
+    },
+    {
+      "id": "blog-app",
+      "name": "Blog Platform",
+      "description": "Modern blog platform with CMS and SEO optimization",
+      "modules": [],
+      "useCase": "content",
+      "tags": [
+        "blog",
+        "cms",
+        "seo",
+        "content"
+      ],
+      "genome": {
+        "adapters": [],
+        "integrators": [],
+        "features": []
+      },
+      "complexity": "beginner",
+      "moduleCount": 8,
+      "file": "blog-app.genome.ts",
+      "code": "import { Genome } from '@thearchitech.xyz/marketplace';\n\n/**\n * Blog Application Template\n * \n * A modern blog platform with content management, SEO optimization, and social features.\n * Perfect for building personal blogs, company blogs, or content sites.\n */\nconst blogAppGenome: Genome = {\n  version: '1.0.0',\n  project: {\n    name: 'blog-app',\n    description: 'Modern blog platform with CMS and SEO optimization',\n    version: '1.0.0',\n    framework: 'nextjs'\n  },\n  modules: [\n    // === CORE FRAMEWORK ===\n    {\n      id: 'framework/nextjs',\n      parameters: {\n        appRouter: true,\n        typescript: true,\n        tailwind: true,\n        eslint: true},\n      features: {\n          'api-routes': true,\n          middleware: true,\n          performance: true,\n          security: true,\n          seo: true,\n          'server-actions': true\n    }\n    },\n    \n    // === UI FRAMEWORK ===\n    {\n      id: 'ui/shadcn-ui',\n      parameters: {\n        components: ['button', 'input', 'card', 'form', 'table', 'dialog', 'badge', 'avatar']},\n      features: {\n          accessibility: true,\n          theming: true\n    }\n    },\n    \n    // === AUTHENTICATION ===\n    {\n      id: 'auth/better-auth',\n      parameters: {\n        providers: ['email']},\n      features: {\n          'email-verification': true,\n          'password-reset': true,\n          'session-management': true\n        }\n    },\n    \n    // === DATABASE ===\n    {\n      id: 'database/drizzle',\n      parameters: {\n        provider: 'neon',\n        databaseType: 'postgresql'\n      },\n      features: {\n          migrations: true,\n          seeding: true,\n          studio: true,\n          relations: true\n        }\n    },\n    \n    // === CONTENT MANAGEMENT ===\n    {\n      id: 'content/next-intl',\n      parameters: {\n        locales: ['en', 'fr'],\n        defaultLocale: 'en'\n      },\n      features: {\n        routing: true,\n        'dynamic-imports': true,\n        'seo-optimization': true\n      }\n    },\n    \n    // === STATE MANAGEMENT ===\n    {\n      id: 'state/zustand',\n      parameters: {\n        middleware: ['persist']\n      },\n      features: {\n        devtools: true,\n        persistence: true\n      }\n    },\n    \n    // === TESTING ===\n    {\n      id: 'testing/vitest',\n      parameters: {\n        jsx: true,\n        environment: 'jsdom'\n      },\n      features: {\n        coverage: true,\n        ui: true\n      }\n    },\n    \n    // === INTEGRATIONS ===\n    {\n      id: 'better-auth-drizzle-integration',\n      parameters: {\n        features: {\n          userManagement: true,\n          sessionStorage: true\n        }\n      }\n    },\n    \n    {\n      id: 'shadcn-zustand-integration',\n      parameters: {\n        features: {\n          formManagement: true,\n          modalState: true,\n          toastNotifications: true\n        }\n      }\n    }\n  ]\n};\n\nexport default blogAppGenome;\n"
+    }
+  ]
+}

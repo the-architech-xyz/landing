@@ -53,7 +53,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
         {/* Modal */}
         <motion.div
-          className="relative w-full max-w-md bg-background border border-border rounded-2xl shadow-xl overflow-hidden"
+          className="relative w-full max-w-md bg-background border border-border shadow-xl overflow-hidden"
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -64,7 +64,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
           <div className="p-6 border-b border-border">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
+                <div className="w-8 h-8 bg-foreground flex items-center justify-center">
                   <MessageCircle className="h-4 w-4 text-background" />
                 </div>
                 <div>
@@ -93,7 +93,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               return (
                 <motion.button
                   key={option.id}
-                  className={`w-full text-left p-4 rounded-xl border transition-all duration-200 group ${
+                  className={`w-full text-left p-4 border transition-all duration-200 group ${
                     option.primary 
                       ? 'bg-foreground border-foreground text-background hover:bg-foreground/90' 
                       : 'border-border hover:border-foreground/20 hover:bg-muted/50'

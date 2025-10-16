@@ -1,4 +1,7 @@
 {
+  "accessibility": {
+    "skipToMain": "Skip to main content"
+  },
   "header": {
     "nav": {
       "home": "Home",
@@ -13,14 +16,27 @@
 },
   "hero": {
     "title": {
-      "line1": "Stop Configuring.",
-      "line2": "Start Architecting."
-},
-    "subtitle": "Generate production-ready application foundations in seconds.",
+      "line1": "Compose applications at the",
+      "line2": "speed of thought"
+    },
+    "subtitle": "Transform your genome into production-ready applications. Modular architecture that orchestrates like a symphony.",
     "prompt": "A collaborative project management app with JWT auth and a modern design system",
     "cta": {
       "primary": "See in Action",
       "secondary": "Book Demo"
+},
+    "socialProof": {
+      "users": "500+ developers",
+      "rating": "4.8/5 rating"
+},
+    "chart": {
+      "innovationTax": "Innovation Tax",
+      "innovationTaxDesc": "Setup, config, and maintenance",
+      "actualCoding": "Actual Coding",
+      "actualCodingDesc": "Pure feature development",
+      "minutes": "Minutes",
+      "setupConfig": "Setup & Config",
+      "pureFeature": "Pure Feature Dev"
 },
     "stats": {
       "users": "10,000+",
@@ -185,9 +201,9 @@
 }
 },
   "howItWorks": {
-    "title": "The Supply Chain for",
-    "titleHighlight": "Modern Software",
-    "subtitle": "Three simple steps to transform your vision into production-ready code",
+    "title": "How It Works",
+    "titleHighlight": "",
+    "subtitle": "From idea to production in three simple steps",
     "supplyChain": {
       "title": "The Supply Chain for",
       "titleHighlight": "Modern Software",
@@ -226,38 +242,38 @@
  }
 },
     "steps": {
-      "describe": {
-        "title": "Choose Your Genome",
-        "description": "Select from battle-tested blueprints or create your own. Each blueprint is a proven architecture pattern.",
+      "define": {
+        "title": "Define Your Stack",
+        "description": "Declare your architecture in a single TypeScript file. Choose your adapters, integrators, and features.",
         "details": [
-          "Browse available blueprints",
-          "Choose your tech stack",
-          "Customize the configuration",
-          "Download or clone the blueprint"
+          "Write genome.ts",
+          "Pick your modules",
+          "Configure parameters",
+          "No boilerplate needed"
         ],
-        "codeExample": "# Available blueprints:\nnpx @architech/cli list\n\n# Choose a blueprint:\nnpx @architech/cli create react-saas\n# or\nnpx @architech/cli create nextjs-ecommerce\n# or\nnpx @architech/cli create nodejs-api"
+        "codeExample": "// genome.ts\nexport const genome = {\n  adapters: ['nextjs', 'drizzle'],\n  integrators: ['stripe', 'clerk'],\n  features: ['dashboard']\n}"
  },
       "generate": {
-        "title": "CLI Generates Your Project",
-        "description": "The CLI transforms your blueprint into a complete, production-ready codebase with all dependencies configured.",
+        "title": "Generate Your App",
+        "description": "Run one command. The Architech orchestrates all integrations automatically.",
         "details": [
-          "CLI scaffolds the project structure",
-          "Installs all dependencies",
-          "Configures build tools and linting",
-          "Sets up development environment"
+          "✓ Analyzing genome...",
+          "✓ Installing modules...",
+          "✓ Configuring integrations...",
+          "✓ Production-ready in 60s"
         ],
-        "codeExample": "# CLI generates your project:\nnpx @architech/cli create react-saas my-app\n\n# Output:\n✓ Created project structure\n✓ Installed dependencies\n✓ Configured TypeScript\n✓ Set up TailwindCSS\n✓ Added ESLint & Prettier\n✓ Ready to develop!"
+        "codeExample": "$ architech generate\n\n✓ Analyzing genome...\n✓ Installing modules...\n✓ Configuring integrations...\n✓ Ready to develop!"
  },
-      "deploy": {
-        "title": "Own Your Code, Instantly",
-        "description": "Get production-ready code you fully own. No proprietary dependencies, no lock-in. Ever.",
+      "customize": {
+        "title": "Customize & Deploy",
+        "description": "Get production-ready code with 100% ownership. Modify, extend, or eject anytime.",
         "details": [
-          "Download your complete project",
-          "100% open-source code",
-          "No vendor lock-in",
-          "Full ownership and control"
+          "Full source code",
+          "Modify freely",
+          "Zero vendor lock-in",
+          "Deploy anywhere"
         ],
-        "codeExample": "// You get clean, standard code\nimport { withAuth} from '@lib/auth';\nimport { useDatabase} from '@lib/db';\n\nfunction DashboardPage({ user}) {\n  const { data: projects} = useDatabase('projects');\n\n  return (\n    <Layout user={user}>\n      <h1>Welcome, {user.name}</h1>\n      <Button>Create New Project</Button>\n    </Layout>\n  );\n}"
+        "codeExample": "$ architech deploy\n\n✓ Live in 47 seconds\n🚀 https://your-app.vercel.app"
  }
 }
 },
@@ -525,6 +541,21 @@
         "category": "Pricing",
         "question": "What's the pricing?",
         "answer": "We offer flexible pricing plans for individuals, teams, and enterprises. Contact us to learn more about our pricing options and find the plan that works for you."
+ },
+      "vsCreateNextApp": {
+        "category": "Comparison",
+        "question": "How is this different from create-next-app?",
+        "answer": "create-next-app gives you a basic Next.js starter. The Architech gives you a production-ready application with authentication, database, payments, and all integrations configured and working together. It's the difference between an empty house and a fully furnished home."
+ },
+      "production": {
+        "category": "Production",
+        "question": "Can I use this in production?",
+        "answer": "Yes! The Architech generates production-ready code following enterprise-grade best practices. You get TypeScript, ESLint, testing setup, security configurations, and scalable architecture out of the box. No cleanup or refactoring needed."
+ },
+      "canIEject": {
+        "category": "Customization",
+        "question": "Can I eject or is there vendor lock-in?",
+        "answer": "You own 100% of the code. There's no proprietary runtime, no hidden dependencies, no lock-in. The generated code is standard TypeScript/JavaScript that runs anywhere. Modify, extend, or deploy it however you want."
  }
 }
 },

@@ -31,7 +31,7 @@ const SocialProofSection = () => {
             {logos.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className="flex items-center gap-2 px-4 py-2 bg-background rounded-lg border border-border hover:border-electric-blue/50 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-background border border-border hover:border-electric-blue/50 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}

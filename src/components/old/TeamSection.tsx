@@ -10,11 +10,11 @@ const TeamSection = () => {
     <section id="team" className="py-24 bg-architech-section-light relative overflow-hidden">
       {/* Background elements */}
       <motion.div 
-        className="absolute top-10 right-10 w-20 h-20 bg-gradient-electric rounded-full opacity-10 blur-xl"
+        className="absolute top-10 right-10 w-20 h-20 bg-primary opacity-10 blur-xl"
         animate={floating}
       />
       <motion.div 
-        className="absolute bottom-10 left-10 w-16 h-16 bg-gradient-creative rounded-full opacity-10 blur-xl"
+        className="absolute bottom-10 left-10 w-16 h-16 bg-gradient-creative opacity-10 blur-xl"
         animate={{ ...floating, transition: { ...floating.transition, delay: 1.5 } }}
       />
 
@@ -27,7 +27,7 @@ const TeamSection = () => {
           variants={staggerContainer}
         >
           <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 rounded-full text-sm font-medium text-architech-electric mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 border border-architech-electric/20 text-sm font-medium text-architech-electric mb-8"
             variants={scaleIn}
           >
             <Code className="h-4 w-4" />
@@ -69,7 +69,7 @@ const TeamSection = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="aspect-square rounded-3xl overflow-hidden relative shadow-2xl shadow-electric-blue/20 max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+              <div className="aspect-square overflow-hidden relative shadow-2xl shadow-electric-blue/20 max-w-xs sm:max-w-sm md:max-w-md mx-auto">
                 <motion.img
                   src={"/me.jpg"}
                   alt={t('common.alt.founder')}
@@ -82,7 +82,7 @@ const TeamSection = () => {
                   <h3 className="text-xl md:text-2xl font-bold">{t('team.founder.name')}</h3>
                   <p className="text-base md:text-lg text-white/80">{t('team.founder.title')}</p>
                   <div className="mt-2 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-400 animate-pulse"></div>
                     <span className="text-sm text-white/70">{t('team.founder.status')}</span>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ const TeamSection = () => {
                   href="https://www.linkedin.com/in/antoinesrvt/" // Updated with real LinkedIn
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-blue-600 transition-all duration-300 hover:shadow-glow group"
+                  className="w-12 h-12 glass-card flex items-center justify-center text-muted-foreground hover:text-blue-600 transition-all duration-300 hover:shadow-glow group"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -178,7 +178,7 @@ const TeamSection = () => {
           variants={fadeInUp}
         >
           <motion.div 
-            className="max-w-2xl mx-auto glass-card rounded-3xl p-8 border border-architech-border hover:border-architech-electric/50 transition-all duration-500 group"
+            className="max-w-2xl mx-auto glass-card p-8 border border-architech-border hover:border-architech-electric/50 transition-all duration-500 group"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
@@ -200,7 +200,7 @@ const TeamSection = () => {
             </motion.p>
             
             <motion.div 
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 rounded-full text-sm text-architech-electric font-medium"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-architech-electric/10 text-sm text-architech-electric font-medium"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 200 }}

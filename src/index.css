@@ -2,434 +2,448 @@
 @tailwind components;
 @tailwind utilities;
 
-/* The Architech Design System - Fluid Architecture
-Rich, flowing color palette with depth and personality.
-Professional meets artistic - perfect for creative developers.
-*/
+/* ============================================================================
+   THE ARCHITECH - DESIGN SYSTEM: "TECHNICAL ELEGANCE"
+   
+   Philosophy: The precision of an architect's plan meets the fluidity of 
+   creative tools. Fast, frictionless, beautiful through clarity and efficiency.
+   
+   Key Principles:
+   - Obsidian Black (#0A0A0A) as the foundation
+   - Electric Cyan (#00A9FF) as the signature accent
+   - Gold/Amber (#F59E0B) for special moments
+   - Geist for headings (architectural boldness)
+   - Inter for body (professional clarity)
+   - Subtle grain texture for depth
+   ============================================================================ */
 
 @layer base {
   :root {
-    /* Light theme colors - Fluid Workspace */
-    --background: 220 20% 98%;
-    --foreground: 220 30% 12%;
+    /* ========================================================================
+       LIGHT MODE - Minimal, Clean Workspace
+       Reserved for future implementation. Dark mode is principal.
+       ======================================================================== */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
 
-    --card: 220 15% 99%;
-    --card-foreground: 220 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
 
-    --popover: 220 15% 99%;
-    --popover-foreground: 220 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
 
-    --primary: 210 100% 65%;
-    --primary-foreground: 220 20% 98%;
+    --primary: 199 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 92%;
-    --secondary-foreground: 220 30% 25%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 20% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 210 100% 65%;
-    --accent-foreground: 220 20% 98%;
+    --accent: 199 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 5 75% 55%;
-    --destructive-foreground: 220 20% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 210 100% 65%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 199 100% 50%;
 
-    --radius: 0.75rem;
-
-    /* The Architech Fluid Color System - Rich & Professional */
-    --architech-primary: 220 30% 12%;        /* Deep Charcoal - authority */
-    --architech-secondary: 220 25% 20%;      /* Rich Charcoal */
-    --architech-tertiary: 220 20% 35%;       /* Medium Charcoal */
-    
-    /* Electric Blues - The signature color */
-    --architech-electric: 210 100% 65%;      /* Main Electric Blue */
-    --architech-electric-light: 210 100% 75%; /* Lighter electric */
-    --architech-electric-dark: 210 100% 55%;  /* Deeper electric */
-    --architech-electric-glow: 210 100% 85%;  /* Glow effect */
-    
-    /* Brand Colors - Direct hex equivalents */
-    --architech-brand-blue: 0 169 255;        /* #00A9FF */
-    --architech-brand-green: 57 255 20;       /* #39FF14 */
-    
-    /* Accent Colors - Rich & Vibrant */
-    --architech-purple: 270 95% 70%;         /* Creative Purple */
-    --architech-cyan: 180 100% 70%;          /* Fresh Cyan */
-    --architech-emerald: 160 85% 60%;        /* Success Emerald */
-    --architech-gold: 45 95% 70%;            /* Premium Gold */
-    --architech-coral: 15 90% 70%;           /* Energetic Coral */
-    --architech-violet: 260 85% 75%;         /* Elegant Violet */
-    
-    /* Rich Semantic Colors */
-    --architech-success: 160 85% 55%;        /* Rich Green */
-    --architech-success-light: 160 85% 65%;
-    --architech-warning: 35 90% 60%;         /* Vibrant Amber */
-    --architech-warning-light: 35 90% 70%;
-    --architech-danger: 5 85% 60%;           /* Bold Red */
-    --architech-danger-light: 5 85% 70%;
-    
-    /* Surface Layers - Depth & Richness */
-    --architech-surface: 220 15% 99%;
-    --architech-surface-elevated: 220 12% 96%;
-    --architech-surface-hover: 220 18% 94%;
-    --architech-surface-active: 220 20% 92%;
-    --architech-border: 220 15% 85%;
-    --architech-border-hover: 220 20% 80%;
-
-    /* Alternating Section Backgrounds - Light Mode */
-    --architech-section-light: 220 15% 99%;     /* Light cream background */
-    --architech-section-dark: 220 12% 97%;      /* Slightly darker cream for contrast */
-
-    /* Glass Effects */
-    --architech-glass: 220 30% 98%;
-    --architech-glass-border: 220 20% 90%;
-
-    --sidebar-background: 220 15% 99%;
-    --sidebar-foreground: 220 30% 12%;
-    --sidebar-primary: 220 30% 12%;
-    --sidebar-primary-foreground: 220 15% 99%;
-    --sidebar-accent: 220 15% 92%;
-    --sidebar-accent-foreground: 220 30% 12%;
-    --sidebar-border: 220 15% 85%;
-    --sidebar-ring: 210 100% 65%;
+    --radius: 0.5rem;                /* Strategic rounded corners for bonding */
   }
 
   .dark {
-    /* Dark theme - Rich Blueprint Mode */
-    --background: 220 30% 8%;
-    --foreground: 220 15% 95%;
-
-    --card: 220 25% 10%;
-    --card-foreground: 220 15% 95%;
-
-    --popover: 220 25% 10%;
-    --popover-foreground: 220 15% 95%;
-
-    --primary: 210 100% 65%;
-    --primary-foreground: 220 30% 8%;
-
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 220 15% 80%;
-
-    --muted: 220 20% 15%;
-    --muted-foreground: 220 15% 65%;
-
-    --accent: 210 100% 65%;
-    --accent-foreground: 220 30% 8%;
-
-    --destructive: 5 85% 65%;
-    --destructive-foreground: 220 15% 95%;
-
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 210 100% 65%;
-
-    /* Dark theme rich colors */
-    --architech-primary: 220 15% 95%;        /* Light text */
-    --architech-secondary: 220 15% 80%;      /* Medium text */
-    --architech-tertiary: 220 15% 65%;       /* Subtle text */
+    /* ========================================================================
+       DARK MODE - "TECHNICAL ELEGANCE" (Principal Mode)
+       ======================================================================== */
     
-    /* Electric Blues - Enhanced for dark */
-    --architech-electric: 210 100% 70%;      /* Brighter electric */
-    --architech-electric-light: 210 100% 80%;
-    --architech-electric-dark: 210 100% 60%;
-    --architech-electric-glow: 210 100% 85%;
-    
-    /* Brand Colors - Same for dark mode */
-    --architech-brand-blue: 0 169 255;        /* #00A9FF */
-    --architech-brand-green: 57 255 20;       /* #39FF14 */
-    
-    /* Dark accent colors */
-    --architech-purple: 270 95% 75%;
-    --architech-cyan: 180 100% 75%;
-    --architech-emerald: 160 85% 65%;
-    --architech-gold: 45 95% 75%;
-    --architech-coral: 15 90% 75%;
-    --architech-violet: 260 85% 80%;
-    
-    /* Dark semantic colors */
-    --architech-success: 160 85% 60%;
-    --architech-success-light: 160 85% 70%;
-    --architech-warning: 35 90% 65%;
-    --architech-warning-light: 35 90% 75%;
-    --architech-danger: 5 85% 65%;
-    --architech-danger-light: 5 85% 75%;
-    
-    /* Dark surface layers */
-    --architech-surface: 220 25% 10%;
-    --architech-surface-elevated: 220 20% 15%;
-    --architech-surface-hover: 220 22% 18%;
-    --architech-surface-active: 220 25% 22%;
-    --architech-border: 220 20% 20%;
-    --architech-border-hover: 220 25% 25%;
+    /* Core Background Colors - True Neutral Dark */
+    --background: 215 25% 9%;        /* #111720 - Main background (neutral with subtle blue) */
+    --foreground: 0 0% 100%;         /* #FFFFFF - Pure white for body text */
 
-    /* Alternating Section Backgrounds - Dark Mode */
-    --architech-section-light: 220 25% 12%;     /* Darker cream for dark mode */
-    --architech-section-dark: 220 30% 6%;       /* Even darker background */
+    /* Card & Surface Colors - Elevated, Readable */
+    --card: 215 20% 12%;             /* Slightly lighter than background for cards */
+    --card-foreground: 0 0% 100%;    /* #FFFFFF - Pure white */
 
-    /* Dark glass effects */
-    --architech-glass: 220 25% 12%;
-    --architech-glass-border: 220 20% 20%;
+    --popover: 215 20% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    --sidebar-background: 220 30% 8%;
-    --sidebar-foreground: 220 15% 95%;
-    --sidebar-primary: 220 15% 95%;
-    --sidebar-primary-foreground: 220 30% 8%;
-    --sidebar-accent: 220 20% 15%;
-    --sidebar-accent-foreground: 220 15% 95%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 210 100% 65%;
+    /* Primary Accent - Electric Blue (FOR BUILDERS) */
+    --primary: 216 100% 50%;         /* #0066FF - Electric Blue */
+    --primary-foreground: 0 0% 100%; /* Pure white on electric */
+
+    /* Secondary Surfaces - Neutral */
+    --secondary: 215 18% 15%;        /* Lighter elevated surface */
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 215 18% 15%;            /* Subtle background variation */
+    --muted-foreground: 215 8% 70%;  /* Readable muted text */
+
+    /* Accent - Vibrant Orange (FOR CREATORS) */
+    --accent: 25 95% 53%;            /* #FF6B35 - Vibrant Orange */
+    --accent-foreground: 0 0% 100%;  /* Pure white on orange */
+
+    /* Destructive States */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs - Neutral */
+    --border: 215 18% 25%;           /* Subtle borders */
+    --input: 215 18% 15%;            /* Input backgrounds */
+    --ring: 216 100% 50%;            /* Electric Blue focus ring */
+
+    /* ========================================================================
+       THE ARCHITECH CUSTOM COLOR SYSTEM
+       ======================================================================== */
+    
+    /* Typography Colors */
+    --text-title: 0 0% 100%;         /* #FFFFFF - Pure white for titles */
+    --text-body: 0 0% 100%;          /* #FFFFFF - Pure white for body */
+    --text-subtle: 220 9% 57%;       /* #8B92A0 - Aluminum (from test-landing) */
+    --text-muted: 220 9% 45%;        /* Darker aluminum */
+
+    /* Electric Blue + Cyan - Our Signature (from test-landing) */
+    --cyan-electric: 216 100% 50%;   /* #0066FF - Electric Blue */
+    --cyan-light: 192 100% 50%;      /* #00D9FF - Bright Cyan */
+    --cyan-dark: 216 100% 40%;       /* Darker electric blue */
+    --cyan-glow: 192 100% 60%;       /* Cyan glow effect */
+
+    /* Gold/Amber - Special Moments (from test-landing) */
+    --gold-accent: 42 100% 50%;      /* #FFB800 - Bright amber */
+    --gold-light: 42 100% 60%;
+    --gold-dark: 42 100% 40%;
+
+    /* Surface System - Layered Depth (Neutral) */
+    --surface-base: 215 25% 9%;      /* Base surface - same as background #111720 */
+    --surface-elevated: 215 20% 12%; /* Elevated cards - same as card */
+    --surface-higher: 215 18% 15%;   /* Higher surfaces */
+    --surface-highest: 215 18% 18%;  /* Top layer */
+
+    /* Border System */
+    --border-subtle: 0 0% 18%;       /* Very subtle border */
+    --border-medium: 0 0% 25%;       /* Medium border */
+    --border-strong: 0 0% 35%;       /* Strong border */
+    --border-cyan: 199 100% 50%;     /* Cyan accent border */
+    --border-gold: 38 92% 50%;       /* Gold accent border */
+
+    /* State Colors - Minimal Palette */
+    --state-success: 142 76% 36%;    /* Green for success */
+    --state-warning: 38 92% 50%;     /* Gold for warnings */
+    --state-error: 0 84% 60%;        /* Red for errors */
+    --state-info: 199 100% 50%;      /* Cyan for info */
+
+    /* Sidebar (if needed) */
+    --sidebar-background: 215 25% 9%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 0 0% 92%;
+    --sidebar-primary-foreground: 215 25% 9%;
+    --sidebar-accent: 215 18% 15%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 215 18% 25%;
+    --sidebar-ring: 216 100% 50%;
+
+    /* Border Radius - Strategic Rounded Corners */
+    --radius: 0.5rem;                /* Beautiful bonding with rounded corners */
   }
 
-  /* Base styles */
+  /* ========================================================================
+     BASE STYLES
+     ======================================================================== */
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-inter antialiased;
   }
 
-  /* Typography */
-  .font-inter {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography Defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-geist font-bold;
+    color: hsl(var(--text-title));
+  }
+
+  p, span, div {
+    @apply font-inter;
+    color: hsl(var(--text-body));
+  }
+
+  /* Selection - Cyan accent */
+  ::selection {
+    background-color: hsl(var(--cyan-electric) / 0.3);
+    color: hsl(var(--text-title));
   }
 }
 
 @layer utilities {
-  /* Architech Rich Color Utilities */
-  .text-architech-primary {
-    color: hsl(var(--architech-primary));
+  /* ========================================================================
+     TYPOGRAPHY UTILITIES
+     ======================================================================== */
+  .font-geist {
+    font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  .text-architech-electric {
-    color: hsl(var(--architech-electric));
+  .font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  .text-architech-brand-blue {
-    color: rgb(var(--architech-brand-blue));
+  .font-geist-mono {
+    font-family: 'Geist Mono', 'Consolas', 'Monaco', monospace;
   }
 
-  .text-architech-brand-green {
-    color: rgb(var(--architech-brand-green));
+  .text-title {
+    color: hsl(var(--text-title));
   }
 
-  .text-architech-purple {
-    color: hsl(var(--architech-purple));
+  .text-body {
+    color: hsl(var(--text-body));
   }
 
-  .text-architech-gold {
-    color: hsl(var(--architech-gold));
+  .text-subtle {
+    color: hsl(var(--text-subtle));
   }
 
-  .bg-architech-electric {
-    background-color: hsl(var(--architech-electric));
+  .text-muted {
+    color: hsl(var(--text-muted));
   }
 
-  .bg-architech-brand-blue {
-    background-color: rgb(var(--architech-brand-blue));
+  .text-cyan {
+    color: hsl(var(--cyan-electric));
   }
 
-  .bg-architech-brand-green {
-    background-color: rgb(var(--architech-brand-green));
+  .text-gold {
+    color: hsl(var(--gold-accent));
   }
 
-  .bg-architech-surface {
-    background-color: hsl(var(--architech-surface));
+  /* ========================================================================
+     BACKGROUND UTILITIES
+     ======================================================================== */
+  .bg-surface-elevated {
+    background-color: hsl(var(--surface-elevated));
   }
 
-  .bg-architech-section-light {
-    background-color: hsl(var(--architech-section-light));
+  .bg-surface-higher {
+    background-color: hsl(var(--surface-higher));
   }
 
-  .bg-architech-section-dark {
-    background-color: hsl(var(--architech-section-dark));
+  .bg-surface-highest {
+    background-color: hsl(var(--surface-highest));
   }
 
-  .border-architech-electric {
-    border-color: hsl(var(--architech-electric));
+  .bg-cyan {
+    background-color: hsl(var(--cyan-electric));
   }
 
-  /* Rich Gradient System - Fluid & Beautiful */
-  .bg-gradient-electric {
-    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-electric-dark)));
+  .bg-gold {
+    background-color: hsl(var(--gold-accent));
   }
 
-  .bg-gradient-brand {
-    background: linear-gradient(135deg, #00A9FF, #39FF14);
+  /* ========================================================================
+     BORDER UTILITIES
+     ======================================================================== */
+  .border-subtle {
+    border-color: hsl(var(--border-subtle));
   }
 
-  .bg-gradient-architech {
-    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-purple)));
+  .border-medium {
+    border-color: hsl(var(--border-medium));
   }
 
-  .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+  .border-strong {
+    border-color: hsl(var(--border-strong));
   }
-  
+
+  .border-cyan {
+    border-color: hsl(var(--cyan-electric));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold-accent));
+  }
+
+  /* ========================================================================
+     GRADIENT SYSTEM - Refined & Professional
+     ======================================================================== */
+  .bg-gradient-cyan {
+    background: linear-gradient(135deg, hsl(var(--cyan-electric)), hsl(var(--cyan-dark)));
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-accent)), hsl(var(--gold-dark)));
+  }
+
+  .bg-gradient-cyan-gold {
+    background: linear-gradient(135deg, hsl(var(--cyan-electric)), hsl(var(--gold-accent)));
+  }
+
   .bg-gradient-surface {
-    background: linear-gradient(135deg, hsl(var(--architech-surface)), hsl(var(--architech-surface-elevated)));
+    background: linear-gradient(135deg, hsl(var(--surface-elevated)), hsl(var(--surface-higher)));
   }
 
-  .bg-gradient-highlight {
-    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-gold)));
-  }
-
-  .bg-gradient-professional {
-    background: linear-gradient(135deg, hsl(var(--architech-primary)), hsl(var(--architech-secondary)));
-  }
-
-  .bg-gradient-creative {
-    background: linear-gradient(135deg, hsl(var(--architech-purple)), hsl(var(--architech-violet)));
-  }
-
-  .bg-gradient-ocean {
-    background: linear-gradient(135deg, hsl(var(--architech-electric)), hsl(var(--architech-cyan)));
-  }
-
-  .bg-gradient-energy {
-    background: linear-gradient(135deg, hsl(var(--architech-coral)), hsl(var(--architech-gold)));
-  }
-
-  .bg-gradient-forest {
-    background: linear-gradient(135deg, hsl(var(--architech-emerald)), hsl(160 85% 45%));
-  }
-
-  /* Status Gradients - Rich & Expressive */
-  .bg-gradient-success {
-    background: linear-gradient(135deg, hsl(var(--architech-success)), hsl(var(--architech-emerald)));
-  }
-
-  .bg-gradient-warning {
-    background: linear-gradient(135deg, hsl(var(--architech-warning)), hsl(var(--architech-gold)));
-  }
-
-  .bg-gradient-danger {
-    background: linear-gradient(135deg, hsl(var(--architech-danger)), hsl(var(--architech-coral)));
-  }
-
-  /* Multi-stop Rich Gradients */
-  .bg-gradient-rainbow {
-    background: linear-gradient(135deg, 
-      hsl(var(--architech-electric)), 
-      hsl(var(--architech-purple)), 
-      hsl(var(--architech-cyan))
-    );
-  }
-
-  .bg-gradient-sunset {
-    background: linear-gradient(135deg, 
-      hsl(var(--architech-coral)), 
-      hsl(var(--architech-gold)), 
-      hsl(var(--architech-warning))
-    );
-  }
-
-  .bg-gradient-aurora {
-    background: linear-gradient(135deg, 
-      hsl(var(--architech-electric)), 
-      hsl(var(--architech-violet)), 
-      hsl(var(--architech-emerald))
-    );
-  }
-
-  /* Fixed Gradient Text Rendering - No More Blue Boxes! */
-  .text-transparent.bg-gradient-electric,
-  .text-transparent.bg-gradient-brand,
-  .text-transparent.bg-gradient-architech,
-  .text-transparent.bg-gradient-rainbow,
-  .text-transparent.bg-gradient-sunset,
-  .text-transparent.bg-gradient-aurora,
-  .text-transparent.bg-gradient-creative,
-  .text-transparent.bg-gradient-ocean,
-  .text-transparent.bg-gradient-energy,
-  .text-transparent.bg-gradient-forest,
-  .text-transparent.bg-gradient-highlight,
-  .text-transparent.bg-gradient-success,
-  .text-transparent.bg-gradient-warning,
-  .text-transparent.bg-gradient-danger {
+  /* Gradient Text - For special headings */
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, hsl(var(--cyan-electric)), hsl(var(--cyan-light)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: gradient-flow 3s ease-in-out infinite;
   }
 
-  @keyframes gradient-flow {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-accent)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  /* Rich Shadows & Effects */
-  .shadow-electric {
-    box-shadow: 0 10px 30px -10px hsl(var(--architech-electric) / 0.4);
+  .text-gradient-cyan-gold {
+    background: linear-gradient(135deg, hsl(var(--cyan-electric)), hsl(var(--gold-accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  .shadow-architech {
-    box-shadow: 0 15px 35px -5px hsl(var(--architech-electric) / 0.3);
-  }
-  
-  .shadow-elevated {
-    box-shadow: 0 8px 24px -4px hsl(var(--foreground) / 0.1);
+  /* ========================================================================
+     SHADOW SYSTEM - Subtle & Professional
+     ======================================================================== */
+  .shadow-subtle {
+    box-shadow: 0 1px 3px 0 hsl(0 0% 0% / 0.1);
   }
 
-  .shadow-glass {
+  .shadow-medium {
+    box-shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.2);
+  }
+
+  .shadow-large {
+    box-shadow: 0 10px 15px -3px hsl(0 0% 0% / 0.3);
+  }
+
+  .shadow-cyan {
+    box-shadow: 0 10px 30px -10px hsl(var(--cyan-electric) / 0.4);
+  }
+
+  .shadow-cyan-glow {
     box-shadow: 
-      0 8px 32px hsl(var(--foreground) / 0.08),
-      inset 0 1px 0 hsl(var(--background) / 0.5);
+      0 0 20px hsl(var(--cyan-electric) / 0.3),
+      0 0 40px hsl(var(--cyan-electric) / 0.1);
   }
 
-  .shadow-glow {
-    box-shadow: 
-      0 0 20px hsl(var(--architech-electric) / 0.3),
-      0 0 40px hsl(var(--architech-electric) / 0.1);
+  .shadow-gold {
+    box-shadow: 0 10px 30px -10px hsl(var(--gold-accent) / 0.4);
   }
 
-  /* Glass Morphism Effects */
-  .glass-card {
-    background: hsl(var(--architech-glass) / 0.7);
+  /* ========================================================================
+     GRAIN TEXTURE - Subtle Depth for Cards
+     ======================================================================== */
+  .grain-texture {
+    position: relative;
+  }
+
+  .grain-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    border-radius: inherit;
+  }
+
+  /* ========================================================================
+     GLASS MORPHISM - Minimal & Elegant
+     ======================================================================== */
+  .glass {
+    background: hsl(var(--surface-elevated) / 0.7);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--architech-glass-border) / 0.3);
+    border: 1px solid hsl(var(--border-subtle) / 0.5);
   }
 
-  .glass-button {
-    background: hsl(var(--architech-electric) / 0.1);
+  .glass-cyan {
+    background: hsl(var(--cyan-electric) / 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid hsl(var(--architech-electric) / 0.2);
+    border: 1px solid hsl(var(--cyan-electric) / 0.3);
   }
 
-  /* Enhanced Animations */
+  /* Glass Card - Brutalist Clean Style (Visible Borders) */
+  .glass-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px hsl(0 0% 0% / 0.1);
+    transition: border-color 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 4px 12px hsl(0 0% 0% / 0.15);
+  }
+
+  /* Blue Glow Utilities - For Branding Revelation */
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(66, 112, 255, 0.3), 0 0 40px rgba(66, 112, 255, 0.1);
+  }
+
+  .glow-blue-soft {
+    box-shadow: 0 0 30px rgba(66, 112, 255, 0.15);
+  }
+
+  .bg-blue-glow {
+    background: linear-gradient(135deg, rgba(66, 112, 255, 0.05) 0%, rgba(17, 23, 32, 0.8) 100%);
+  }
+
+  .border-glow-blue {
+    border: 1px solid rgba(66, 112, 255, 0.4);
+    box-shadow: 0 0 10px rgba(66, 112, 255, 0.2);
+  }
+
+  /* Musical Grid Background - Premium Pattern */
+  .musical-grid {
+    background-image: 
+      linear-gradient(rgba(66, 112, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(66, 112, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 0;
+    animation: musical-grid-move 20s linear infinite;
+  }
+
+  @keyframes musical-grid-move {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 20px 20px, 20px 20px; }
+  }
+
+  /* ========================================================================
+     ANIMATION SYSTEM - Fast, Subtle, Purposeful
+     ======================================================================== */
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+  }
+
   .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
+    animation: fade-in-up 0.6s ease-out forwards;
   }
 
   .animate-glow-pulse {
-    animation: glow-pulse 2.5s ease-in-out infinite alternate;
+    animation: glow-pulse 2s ease-in-out infinite alternate;
   }
 
   .animate-float-gentle {
     animation: float-gentle 4s ease-in-out infinite;
   }
 
-  .animate-gradient-shift {
-    animation: gradient-shift 8s ease-in-out infinite;
-  }
-
-  .animate-gradient-flow {
-    animation: gradient-flow 3s ease-in-out infinite;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
@@ -439,10 +453,10 @@ Professional meets artistic - perfect for creative developers.
 
 @keyframes glow-pulse {
     from {
-      box-shadow: 0 0 5px hsl(var(--architech-electric) / 0.2);
+      box-shadow: 0 0 5px hsl(var(--cyan-electric) / 0.2);
   }
     to {
-      box-shadow: 0 0 25px hsl(var(--architech-electric) / 0.6);
+      box-shadow: 0 0 20px hsl(var(--cyan-electric) / 0.5);
   }
 }
 
@@ -451,68 +465,202 @@ Professional meets artistic - perfect for creative developers.
     transform: translateY(0px);
   }
   50% {
-      transform: translateY(-12px);
+      transform: translateY(-10px);
     }
   }
 
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
+  /* ========================================================================
+     HOVER TRANSITIONS - 200ms Standard
+     ======================================================================== */
+  .transition-architech {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Remove problematic animations */
-  .animate-float {
-    animation: none;
+  /* ========================================================================
+     SCROLLBAR STYLING - Minimal & Elegant
+     ======================================================================== */
+  .scrollbar-architech::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 
-  /* Sticky Scroll Behavior */
-  .tabs-content-container {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
+  .scrollbar-architech::-webkit-scrollbar-track {
+    background: hsl(var(--surface-base));
   }
 
+  .scrollbar-architech::-webkit-scrollbar-thumb {
+    background: hsl(var(--surface-higher));
+    border-radius: 4px;
+  }
+
+  .scrollbar-architech::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--cyan-electric) / 0.5);
+  }
+
+  /* ========================================================================
+     FOCUS STATES - Cyan Ring
+     ======================================================================== */
+  .focus-architech {
+    @apply outline-none ring-2 ring-cyan-electric ring-offset-2 ring-offset-background;
+  }
+
+  /* ========================================================================
+     TEXT & COLOR UTILITIES
+   ======================================================================== */
+   
+   /* Text Colors */
+   .text-title { color: hsl(var(--text-title)); }
+   .text-subtle { color: hsl(var(--text-subtle)); }
+   .text-muted { color: hsl(var(--text-muted)); }
+   
+   /* Background Colors */
+   .bg-surface-elevated { background-color: hsl(var(--surface-elevated)); }
+   .bg-surface-higher { background-color: hsl(var(--surface-higher)); }
+   .bg-surface-highest { background-color: hsl(var(--surface-highest)); }
+   
+   /* Border Colors */
+   .border-subtle { border-color: hsl(var(--border-subtle)); }
+   .border-cyan-electric { border-color: hsl(var(--cyan-electric)); }
+   
+   /* Text Color Utilities */
+   .text-cyan-electric { color: hsl(var(--cyan-electric)); }
+   .text-gold-accent { color: hsl(var(--gold-accent)); }
+   
+   /* Gradient Text */
+   .text-gradient-cyan-gold {
+     background: linear-gradient(135deg, hsl(var(--cyan-electric)) 0%, hsl(var(--gold-accent)) 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+   }
+   
+   /* Shadow Utilities */
+   .shadow-cyan-glow {
+     box-shadow: 0 4px 20px hsl(var(--cyan-electric) / 0.3), 0 0 0 1px hsl(var(--cyan-electric) / 0.2);
+   }
+   
+   .shadow-gold-glow {
+     box-shadow: 0 4px 20px hsl(var(--gold-accent) / 0.3), 0 0 0 1px hsl(var(--gold-accent) / 0.2);
+   }
+   
+   /* Legacy compatibility classes */
+   .bg-architech-section-dark { background-color: hsl(var(--surface-elevated)); }
+   .text-foreground { color: hsl(var(--text-title)); }
+   .text-muted-foreground { color: hsl(var(--text-subtle)); }
+   .border-muted-foreground { border-color: hsl(var(--border-subtle)); }
+   .glass-card { 
+     background: hsl(var(--architech-glass) / 0.8);
+     backdrop-filter: blur(12px);
+     border: 1px solid hsl(var(--architech-glass-border) / 0.3);
+   }
+   
+   /* BenefitsSection specific utilities */
+   .bg-state-error { background-color: hsl(var(--state-error)); }
+   .bg-state-success { background-color: hsl(var(--state-success)); }
+   .text-state-error { color: hsl(var(--state-error)); }
+   .text-state-success { color: hsl(var(--state-success)); }
+   .bg-gradient-cyan { background: linear-gradient(135deg, hsl(var(--cyan-electric)), hsl(var(--cyan-light))); }
+   .shadow-medium { box-shadow: 0 8px 32px hsl(var(--architech-charcoal) / 0.3); }
+   .shadow-large { box-shadow: 0 16px 48px hsl(var(--architech-charcoal) / 0.4); }
+   .grain-texture {
+     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZmlsdGVyIGlkPSJub2lzZSI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC43NSIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPgogICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9InR1cmJ1bGVuY2UiIG9wZXJhdG9yPSJpbiIvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ibHVtaW5hbmNlVG9hbHBoYSIgdmFsdWVzPSIxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAwIDAuMiAwIiByZXN1bHQ9Imx1bWluYW5jZSIvPgogICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9Imx1bWluYW5jZSIgb3BlcmF0b3I9ImF0b3AiLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9ImJsYWNrIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjA1Ii8+Cjwvc3ZnPg==');
+     background-repeat: repeat;
+     opacity: 0.03;
+   }
+   
+   /* Sticky scroll utilities */
+   .sticky-wrapper { position: sticky; top: 5vh; }
+   .tabs-content-container { position: relative; }
   .tabs-content {
     position: absolute;
+     top: 0; 
+     left: 0; 
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 2rem 0;
-    
-    /* Initial state - below viewport */
-    transform: translateY(100%);
-    opacity: 0;
-    z-index: 1;
-    
-    /* No CSS transitions - let JavaScript handle everything */
+     opacity: 0; 
+     transition: opacity 0.3s ease;
+   }
+   .tabs-content.active { opacity: 1; }
+   
+   /* Section padding utilities */
+   .section-padding { padding: 8rem 0; }
+   .section-padding-sm { padding: 4rem 0; }
+   
+   .shadow-electric {
+     box-shadow: 0 8px 32px hsl(var(--cyan-electric) / 0.4), 0 0 0 1px hsl(var(--cyan-electric) / 0.3);
+   }
+   
+   .shadow-glow {
+     box-shadow: 0 0 40px hsl(var(--cyan-electric) / 0.5), 0 0 80px hsl(var(--cyan-electric) / 0.3);
+   }
+   
+   /* Background Gradients */
+   .bg-gradient-hero {
+     background: linear-gradient(135deg, hsl(var(--architech-obsidian)) 0%, hsl(var(--architech-charcoal)) 100%);
+   }
+   
+   .bg-gradient-electric {
+     background: linear-gradient(135deg, hsl(var(--cyan-electric)) 0%, hsl(var(--cyan-light)) 100%);
+   }
+   
+   /* Text Gradients */
+   .text-gradient-brand {
+     background: linear-gradient(135deg, hsl(var(--cyan-electric)) 0%, hsl(var(--gold-accent)) 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+   }
+   
+   /* Glass Effects */
+   .glass-button {
+     background: hsl(var(--architech-glass) / 0.8);
+     border: 1px solid hsl(var(--architech-glass-border) / 0.3);
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+   }
+
+  /* ========================================================================
+     UTILITY CLASSES
+   ======================================================================== */
+  .text-balance {
+    text-wrap: balance;
   }
 
-  .tabs-visual {
+  .container-architech {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
+  }
+
+  /* ========================================================================
+     RESPONSIVE SPACING
+     ======================================================================== */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Screen reader utilities */
+  .sr-only {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* Chart stays static - no animation */
-    opacity: 1;
-    transform: translateY(0);
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
-  .tabs-visual.is-active {
-    opacity: 1;
-  }
-
-  .sticky-wrapper {
-    height: 100vh;
-    position: sticky;
-    top: 5vh;
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 }

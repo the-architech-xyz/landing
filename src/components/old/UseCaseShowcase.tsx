@@ -58,22 +58,22 @@ const UseCaseShowcase = () => {
       title: t('useCases.aiWriting.title'),
       description: t('useCases.aiWriting.description'),
       visual: (
-        <div className="w-full h-full bg-gradient-to-br from-emerald-50 to-teal-100 rounded-2xl p-6 flex flex-col">
+        <div className="w-full h-full bg-gradient-to-br from-emerald-50 to-teal-100 p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
-            <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-emerald-500 flex items-center justify-center">
               <Bot className="w-6 h-6 text-white" />
             </div>
             <div className="text-sm text-emerald-600 font-medium">{t('useCases.aiWriting.category')}</div>
           </div>
           <div className="space-y-4 flex-1">
-            <div className="h-24 bg-white rounded-xl shadow-sm p-4">
+            <div className="h-24 bg-white shadow-sm p-4">
               <div className="space-y-2">
-                <div className="h-3 bg-gray-200 rounded animate-pulse"></div>
-                <div className="h-3 bg-gray-200 rounded w-4/5 animate-pulse"></div>
-                <div className="h-3 bg-emerald-200 rounded w-3/5 animate-pulse"></div>
+                <div className="h-3 bg-gray-200 animate-pulse"></div>
+                <div className="h-3 bg-gray-200 w-4/5 animate-pulse"></div>
+                <div className="h-3 bg-emerald-200 w-3/5 animate-pulse"></div>
               </div>
             </div>
-            <div className="h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-xl flex items-center justify-center">
+            <div className="h-12 bg-gradient-to-r from-emerald-400 to-teal-400 flex items-center justify-center">
               <span className="text-white font-medium text-sm">{t('useCases.aiWriting.status')}</span>
             </div>
           </div>
@@ -91,22 +91,22 @@ const UseCaseShowcase = () => {
       title: t('useCases.ecommerce.title'),
       description: t('useCases.ecommerce.description'),
       visual: (
-        <div className="w-full h-full bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-6 flex flex-col">
+        <div className="w-full h-full bg-gradient-to-br from-pink-50 to-rose-100 p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
-            <div className="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-pink-500 flex items-center justify-center">
               <ShoppingCart className="w-6 h-6 text-white" />
             </div>
             <div className="text-sm text-pink-600 font-medium">{t('useCases.ecommerce.category')}</div>
           </div>
           <div className="space-y-4 flex-1">
-            <div className="h-24 bg-white rounded-xl shadow-sm p-4">
+            <div className="h-24 bg-white shadow-sm p-4">
               <div className="grid grid-cols-3 gap-2">
-                <div className="h-16 bg-pink-100 rounded-lg"></div>
-                <div className="h-16 bg-pink-100 rounded-lg"></div>
-                <div className="h-16 bg-pink-100 rounded-lg"></div>
+                <div className="h-16 bg-pink-100"></div>
+                <div className="h-16 bg-pink-100"></div>
+                <div className="h-16 bg-pink-100"></div>
               </div>
             </div>
-            <div className="h-12 bg-gradient-to-r from-pink-400 to-rose-400 rounded-xl flex items-center justify-center">
+            <div className="h-12 bg-gradient-to-r from-pink-400 to-rose-400 flex items-center justify-center">
               <span className="text-white font-medium text-sm">{t('useCases.ecommerce.status')}</span>
             </div>
           </div>
@@ -124,24 +124,24 @@ const UseCaseShowcase = () => {
       title: t('useCases.dashboard.title'),
       description: t('useCases.dashboard.description'),
       visual: (
-        <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 flex flex-col">
+        <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
-            <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-blue-500 flex items-center justify-center">
               <BarChart3 className="w-6 h-6 text-white" />
             </div>
             <div className="text-sm text-blue-600 font-medium">{t('useCases.dashboard.category')}</div>
           </div>
           <div className="space-y-4 flex-1">
-            <div className="h-24 bg-white rounded-xl shadow-sm p-4">
+            <div className="h-24 bg-white shadow-sm p-4">
               <div className="space-y-2">
-                <div className="h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded"></div>
+                <div className="h-6 bg-gradient-to-r from-blue-400 to-purple-400"></div>
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="h-8 bg-blue-100 rounded"></div>
-                  <div className="h-8 bg-purple-100 rounded"></div>
+                  <div className="h-8 bg-blue-100"></div>
+                  <div className="h-8 bg-purple-100"></div>
                 </div>
               </div>
             </div>
-            <div className="h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl flex items-center justify-center">
+            <div className="h-12 bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center justify-center">
               <span className="text-white font-medium text-sm">{t('useCases.dashboard.status')}</span>
             </div>
           </div>
@@ -159,20 +159,20 @@ const UseCaseShowcase = () => {
       title: t('useCases.whiteboard.title'),
       description: t('useCases.whiteboard.description'),
       visual: (
-        <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-100 rounded-2xl p-6 flex flex-col">
+        <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-100 p-6 flex flex-col">
           <div className="flex items-center justify-between mb-6">
-            <div className="w-12 h-12 bg-violet-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-violet-500 flex items-center justify-center">
               <PenTool className="w-6 h-6 text-white" />
             </div>
             <div className="text-sm text-violet-600 font-medium">{t('useCases.whiteboard.category')}</div>
           </div>
           <div className="space-y-4 flex-1 relative">
-            <div className="absolute top-2 right-2 w-4 h-4 bg-red-400 rounded-full animate-pulse"></div>
-            <div className="h-24 bg-white rounded-xl shadow-sm relative">
-              <div className="absolute top-2 left-2 w-12 h-8 bg-violet-200 rounded"></div>
-              <div className="absolute bottom-2 right-2 w-8 h-6 bg-purple-200 rounded"></div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-red-400 animate-pulse"></div>
+            <div className="h-24 bg-white shadow-sm relative">
+              <div className="absolute top-2 left-2 w-12 h-8 bg-violet-200"></div>
+              <div className="absolute bottom-2 right-2 w-8 h-6 bg-purple-200"></div>
         </div>
-            <div className="h-12 bg-gradient-to-r from-violet-400 to-purple-400 rounded-xl flex items-center justify-center">
+            <div className="h-12 bg-gradient-to-r from-violet-400 to-purple-400 flex items-center justify-center">
               <span className="text-white font-medium text-sm">{t('useCases.whiteboard.status')}</span>
             </div>
           </div>
@@ -199,7 +199,7 @@ const UseCaseShowcase = () => {
       
       {/* Floating elements */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue rounded-full opacity-20"
+        className="absolute top-1/4 left-1/4 w-3 h-3 bg-architech-brand-blue opacity-20"
         animate={{
           y: [0, -30, 0],
           x: [0, 15, 0],
@@ -212,7 +212,7 @@ const UseCaseShowcase = () => {
         }}
       />
       <motion.div
-        className="absolute top-3/4 right-1/4 w-2 h-2 bg-architech-brand-green rounded-full opacity-30"
+        className="absolute top-3/4 right-1/4 w-2 h-2 bg-architech-brand-green opacity-30"
         animate={{
           y: [0, -20, 0],
           x: [0, -12, 0],
@@ -237,7 +237,7 @@ const UseCaseShowcase = () => {
         >
           {/* Section Badge */}
           {/* <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 rounded-full text-sm font-medium text-architech-brand-blue mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-architech-brand-blue/10 border border-architech-brand-blue/20 text-sm font-medium text-architech-brand-blue mb-6 sm:mb-8"
             variants={scaleIn}
           >
             <svg
@@ -307,7 +307,7 @@ const UseCaseShowcase = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="glass-card rounded-3xl p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative overflow-hidden">
+              <div className="glass-card p-8 border border-architech-brand-blue/20 bg-gradient-to-br from-[#00A9FF]/5 to-[#39FF14]/5 relative overflow-hidden">
                 <div className="relative z-10">
                   {useCases[activeIndex].visual}
                 </div>
@@ -342,13 +342,13 @@ const UseCaseShowcase = () => {
                     return (
                                 <motion.div
                         key={tech.name}
-                        className="flex items-center gap-3 p-4 glass-card rounded-xl border border-architech-brand-blue/20"
+                        className="flex items-center gap-3 p-4 glass-card border border-architech-brand-blue/20"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
                         <div
-                          className={`w-10 h-10 rounded-lg ${tech.color} flex items-center justify-center`}
+                          className={`w-10 h-10 ${tech.color} flex items-center justify-center`}
                         >
                           <IconComponent className="w-5 h-5 text-white" />
                   </div>
@@ -363,7 +363,7 @@ const UseCaseShowcase = () => {
 
               {/* Action Button  // TODO: Add a button to see the blueprint */}
               {/* <motion.button
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-electric text-white rounded-2xl font-semibold text-lg hover:shadow-glow transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-semibold text-lg hover:shadow-glow transition-all duration-300 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -380,7 +380,7 @@ const UseCaseShowcase = () => {
                 <motion.button
                   key={useCase.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base ${
+                  className={`px-3 py-2 sm:px-6 sm:py-3 font-medium transition-all duration-300 text-sm sm:text-base ${
                     index === activeIndex
                       ? "bg-architech-brand-blue text-white shadow-lg"
                       : "text-muted-foreground hover:text-foreground hover:bg-architech-brand-blue/10"

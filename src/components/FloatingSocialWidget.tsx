@@ -36,10 +36,10 @@ const FloatingSocialWidget = () => {
             href="https://discord.gg/sxhdEEWups"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="group flex items-center space-x-3 px-4 py-3 bg-[#5865F2] hover:bg-[#4752C4] text-white shadow-lg transition-colors rounded-md"
             title={t('social.discord.title')}
           >
-            <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+            <DiscordIcon className="h-5 w-5" />
             <span className="font-semibold text-sm">{t('social.discord.text')}</span>
           </a>
 
@@ -48,10 +48,10 @@ const FloatingSocialWidget = () => {
             href="https://www.linkedin.com/company/the-architech-ai/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="group flex items-center space-x-3 px-4 py-3 bg-[#0077B5] hover:bg-[#006399] text-white shadow-lg transition-colors rounded-md"
             title={t('social.linkedin.title')}
           >
-            <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+            <Linkedin className="h-5 w-5" />
             <span className="font-semibold text-sm">{t('social.linkedin.text')}</span>
           </a>
         </div>
@@ -59,7 +59,7 @@ const FloatingSocialWidget = () => {
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`mt-3 w-12 h-12 rounded-full bg-gradient-electric hover:shadow-electric text-white flex items-center justify-center transition-all duration-300 hover:scale-110 ${
+          className={`mt-3 w-12 h-12 bg-primary hover:bg-primary/90 text-white flex items-center justify-center transition-colors rounded-md ${
             isExpanded ? 'rotate-180' : ''
           }`}
           title={isExpanded ? 'Close social links' : 'Open social links'}
@@ -74,7 +74,7 @@ const FloatingSocialWidget = () => {
 
       {/* Pulse Animation for Attention */}
       {/* {!isExpanded && (
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-architech-electric rounded-full animate-ping opacity-75"></div>
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-architech-electric animate-ping opacity-75"></div>
       )} */}
     </div>
   );

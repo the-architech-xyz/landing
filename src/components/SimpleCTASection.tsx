@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, CheckCircle, Loader2, AlertCircle, Linkedin, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, CheckCircle, Loader2, AlertCircle, Linkedin, Copy } from "lucide-react";
 import { WAITLIST_CONFIG } from "@/config/waitlist";
 import DiscordIcon from "@/components/DiscordIcon";
+import { SectionHeader } from "@/components/ui/section-header";
+import { BrandedButton } from "@/components/ui/branded-button";
+import { BRANDING } from "@/lib/branding";
 import { useTranslation } from "@/hooks/useTranslation";
+
+/**
+ * THE ARCHITECH CTA SECTION - "Technical Elegance"
+ * Bold, unmissable final call-to-action with new design system
+ */
 
 const SimpleCTASection = () => {
   const { t } = useTranslation();
@@ -36,7 +45,6 @@ const SimpleCTASection = () => {
     setIsLoading(true);
 
     try {
-      // Using our new API
       const response = await fetch(WAITLIST_CONFIG.API_URL, {
         method: 'POST',
         headers: {
@@ -53,7 +61,6 @@ const SimpleCTASection = () => {
 
       if (!response.ok) {
         if (response.status === 409) {
-          // Email already exists
           setError(t('waitlist.alreadyExists'));
           setWaitlistPosition(data.data?.position);
           return;
@@ -61,7 +68,6 @@ const SimpleCTASection = () => {
         throw new Error(data.error || 'Failed to join waitlist');
       }
 
-      // Set position if returned by API
       if (data.data?.position) {
         setWaitlistPosition(data.data.position);
       }
@@ -77,37 +83,31 @@ const SimpleCTASection = () => {
 
   if (isSubmitted) {
     return (
-      <section className="py-24 bg-architech-section-light">
-        <div className="container mx-auto px-6">
+      <section className="section-padding bg-background">
+        <div className="container-architech">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-success mb-6 animate-fade-in-up">
-              <CheckCircle className="h-8 w-8 text-white" />
+            {/* Success Badge with rounded corners and glow */}
+            <div className="inline-block rounded-md px-4 py-2 bg-state-success/10 border border-state-success/30 text-state-success text-sm font-bold tracking-wider mb-6">
+              WELCOME
             </div>
             
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              {t('finalCta.success.title')}{" "}
-              <span className="text-transparent bg-gradient-brand bg-clip-text">{t('finalCta.success.revolution')}</span>
+            <h2 className="font-geist text-4xl md:text-6xl font-bold tracking-tight mb-4">
+              You're <span className="text-state-success">In</span>
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="font-inter text-xl text-subtle mb-8">
               You're on the waitlist for the SaaS platform. The CLI is available now!
             </p>
             
-            <div className="glass-card rounded-2xl p-6 max-w-md mx-auto">
-              <div className="text-sm text-muted-foreground mb-2">{t('cta.position')}</div>
-              <div className="text-2xl font-bold text-transparent bg-gradient-electric bg-clip-text">
+            <div className="bg-surface-elevated border border-subtle p-6 max-w-md mx-auto grain-texture">
+              <div className="text-sm text-subtle mb-2">{t('cta.position')}</div>
+              <div className="text-2xl font-bold text-primary font-geist">
                 {waitlistPosition ? `#${waitlistPosition}` : '🎯'}
               </div>
-              <div className="text-sm text-muted-foreground mt-2">
+              <div className="text-sm text-subtle mt-2">
                 SaaS platform coming soon
               </div>
             </div>
-            
-            {/* Share section */}
-            {/* <div className="mt-8 glass-card rounded-xl p-4 max-w-sm mx-auto">
-              <div className="text-sm text-muted-foreground mb-2">Share and move up in line</div>
-              <div className="text-xs text-architech-electric">Each referral = +10 positions</div>
-            </div> */}
           </div>
         </div>
       </section>
@@ -115,118 +115,158 @@ const SimpleCTASection = () => {
   }
 
   return (
-    <section id="cta" className="py-24 bg-architech-section-light">
-      <div className="container mx-auto px-6">
+    <section id="cta" className="section-padding bg-background">
+      <div className={BRANDING.spacing.container}>
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            {t('cta.title.line1')}{" "}
-            <span className="text-transparent bg-gradient-brand bg-clip-text">{t('cta.title.line2')}</span>
-          </h2>
+          {/* Section Header */}
+          <SectionHeader section="cta" />
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
-            {t('cta.subtitle')}
-          </p>
-
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder={t('cta.emailPlaceholder')}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  disabled={isLoading}
-                  className={`flex-1 h-12 glass-card border-architech-border focus:border-architech-electric transition-all duration-300 ${
-                    error ? 'border-architech-danger focus:border-architech-danger' : ''
-                  }`}
-                />
-                <Button 
-                  type="submit"
-                  size="lg"
-                  disabled={isLoading}
-                  className="bg-gradient-electric hover:shadow-electric text-white font-semibold px-6 group relative overflow-hidden disabled:opacity-50"
+          {/* CLI Install Box - HERO ELEMENT */}
+          <div className="rounded-lg bg-card border-2 border-primary/40 p-8 mb-8 relative overflow-hidden">
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent rounded-lg"></div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center justify-center mb-4">
+                <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1">
+                  Free & Open Source
+                </Badge>
+              </div>
+              
+              <div className="flex items-center justify-center gap-3 mb-6 bg-background/50 rounded-md p-4 border border-border/50">
+                <code className="font-mono text-lg md:text-xl text-foreground">
+                  npm install -g @architech/cli
+                </code>
+                <Button
+                  onClick={() => {
+                    navigator.clipboard.writeText('npm install -g @architech/cli');
+                  }}
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-primary hover:bg-primary/10 p-2"
                 >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      <span className="ml-2">{t('cta.joining')}</span>
-                    </>
-                  ) : (
-                    <>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                      <span className="relative z-10">{t('cta.joinWaitlist')}</span>
-                      <ArrowRight className="ml-2 h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
+                  <Copy className="h-4 w-4" />
                 </Button>
               </div>
               
-              {/* Error display */}
-              {error && (
-                <div className="flex items-center gap-2 text-architech-danger text-sm bg-architech-danger/10 border border-architech-danger/20 rounded-lg p-3">
-                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
-                  <span>{error}</span>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  className="bg-primary hover:bg-primary/90 text-white transition-colors px-8 py-3"
+                >
+                  <a href="/cli">Try CLI Now</a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-primary/30 hover:bg-primary/10 text-primary px-8 py-3"
+                >
+                  <a href="/cli">View Docs</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Proof */}
+          <div className="flex items-center justify-center gap-6 mb-8 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4 text-state-success" />
+              <span>Used by 1000+ developers</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4 text-state-success" />
+              <span>MIT License</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4 text-state-success" />
+              <span>No Lock-in</span>
+            </div>
+          </div>
+
+          {/* SAAS Waitlist - Secondary Option */}
+          <div className="mt-12 pt-8 border-t border-border/50">
+            <div className="text-center mb-6">
+              <h3 className="text-lg font-semibold text-muted-foreground mb-2">
+                Prefer a visual interface?
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Join our waitlist for the upcoming SAAS platform
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+              <div className="flex flex-col gap-4">
+                <div className="flex gap-4">
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder={t('cta.emailPlaceholder')}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    disabled={isLoading}
+                    className={`flex-1 h-12 bg-card border-2 ${
+                      error ? 'border-state-error focus:border-state-error' : 'border-border focus:border-primary'
+                    } transition-colors`}
+                  />
+                  <Button 
+                    type="submit"
+                    size="lg"
+                    disabled={isLoading}
+                    className="bg-accent hover:bg-accent/90 transition-colors shadow-lg hover:shadow-accent/50"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        <span className="ml-2">{t('cta.joining')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{t('cta.joinWaitlist')}</span>
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
+                  </Button>
                 </div>
-              )}
-            </div>
-          </form>
+                
+                {error && (
+                  <div className="flex items-center gap-2 text-state-error text-sm bg-state-error/10 border border-state-error/20 p-3">
+                    <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                )}
+              </div>
+            </form>
 
-          <p className="text-sm text-muted-foreground mt-4">
-            {t('cta.noSpamText')}
-          </p>
-
-          {/* Beautiful OR Divider */}
-          <div className="flex items-center my-8">
-            <div className="flex-grow border-t border-architech-border"></div>
-    
-            <div className="flex-grow border-t border-architech-border"></div>
-          </div>
-
-          {/* Community Links - High Conversion */}
-          <div>
-            <p className="text-sm text-muted-foreground mb-4 text-center">
-              {t('cta.communityText')}
+            <p className="font-inter text-sm text-muted-foreground mt-4">
+              {t('cta.noSpamText')}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="https://discord.gg/sxhdEEWups"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
-              >
-                <DiscordIcon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                <span>{t('social.discord.text')}</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/company/the-architech-ai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group"
-              >
-                <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                <span>{t('social.linkedin.text')}</span>
-              </a>
-            </div>
           </div>
 
-          {/* Enhanced social proof */}
-          {/* <div className="mt-8 glass-card rounded-xl p-6 max-w-md mx-auto group hover:shadow-glow transition-all duration-300">
-            <div className="text-2xl font-bold text-transparent bg-gradient-rainbow bg-clip-text">
-              500+
-            </div>
-            <div className="text-sm text-muted-foreground">
-              Developers already waiting
-            </div>
-            <div className="text-xs text-architech-electric mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              +12 joined today
-            </div>
-          </div> */}
+          {/* Secondary Links */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8">
+            <a href="/solutions/saas-starter" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              View Examples
+            </a>
+            <a href="/cli" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              CLI Documentation
+            </a>
+            <a href="/marketplace" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              Browse Marketplace
+            </a>
+            <a 
+              href="https://discord.gg/sxhdEEWups"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm"
+            >
+              Join Discord
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default SimpleCTASection; 
+export default SimpleCTASection;

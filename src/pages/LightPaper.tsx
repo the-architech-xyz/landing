@@ -5,11 +5,18 @@ import { Download, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
 
 const LightPaper = () => {
   const { t } = useTranslation();
   const [isDownloading, setIsDownloading] = useState(false);
+
+  useEffect(() => {
+    // Set dark mode by default (principal mode)
+    document.documentElement.classList.add('dark');
+  }, []);
 
   const handleDownloadPdf = async () => {
     setIsDownloading(true);
@@ -414,32 +421,8 @@ const LightPaper = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/50">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-architech-brand-blue/20">
-        <div className="container mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">A</span>
-              </div>
-              <span className="text-xl font-satoshi font-bold text-foreground">Architech</span>
-            </div>
-            <Button
-              onClick={handleDownloadPdf}
-              disabled={isDownloading}
-              className="bg-gradient-to-r from-architech-brand-blue to-architech-brand-green text-white hover:shadow-lg hover:shadow-architech-brand-blue/25 transition-all duration-300"
-            >
-              {isDownloading ? (
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-              ) : (
-                <Download className="w-4 h-4 mr-2" />
-              )}
-              {t('lightPaper.actions.downloadPdf')}
-            </Button>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
 
       {/* Main Content */}
       <div className="container mx-auto px-4 sm:px-6 py-12 max-w-4xl">
@@ -454,17 +437,38 @@ const LightPaper = () => {
             variants={fadeInUp}
             className="text-center space-y-6"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-satoshi font-bold text-foreground leading-tight">
+            <div className="inline-block rounded-md px-4 py-2 bg-primary/10 border border-primary/30 text-primary text-sm font-bold tracking-wider mb-4">
+              WHITEPAPER
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               {t('lightPaper.title')}
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t('lightPaper.subtitle')}
             </p>
+            <Button
+              onClick={handleDownloadPdf}
+              disabled={isDownloading}
+              className="bg-primary hover:bg-primary/90 text-white transition-colors mt-6"
+              size="lg"
+            >
+              {isDownloading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                  Generating PDF...
+                </>
+              ) : (
+                <>
+                  <Download className="w-4 h-4 mr-2" />
+                  {t('lightPaper.actions.downloadPdf')}
+                </>
+              )}
+            </Button>
           </motion.div>
 
           {/* Section 1: Digital Paradox */}
           <motion.section variants={fadeInUp} className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.digitalParadox.title')}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
@@ -478,7 +482,7 @@ const LightPaper = () => {
 
           {/* Section 2: Innovation Tax */}
           <motion.section variants={fadeInUp} className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.innovationTax.title')}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
@@ -492,7 +496,7 @@ const LightPaper = () => {
 
           {/* Section 3: AI Mirage */}
           <motion.section variants={fadeInUp} className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.aiMirage.title')}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
@@ -506,7 +510,7 @@ const LightPaper = () => {
 
           {/* Section 4: Software Supply Chain */}
           <motion.section variants={fadeInUp} className="space-y-8">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.softwareSupplyChain.title')}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
@@ -575,7 +579,7 @@ const LightPaper = () => {
           {/* Section 5: Use Cases */}
           <motion.section variants={fadeInUp} className="space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary">
                 {t('lightPaper.sections.useCases.title')}
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -633,7 +637,7 @@ const LightPaper = () => {
 
           {/* Section 6: Human Benefit */}
           <motion.section variants={fadeInUp} className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.humanBenefit.title')}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
@@ -647,7 +651,7 @@ const LightPaper = () => {
 
           {/* Section 7: Founder */}
           <motion.section variants={fadeInUp} className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.founder.title')}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
@@ -661,7 +665,7 @@ const LightPaper = () => {
 
           {/* Section 8: Start Building */}
           <motion.section variants={fadeInUp} className="space-y-8">
-            <h2 className="text-3xl sm:text-4xl font-satoshi font-bold text-architech-brand-blue">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               {t('lightPaper.sections.startBuilding.title')}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -704,14 +708,7 @@ const LightPaper = () => {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-architech-brand-blue/20 bg-background/50 mt-16">
-        <div className="container mx-auto px-4 sm:px-6 py-8">
-          <div className="text-center text-muted-foreground">
-            <p>© 2024 Architech. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

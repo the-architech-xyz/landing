@@ -29,7 +29,7 @@ export const useScrollTriggerGSAP = () => {
       pinSpacing: false
     });
 
-    // Handle simple card switching animation
+    // Handle smooth card switching animation with proper timing
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const containerRect = container.getBoundingClientRect();
@@ -46,24 +46,10 @@ export const useScrollTriggerGSAP = () => {
       // Calculate transition progress within current card (0 to 1)
       const cardProgress = (relativeScroll % cardHeight) / cardHeight;
       
-      // Define a gentler snap zone for subtle pausing effect
-      const snapZoneStart = 0.3; // Start subtle pause at 30% of card height
-      const snapZoneEnd = 0.7;   // End subtle pause at 70% of card height
-      const isInSnapZone = cardProgress >= snapZoneStart && cardProgress <= snapZoneEnd;
-      
       // If we're at the last card and have scrolled past its transition point, 
       // keep the last card fully visible and stop the animation
       const isAtLastCard = clampedIndex === contentElements.length - 1;
-      const isPastLastCardTransition = relativeScroll > (contentElements.length - 1) * cardHeight + cardHeight * 0.8; // 80% through last card
-
-      console.log('Scroll Debug:', {
-        relativeScroll,
-        cardHeight,
-        activeIndex,
-        clampedIndex,
-        cardProgress,
-        contentElementsLength: contentElements.length
-      });
+      const isPastLastCardTransition = relativeScroll > (contentElements.length - 1) * cardHeight + cardHeight * 0.8;
 
       // Set all cards to their proper states
       contentElements.forEach((element, index) => {
@@ -85,47 +71,29 @@ export const useScrollTriggerGSAP = () => {
             zIndex = '1';
           }
         } else if (index === clampedIndex) {
-          // Current active card - smooth slide out with subtle pause
+          // Current active card - slide up as user scrolls
           if (isAtLastCard) {
             // At last card - keep it visible
             transform = 'translateY(0%)';
             opacity = '1';
             zIndex = '10';
           } else {
-            // Normal slide out with reduced sensitivity
-            let progress = cardProgress;
-            
-            // Add subtle pause effect in the middle
-            if (isInSnapZone) {
-              // In snap zone - slow down the animation for a pause effect
-              const snapProgress = (cardProgress - snapZoneStart) / (snapZoneEnd - snapZoneStart);
-              progress = snapZoneStart + (snapProgress * 0.3); // Slow down by 70%
-            }
-            
-            transform = `translateY(${-progress * 100}%)`;
-            opacity = (1 - progress).toString();
+            // Normal slide out
+            transform = `translateY(${-cardProgress * 100}%)`;
+            opacity = (1 - cardProgress).toString();
             zIndex = '10';
           }
         } else if (index === clampedIndex + 1) {
-          // Next card - smooth slide in with subtle pause
+          // Next card - slide up from bottom
           if (isAtLastCard) {
             // At last card - no next card to show
             transform = 'translateY(100%)';
             opacity = '0';
             zIndex = '1';
           } else {
-            // Normal slide in with reduced sensitivity
-            let progress = cardProgress;
-            
-            // Add subtle pause effect in the middle
-            if (isInSnapZone) {
-              // In snap zone - slow down the animation for a pause effect
-              const snapProgress = (cardProgress - snapZoneStart) / (snapZoneEnd - snapZoneStart);
-              progress = snapZoneStart + (snapProgress * 0.3); // Slow down by 70%
-            }
-            
-            transform = `translateY(${(1 - progress) * 100}%)`;
-            opacity = progress.toString();
+            // Normal slide in
+            transform = `translateY(${(1 - cardProgress) * 100}%)`;
+            opacity = cardProgress.toString();
             zIndex = '10';
           }
         } else {
@@ -134,16 +102,6 @@ export const useScrollTriggerGSAP = () => {
           opacity = '0';
           zIndex = '1';
         }
-        
-        console.log(`Card ${index}:`, { 
-          transform, 
-          opacity, 
-          zIndex, 
-          isAtLastCard, 
-          isPastLastCardTransition, 
-          isInSnapZone, 
-          cardProgress: cardProgress.toFixed(2)
-        });
         
         element.style.transform = transform;
         element.style.opacity = opacity;
@@ -157,7 +115,6 @@ export const useScrollTriggerGSAP = () => {
     window.addEventListener('scroll', handleScroll);
     
     // Initial call
-    console.log('GSAP ScrollTrigger initialized', { contentElements: contentElements.length, visualElements: visualElements.length });
     handleScroll();
 
     return () => {

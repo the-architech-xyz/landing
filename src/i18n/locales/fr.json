@@ -1,4 +1,7 @@
 {
+  "accessibility": {
+    "skipToMain": "Aller au contenu principal"
+  },
   "header": {
     "nav": {
       "home": "Accueil",
@@ -13,15 +16,28 @@
   },
   "hero": {
     "title": {
-      "line1": "Cessez de configurer.",
-      "line2": "Architecturez."
+      "line1": "Composez des applications à la",
+      "line2": "vitesse de la pensée"
     },
-    "subtitle": "Générez des fondations d'application prêtes pour la production en quelques secondes.",
+    "subtitle": "Transformez votre génome en applications prêtes pour la production. Architecture modulaire qui s'orchestre comme une symphonie.",
     "prompt": "Une application de gestion de projet collaborative avec authentification JWT et un système de design moderne",
     "cta": {
       "primary": "Voir en Action",
       "secondary": "Réserver une Démo"
-    },
+},
+    "socialProof": {
+      "users": "500+ développeurs",
+      "rating": "4.8/5 évaluation"
+},
+    "chart": {
+      "innovationTax": "Taxe d'Innovation",
+      "innovationTaxDesc": "Configuration et maintenance",
+      "actualCoding": "Code Réel",
+      "actualCodingDesc": "Développement de fonctionnalités",
+      "minutes": "Minutes",
+      "setupConfig": "Config & Setup",
+      "pureFeature": "Dev Pur"
+},
     "stats": {
       "users": "10 000+",
       "usersLabel": "Développeurs",
@@ -226,9 +242,9 @@
       }
     },
     "steps": {
-      "describe": {
-        "title": "Choisissez votre Génome",
-        "description": "Sélectionnez parmi des blueprints éprouvés ou créez le vôtre. Chaque blueprint est un modèle d'architecture prouvé.",
+      "define": {
+        "title": "Définir Votre Stack",
+        "description": "Déclarez votre architecture dans un seul fichier TypeScript. Choisissez vos adaptateurs, intégrateurs et fonctionnalités.",
         "details": [
           "Parcourez les blueprints disponibles",
           "Choisissez votre stack technologique",
@@ -238,8 +254,8 @@
         "codeExample": "# Blueprints disponibles :\nnpx @architech/cli list\n\n# Choisir un blueprint :\nnpx @architech/cli create react-saas\n# ou\nnpx @architech/cli create nextjs-ecommerce\n# ou\nnpx @architech/cli create nodejs-api"
       },
       "generate": {
-        "title": "La CLI Génère votre Projet",
-        "description": "La CLI transforme votre blueprint en une base de code complète et prête pour la production avec toutes les dépendances configurées.",
+        "title": "Générer Votre App",
+        "description": "Exécutez une commande. The Architech orchestre toutes les intégrations automatiquement.",
         "details": [
           "La CLI structure le projet",
           "Installe toutes les dépendances",
@@ -248,9 +264,9 @@
         ],
         "codeExample": "# La CLI génère votre projet :\nnpx @architech/cli create react-saas mon-app\n\n# Sortie :\n✓ Structure du projet créée\n✓ Dépendances installées\n✓ TypeScript configuré\n✓ TailwindCSS configuré\n✓ ESLint & Prettier ajoutés\n✓ Prêt à développer !"
       },
-      "deploy": {
-        "title": "Possédez votre Code, Instantanément",
-        "description": "Obtenez du code prêt pour la production que vous possédez entièrement. Aucune dépendance propriétaire, aucun verrouillage. Jamais.",
+      "customize": {
+        "title": "Personnaliser & Déployer",
+        "description": "Obtenez un code prêt pour la production avec 100% de propriété. Modifiez, étendez ou éjectez à tout moment.",
         "details": [
           "Téléchargez votre projet complet",
           "Code 100% open-source",

@@ -2,6 +2,17 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * THE ARCHITECH CARD COMPONENT - "Technical Elegance"
+ * 
+ * Features:
+ * - Charcoal Gray background (#1A1A1A)
+ * - Subtle grain texture for depth
+ * - Minimal borders
+ * - Clean shadows
+ * - Responsive padding
+ */
+
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -9,7 +20,8 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "rounded-lg bg-surface-elevated border border-subtle shadow-medium grain-texture",
+      "transition-architech hover:border-medium hover:shadow-large",
       className
     )}
     {...props}
@@ -23,7 +35,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn("flex flex-col space-y-2 p-6", className)}
     {...props}
   />
 ))
@@ -36,7 +48,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "text-xl font-bold leading-tight tracking-tight font-geist text-title",
       className
     )}
     {...props}
@@ -50,7 +62,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-subtle font-inter leading-relaxed", className)}
     {...props}
   />
 ))

@@ -3,202 +3,151 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { Zap, Sparkles, Code, Database, Shield, CreditCard, Palette, Layers } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
+import { BRANDING } from "@/lib/branding";
+import { useMarketplace } from "@/hooks/useMarketplace";
+import { getExampleProjects } from "@/lib/marketplace-utils";
+
+/**
+ * THE ARCHITECH CANVAS - "Technical Elegance" Star Moment
+ * 
+ * Our most polished component with refined animations and interactions.
+ * Features the new design system with Electric Cyan and Gold accents.
+ */
 
 const ArchitectsCanvas = () => {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
+  const { genomes, modules: allModules } = useMarketplace();
   const [userInput, setUserInput] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [selectedModules, setSelectedModules] = useState<number[]>([]);
+  const [selectedModules, setSelectedModules] = useState<any[]>([]); // Store actual module objects, not indices
   const [showBlueprint, setShowBlueprint] = useState(false);
   const [blueprintLines, setBlueprintLines] = useState<string[]>([]);
   const [showProjectStructure, setShowProjectStructure] = useState(false);
   const [showWorkingPreview, setShowWorkingPreview] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
-  const [typingText, setTypingText] = useState("");
-  const [hoveredTech, setHoveredTech] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, targetX: number, targetY: number, progress: number}>>([]);
-  const [showParticles, setShowParticles] = useState(false);
   const [activeTab, setActiveTab] = useState<'technologies' | 'blueprint' | 'structure' | 'preview'>('technologies');
-
-  const techStack = [
-    { 
-      name: "React", 
-      keywords: ["react", "frontend", "ui", "interface", "component", "spa"],
-      icon: Code,
-      color: "from-blue-500 to-cyan-500",
-      brandColor: "#61DAFB",
-      description: "Frontend framework for building user interfaces"
-    },
-    { 
-      name: "PostgreSQL", 
-      keywords: ["database", "postgresql", "postgres", "sql", "data", "storage", "db"],
-      icon: Database,
-      color: "from-teal-500 to-green-500",
-      brandColor: "#336791",
-      description: "Advanced open-source relational database"
-    },
-    { 
-      name: "JWT Auth", 
-      keywords: ["auth", "authentication", "jwt", "login", "security", "user", "signin"],
-      icon: Shield,
-      color: "from-green-500 to-emerald-500",
-      brandColor: "#000000",
-      description: "Secure authentication with JSON Web Tokens"
-    },
-    { 
-      name: "Stripe", 
-      keywords: ["stripe", "payment", "billing", "saas", "subscription", "money", "pay"],
-      icon: CreditCard,
-      color: "from-purple-500 to-indigo-500",
-      brandColor: "#635BFF",
-      description: "Complete payment processing platform"
-    },
-    { 
-      name: "Tailwind CSS", 
-      keywords: ["tailwind", "css", "styling", "design", "ui", "frontend", "style"],
-      icon: Palette,
-      color: "from-cyan-500 to-teal-500",
-      brandColor: "#06B6D4",
-      description: "Utility-first CSS framework for rapid UI development"
-    },
-    { 
-      name: "Next.js", 
-      keywords: ["nextjs", "next", "framework", "fullstack", "ssr", "react", "app"],
-      icon: Layers,
-      color: "from-gray-700 to-gray-900",
-      brandColor: "#000000",
-      description: "The React framework for production"
-    }
-  ];
-
-  const exampleProjects = [
-    "Un SaaS avec authentification et paiements Stripe",
-    "Une application de gestion de tâches collaborative",
-    "Un e-commerce avec panier et commandes",
-    "Un dashboard d'analytics en temps réel",
-    "Une plateforme de blog avec CMS"
-  ];
+  const [matchedGenome, setMatchedGenome] = useState<any>(null);
+  
+  // Get real example projects and featured modules from genomes
+  const exampleProjects = getExampleProjects(genomes);
+  
+  // Map real marketplace modules to techStack format
+  const iconMap: Record<string, any> = {
+    'stripe': CreditCard,
+    'clerk': Shield,
+    'drizzle': Database,
+    'next': Layers,
+    'tailwind': Palette,
+    'resend': Sparkles,
+  };
+  
+  // Use featured modules from marketplace
+  const { modules } = useMarketplace();
+  const featuredModules = modules.filter(m => m.featured).slice(0, 6);
+  
+  const techStack = featuredModules.map(module => ({
+    name: module.name,
+    keywords: module.tags,
+    icon: iconMap[module.id.split('-')[0]] || Code,
+    color: "from-cyan-500 to-cyan-600",
+    description: module.description
+  }));
 
   // Mobile detection
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+      setIsMobile(window.innerWidth < 768);
     };
     
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Function to analyze user input and select modules
-  const analyzeInput = (input: string) => {
+  // Match user input to best genome
+  const findBestGenome = (input: string) => {
     const lowerInput = input.toLowerCase();
-    const selected: number[] = [];
     
-    techStack.forEach((tech, index) => {
-      if (tech.keywords.some(keyword => lowerInput.includes(keyword))) {
-        selected.push(index);
-      }
-    });
-    
-    return selected;
+    return genomes.find(genome => {
+      const matchesDescription = genome.description.toLowerCase().includes(lowerInput) ||
+                                 lowerInput.includes(genome.name.toLowerCase());
+      const matchesTags = genome.tags?.some(tag => lowerInput.includes(tag.toLowerCase()));
+      const matchesUseCase = genome.useCase.toLowerCase().includes(lowerInput) ||
+                            lowerInput.includes(genome.useCase.toLowerCase());
+      
+      return matchesDescription || matchesTags || matchesUseCase;
+    }) || genomes[0]; // Default to first genome
   };
 
-  // Function to generate blueprint based on input
-  const generateBlueprint = (input: string, modules: number[]) => {
+  // Match user input to best genome and get its modules
+  const analyzeInput = (input: string, genome: any) => {
+    // Get module IDs from genome
+    const genomeModuleIds = [
+      ...(genome.genome.adapters || []),
+      ...(genome.genome.integrators || []),
+      ...(genome.genome.connectors || []),
+      ...(genome.genome.features || [])
+    ];
+    
+    // Find actual module objects from marketplace
+    const selectedModuleObjects = genomeModuleIds
+      .map(moduleId => 
+        allModules.find(m => 
+          m.id.includes(moduleId) || 
+          m.name.toLowerCase().includes(moduleId.toLowerCase()) ||
+          m.id.split('/').pop() === moduleId
+        )
+      )
+      .filter(Boolean); // Remove undefined
+    
+    // If no modules found, use first 3 featured modules as fallback
+    return selectedModuleObjects.length > 0 
+      ? selectedModuleObjects 
+      : featuredModules.slice(0, 3);
+  };
+
+  // Generate blueprint from matched genome
+  const generateBlueprint = (input: string, moduleObjects: any[], genome: any) => {
     const projectName = input.split(' ').slice(0, 3).join(' ').replace(/[^a-zA-Z0-9\s]/g, '') || 'Mon Projet';
     
-    const blueprint = [
-      "# Architecture générée par Architech",
-      "project:",
-      `  name: "${projectName}"`,
-      "  type: \"fullstack-app\"",
-      "  version: \"1.0.0\"",
-      "",
-      "architecture:",
-      "  frontend: \"React + Next.js\"",
-      "  backend: \"Next.js API Routes\"",
-      "  database: \"PostgreSQL\"",
-      "  auth: \"JWT + NextAuth.js\"",
-      "  styling: \"TailwindCSS\"",
-      "  deployment: \"Vercel\"",
-      "",
-      "features:",
-      "  - \"Interface utilisateur moderne\"",
-      "  - \"Authentification sécurisée\"",
-      "  - \"Base de données relationnelle\"",
-      "  - \"Design responsive\"",
-      "  - \"Déploiement automatique\"",
-      "",
-      "modules_selected:",
-      ...modules.map(index => `  - "${techStack[index].name}"`),
-      "",
-      "database_schema:",
-      "  users: \"id, email, name, role, created_at\"",
-      "  projects: \"id, name, description, owner_id, status\"",
-      "  tasks: \"id, title, description, project_id, assignee_id\""
-    ];
+    const { adapters = [], integrators = [], connectors = [], features = [] } = genome.genome;
     
-    return blueprint;
+    return [
+      "# genome.ts - Generated by The Architech",
+      "export const genome = {",
+      `  name: "${projectName}",`,
+      `  description: "${genome.description}",`,
+      "",
+      `  adapters: [${adapters.map((a: string) => `"${a}"`).join(", ")}],`,
+      integrators.length > 0 ? `  integrators: [${integrators.map((i: string) => `"${i}"`).join(", ")}],` : null,
+      connectors?.length > 0 ? `  connectors: [${connectors.map((c: string) => `"${c}"`).join(", ")}],` : null,
+      features.length > 0 ? `  features: [${features.map((f: string) => `"${f}"`).join(", ")}]` : null,
+      "};",
+      "",
+      "// Detected modules:",
+      ...moduleObjects.map(mod => `//  - ${mod.name}`)
+    ].filter(Boolean);
   };
 
-  // Function to generate project structure
-  const generateProjectStructure = (modules: number[]) => {
-    const structure = [
-      { name: "src/", type: "folder", children: [
-        { name: "app/", type: "folder", children: [
-          { name: "api/", type: "folder", children: [
-            { name: "auth/", type: "folder", children: [
-              { name: "route.ts", type: "file", icon: "🔐" }
-            ]},
-            { name: "users/", type: "folder", children: [
-              { name: "route.ts", type: "file", icon: "👥" }
-            ]}
-          ]},
-          { name: "dashboard/", type: "folder", children: [
-            { name: "page.tsx", type: "file", icon: "📊" }
-          ]},
+  // Generate project structure
+  const generateProjectStructure = () => {
+    return [
+      { name: "src/", type: "folder", icon: "📁", children: [
+        { name: "app/", type: "folder", icon: "📁", children: [
+          { name: "api/", type: "folder", icon: "📁" },
+          { name: "dashboard/", type: "folder", icon: "📁" },
           { name: "layout.tsx", type: "file", icon: "🏗️" }
         ]},
-        { name: "components/", type: "folder", children: [
-          { name: "ui/", type: "folder", children: [
-            { name: "button.tsx", type: "file", icon: "🔘" },
-            { name: "input.tsx", type: "file", icon: "📝" }
-          ]}
-        ]},
-        { name: "lib/", type: "folder", children: [
-          { name: "db.ts", type: "file", icon: "🗄️" },
-          { name: "auth.ts", type: "file", icon: "🔐" }
-        ]}
+        { name: "components/", type: "folder", icon: "📁" },
+        { name: "lib/", type: "folder", icon: "📁" }
       ]},
       { name: "package.json", type: "file", icon: "📦" },
-      { name: "tailwind.config.js", type: "file", icon: "🎨" },
-      { name: "next.config.js", type: "file", icon: "⚡" }
+      { name: "tailwind.config.js", type: "file", icon: "🎨" }
     ];
-    
-    return structure;
-  };
-
-  // Enhanced typing animation function
-  const typeText = (text: string, callback?: () => void, speed: number = 30) => {
-    setIsTyping(true);
-    setTypingText("");
-    let index = 0;
-    
-    const typeInterval = setInterval(() => {
-      if (index < text.length) {
-        setTypingText(text.slice(0, index + 1));
-        index++;
-      } else {
-        setIsTyping(false);
-        clearInterval(typeInterval);
-        if (callback) callback();
-      }
-    }, speed);
   };
 
   // Process user input
@@ -207,117 +156,64 @@ const ArchitectsCanvas = () => {
     
     setIsProcessing(true);
     setUserInput(input);
-    
-    // Clear previous state
     setSelectedModules([]);
     setShowBlueprint(false);
     setBlueprintLines([]);
     setShowProjectStructure(false);
     setShowWorkingPreview(false);
     
-    // Analyze input and select modules
-    const modules = analyzeInput(input);
-    setSelectedModules(modules);
+    // Find best matching genome
+    const genome = findBestGenome(input);
+    setMatchedGenome(genome);
     
-    // Animate module selection
-    setTimeout(() => {
-      setShowParticles(true);
-      createLuminousExtraction();
-    }, 500);
+    // Analyze input and get actual module objects
+    const moduleObjects = analyzeInput(input, genome);
+    setSelectedModules(moduleObjects);
+    setActiveTab('technologies');
     
-    // Generate and display blueprint
+    // Generate blueprint from matched genome
     setTimeout(() => {
-      const blueprint = generateBlueprint(input, modules);
+      const blueprint = generateBlueprint(input, moduleObjects, genome);
       setShowBlueprint(true);
-      setActiveTab('blueprint');
       
-      // Type blueprint line by line
       blueprint.forEach((line, index) => {
         setTimeout(() => {
           setBlueprintLines(prev => [...prev, line]);
-        }, index * 100);
+        }, index * 50);
       });
-    }, 1500);
+    }, 800);
     
     // Show project structure
     setTimeout(() => {
       setShowProjectStructure(true);
-    }, 3000);
+    }, 1500);
     
     // Show working preview
     setTimeout(() => {
       setShowWorkingPreview(true);
       setIsProcessing(false);
-    }, 4000);
+    }, 2000);
   };
 
-  // Luminous Extraction Particle System
-  const createLuminousExtraction = () => {
-    setShowParticles(true);
-    const newParticles = [];
-    
-    const particleCount = isMobile ? 6 : 12;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const inputX = isMobile ? 100 + (i % 3) * 40 : 200 + (i % 4) * 50;
-      const inputY = isMobile ? 250 + Math.floor(i / 3) * 25 : 300 + Math.floor(i / 4) * 30;
-      
-      const techIndex = i % selectedModules.length;
-      const techX = isMobile ? 300 + (techIndex % 2) * 150 : 600 + (techIndex % 2) * 200;
-      const techY = isMobile ? 350 + Math.floor(techIndex / 2) * 120 : 400 + Math.floor(techIndex / 2) * 150;
-      
-      newParticles.push({
-        id: i,
-        x: inputX,
-        y: inputY,
-        targetX: techX,
-        targetY: techY,
-        progress: 0
-      });
-    }
-    
-    setParticles(newParticles);
-    
-    const animateParticles = () => {
-      setParticles(prev => prev.map(particle => ({
-        ...particle,
-        progress: Math.min(particle.progress + 0.02, 1),
-        x: particle.x + (particle.targetX - particle.x) * 0.05,
-        y: particle.y + (particle.targetY - particle.y) * 0.05
-      })));
-      
-      if (newParticles.some(p => p.progress < 1)) {
-        requestAnimationFrame(animateParticles);
-      } else {
-        setTimeout(() => setShowParticles(false), 1000);
-      }
-    };
-    
-    requestAnimationFrame(animateParticles);
-  };
-
-  // Project Structure Tree Component
-  const renderProjectStructure = (items: any[], level: number = 0) => {
+  // Render project structure tree
+  const renderProjectStructure = (items: any[], level: number = 0): React.ReactNode => {
     return items.map((item, index) => (
       <motion.div
         key={`${item.name}-${index}`}
-        className="select-none"
-        initial={{ opacity: 0, x: -20 }}
+        initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: index * 0.1, duration: 0.3 }}
+        transition={{ delay: index * 0.05, duration: 0.3 }}
       >
-        <div className={`flex items-center gap-2 py-1 ${level > 0 ? 'ml-4' : ''}`}>
-          <span className="text-lg">{item.icon}</span>
-          <span className={`font-mono text-sm ${
-            item.type === 'folder' 
-              ? 'text-architech-brand-blue font-semibold' 
-              : 'text-muted-foreground'
+        <div className={`flex items-center gap-2 py-1 ${level > 0 ? 'ml-6' : ''}`}>
+          <span className="text-base">{item.icon}</span>
+          <span className={`font-geist-mono text-sm ${
+            item.type === 'folder' ? 'text-cyan-electric font-semibold' : 'text-subtle'
           }`}>
             {item.name}
           </span>
         </div>
         {item.children && (
-          <div className="ml-2">
+          <div>
             {renderProjectStructure(item.children, level + 1)}
           </div>
         )}
@@ -329,92 +225,42 @@ const ArchitectsCanvas = () => {
     <section
       ref={containerRef}
       id="interactive-demo"
-      className="min-h-screen bg-gradient-to-br from-architech-section-light via-architech-section-dark to-architech-section-light relative overflow-hidden py-32"
+      className="section-padding bg-background relative overflow-hidden"
     >
-      {/* Sophisticated background layers */}
-      <div className="absolute inset-0">
-        {/* Primary grid */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,169,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(0,169,255,0.15)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-        </div>
-        
-        {/* Secondary subtle pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(0,169,255,0.1)_0%,transparent_50%),radial-gradient(circle_at_75%_75%,rgba(57,255,20,0.08)_0%,transparent_50%)]"></div>
-        </div>
-        
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-architech-surface/5 to-transparent"></div>
-      </div>
+      {/* Musical Grid Background */}
+      <div className="absolute inset-0 musical-grid opacity-50" />
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Clean Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-satoshi font-bold text-foreground mb-6 leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            {t('interactiveDemo.canvas.title')}{" "}
-            <span className="text-transparent bg-gradient-to-r from-architech-brand-blue to-architech-brand-green bg-clip-text">
-              {t('interactiveDemo.canvas.titleHighlight')}
-            </span>
-          </motion.h2>
-          
-          <motion.p 
-            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            {t('interactiveDemo.canvas.subtitle')}
-          </motion.p>
-        </motion.div>
+      <div className={BRANDING.spacing.container}>
+        {/* Section Header */}
+        <SectionHeader section="interactiveDemo" />
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left side - Input and Modules */}
-            <div className="space-y-10">
-              {/* Enhanced Input Section */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Left: Input Section */}
               <motion.div
-                className="relative group"
-                initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                whileHover={{ y: -2 }}
-              >
-                {/* Glass morphism card */}
-                <div className="relative bg-gradient-to-br from-card/80 via-card/90 to-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-10 shadow-2xl shadow-architech-electric/5 group-hover:shadow-architech-electric/10 transition-all duration-500">
-                  {/* Subtle glow effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-architech-electric/5 via-transparent to-architech-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Clean Header */}
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="glass-card p-8">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">
                   {t('interactiveDemo.canvas.input.label')}
                 </h3>
-                    <p className="text-muted-foreground">
+                  <p className="text-muted-foreground">
                       {t('interactiveDemo.canvas.input.placeholder')}
                     </p>
                   </div>
                 
                   <div className="space-y-6">
-                    {/* Clean Input */}
+                  {/* Input Field */}
                     <div className="relative">
                   <Input
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Ex: Un SaaS avec authentification et paiements Stripe"
-                        className="text-lg py-6 px-6 bg-architech-surface/50 border-2 border-border/50 rounded-2xl focus:border-architech-electric/50 focus:ring-4 focus:ring-architech-electric/10 transition-all duration-300 placeholder:text-muted-foreground/60"
+                      className="text-base py-6 px-5 bg-background/50 border-2 border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                     disabled={isProcessing}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter' && !isProcessing && userInput.trim()) {
@@ -428,159 +274,125 @@ const ArchitectsCanvas = () => {
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                           >
-                            <Sparkles className="h-5 w-5 text-architech-electric/60" />
+                          <Sparkles className="h-5 w-5 text-primary" />
                           </motion.div>
                         </div>
                       )}
                     </div>
                     
-                    {/* Clean Example Projects */}
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gradient-to-b from-architech-electric to-architech-brand-green rounded-full"></div>
-                        <p className="text-sm font-medium text-muted-foreground">{t('interactiveDemo.canvas.input.examples')}</p>
-                      </div>
-                      <div className="grid grid-cols-1 gap-2 relative z-10">
+                  {/* Example Projects */}
+                  <div className="space-y-3">
+                    <p className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-accent" />
+                      {t('interactiveDemo.canvas.input.examples')}
+                    </p>
+                    <div className="space-y-2">
                         {exampleProjects.map((example, index) => (
-                          <motion.div
+                        <button
                             key={index}
-                            whileHover={{ scale: 1.01, x: 2 }}
-                            whileTap={{ scale: 0.99 }}
-                            className="w-full relative z-10"
-                          >
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                console.log('Example clicked:', example); // Debug log
+                          onClick={() => {
                                 setUserInput(example);
                                 processInput(example);
                               }}
                               disabled={isProcessing}
-                              className="w-full text-left p-4 bg-architech-surface/20 border border-border/30 hover:border-architech-electric/40 hover:bg-architech-electric/5 rounded-xl transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-architech-electric/20"
-                              type="button"
-                              style={{
-                                pointerEvents: isProcessing ? 'none' : 'auto',
-                                position: 'relative',
-                                zIndex: 10
-                              }}
-                            >
-                              <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-architech-electric/40 group-hover:bg-architech-electric transition-colors duration-300"></div>
-                                <span className="text-sm font-medium text-foreground group-hover:text-architech-electric transition-colors duration-300">{example}</span>
-                              </div>
+                          className="w-full text-left rounded-md p-3 bg-card border border-border hover:border-primary/50 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {example}
                             </button>
-                          </motion.div>
                         ))}
                       </div>
                   </div>
                   
-                    {/* Enhanced CTA Button */}
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
+                  {/* Generate Button */}
                   <Button
                     onClick={() => processInput(userInput)}
                     disabled={!userInput.trim() || isProcessing}
-                        className="w-full bg-gradient-to-r from-architech-electric via-architech-brand-blue to-architech-electric hover:shadow-2xl hover:shadow-architech-electric/25 text-white font-bold py-6 text-lg rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
+                    className="w-full py-6 text-base bg-primary hover:bg-primary/90"
+                    size="lg"
                   >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                        <div className="relative flex items-center justify-center gap-3">
                     {isProcessing ? (
                       <>
                               <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                               >
-                                <Sparkles className="h-6 w-6" />
+                          <Sparkles className="h-5 w-5" />
                               </motion.div>
                               <span>Génération en cours...</span>
                       </>
                     ) : (
                       <>
-                              <Zap className="h-6 w-6" />
+                        <Zap className="h-5 w-5" />
                               <span>Générer mon architecture</span>
                       </>
                     )}
-                        </div>
                   </Button>
-                    </motion.div>
-                  </div>
+                </div>
                 </div>
               </motion.div>
 
-            </div>
-
-            {/* Right side - Tabbed Results */}
+            {/* Right: Results Section */}
+            <AnimatePresence>
             {(selectedModules.length > 0 || showBlueprint || showProjectStructure || showWorkingPreview) && (
               <motion.div
-                className="relative"
-                initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.6 }}
               >
-                <div className="bg-gradient-to-br from-card/80 via-card/90 to-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl">
+                  <div className="glass-card p-6">
                   {/* Tab Navigation */}
-                  <div className="flex gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-6 pb-4 border-b border-subtle">
                     {selectedModules.length > 0 && (
                       <button
                         onClick={() => setActiveTab('technologies')}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          className={`rounded-md px-4 py-2 text-sm font-medium font-inter transition-architech ${
                           activeTab === 'technologies'
-                            ? 'bg-architech-brand-green text-white shadow-lg'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                              ? 'bg-primary text-white shadow-lg'
+                              : 'text-subtle hover:text-primary hover:bg-surface-higher'
                         }`}
                       >
-                        <div className="flex items-center gap-2">
-                          <Layers className="h-4 w-4" />
+                          <Layers className="h-4 w-4 inline mr-2" />
 {t('interactiveDemo.canvas.tabs.technologies')}
-                        </div>
                       </button>
                     )}
                     {showBlueprint && (
                       <button
                         onClick={() => setActiveTab('blueprint')}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          className={`rounded-md px-4 py-2 text-sm font-medium font-inter transition-architech ${
                           activeTab === 'blueprint'
-                            ? 'bg-architech-brand-blue text-white shadow-lg'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                              ? 'bg-primary text-white shadow-lg'
+                              : 'text-subtle hover:text-primary hover:bg-surface-higher'
                         }`}
                       >
-                        <div className="flex items-center gap-2">
-                          <Database className="h-4 w-4" />
+                          <Database className="h-4 w-4 inline mr-2" />
 {t('interactiveDemo.canvas.tabs.blueprint')}
-                        </div>
                       </button>
                     )}
                     {showProjectStructure && (
                       <button
                         onClick={() => setActiveTab('structure')}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          className={`rounded-md px-4 py-2 text-sm font-medium font-inter transition-architech ${
                           activeTab === 'structure'
-                            ? 'bg-architech-brand-green text-white shadow-lg'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                              ? 'bg-primary text-white shadow-lg'
+                              : 'text-subtle hover:text-primary hover:bg-surface-higher'
                         }`}
                       >
-                        <div className="flex items-center gap-2">
-                          <Layers className="h-4 w-4" />
+                          <Layers className="h-4 w-4 inline mr-2" />
 {t('interactiveDemo.canvas.tabs.structure')}
-                        </div>
                       </button>
                     )}
                     {showWorkingPreview && (
                       <button
                         onClick={() => setActiveTab('preview')}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                          className={`rounded-md px-4 py-2 text-sm font-medium font-inter transition-architech ${
                           activeTab === 'preview'
-                            ? 'bg-architech-electric text-white shadow-lg'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-architech-surface/50'
+                              ? 'bg-primary text-white shadow-lg'
+                              : 'text-subtle hover:text-primary hover:bg-surface-higher'
                         }`}
                       >
-                        <div className="flex items-center gap-2">
-                          <Zap className="h-4 w-4" />
+                          <Zap className="h-4 w-4 inline mr-2" />
 {t('interactiveDemo.canvas.tabs.preview')}
-                        </div>
                       </button>
                     )}
                   </div>
@@ -590,48 +402,59 @@ const ArchitectsCanvas = () => {
                     {/* Technologies Tab */}
                     {activeTab === 'technologies' && selectedModules.length > 0 && (
                       <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                          initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-brand-green/20 shadow-inner"
+                          transition={{ duration: 0.4 }}
+                          className="space-y-4"
                       >
+                        {/* Matched Genome Indicator */}
+                        {matchedGenome && (
+                          <div className="mb-4 p-3 bg-primary/5 border border-primary/20 rounded-md">
+                            <p className="text-xs text-muted-foreground mb-1">Matched Genome:</p>
+                            <p className="text-sm font-semibold text-primary">{matchedGenome.name}</p>
+                          </div>
+                        )}
+                        
                         <div className="flex items-center gap-3 mb-6">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-architech-brand-green to-architech-electric flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
                             <Layers className="h-5 w-5 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-xl font-bold text-foreground">
+                              <h3 className="text-lg font-bold">
                               {t('interactiveDemo.canvas.technologies.title')}
                             </h3>
-                            <p className="text-sm text-muted-foreground">
-                              {selectedModules.length} {selectedModules.length > 1 ? t('interactiveDemo.canvas.technologies.countPlural') : t('interactiveDemo.canvas.technologies.count')}
+                              <p className="text-sm text-muted-foreground">
+                                {selectedModules.length} {selectedModules.length > 1 ? 'technologies' : 'technology'}
                             </p>
                           </div>
                         </div>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {selectedModules.map((index) => {
-                            const tech = techStack[index];
+                          <div className="grid grid-cols-1 gap-3">
+                            {selectedModules.map((module, i) => {
+                            // Get icon for module
+                            const ModuleIcon = iconMap[module.id.split('/').pop() || ''] || Code;
                             return (
                               <motion.div
-                                key={tech.name}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.3, delay: selectedModules.indexOf(index) * 0.1 }}
-                                className="flex items-center gap-4 p-4 bg-gradient-to-r from-architech-brand-blue/10 to-architech-electric/10 border border-architech-brand-blue/20 rounded-xl hover:border-architech-brand-blue/40 transition-all duration-300 group"
-                              >
-                                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                                  <tech.icon className="h-6 w-6 text-white" />
+                                key={module.id}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ duration: 0.3, delay: i * 0.1 }}
+                                  className="flex items-center gap-4 rounded-lg p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
+                                >
+                                  <div className="w-12 h-12 rounded-md bg-primary/10 border border-primary/30 flex items-center justify-center">
+                                  <ModuleIcon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
                                 </div>
                                 <div className="flex-1">
-                                  <h4 className="font-bold text-foreground text-lg mb-1">
-                                    {tech.name}
+                                    <h4 className="font-bold text-base mb-1 group-hover:text-primary transition-colors">
+                                    {module.name}
                                   </h4>
-                                  <p className="text-sm text-muted-foreground leading-relaxed">
-                                    {tech.description}
+                                    <p className="text-sm text-muted-foreground">
+                                    {module.description}
                                   </p>
                                 </div>
-                                <div className="w-2 h-2 rounded-full bg-architech-brand-blue animate-pulse"></div>
+                                  <Badge variant="default" className="text-xs bg-primary/10 text-primary border-primary/30">
+                                    {module.category}
+                                  </Badge>
                               </motion.div>
                             );
                           })}
@@ -642,81 +465,90 @@ const ArchitectsCanvas = () => {
                     {/* Blueprint Tab */}
                     {activeTab === 'blueprint' && showBlueprint && (
                       <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                          initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-brand-blue/20 shadow-inner"
+                          transition={{ duration: 0.4 }}
                       >
-                        {/* Code editor styling */}
-                        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/30">
+                          <div className="bg-surface-higher p-4 border border-subtle">
+                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-subtle">
                           <div className="flex gap-2">
-                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                <div className="w-3 h-3 bg-state-error"></div>
+                                <div className="w-3 h-3 bg-state-warning"></div>
+                                <div className="w-3 h-3 bg-state-success"></div>
                           </div>
-                          <span className="text-xs text-muted-foreground font-mono ml-4">architecture.yml</span>
+                              <span className="text-xs text-subtle font-geist-mono ml-3">architecture.yml</span>
                         </div>
                         
-                        <div className="font-mono text-sm max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-architech-brand-blue/30 scrollbar-track-transparent">
+                            <div className="font-geist-mono text-sm max-h-96 overflow-y-auto scrollbar-architech space-y-1">
                           {blueprintLines.map((line, index) => (
                             <motion.div
                               key={index}
-                              className="text-foreground min-h-[1.5rem] leading-6 flex items-center"
-                              initial={{ opacity: 0, x: -20 }}
+                                  initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: index * 0.05, duration: 0.4 }}
+                                  transition={{ delay: index * 0.03, duration: 0.3 }}
+                                  className="flex items-start"
                             >
-                              <span className="text-muted-foreground/50 text-xs w-8 select-none">
+                                  <span className="text-muted text-xs w-8 select-none">
                                 {String(index + 1).padStart(2, '0')}
                               </span>
-                              <span className="ml-4">
+                                  <span className="ml-3">
                         {line.startsWith("#") ? (
-                                  <span className="text-architech-brand-blue/80 font-semibold">
-                            {line}
-                          </span>
+                                      <span className="text-cyan-electric font-semibold">{line}</span>
                         ) : line.includes(":") ? (
                           <>
-                                    <span className="text-architech-brand-blue font-semibold">
+                                        <span className="text-cyan-electric font-medium">
                               {line.split(":")[0]}:
                             </span>
-                            <span className="text-architech-brand-green ml-2 font-medium">
-                              "{line.split(":")[1].trim()}"
+                                        <span className="text-gold-accent ml-2">
+                                          {line.split(":")[1]}
                             </span>
                           </>
-                                ) : line.startsWith("  -") ? (
-                                  <span className="text-architech-electric font-medium">
-                                    {line}
-                                  </span>
-                        ) : (
-                          <span className="text-foreground">{line}</span>
-                        )}
+                                    ) : (
+                                      <span className="text-body">{line}</span>
+                                    )}
                               </span>
                       </motion.div>
                     ))}
+                            </div>
                   </div>
+                  
+                  {/* CLI Command Callout */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.4 }}
+                    className="mt-4 p-4 bg-accent/10 border border-accent/30 rounded-lg"
+                  >
+                    <p className="text-sm text-muted-foreground mb-2">
+                      <span className="text-accent font-bold">Try this genome:</span> Copy the code above and run:
+                    </p>
+                    <div className="bg-background/50 border border-accent/20 rounded-md p-3 font-mono text-sm text-accent">
+                      architech generate --genome={matchedGenome?.id || 'custom'}
+                    </div>
+                  </motion.div>
                 </motion.div>
               )}
 
                     {/* Structure Tab */}
                     {activeTab === 'structure' && showProjectStructure && (
                 <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                          initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-brand-green/20 shadow-inner"
+                          transition={{ duration: 0.4 }}
                       >
-                        {/* File explorer styling */}
-                        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/30">
+                          <div className="bg-surface-higher p-4 border border-subtle">
+                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-subtle">
                           <div className="flex gap-2">
-                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                <div className="w-3 h-3 bg-state-error"></div>
+                                <div className="w-3 h-3 bg-state-warning"></div>
+                                <div className="w-3 h-3 bg-state-success"></div>
                           </div>
-                          <span className="text-xs text-muted-foreground font-mono ml-4">📁 project-structure</span>
+                              <span className="text-xs text-subtle font-geist-mono ml-3">📁 project-structure</span>
                         </div>
                         
-                        <div className="font-mono text-sm max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-architech-brand-green/30 scrollbar-track-transparent">
-                    {renderProjectStructure(generateProjectStructure(selectedModules))}
+                            <div className="max-h-96 overflow-y-auto scrollbar-architech">
+                              {renderProjectStructure(generateProjectStructure())}
+                            </div>
                   </div>
                 </motion.div>
               )}
@@ -724,127 +556,63 @@ const ArchitectsCanvas = () => {
                     {/* Preview Tab */}
                     {activeTab === 'preview' && showWorkingPreview && (
                 <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                          initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="relative bg-gradient-to-br from-architech-section-light/80 to-architech-section-dark/80 rounded-2xl p-6 border border-architech-electric/20 shadow-inner"
-                      >
-                    <motion.div
-                          className="bg-white rounded-2xl p-6 shadow-2xl shadow-architech-electric/10 border border-architech-electric/10"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.6, delay: 0.1 }}
+                          transition={{ duration: 0.4 }}
                         >
-                          {/* Browser header */}
+                          <div className="bg-white p-6 shadow-large">
                           <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
                             <div className="flex items-center gap-3">
                               <div className="flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                <div className="w-3 h-3 bg-red-500"></div>
+                                <div className="w-3 h-3 bg-yellow-500"></div>
+                                <div className="w-3 h-3 bg-green-500"></div>
                               </div>
-                              <h4 className="font-bold text-gray-800 text-lg">
-                            Dashboard
-                          </h4>
+                                <h4 className="font-geist font-bold text-gray-800">Dashboard</h4>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                              <span className="text-xs text-gray-500">Live</span>
-                            </div>
+                              <Badge variant="success" className="text-xs">
+                                <div className="w-2 h-2 bg-green-500 animate-glow-pulse mr-2"></div>
+                                Live
+                              </Badge>
                           </div>
                           
-                          {/* Dashboard content */}
-                          <div className="space-y-6">
+                            <div className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
+                                {[
+                                  { label: "Projets actifs", value: "3", icon: Database, color: "blue" },
+                                  { label: "Tâches", value: "12", icon: Sparkles, color: "green" }
+                                ].map((stat, i) => (
                               <motion.div 
-                                className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl border border-blue-200"
+                                    key={i}
+                                    className={`bg-gradient-to-br from-${stat.color}-50 to-${stat.color}-100 p-4 border border-${stat.color}-200`}
                                 whileHover={{ scale: 1.02 }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <div className="flex items-center gap-3 mb-2">
-                                  <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                                    <Database className="h-4 w-4 text-white" />
+                                  >
+                                    <div className="flex items-center gap-2 mb-2">
+                                      <div className={`w-8 h-8 bg-${stat.color}-500 flex items-center justify-center`}>
+                                        <stat.icon className="h-4 w-4 text-white" />
                                   </div>
-                                  <div className="text-sm text-blue-600 font-semibold">
-                                    Projets actifs
+                                      <span className={`text-sm text-${stat.color}-600 font-semibold`}>
+                                        {stat.label}
+                                      </span>
                                   </div>
-                                </div>
-                                <div className="text-3xl font-bold text-blue-800">
-                                  3
+                                    <div className={`text-3xl font-bold text-${stat.color}-800`}>
+                                      {stat.value}
                                 </div>
                               </motion.div>
-                              
-                              <motion.div 
-                                className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border border-green-200"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <div className="flex items-center gap-3 mb-2">
-                                  <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                                    <Sparkles className="h-4 w-4 text-white" />
-                                  </div>
-                                  <div className="text-sm text-green-600 font-semibold">
-                              Tâches terminées
-                                  </div>
-                                </div>
-                                <div className="text-3xl font-bold text-green-800">
-                                  12
-                                </div>
-                              </motion.div>
-                            </div>
-                            
-                            {/* Additional dashboard elements */}
-                            <div className="bg-gray-50 rounded-xl p-4">
-                              <div className="text-sm text-gray-600 font-medium mb-2">Activité récente</div>
-                              <div className="space-y-2">
-                                <div className="flex items-center gap-2 text-xs text-gray-500">
-                                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                  Nouveau projet créé
-                                </div>
-                                <div className="flex items-center gap-2 text-xs text-gray-500">
-                                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                  Tâche terminée
-                                </div>
+                                ))}
                               </div>
                             </div>
                           </div>
-                        </motion.div>
                     </motion.div>
                     )}
                   </div>
                   </div>
                 </motion.div>
               )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
-
-      {/* Luminous Extraction Particles */}
-      {showParticles && (
-        <div className="absolute inset-0 pointer-events-none z-40">
-          {particles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              className="absolute w-2 h-2 bg-gradient-to-r from-architech-brand-blue to-architech-brand-green rounded-full shadow-lg shadow-architech-brand-blue/50"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                boxShadow: `0 0 20px ${
-                  particle.progress > 0.5 ? "#39FF14" : "#00A9FF"
-                }`,
-              }}
-              animate={{
-                scale: [0.5, 1.2, 0.8],
-                opacity: [0, 1, 0.8, 0],
-              }}
-              transition={{
-                duration: 2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-      )}
     </section>
   );
 };

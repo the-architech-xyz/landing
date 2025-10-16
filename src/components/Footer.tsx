@@ -1,36 +1,37 @@
-import { useTheme } from "@/hooks/useTheme";
-import { Github, Twitter, Linkedin, MailIcon } from "lucide-react";
+import { Linkedin, MailIcon } from "lucide-react";
 import DiscordIcon from "@/components/DiscordIcon";
 import { useTranslation } from "@/hooks/useTranslation";
 
+/**
+ * THE ARCHITECH FOOTER - "Technical Elegance"
+ * Minimal, technical footer with new design system
+ */
+
 const Footer = () => {
   const { t } = useTranslation();
-  const { darkMode } = useTheme();
 
   return (
-    <footer className="relative bg-gradient-surface border-t border-architech-border">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className="relative bg-card border-t border-border">
+      <div className="container-architech py-16">
+        <div className="grid md:grid-cols-5 sm:grid-cols-2 gap-8">
           {/* Brand Section */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+              <div className="w-10 h-10 flex items-center justify-center">
                 <img
-                  src={darkMode ? "/logo-removebg.png" : "/logo.png"}
+                  src="/logo-removebg.png"
                   alt={t('common.alt.logo')}
                   className="w-10 h-10 object-contain"
                 />
               </div>
               <div>
-                <span className="text-xl font-bold text-foreground">
+                <span className="font-geist text-xl font-bold text-title">
                   The Architech
                 </span>
-                <div className="text-sm text-muted-foreground">
-                  Alpha Preview
-                </div>
+              
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed max-w-md mb-6">
+            <p className="font-inter text-subtle leading-relaxed max-w-md mb-6">
               {t('footer.description')}
             </p>
 
@@ -40,126 +41,128 @@ const Footer = () => {
                 href="https://discord.gg/sxhdEEWups"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+                className="p-3 bg-card border border-border hover:border-primary transition-colors group"
                 title={t('social.discord.title')}
               >
-                <DiscordIcon className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
+                <DiscordIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </a>
               <a
                 href="https://www.linkedin.com/company/the-architech-ai/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+                className="p-3 bg-card border border-border hover:border-primary transition-colors group"
                 title={t('social.linkedin.title')}
               >
-                <Linkedin className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300" />
+                <Linkedin className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </a>
               
               {/* Contact Email */}
               <a
                 href="mailto:antoine.srvt@gmail.com"
-                className="glass-button p-3 rounded-xl hover:shadow-glow transition-all duration-300 group"
+                className="p-3 bg-card border border-border hover:border-primary transition-colors group"
                 title={t('social.email.title')}
               >
-                <MailIcon className="h-5 w-5 text-architech-electric group-hover:scale-110 transition-transform duration-300 flex items-center justify-center text-xs font-bold">
-                  @
-                </MailIcon>
+                <MailIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
           
-          <div></div>
-          {/* Quick Links */}
+          {/* Product Links */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              {t('footer.links.product')}
+            <h3 className="text-lg font-semibold mb-4">
+              Product
             </h3>
             <div className="space-y-3">
               <a
-                href="#benefits"
-                className="block text-muted-foreground hover:text-architech-electric transition-colors"
+                href="/cli"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                {t('header.nav.benefits')}
+                CLI
               </a>
               <a
-                href="#demo"
-                className="block text-muted-foreground hover:text-architech-electric transition-colors"
+                href="/marketplace"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                {t('header.nav.demo')}
+                Marketplace
               </a>
               <a
-                href="#where-we-fit"
-                className="block text-muted-foreground hover:text-architech-electric transition-colors"
+                href="/for-teams"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                {t('header.nav.whereWeFit')}
-              </a>
-              <a
-                href="#how-it-works"
-                className="block text-muted-foreground hover:text-architech-electric transition-colors"
-              >
-                {t('header.nav.howItWorks')}
-              </a>
-              <a
-                href="#faq"
-                className="block text-muted-foreground hover:text-architech-electric transition-colors"
-              >
-                {t('header.nav.faq')}
+                For Teams
               </a>
             </div>
           </div>
-
-          {/* Status */}
-          {/* <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Status
+          
+          {/* Company Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">
+              Company
             </h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-muted-foreground">
-                  Alpha Development
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-architech-electric rounded-full"></div>
-                <span className="text-sm text-muted-foreground">
-                  Open Waitlist
-                </span>
-              </div>
+              <a
+                href="/philosophy"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Philosophy
+              </a>
+              <a
+                href="/team"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Team
+              </a>
+              <a
+                href="/lightpaper"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Whitepaper
+              </a>
             </div>
-          </div> */}
+          </div>
+          
+          {/* Resources Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">
+              Resources
+            </h3>
+            <div className="space-y-3">
+              <a
+                href="/solutions/saas-starter"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                SaaS Starter Guide
+              </a>
+              <a
+                href="https://github.com/the-architech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.npmjs.com/package/@the-architech/cli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                NPM
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-architech-border mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-muted-foreground">
+        <div className="border-t border-subtle mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="font-inter text-sm text-subtle">
             {t('footer.copyright')}
           </div>
-          {/* <div className="flex items-center gap-6 text-sm">
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-architech-electric transition-colors"
-            >
-              Privacy
-            </a>
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-architech-electric transition-colors"
-            >
-              Terms
-            </a>
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-architech-electric transition-colors"
-            >
-              Contact
-            </a>
-          </div> */}
         </div>
       </div>
-
     </footer>
   );
 };
 
 export default Footer;
+
